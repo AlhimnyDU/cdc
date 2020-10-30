@@ -28,7 +28,15 @@ class Login extends CI_Controller {
     
 	public function index(){
         $this->load->view('login/templates/header');
-        $this->load->view('login/login');
+		$this->load->view('login/login');
+		$this->load->view('login/templates/js');
+        $this->load->view('login/templates/footer');
+	}
+	
+	public function perusahaan(){
+        $this->load->view('login/templates/header');
+		$this->load->view('login/regis_pus');
+		$this->load->view('login/templates/js');
         $this->load->view('login/templates/footer');
     }
     
@@ -72,20 +80,44 @@ class Login extends CI_Controller {
 
 	public function addMahasiswa(){
         $data = array(
-			'nama'	=> $this->input->post('nama'),
-			'email' 			=> $this->input->post('email'),
-			'password' 				=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			'nama'			=> $this->input->post('nama'),
+			'email' 		=> $this->input->post('email'),
+			'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			'telp' 			=> $this->input->post('telp'),
-			'role'				=> "mahasiswa",
-			'status'			=> "Aktif",
-            'nomor_induk'		=> $this->input->post('nrp'),
-            'alamat'		=> $this->input->post('alamat')
+			'role'			=> "mahasiswa",
+			'status'		=> "Aktif",
+            'nomor_induk'	=> $this->input->post('nrp'),
+			'alamat'		=> $this->input->post('alamat'),
+			'created' 		=> date('Y-m-d H:i:s'),
+			'updated' 		=> date('Y-m-d H:i:s')
 		 );
 		$query = $this->db->insert('tbl_akun',$data);
 		if($query){
         	$this->session->set_flashdata('insert_akun',"Tambah Berhasil");
         }else{
         	$this->session->set_flashdata('insert_akun',"Tambah Gagal");
+        }
+        redirect('login');
+	}
+	
+	public function addPerusahaan(){
+        $data = array(
+			'nama_perusahaan'	=> $this->input->post('nama_perusahaan'),
+			'email' 			=> $this->input->post('email'),
+			'password' 				=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			'telp_perusahaan' 			=> $this->input->post('telp'),
+			'alamat'		=> $this->input->post('alamat'),
+			'pj'		=> $this->input->post('nama_pj'),
+			'telp_pj' 			=> $this->input->post('telp_pj'),
+			'created' 		=> date('Y-m-d H:i:s'),
+			'updated' 		=> date('Y-m-d H:i:s')
+           
+		 );
+		$query = $this->db->insert('tbl_perusahaan',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_akun',TRUE);
+        }else{
+        	$this->session->set_flashdata('insert_akun',FALSE);
         }
         redirect('login');
     }

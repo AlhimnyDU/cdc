@@ -20,6 +20,9 @@ class Halaman extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/home');
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
 	}
 }
