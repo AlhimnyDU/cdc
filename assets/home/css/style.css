@@ -198,10 +198,11 @@ p a{
 	width:auto;
 	padding:15px;
 	font-family:arial;
-	background:#fff;
+	background: url(../images/bg-content.png);
 	overflow:hidden;
 	height:1%;
 	clear:both;
+	margin-bottom: 10px;
 }
 .body div.article div.first{
 	width:525px;
@@ -343,6 +344,7 @@ p a{
 }
 .body .content{
 	float:left;
+	margin-bottom: 10px;
 }
 .body .content .figure{
 	height:260px;
@@ -540,7 +542,7 @@ p a{
 	background:url(../images/bg-content.png);
 	padding: 10px 20px;
 	width:750px;
-	margin:0 0 60px;
+	margin:0 0 10px;
 }
 .body .content div.blog div{
 	margin:0 0 20px 0;

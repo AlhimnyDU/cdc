@@ -1,5 +1,5 @@
 <div class="footer">
-			<p>&#169; 2011 Herdesigns. All Rights Reserved.</p>
+			<p>&#169; 2020 Career development center. All Rights Reserved.</p>
 		</div>
 	</body>
 </html>

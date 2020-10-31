@@ -5,16 +5,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form method="POST" action="<?php echo site_url("login/auth"); ?>">
               <h1>Login Akun</h1>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="email" class="form-control" name="email" placeholder="Email" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-primary submit" href="">Log in</a>
+                <button class="btn btn-primary btn-sm submit">Log in</button>
               </div>
               <div class="clearfix"></div>
               <div class="separator">

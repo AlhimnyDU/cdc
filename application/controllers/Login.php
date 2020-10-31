@@ -40,30 +40,32 @@ class Login extends CI_Controller {
         $this->load->view('login/templates/footer');
     }
     
-    public function login(){
-        $email =  $this->input->post('username');
-        $password = $this->input->post('password');
+    public function auth(){
+		$email =  $this->input->post('email');
+		$password = $this->input->post('password');
 		$select = $this->Login_model->validasi_akun('tbl_akun','email',$email,$password);
-		$selectPerusahaan = $this->Login_model->validasi_akun('tbl_perusahaan','email',$username,$password);
+		$selectPerusahaan = $this->Login_model->validasi_akun('tbl_perusahaan','email',$email,$password);
         if($select){
-			if($select->status == "admin"){
-				$this->session->set_userdata('nama',$select->nama);
-				$this->session->set_userdata('admin',"admin");
-				$this->session->set_userdata('id_akun',$select->id_akun);
-        		redirect('admin');
-			}else if($select->status == "mahasiswa"){
-				$this->session->set_userdata('nama',$select->nama);
-				$this->session->set_userdata('mahasiswa',"mahasiswa");
-				$this->session->set_userdata('id_akun',$select->id_akun);
-        		redirect('halaman');
-			}else if($select->status == "alumni"){
-				$this->session->set_userdata('nama',$select->nama);
-				$this->session->set_userdata('alumni',"alumni");
-				$this->session->set_userdata('id_akun',$select->id_akun);
-        		redirect('halaman');
-			}else{
-				$this->session->set_flashdata('login',"Akun tidak ditemukan");
-        		redirect('auth');
+			if($select->status="Aktif"){
+				if($select->role == "admin"){
+					$this->session->set_userdata('nama',$select->nama);
+					$this->session->set_userdata('admin',"admin");
+					$this->session->set_userdata('id_akun',$select->id_akun);
+					redirect('admin');
+				}else if($select->role == "mahasiswa"){
+					$this->session->set_userdata('nama',$select->nama);
+					$this->session->set_userdata('mahasiswa',"mahasiswa");
+					$this->session->set_userdata('id_akun',$select->id_akun);
+					redirect('halaman');
+				}else if($select->role == "alumni"){
+					$this->session->set_userdata('nama',$select->nama);
+					$this->session->set_userdata('alumni',"alumni");
+					$this->session->set_userdata('id_akun',$select->id_akun);
+					redirect('halaman');
+				}else{
+					$this->session->set_flashdata('login',"Akun tidak ditemukan");
+					redirect('login');
+				}
 			}
 			
 		}else if($selectPerusahaan) {
@@ -72,7 +74,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('akun_id',$selectUser->akun_id);
         	redirect('perusahaan');
 		}else{
-        	$this->session->set_flashdata('gagalLogin',"Username atau password salah");
+			$this->session->set_flashdata('gagalLogin',"Username atau password salah");
         	redirect('login');
 		}
 		
@@ -85,7 +87,6 @@ class Login extends CI_Controller {
 			'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			'telp' 			=> $this->input->post('telp'),
 			'role'			=> "mahasiswa",
-			'status'		=> "Aktif",
             'nomor_induk'	=> $this->input->post('nrp'),
 			'alamat'		=> $this->input->post('alamat'),
 			'created' 		=> date('Y-m-d H:i:s'),

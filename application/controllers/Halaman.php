@@ -18,10 +18,41 @@ class Halaman extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+
+	public function __construct() {
+        parent::__construct();
+		$this->load->database();
+		$this->load->library('session');
+	}
+	
+	public function index(){
+		$this->session->set_userdata('navbar','beranda');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/home');
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
+	}
+
+	public function loker(){
+		$this->session->set_userdata('navbar','loker');
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/loker');
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
+	}
+
+	public function info(){
+		$this->session->set_userdata('navbar','info');
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/info');
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
+	}
+
+	public function about(){
+		$this->session->set_userdata('navbar','about');
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/about');
 		$this->load->view('halaman/templates/js');
         $this->load->view('halaman/templates/footer');
 	}
