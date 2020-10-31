@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Admin | CDC Itenas</title>
+    <title>Perusahaan | CDC Itenas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,6 @@
     <link href="<?php echo base_url() ?>assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url() ?>assets/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url() ?>assets/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -44,7 +43,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-user"></i> <span>Admin CDC</span></a>
+              <a href="#" class="site_title"><img src="<?php echo base_url() ?>assets/home/images/logo.png" alt="logo" width="270" height="50"/></a>
             </div>
 
             <div class="clearfix"></div>
@@ -56,7 +55,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Administrator CDC</h2>
+                <h2>Perusahaan</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -68,17 +67,14 @@
               <div class="menu_section">
                 <h3>Dashboard</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home </a></li>
-                  <li><a><i class="fa fa-users"></i> Akun <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo site_url() ?>perusahaan"><i class="fa fa-home"></i> Home </a></li>
+                  <li><a><i class="fa fa-users"></i>Pengembangan Karir<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url() ?>admin/akunAdmin">Admin</a></li>
-                      <li><a href="<?php echo site_url() ?>admin/mahasiswa">Mahasiswa</a></li>
-                      <li><a href="<?php echo site_url() ?>admin/alumni">Alumni</a></li>
-                      <li><a href="<?php echo site_url() ?>admin/umum">Umum</a></li>
-                      <li><a href="<?php echo site_url() ?>admin/perusahaan">Perusahaan</a></li>
+                      <li><a href="<?php echo site_url() ?>perusahaan/jobfair">Job Fair</a></li>
+                      <li><a href="<?php echo site_url() ?>perusahaan/loker">Lowongan Kerja</a></li>
                     </ul>
                   </li>                
-                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="<?php echo site_url() ?>perusahaan/setting"><i class="fa fa-gear"></i> Setting</a></li>
                 </ul>
               </div>
 

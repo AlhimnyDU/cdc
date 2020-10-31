@@ -134,7 +134,7 @@
         <?php 
             foreach($perusahaan as $row){
         ?>
-        <div id="editModal" class="modal fade" role="dialog">
+        <div id="editModal<?= $row->id_perusahaan ?>" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File Company Profile</label>
-                                        <input type="file" class="dropify" height="100" data-default-file="<?= $row->file_cv ?>" name="file_cv" required="" data-max-file-size="2M" data-allowed-file-extensions="pdf">
+                                        <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/file_cv/').$row->file_cv ?>" name="file_cv" required="" data-max-file-size="2M" data-allowed-file-extensions="pdf">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>

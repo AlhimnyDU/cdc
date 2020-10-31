@@ -66,8 +66,8 @@ class Admin extends CI_Controller {
 			'status'			=> "Aktif",
             'nomor_induk'		=> $this->input->post('nrp'),
             'alamat'		=> $this->input->post('alamat'),
-            'created'   => date('d-m-Y H:i:s'),
-            'updated'   => date('d-m-Y H:i:s'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
 		 );
 		$query = $this->db->insert('tbl_akun',$data);
 		if($query){
@@ -89,7 +89,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             ); }
         else{
             $data = array(
@@ -101,7 +101,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             );
         }
 		$query = $this->db->where('id_akun', $id)->update('tbl_akun',$data);
@@ -193,8 +193,8 @@ class Admin extends CI_Controller {
 			'status'	=> "Aktif",
             'nomor_induk'=> $this->input->post('nrp'),
             'alamat'	=> $this->input->post('alamat'),
-            'created'   => date('d-m-Y H:i:s'),
-            'updated'   => date('d-m-Y H:i:s'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
 		 );
 		$query = $this->db->insert('tbl_akun',$data);
 		if($query){
@@ -215,8 +215,8 @@ class Admin extends CI_Controller {
 			'status'	=> "Aktif",
             'nomor_induk'=> $this->input->post('nrp'),
             'alamat'	=> $this->input->post('alamat'),
-            'created'   => date('d-m-Y H:i:s'),
-            'updated'   => date('d-m-Y H:i:s'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
 		 );
 		$query = $this->db->insert('tbl_akun',$data);
 		if($query){
@@ -238,7 +238,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             ); }
         else{
             $data = array(
@@ -250,7 +250,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             );
         }
 		$query = $this->db->where('id_akun', $id)->update('tbl_akun',$data);
@@ -274,7 +274,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             ); }
         else{
             $data = array(
@@ -286,7 +286,7 @@ class Admin extends CI_Controller {
                 'status'	=> "Aktif",
                 'nomor_induk'=> $this->input->post('nrp'),
                 'alamat'	=> $this->input->post('alamat'),
-                'updated'   => date('d-m-Y H:i:s'),
+                'updated'   => date('Y-m-d H:i:s'),
             );
         }
 		$query = $this->db->where('id_akun', $id)->update('tbl_akun',$data);
@@ -322,8 +322,8 @@ class Admin extends CI_Controller {
             'alamat'	=> $this->input->post('alamat'),
             'telp_perusahaan' => $this->input->post('telp'),
             'file_cv'   => $this->upload->data('file_name'),
-            'created'   => date('d-m-Y H:i:s'),
-            'updated'   => date('d-m-Y H:i:s'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
 		 );
 		$query = $this->db->insert('tbl_perusahaan',$data);
 		if($query){
@@ -339,19 +339,19 @@ class Admin extends CI_Controller {
         $config['allowed_types'] = 'pdf';
         $this->upload->initialize($config);
         $this->upload->do_upload('file_cv');
-                
+
         $data = array(
 			'nama_perusahaan' => $this->input->post('nama_perusahaan'),
 			'email' 	=> $this->input->post('email'),
-			'password' 	=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			'password' 	=> $this->input->post('password'),
 			'telp_pj' 		=> $this->input->post('telp_pj'),
 			'jabatan'		=> "-",
             'pj'=> $this->input->post('pj'),
             'alamat'	=> $this->input->post('alamat'),
             'telp_perusahaan' => $this->input->post('telp'),
             'file_cv'   => $this->upload->data('file_name'),
-            'created'   => date('d-m-Y H:i:s'),
-            'updated'   => date('d-m-Y H:i:s'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
 		 );
 		$query = $this->db->where('id_perusahaan',$id)->update('tbl_perusahaan',$data);
 		if($query){
