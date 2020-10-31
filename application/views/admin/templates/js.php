@@ -12,6 +12,7 @@
   <script src="<?php echo base_url() ?>assets/admin/lib/common-scripts.js"></script>
   <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/lib/gritter-conf.js"></script>
+  
   <!--script for this page-->
   <script type="text/javascript">
     /* Formating function for row details */
@@ -40,3 +41,4 @@
       $('.datatable').dataTable();
     });
   </script>
+

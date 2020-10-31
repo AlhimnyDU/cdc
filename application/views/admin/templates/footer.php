@@ -1,7 +1,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            CDC Itenas
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -62,6 +62,8 @@
     <script src="<?php echo base_url() ?>assets/admin/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?php echo base_url() ?>assets/admin/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="<?php echo base_url() ?>assets/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url() ?>assets/admin/build/js/custom.min.js"></script>
@@ -71,5 +73,19 @@
             $('.datatable').DataTable();
         } );
     </script>
+
+    <script>
+      $( document ).ready(function() {
+          $('.dropify').dropify({
+          messages: {
+          'default': 'Drag and drop a file here or click',
+          'replace': 'Drag and drop or click to replace',
+          'remove':  'Remove',
+          'error':   'Ooops, something wrong happended.'
+          }
+          });
+      });
+    </script>
+
   </body>
 </html>

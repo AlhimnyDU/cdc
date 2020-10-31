@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Mahasiswa</h3>
+                <h3>Alumni</h3>
               </div>
 
               <div class="title_right">
@@ -32,7 +32,7 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                                 <table id="" class="table table-striped table-bordered datatable" style="width:100%">
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th width="5%">No</th>
                                             <th>Nama</th>
@@ -45,7 +45,7 @@
                                     <tbody>
                                         <?php 
                                             $no=1;
-                                            foreach($mahasiswa as $row){
+                                            foreach($alumni as $row){
                                              ?>
                                         <tr>
                                             <td><?php echo $no ?></td>
@@ -54,7 +54,7 @@
                                             <td><?php echo $row->telp ?></td>
                                             <td><?php echo $row->alamat ?></td>
                                             <td> <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_akun ?>"><i class="fa fa-edit"></i></a> | 
-                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusMahasiswa/').$row->id_akun ?>"><i class="fa fa-trash"></i></a></td>
+                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusAlumni/').$row->id_akun ?>"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         <?php    
                                            $no++; 
@@ -71,56 +71,60 @@
           </div>
         </div>
         <!-- /page content -->
-        <div id="tambahModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Tambah Akun Mahasiswa</h3>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('admin/addMahasiswa')?>" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col col-lg-12">
-                                    <div class="form-group">
-                                        <label>NRP</label>
-                                        <input type="text" class="form-control" name="nrp" placeholder="Masukkan NRP" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Nama Lengkap</label>
-                                        <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Telepon</label>
-                                        <input type="text" class="form-control" name="telp" placeholder="Masukkan No Telepon" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alamat</label>
-                                        <textarea class="form-control" placeholder="Masukkan Alamat" name="alamat" rows=5></textarea>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
-                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>  
-                </div>
+
+
+        
+<div id="tambahModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Akun Alumni</h3>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form method="post" action="<?php echo site_url('admin/addAlumni')?>" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col col-lg-12">
+                            <div class="form-group">
+                                <label>NRP</label>
+                                <input type="text" class="form-control" name="nrp" placeholder="Masukkan NRP" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Telepon</label>
+                                <input type="text" class="form-control" name="telp" placeholder="Masukkan No Telepon" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <textarea class="form-control" placeholder="Masukkan Alamat" name="alamat" rows=5></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
+                                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>  
         </div>
+    </div>
+</div>
+
 <?php 
-foreach($mahasiswa as $row){
+foreach($alumni as $row){
 ?>
 <div id="editModal<?= $row->id_akun ?>" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -132,7 +136,7 @@ foreach($mahasiswa as $row){
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('admin/editMahasiswa/').$row->id_akun ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url('admin/editAlumni/').$row->id_akun ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">

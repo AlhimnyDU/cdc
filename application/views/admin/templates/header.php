@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
-
+    <title>Admin | CDC Itenas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -44,7 +44,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-user"></i> <span>Admin CDC</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -52,11 +52,10 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>Administrator CDC</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -72,7 +71,7 @@
                   <li><a><i class="fa fa-users"></i> Akun <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url() ?>admin/akunAdmin">Admin</a></li>
-                      <li><a href="<?php echo site_url() ?>admin/mahasiwa">Mahasiswa</a></li>
+                      <li><a href="<?php echo site_url() ?>admin/mahasiswa">Mahasiswa</a></li>
                       <li><a href="<?php echo site_url() ?>admin/alumni">Alumni</a></li>
                       <li><a href="<?php echo site_url() ?>admin/umum">Umum</a></li>
                       <li><a href="<?php echo site_url() ?>admin/perusahaan">Perusahaan</a></li>
@@ -114,7 +113,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    John Doe
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>
