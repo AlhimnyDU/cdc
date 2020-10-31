@@ -69,9 +69,9 @@ class Login extends CI_Controller {
 			}
 			
 		}else if($selectPerusahaan) {
-			$this->session->set_userdata('username',$selectUser->akun_nama);
-			$this->session->set_userdata('user',"user");
-			$this->session->set_userdata('akun_id',$selectUser->akun_id);
+			$this->session->set_userdata('nama',$selectPerusahaan->nama_perusahaan);
+			$this->session->set_userdata('perusahaan',"perusahaan");
+			$this->session->set_userdata('id_akun',$selectPerusahaan->id_perusahaan);
         	redirect('perusahaan');
 		}else{
 			$this->session->set_flashdata('gagalLogin',"Username atau password salah");
