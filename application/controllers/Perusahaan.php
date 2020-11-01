@@ -45,8 +45,7 @@ class Perusahaan extends CI_Controller {
     public function loker(){
         if($this->session->userdata('nama')){
 			if($this->session->userdata('perusahaan')){
-                // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
-                $data['loker'] = $this->db->where('id_perusahaan', 1)->get('tbl_loker')->result();
+                $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_loker')->result();
                 $this->load->view('perusahaan/templates/header');
                 $this->load->view('perusahaan/loker',$data);
                 $this->load->view('perusahaan/templates/js');
@@ -71,7 +70,9 @@ class Perusahaan extends CI_Controller {
             'deskripsi' 	=> $this->input->post('deskripsi'),
             'status' 	=> 'Menunggu Konfirmasi',
             'poster'   => $this->upload->data('file_name'),
-            'id_perusahaan' => $this->session->userdata('id_akun')
+            'id_perusahaan' => $this->session->userdata('id_akun'),
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
 		 );
 		$query = $this->db->insert('tbl_loker',$data);
 		if($query){
@@ -93,7 +94,7 @@ class Perusahaan extends CI_Controller {
             'syarat' 	=> $this->input->post('syarat'),
             'deskripsi' 	=> $this->input->post('deskripsi'),
             'poster'   => $this->upload->data('file_name'),
-            'id_perusahaan' => $this->session->userdata('id_perusahaan')
+            'id_perusahaan' => $this->session->userdata('id_akun')
 		 );
 		$query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
 		if($query){

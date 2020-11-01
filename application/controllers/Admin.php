@@ -26,10 +26,20 @@ class Admin extends CI_Controller {
     }
 
 	public function index(){
-		$this->load->view('admin/templates/header');
-        $this->load->view('admin/dashboard');
-        $this->load->view('admin/templates/js');
-        $this->load->view('admin/templates/footer');
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('admin')){
+                $this->load->view('admin/templates/header',$this->session->userdata('nama'));
+                $this->load->view('admin/dashboard');
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        } 
+
+		
     }
     
     public function akunAdmin(){
@@ -117,7 +127,7 @@ class Admin extends CI_Controller {
     public function addAdmin(){
         $data = array(
 			'nama_admin'	=> $this->input->post('nama_admin'),
-			'username' => $this->input->post('username'),
+			'email' => $this->input->post('email'),
 			'password'	=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 		 );
 		$query = $this->db->insert('tbl_admin',$data);
@@ -133,14 +143,14 @@ class Admin extends CI_Controller {
         if(($this->input->post('passwordnew'))==""){
             $data = array(
                 'nama_admin'	=> $this->input->post('nama_admin'),
-                'username' => $this->input->post('username'),
+                'email' => $this->input->post('email'),
                 'password'	=> $this->input->post('password')
              );
         }
         else{
             $data = array(
                 'nama_admin'	=> $this->input->post('nama_admin'),
-                'username' => $this->input->post('username'),
+                'email' => $this->input->post('email'),
                 'password'	=> password_hash($this->input->post('passwordnew'), PASSWORD_DEFAULT)
              );
         }
@@ -361,4 +371,63 @@ class Admin extends CI_Controller {
         }
         redirect('admin/perusahaan');
     }
+
+
+    public function loker(){
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('admin')){
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','left')->get()->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/loker',$data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        } 
+    }
+    
+    public function accLoker($id){
+        $data = array(
+            'status' => "Disetujui",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id_loker',$id)->update('tbl_loker',$data);
+        redirect('admin/loker');
+    }
+
+    public function unpublishLoker($id){
+        $data = array(
+            'status' => "Menunggu Konfirmasi",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id_loker',$id)->update('tbl_loker',$data);
+        redirect('admin/loker');
+    }
+
+    public function editLoker($id){
+        $config['upload_path'] = './assets/upload/poster/';
+        $config['allowed_types'] = 'jpg';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('poster');        
+        $data = array(
+			'judul' => $this->input->post('judul'),
+            'posisi' 	=> $this->input->post('posisi'),
+            'syarat' 	=> $this->input->post('syarat'),
+            'deskripsi' 	=> $this->input->post('deskripsi'),
+            'poster'   => $this->upload->data('file_name'),
+            'id_perusahaan' => $this->input->post('id_perusahaan'),
+            'updated' => date('Y-m-d H:i:s')
+		 );
+		$query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
+		if($query){
+        	$this->session->set_flashdata('update_loker',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('admin/loker');
+    }
+
 }

@@ -24,7 +24,6 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a class="btn btn-success" href="" data-toggle="modal" data-target="#tambahModal"><i class="fa fa-plus"></i> Tambah Loker</a>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -35,6 +34,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>
+                                            <th>Perusahaan</th>
                                             <th>Judul Loker</th>
                                             <th>Posisi yang dibutuhkan</th>
                                             <th>Persyaratan</th>
@@ -51,21 +51,21 @@
                                              ?>
                                         <tr>
                                             <td><?php echo $no ?></td>
+                                            <td><?php echo $row->nama_perusahaan ?></td>
                                             <td><?php echo $row->judul ?></td>
                                             <td><?php echo $row->posisi ?></td>
                                             <td><?php echo $row->syarat ?></td>
                                             <td><?php echo $row->deskripsi ?></td>
-                                            <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" class="thumbnail"></td>
+                                            <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" alt="" class="thumbnail"></td>
                                             <td><?php echo $row->status ?></td>
-                                            <?php if($row->status=="Disetujui"){ ?>
-                                                <td>
-                                                    <a class="btn btn-warning disabled" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            <?php }else{ ?>
-                                                <td>
-                                                    <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            <?php } ?>
+                                            <td>
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> | 
+                                                <?php if($row->status=="Menunggu Konfirmasi"){ ?>
+                                                <a class="btn btn-success" href="<?php echo site_url('admin/accLoker/').$row->id_loker ?>"><i class="fa fa-check"></i> Publish</a>
+                                                <?php } else { ?>
+                                                    <a class="btn btn-secondary" href="<?php echo site_url('admin/unpublishLoker/').$row->id_loker ?>"><i class="fa fa-times"></i> Unpublish</a>
+                                                <?php } ?>
+                                            </td>
                                         </tr>
                                         <?php    
                                            $no++; 
@@ -82,51 +82,6 @@
           </div>
         </div>
         <!-- /page content -->
-        <div id="tambahModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Tambah Lowongan Pekerjaan</h3>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('perusahaan/addLoker')?>" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col col-lg-12">
-                                    <div class="form-group">
-                                        <label>Judul</label>
-                                        <input type="text" class="form-control" name="judul" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Posisi yang dibutuhkan</label>
-                                        <input type="text" class="form-control" name="posisi" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Syarat/Requirements</label>
-                                        <textarea name="syarat" id="syarat" class="editor"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi" id="deskripsi" class="editor"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>File Poster</label>
-                                        <input type="file" class="dropify" height="100" name="poster" required="" data-max-file-size="1M" data-allowed-file-extensions="jpg">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
-                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>  
-                </div>
-            </div>
-        </div>
-
         <?php 
             foreach($loker as $row){
         ?>
@@ -140,12 +95,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('perusahaan/addLoker')?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/editLoker/').$row->id_loker ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
                                         <label>Judul</label>
                                         <input type="text" class="form-control" name="judul" required="" value="<?= $row->judul ?>">
+                                        <input type="hidden" class="form-control" name="id_perusahaan" required="" value="<?= $row->id_perusahaan ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Posisi yang dibutuhkan</label>
@@ -161,7 +117,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File Poster</label>
-                                        <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/poster/').$row->poster ?>" name="poster" required="" data-max-file-size="1M" data-allowed-file-extensions="jpg">
+                                        <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/poster/').$row->poster ?>" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>

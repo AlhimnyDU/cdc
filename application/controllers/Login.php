@@ -45,14 +45,10 @@ class Login extends CI_Controller {
 		$password = $this->input->post('password');
 		$select = $this->Login_model->validasi_akun('tbl_akun','email',$email,$password);
 		$selectPerusahaan = $this->Login_model->validasi_akun('tbl_perusahaan','email',$email,$password);
+		$selectadmin = $this->Login_model->validasi_akun('tbl_admin','email',$email,$password);
         if($select){
 			if($select->status="Aktif"){
-				if($select->role == "admin"){
-					$this->session->set_userdata('nama',$select->nama);
-					$this->session->set_userdata('admin',"admin");
-					$this->session->set_userdata('id_akun',$select->id_akun);
-					redirect('admin');
-				}else if($select->role == "mahasiswa"){
+				if($select->role == "mahasiswa"){
 					$this->session->set_userdata('nama',$select->nama);
 					$this->session->set_userdata('mahasiswa',"mahasiswa");
 					$this->session->set_userdata('id_akun',$select->id_akun);
@@ -67,12 +63,16 @@ class Login extends CI_Controller {
 					redirect('login');
 				}
 			}
-			
 		}else if($selectPerusahaan) {
 			$this->session->set_userdata('nama',$selectPerusahaan->nama_perusahaan);
 			$this->session->set_userdata('perusahaan',"perusahaan");
 			$this->session->set_userdata('id_akun',$selectPerusahaan->id_perusahaan);
         	redirect('perusahaan');
+		}else if($selectadmin) {
+			$this->session->set_userdata('nama',$selectadmin->nama_admin);
+			$this->session->set_userdata('admin',"admin");
+			$this->session->set_userdata('id_admin',$selectadmin->id_admin);
+        	redirect('admin');
 		}else{
 			$this->session->set_flashdata('gagalLogin',"Username atau password salah");
         	redirect('login');

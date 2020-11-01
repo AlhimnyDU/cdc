@@ -46,7 +46,7 @@
                                 <tr>
                                     <td><?php echo $no ?></td>
                                     <td><?php echo $row->nama_admin ?></td>
-                                    <td><?php echo $row->username ?></td>
+                                    <td><?php echo $row->email ?></td>
                                     <td> <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_admin ?>"><i class="fa fa-edit"></i></a> | 
                                          <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusAdmin/').$row->id_admin ?>"><i class="fa fa-trash"></i></a></td>
                                 </tr>
@@ -83,8 +83,8 @@
                                 <input type="text" class="form-control" name="nama_admin" placeholder="Masukkan Nama Lengkap" required="">
                             </div>
                             <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required="">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
@@ -123,8 +123,8 @@ foreach($admin as $row){
                                 <input type="text" class="form-control" name="nama_admin" placeholder="Masukkan Nama Lengkap" required="" value="<?= $row->nama_admin ?>">
                             </div>
                             <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required="" value="<?= $row->username ?>">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="" value="<?= $row->email ?>">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
