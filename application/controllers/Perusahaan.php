@@ -23,23 +23,40 @@ class Perusahaan extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form','url'));
         $this->load->library('session');
+        $this->load->library('upload');
         $this->load->database();
     }
     
 	public function index(){
-        $this->load->view('perusahaan/templates/header');
-		$this->load->view('perusahaan/home');
-		$this->load->view('perusahaan/templates/js');
-        $this->load->view('perusahaan/templates/footer');
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('perusahaan')){
+                $this->load->view('perusahaan/templates/header');
+                $this->load->view('perusahaan/home');
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        } 
     }
     
     public function loker(){
-        // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
-        $data['loker'] = $this->db->where('id_perusahaan', 1)->get('tbl_loker')->result();
-        $this->load->view('perusahaan/templates/header');
-		$this->load->view('perusahaan/loker',$data);
-		$this->load->view('perusahaan/templates/js');
-        $this->load->view('perusahaan/templates/footer');
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('perusahaan')){
+                // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
+                $data['loker'] = $this->db->where('id_perusahaan', 1)->get('tbl_loker')->result();
+                $this->load->view('perusahaan/templates/header');
+                $this->load->view('perusahaan/loker',$data);
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        } 
     }
     
     public function addLoker(){
@@ -54,7 +71,7 @@ class Perusahaan extends CI_Controller {
             'deskripsi' 	=> $this->input->post('deskripsi'),
             'status' 	=> 'Menunggu Konfirmasi',
             'poster'   => $this->upload->data('file_name'),
-            'id_perusahaan' => $this->session->userdata('id_perusahaan')
+            'id_perusahaan' => $this->session->userdata('id_akun')
 		 );
 		$query = $this->db->insert('tbl_loker',$data);
 		if($query){
@@ -88,9 +105,18 @@ class Perusahaan extends CI_Controller {
     }
 
     public function jobfair(){
-        $this->load->view('perusahaan/templates/header');
-		$this->load->view('perusahaan/jobfair');
-		$this->load->view('perusahaan/templates/js');
-        $this->load->view('perusahaan/templates/footer');
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('perusahaan')){
+                // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
+                $this->load->view('perusahaan/templates/header');
+                $this->load->view('perusahaan/jobfair');
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        }    
     }
 }
