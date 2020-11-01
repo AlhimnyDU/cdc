@@ -57,7 +57,15 @@
                                             <td><?php echo $row->deskripsi ?></td>
                                             <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" alt=""></td>
                                             <td><?php echo $row->status ?></td>
-                                            <td><a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a></td>
+                                            <?php if($row->status=="Disetujui"){ ?>
+                                                <td>
+                                                    <a class="btn btn-warning disabled" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
+                                                </td>
+                                            <?php }else{ ?>
+                                                <td>
+                                                    <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
+                                                </td>
+                                            <?php } ?>
                                         </tr>
                                         <?php    
                                            $no++; 
