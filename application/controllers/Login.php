@@ -50,14 +50,14 @@ class Login extends CI_Controller {
 			if($select->status="Aktif"){
 				if($select->role == "mahasiswa"){
 					$this->session->set_userdata('nama',$select->nama);
-					$this->session->set_userdata('mahasiswa',"mahasiswa");
+					$this->session->set_userdata('user',"mahasiswa");
 					$this->session->set_userdata('id_akun',$select->id_akun);
-					redirect('halaman');
-				}else if($select->role == "alumni"){
+					redirect('user');
+				}else if($select->role == "alumni" || $select->role == "umum"){
 					$this->session->set_userdata('nama',$select->nama);
-					$this->session->set_userdata('alumni',"alumni");
+					$this->session->set_userdata('user',"alumni");
 					$this->session->set_userdata('id_akun',$select->id_akun);
-					redirect('halaman');
+					redirect('user');
 				}else{
 					$this->session->set_flashdata('login',"Akun tidak ditemukan");
 					redirect('login');
