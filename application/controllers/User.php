@@ -73,4 +73,65 @@ class User extends CI_Controller {
             redirect('login');
         }          
     }
+
+    private function upload_cv(){
+        $config['upload_path'] = './assets/upload/lamaran/';
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('cv');
+        return $this->upload->data('file_name');
+    }
+
+    private function upload_lamaran(){
+        $config['upload_path'] = './assets/upload/lamaran/';
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('lamaran');
+        return $this->upload->data('file_name');
+    }
+
+    private function upload_keahlian(){
+        $config['upload_path'] = './assets/upload/lamaran/';
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('keahlian');
+        return $this->upload->data('file_name');
+    }
+
+    private function upload_pengalaman(){
+        $config['upload_path'] = './assets/upload/lamaran/';
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('pengalaman');
+        return $this->upload->data('file_name');
+    }
+
+    private function upload_toefl(){
+        $config['upload_path'] = './assets/upload/lamaran/';
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('pengalaman');
+        return $this->upload->data('file_name');
+    }
+
+    public function addLamaran(){
+        $data = array(
+            'posisi' => $this->input->post('posisi'),
+            'id_loker' => $this->input->post('id_loker'),
+            'id_akun' => $this->session->userdata('id_akun'),
+            'cv' => $this->upload_cv(),
+            'lamaran' => $this->upload_lamaran(),
+            'pengalaman' => $this->upload_pengalaman(),
+            'keahlian' => $this->upload_keahlian(),
+            'toefl' => $this->upload_toefl(),
+            'deskripsi' => $this->input->post('deskripsi')
+        );
+        $query = $this->db->insert('tbl_lamaran',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_lamaran',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('user/loker');
+    }
 }
