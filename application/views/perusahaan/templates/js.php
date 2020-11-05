@@ -12,7 +12,7 @@
   <script src="<?php echo base_url() ?>assets/admin/lib/common-scripts.js"></script>
   <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="<?php echo base_url() ?>assets/admin/lib/gritter-conf.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!--script for this page-->
   <script type="text/javascript">
     /* Formating function for row details */
@@ -41,4 +41,23 @@
       $('.datatable').dataTable();
     });
   </script>
-
+<?php if($this->session->flashdata('insert_peserta')){ ?>
+  <script>
+    Swal.fire({
+      title: 'Berhasil',
+      text: 'Perusahaan anda mengikuti acara',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    })
+  </script>
+<?php } ?>
+<?php if($this->session->flashdata('delete_peserta')){ ?>
+  <script>
+    Swal.fire({
+      title: 'Update',
+      text: 'Perusahaan anda tidak mengikuti acara',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    })
+  </script>
+<?php } ?>

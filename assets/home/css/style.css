@@ -225,7 +225,7 @@ p a{
 	padding: 0 0 21px 0;
 }
 .body div.article div.first h3{
-	color:#f6008a;
+	color:#ffa500;
 }
 .body div.article div h3{
 	color:#2a1500;
@@ -317,7 +317,7 @@ p a{
 }
 .body .sidebar div h2 a{
 	text-decoration:none;
-	color:#f6008a;
+	color:#ffa500;
 	font-weight:normal;
 	font-size:16px;
 }
@@ -362,7 +362,7 @@ p a{
 	float:left;
 }
 .body .content .products div.paging div.first h2{
-	background:url(../images/interface.gif) no-repeat left -50px #ff0090;
+	background:url(../images/Background.gif) no-repeat left -50px #ffa500;
 	font-family:Arial;
 	margin:0 50px 0 0;
 	font-size:14px;
@@ -554,11 +554,11 @@ p a{
 	width:auto;
 }
 .body .content div.blog div div.stats div.date{
-	background:url(../images/interface.gif) no-repeat left 0;
+	background:url(../images/Background.gif) no-repeat left 0;
 	height:30px;
 	margin:10px 0 0;
 	float:left;
-	width:87px;
+	width:200px;
 	text-indent:14px;
 }
 .body .content div.blog div div.stats div.date span{
@@ -572,7 +572,7 @@ p a{
 	float:left;
 	width:75px;
 	height:40px;
-	padding:0 0 0 505px;
+	padding:0 0 0 350px;
 }
 .body .content div.blog div div.stats div.share a#tweets{
 	background:url(../images/icons.gif) no-repeat 0 -311px;
@@ -617,7 +617,7 @@ p a{
 	font-family:arial;
 	font-weight:normal;
 	font-size:23px;
-	color:#ff0169;
+	color: #ffa500;
 }
 .body .content div.blog div div p{
 	margin:5px 0 0 40px;
@@ -709,7 +709,7 @@ p a{
 	margin:0 0 20px;
 	font-family:arial;
 	font-size:30px;
-	color:#F6008A;
+	color:#ffa500;
 	font-weight:normal;
 }
 .body .content div.about h3,.body .content div.news h3{
@@ -736,6 +736,101 @@ p a{
 .body .content div.about p a,.body .content div.news p a{
 	color:#f6008a;
 }
+
+.pagination {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	border-radius: 0.25rem;
+  }
+  
+  .page-link {
+	position: relative;
+	display: block;
+	padding: 0.5rem 0.75rem;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+  }
+  
+  .page-link:hover {
+	color: #0056b3;
+	text-decoration: none;
+	background-color: #e9ecef;
+	border-color: #dee2e6;
+  }
+  
+  .page-link:focus {
+	z-index: 2;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .page-link:not(:disabled):not(.disabled) {
+	cursor: pointer;
+  }
+  
+  .page-item:first-child .page-link {
+	margin-left: 0;
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+  }
+  
+  .page-item:last-child .page-link {
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+  }
+  
+  .page-item.active .page-link {
+	z-index: 1;
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .page-item.disabled .page-link {
+	color: #6c757d;
+	pointer-events: none;
+	cursor: auto;
+	background-color: #fff;
+	border-color: #dee2e6;
+  }
+  
+  .pagination-lg .page-link {
+	padding: 0.75rem 1.5rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+  }
+  
+  .pagination-lg .page-item:first-child .page-link {
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+  }
+  
+  .pagination-lg .page-item:last-child .page-link {
+	border-top-right-radius: 0.3rem;
+	border-bottom-right-radius: 0.3rem;
+  }
+  
+  .pagination-sm .page-link {
+	padding: 0.25rem 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+  }
+  
+  .pagination-sm .page-item:first-child .page-link {
+	border-top-left-radius: 0.2rem;
+	border-bottom-left-radius: 0.2rem;
+  }
+  
+  .pagination-sm .page-item:last-child .page-link {
+	border-top-right-radius: 0.2rem;
+	border-bottom-right-radius: 0.2rem;
+  }
 
 /*-------------------------	Footer --------------------------*/
 .footer{

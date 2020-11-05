@@ -69,6 +69,7 @@ class Perusahaan extends CI_Controller {
             'syarat' 	=> $this->input->post('syarat'),
             'deskripsi' 	=> $this->input->post('deskripsi'),
             'status' 	=> 'Menunggu Konfirmasi',
+            'prodi' 	=> $this->input->post('prodi'),
             'poster'   => $this->upload->data('file_name'),
             'id_perusahaan' => $this->session->userdata('id_akun'),
             'created' => date('Y-m-d H:i:s'),
@@ -109,8 +110,10 @@ class Perusahaan extends CI_Controller {
         if($this->session->userdata('nama')){
 			if($this->session->userdata('perusahaan')){
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
+                $data['event'] = $this->db->get('tbl_event')->result();
+                $data['mengikuti'] =$this->db->where('id_perusahaan',$this->session->userdata('id_akun'))->get('event_perusahaan')->result();
                 $this->load->view('perusahaan/templates/header');
-                $this->load->view('perusahaan/jobfair');
+                $this->load->view('perusahaan/jobfair',$data);
                 $this->load->view('perusahaan/templates/js');
                 $this->load->view('perusahaan/templates/footer');
             }else{
@@ -119,5 +122,31 @@ class Perusahaan extends CI_Controller {
         }else{
             redirect('login');
         }    
+    }
+
+    public function mengikuti($id){       
+        $data = array(
+			'id_event' => $id,
+            'id_perusahaan' 	=> $this->session->userdata('id_akun'),
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+		 );
+		$query = $this->db->insert('event_perusahaan',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('perusahaan/jobfair');
+    }
+
+    public function tidakMengikuti($id){       
+		$query = $this->db->where('id_event',$id)->where('id_perusahaan',$this->session->userdata('id_akun'))->delete('event_perusahaan');
+		if($query){
+        	$this->session->set_flashdata('delete_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('perusahaan/jobfair');
     }
 }

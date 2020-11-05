@@ -40,64 +40,25 @@
 			</div>
             <div class="content">
                 <div class="blog">
+					<?php foreach($data as $row){?>
 					<div>
 						<div class="stats">
-							<div class="date"><span>Nov 09</span></div>
-							<div class="share">
-								<a href="http://twitter.com/fwtemplates" id="tweets"></a>
-								<a href="#" id="heart"></a>
-								<a href="http://facebook.com/freewebsitetemplates" id="likes"></a>
+							<div class="date"><span><?php echo date("d M Y",strtotime($row->created)) ?></span></div>
+							<div class="share" style="font-family:sans-serif;">
+				
 							</div>
 						</div>
 						<div>
-							<h1>Newest Styles in HerDesigns</h1>
-							<h2>Check out the latest designs</h2>
-							<p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas
-							humanitatis per seacula quarta decima et quinta decima. Eodem anitatis per seacula quarta decima et quinta decima.</p>
-							<h2>New Fashion</h2>
-							<p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis
-							per seacula quarta decima et quinta decima. Eodem anitatis per seacula quarta decima et quinta decima</p>
-							<p>Aenean quis viverra neque. Nulla facilisi. In hac habitasse platea dictumst. Curabitur lorem velit, suscipit a convallis
-							vel, lobortis sit amet risus. Duis luctus aliquet pharetra. Donec suscipit nisl et sem scelerisque faucibus tempus dolor 
-							sodales. Nunc sodales nisl a quam egestas pretium non a leo.</p>
+							<h2><?php echo $row->judul ?></h2>
+							<p>Program Studi : <?php echo $row->prodi ?></p>
+							<p><img style="max-width: 100%; height: auto;" src="<?php echo base_url().'assets/upload/poster/'.$row->poster?>" class="img-thumbnail"></img></p>
+							<?php echo substr($row->deskripsi, 0, 100); ?>
+							<p><a href="<?php echo base_url('halaman/artikel/'.$row->id_loker)?>">See more	</a></p>
 						</div>
 					</div>
-					<div>
-						<div class="stats">
-							<div class="date"><span>Nov 03</span></div>
-							<div class="share">
-								<a href="http://twitter.com/fwtemplates" id="tweets"></a>
-								<a href="#" id="heart"></a>
-								<a href="http://facebook.com/freewebsitetemplates" id="likes"></a>
-							</div>
-						</div>
-						<div>
-							<h1>Christmas is coming!</h1>
-							<h2>How about Avail our Christmas Sale</h2>
-							<p>Aenean nec velit nec justo malesuada fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
-							per inceptos himenaeos. Donec eget nisl lobortis nisi congue ornare eu at nulla. In in ipsum nisi, quis luctus enim. Fusce 
-							fringilla molestie purus sed convallis.</p>
-						</div>
-					</div>
-					<div>
-						<div class="stats">
-							<div class="date"><span>Oct 25</span></div>
-							<div class="share">
-								<a href="http://twitter.com/fwtemplates" id="tweets"></a>
-								<a href="#" id="heart"></a>
-								<a href="http://facebook.com/freewebsitetemplates" id="likes"></a>
-							</div>
-						</div>
-						<div>
-							<h1>Shopping?</h1>
-							<h2>Try it online</h2>
-							<p>Aenean nec velit nec justo malesuada fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
-							inceptos himenaeos. Donec eget nisl lobortis nisi congue ornare eu at nulla. In in ipsum nisi, quis luctus enim. Fusce fringilla 
-							molestie purus sed convallis. Aliquam nibh neque, placerat id.</p>
-						</div>
-					</div>
-					<div class="paging">
-						<a href="#">previous</a>
+					<?php } ?>
+					<?php echo $pagination; ?>
+						<!-- <a href="#">previous</a>
 						<div>
 							<ul>
 								<li class="selected"><a href="#">1</a></li>
@@ -112,8 +73,7 @@
 								<li><a href="#">34</a></li>							
 							</ul>
 							<a href="#">next</a>
-						</div>
-					</div>
+						</div> -->
 				</div>
             </div>
 			<div class="article">
