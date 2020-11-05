@@ -66,6 +66,56 @@ class Admin extends CI_Controller {
         $this->load->view('admin/templates/footer');
     }
 
+    public function event(){
+        $data['event'] = $this->db->get('tbl_event')->result();
+		$this->load->view('admin/templates/header');
+        $this->load->view('admin/event',$data);
+        $this->load->view('admin/templates/js');
+        $this->load->view('admin/templates/footer');
+    }
+
+    public function peserta($id){
+        $data['peserta'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event, tbl_event.nama_event')->join('tbl_event','tbl_event.id_event=event_perusahaan.id_event','LEFT')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=event_perusahaan.id_perusahaan','LEFT')->where('event_perusahaan.id_event',$id)->get('event_perusahaan')->result();
+        $data['nama'] = $this->db->select('nama_event')->where('id_event',$id)->get('tbl_event')->row();
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/peserta',$data);
+        $this->load->view('admin/templates/js');
+        $this->load->view('admin/templates/footer');
+    }
+
+    public function addEvent(){
+        $data = array(
+            'nama_event'	=> $this->input->post('nama_event'),
+            'tanggal_awal'	=> $this->input->post('tanggal_awal'),
+            'tanggal_akhir'	=> $this->input->post('tanggal_akhir'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+		 );
+		$query = $this->db->insert('tbl_event',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_event',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('admin/event');
+    }
+
+    public function updateEvent($id){
+        $data = array(
+            'nama_event'	=> $this->input->post('nama_event'),
+            'tanggal_awal'	=> $this->input->post('tanggal_awal'),
+            'tanggal_akhir'	=> $this->input->post('tanggal_akhir'),
+            'updated'   => date('Y-m-d H:i:s'),
+		 );
+        $query = $this->db->where('id_event', $id)->update('tbl_event',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_event',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('admin/event');
+    }
+
     public function addMahasiswa(){
         $data = array(
 			'nama'	=> $this->input->post('nama'),
@@ -162,6 +212,11 @@ class Admin extends CI_Controller {
         	$this->session->set_flashdata('failed',"Tambah Gagal");
         }
         redirect('admin/akunAdmin');
+    }
+
+    public function hapusEvent($id){
+        $this->db->where('id_event', $id)->delete('tbl_event');
+        redirect('admin/event');
     }
 
     public function hapusAdmin($id){
@@ -408,19 +463,34 @@ class Admin extends CI_Controller {
     }
 
     public function editLoker($id){
-        $config['upload_path'] = './assets/upload/poster/';
-        $config['allowed_types'] = 'jpg';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('poster');        
-        $data = array(
-			'judul' => $this->input->post('judul'),
-            'posisi' 	=> $this->input->post('posisi'),
-            'syarat' 	=> $this->input->post('syarat'),
-            'deskripsi' 	=> $this->input->post('deskripsi'),
-            'poster'   => $this->upload->data('file_name'),
-            'id_perusahaan' => $this->input->post('id_perusahaan'),
-            'updated' => date('Y-m-d H:i:s')
-		 );
+        if($this->input->post('prodi')!=NULL){
+            $config['upload_path'] = './assets/upload/poster/';
+            $config['allowed_types'] = 'jpg';
+            $this->upload->initialize($config);
+            $this->upload->do_upload('poster');
+            
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'posisi' 	=> $this->input->post('posisi'),
+                'syarat' 	=> $this->input->post('syarat'),
+                'deskripsi' 	=> $this->input->post('deskripsi'),
+                'poster'   => $this->upload->data('file_name'),
+                'prodi'   => $this->input->post('prodi'),
+                'id_perusahaan' => $this->input->post('id_perusahaan'),
+                'updated' => date('Y-m-d H:i:s')
+             );   
+        }else{
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'posisi' 	=> $this->input->post('posisi'),
+                'syarat' 	=> $this->input->post('syarat'),
+                'deskripsi' 	=> $this->input->post('deskripsi'),
+                'prodi'   => $this->input->post('prodi'),
+                'id_perusahaan' => $this->input->post('id_perusahaan'),
+                'updated' => date('Y-m-d H:i:s')
+             );   
+        }   
+        
 		$query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
 		if($query){
         	$this->session->set_flashdata('update_loker',"Tambah Berhasil");
@@ -428,6 +498,16 @@ class Admin extends CI_Controller {
         	$this->session->set_flashdata('failed',"Tambah Gagal");
         }
         redirect('admin/loker');
+    }
+
+    public function tidakMengikuti($id,$id_perusahaan){       
+		$query = $this->db->where('id_event',$id)->where('id_perusahaan',$id_perusahaan)->delete('event_perusahaan');
+		if($query){
+        	$this->session->set_flashdata('delete_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('admin/peserta/'.$id);
     }
 
 }

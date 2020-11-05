@@ -1,8 +1,15 @@
         <div class="body">
 			<div class="article">
-                <center><h1>SLIDESHOW</h1></center>
-                <center><a href="new_arrival.html"><img src="<?php echo base_url() ?>assets/home/images/aurora.jpg" alt=""/></a></center>
-            </div>
+                <ul class="rslides">
+					<li><img src="<?php echo site_url("assets/home/images/1.jpg") ?>" alt=""></li>
+					<li><img src="<?php echo site_url("assets/home/images/2.jpg") ?>" alt=""></li>
+					<li><img src="<?php echo site_url("assets/home/images/3.jpg") ?>" alt=""></li>
+				</ul>
+			</div>
+			<div style="background-color:#fffaf4; margin-bottom:10px; font-family:arial;">
+			<center><h1 style="padding-top:5px">Pendaftaran Job Fair</h1></center>
+			<center><div style="padding-bottom:10px;" id="pendaftaran" class="flipdown"></div></center>
+			</div>
             <div class="sidebar">
 				<div class="first">
 					<h2><a href="#">Kategori</a></h2>

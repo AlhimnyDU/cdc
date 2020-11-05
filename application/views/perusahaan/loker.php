@@ -115,6 +115,10 @@
                                         <label>File Poster</label>
                                         <input type="file" class="dropify" height="100" name="poster" required="" data-max-file-size="1M" data-allowed-file-extensions="jpg">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Progam studi yang dicari</label>
+                                        <input type="text" class="form-control" name="prodi" required="">
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
                                         <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>

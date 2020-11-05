@@ -36,10 +36,6 @@
                                             <th width="5%">No</th>
                                             <th>Perusahaan</th>
                                             <th>Judul Loker</th>
-                                            <th>Posisi yang dibutuhkan</th>
-                                            <th>Persyaratan</th>
-                                            <th>Deskripsi</th>
-                                            <th>Poster</th>
                                             <th>Status Loker</th>
                                             <th width="20%">Edit</th>
                                         </tr>
@@ -53,10 +49,6 @@
                                             <td><?php echo $no ?></td>
                                             <td><?php echo $row->nama_perusahaan ?></td>
                                             <td><?php echo $row->judul ?></td>
-                                            <td><?php echo $row->posisi ?></td>
-                                            <td><?php echo $row->syarat ?></td>
-                                            <td><?php echo $row->deskripsi ?></td>
-                                            <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" alt="" class="thumbnail"></td>
                                             <td><?php echo $row->status ?></td>
                                             <td>
                                                 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> | 
@@ -118,6 +110,10 @@
                                     <div class="form-group">
                                         <label>File Poster</label>
                                         <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/poster/').$row->poster ?>" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Program Studi yang terkait</label>
+                                        <input type="text" class="form-control" name="prodi" required="" value="<?= $row->prodi ?>">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
