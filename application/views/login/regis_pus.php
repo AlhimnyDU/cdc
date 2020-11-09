@@ -1,11 +1,11 @@
 <div>
       <div class="login_wrapper">
         <div class="animate form login_form">
-          <section class="login_content">
+          <section>
           <div class="card">
               <div class="card-body">
                 <form class="form-label-left input_mask" method="post" action="<?php echo site_url("login/addPerusahaan"); ?>" enctype="multipart/form-data">
-                  <h2>Registrasi Perusahaan</h2>
+                  <center><h2>Registrasi Perusahaan</h2></center>
                   <div class="col-md-12 form-group has-feedback">
                     <input type="text" class="form-control has-feedback-left"  name="nama_perusahaan" placeholder="Nama Perusahaan" required="" />
                     <span class="fa fa-institution form-control-feedback left" aria-hidden="true"></span>

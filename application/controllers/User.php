@@ -101,4 +101,8 @@ class User extends CI_Controller {
         }
         redirect('user/jobfair');
     }
+
+    public function cv(){
+        
+    }
 }

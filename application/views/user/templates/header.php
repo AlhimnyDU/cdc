@@ -73,7 +73,8 @@
                       <li><a href="<?php echo site_url() ?>user/jobfair">Job Fair</a></li>
                       <li><a href="<?php echo site_url() ?>user/loker">Lowongan Kerja</a></li>
                     </ul>
-                  </li>                
+                  </li>      
+                  <li><a href="<?php echo site_url() ?>user/cv"><i class="fa fa-file"></i>Curriculum Vitae</a></li>          
                   <li><a href="<?php echo site_url() ?>user/setting"><i class="fa fa-gear"></i> Setting</a></li>
                 </ul>
               </div>

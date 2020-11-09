@@ -40,7 +40,7 @@
                 <form class="form-label-left input_mask" method="POST" action="<?php echo site_url("login/addMahasiswa"); ?>">
                   <h1>Registrasi Akun</h1>
                   <div class="col-md-12 form-group has-feedback">
-                    <input type="text" class="form-control has-feedback-left" name="nrp" placeholder="NIM/NRP" required="" />
+                    <input type="text" class="form-control has-feedback-left" name="nrp" placeholder="NIK/NIM" required="" />
                     <span class="glyphicon glyphicon-credit-card form-control-feedback left" aria-hidden="true"></span>
                   </div>
                   <div class="col-md-12 form-group has-feedback">
@@ -68,6 +68,7 @@
                       <option value="" selected disabled hidden>Pilih Role</option>
                       <option value="mahasiswa">Mahasiswa</option>
                       <option value="alumni">Alumni</option>
+                      <option value="umum">Umum</option>
                     </select>
                     <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
                   </div>
