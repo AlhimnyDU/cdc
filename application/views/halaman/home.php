@@ -5,13 +5,12 @@
               <div class="d-flex align-items-center">
                 <span class="badge badge-dark mr-3">Flash news</span>
                 <p class="mb-0">
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s.
+                  Job Fair Online
                 </p>
               </div>
               <div class="d-flex">
-                <span class="mr-3 text-danger">Wed, March 4, 2020</span>
-                <span class="text-danger">30°C,London</span>
+                <span class="mr-3 text-danger">Wed, Desember 9, 2020</span>
+                <!-- <span class="text-danger">30°C,London</span> -->
               </div>
             </div>
           </div>
@@ -84,7 +83,7 @@
               <div class="col-xl-8 stretch-card grid-margin">
                 <div class="position-relative">
                   <img
-                    src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/banner.jpg"
+                    src="<?php echo base_url() ?>assets/halaman/slideshow/banner (4).jpeg"
                     alt="banner"
                     class="img-fluid"
                   />
@@ -108,14 +107,14 @@
                       class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between"
                     >
                       <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
+                        <h5>Comming Soon !</h5>
                         <div class="fs-12">
                           <span class="mr-2">Photo </span>10 Minutes ago
                         </div>
                       </div>
                       <div class="rotate-img">
                         <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_1.jpg"
+                          src="<?php echo base_url() ?>assets/halaman/slideshow/banner (2).jpeg"
                           alt="thumb"
                           class="img-fluid img-lg"
                         />
@@ -126,14 +125,14 @@
                       class="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between"
                     >
                       <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
+                        <h5>Comming Soon !</h5>
                         <div class="fs-12">
                           <span class="mr-2">Photo </span>10 Minutes ago
                         </div>
                       </div>
                       <div class="rotate-img">
                         <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_2.jpg"
+                          src="<?php echo base_url() ?>assets/halaman/slideshow/banner (4).jpeg"
                           alt="thumb"
                           class="img-fluid img-lg"
                         />
@@ -144,14 +143,14 @@
                       class="d-flex pt-4 align-items-center justify-content-between"
                     >
                       <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
+                        <h5>Comming Soon !</h5>
                         <div class="fs-12">
                           <span class="mr-2">Photo </span>10 Minutes ago
                         </div>
                       </div>
                       <div class="rotate-img">
                         <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_3.jpg"
+                          src="<?php echo base_url() ?>assets/halaman/slideshow/banner (1).jpeg"
                           alt="thumb"
                           class="img-fluid img-lg"
                         />
