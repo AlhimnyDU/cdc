@@ -41,7 +41,7 @@
                                             <th>CP</th>
                                             <th>Telp. (CP)</th>
                                             <th>Alamat</th>
-                                            <th width="20%">Edit | Hapus</th>
+                                            <th width="20%">Verifikasi | Edit | Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,8 +57,15 @@
                                             <td><?php echo $row->pj ?></td>
                                             <td><?php echo $row->telp_pj ?></td>
                                             <td><?php echo $row->alamat ?></td>
-                                            <td> <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
+                                        <?php if($row->aktif=="n"){ ?>
+                                            <td><a class="btn btn-success" href="<?php echo site_url('Admin/verfikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
                                                 <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
+                                        <?php }else{ ?>
+                                            <td><a class="btn btn-success disabled" href="<?php echo site_url('Admin/verfikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
+                                        <?php } ?>
                                         </tr>
                                         <?php    
                                            $no++; 

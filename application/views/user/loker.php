@@ -37,9 +37,8 @@
                                             <th>Perusahaan</th>
                                             <th>Posisi yang dibutuhkan</th>
                                             <th>Persyaratan</th>
-                                            <th>Deskripsi</th>
                                             <th>Poster</th>
-                                            <th width="20%">Edit</th>
+                                            <th width="20%">Pengajuan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,10 +49,9 @@
                                         <tr>
                                             <td><?php echo $no ?></td>
                                             <td><?php echo $row->nama_perusahaan ?></td>
-                                            <td><?php echo $row->judul ?></td>
+                                            <!-- <td><?php echo $row->judul ?></td> -->
                                             <td><?php echo $row->posisi ?></td>
                                             <td><?php echo $row->syarat ?></td>
-                                            <td><?php echo $row->deskripsi ?></td>
                                             <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" alt="" class="thumbnail"></td>
                                             <td>
                                                 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#lamarModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i>Ajukan Lamaran</a>
