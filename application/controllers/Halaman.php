@@ -27,7 +27,7 @@ class Halaman extends CI_Controller {
 	}
 	
 	public function index(){
-		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->order_by('updated','DESC')->get('tbl_loker', 3)->result();
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->order_by('updated','DESC')->get('tbl_loker', 3)->result();
 		$this->session->set_userdata('navbar','beranda');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/home',$data);
@@ -109,7 +109,7 @@ class Halaman extends CI_Controller {
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->where('jenis','jobfair')->order_by('updated','DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();           
 		$data['pagination'] = $this->pagination->create_links();
-		
+		$data['participate'] = $this->db->select('tbl_perusahaan.*')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta','LEFT')->where('role','perusahaan')->order_by('updated','DESC')->get('event_perusahaan')->result();   
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/jobfair',$data);	
 	}	
@@ -134,6 +134,23 @@ class Halaman extends CI_Controller {
 		$this->session->set_userdata('navbar','about');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/about');
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
+	}
+
+	public function job($id){
+		$data['job'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('id_loker',$id)->get('tbl_loker')->row(); 
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/job',$data);
+		$this->load->view('halaman/templates/js');
+        $this->load->view('halaman/templates/footer');
+	}
+
+	public function company($id){
+		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan',$id)->get('tbl_perusahaan')->row();
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('tbl_loker.id_perusahaan',$id)->where('status','Disetujui')->order_by('updated','DESC')->get('tbl_loker')->result();   
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/company',$data);
 		$this->load->view('halaman/templates/js');
         $this->load->view('halaman/templates/footer');
 	}

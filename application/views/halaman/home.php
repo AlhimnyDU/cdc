@@ -183,11 +183,13 @@
                       <div class="col-sm-4 grid-margin">
                         <div class="position-relative">
                           <div class="rotate-img">
-                            <img
-                              src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
-                              alt="thumb"
-                              class="img-fluid"
-                            />
+                            <a href="<?php echo site_url("halaman/company/".$row->id_perusahaan)?>">
+                              <img
+                                src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
+                                alt="thumb"
+                                class="img-fluid"
+                              />
+                            </a>
                           </div>
                           <div class="badge-positioned">
                             <span class="badge badge-danger font-weight-bold"

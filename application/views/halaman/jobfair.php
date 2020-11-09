@@ -33,41 +33,24 @@
                   </div>
                   <div class="card-body">
                     <div class="row">
+                    <?php foreach($participate as $row){?>
                       <div class="col-lg-4">
                         <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
                           <div class="div-w-80 mr-3">
                             <div class="rotate-img">
                               <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/gojek.png"
+                                src="<?php echo site_url("assets/upload/logo/".$row->logo_perusahaan) ?>"
                                 alt="thumb"
                                 class="img-fluid"
                               />
                             </div>
                           </div>
-                          <h3 class="font-weight-600 mb-0">
-                            Apple Introduces Apple Watch
-                          </h3>
+                          <a href="<?php echo site_url("halaman/adv_company/".$row->id_perusahaan) ?>" style="color:#000000;"><h3 class="font-weight-600 mb-0">
+                            <?php echo $row->nama_perusahaan; ?>
+                          </h3></a>
                         </div>
                       </div>
-                      <div class="col-lg-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                          
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/gojek.png"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
-                            </div>
-                          </div>
-                          <h3 class="font-weight-600 mb-0">
-                            Apple Introduces Apple Watch
-                          </h3>
-                        </div>
-                      </div>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
