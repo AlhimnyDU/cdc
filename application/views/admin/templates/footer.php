@@ -65,6 +65,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url() ?>assets/admin/build/js/custom.min.js"></script>
@@ -89,6 +90,16 @@
           });
       });
     </script>
+    <?php if($this->session->flashdata('insert_akun',TRUE)){?>
+      <script>
+        swal({
+          title: "Registration Success!",
+          text: "You clicked the button!",
+          icon: "success",
+          timer: 2000
+        });
+      </script>
+    <?php } ?>
 
   </body>
 </html>

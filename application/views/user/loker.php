@@ -35,7 +35,6 @@
                                         <tr>
                                             <th width="5%">No</th>
                                             <th>Perusahaan</th>
-                                            <th>Judul Loker</th>
                                             <th>Posisi yang dibutuhkan</th>
                                             <th>Persyaratan</th>
                                             <th>Deskripsi</th>

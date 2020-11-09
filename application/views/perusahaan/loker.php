@@ -35,10 +35,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>
-                                            <th>Judul Loker</th>
                                             <th>Posisi yang dibutuhkan</th>
-                                            <th>Persyaratan</th>
-                                            <th>Deskripsi</th>
                                             <th>Poster</th>
                                             <th>Status Loker</th>
                                             <th width="20%">Edit</th>
@@ -51,21 +48,12 @@
                                              ?>
                                         <tr>
                                             <td><?php echo $no ?></td>
-                                            <td><?php echo $row->judul ?></td>
                                             <td><?php echo $row->posisi ?></td>
-                                            <td><?php echo $row->syarat ?></td>
-                                            <td><?php echo $row->deskripsi ?></td>
                                             <td><img src="<?php echo site_url('/assets/upload/poster/').$row->poster ?>" class="thumbnail"></td>
                                             <td><?php echo $row->status ?></td>
-                                            <?php if($row->status=="Disetujui"){ ?>
-                                                <td>
-                                                    <a class="btn btn-warning disabled" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            <?php }else{ ?>
-                                                <td>
-                                                    <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            <?php } ?>
+                                            <td>
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a>
+                                            </td>
                                         </tr>
                                         <?php    
                                            $no++; 
@@ -96,20 +84,28 @@
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
-                                        <label>Judul</label>
-                                        <input type="text" class="form-control" name="judul" required="">
+                                        <label>Posisi / jabatan yang dibutuhkan</label>
+                                        <input type="text" class="form-control" name="posisi" placeholder="ex : Engineering Staff, Environment Staff, etc" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Posisi yang dibutuhkan</label>
-                                        <input type="text" class="form-control" name="posisi" required="">
+                                        <label>Deadline</label>
+                                        <input type="date" class="form-control" name="deadline" placeholder="etc : 28/04/2020" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lokasi Perkerjaan</label>
+                                        <input type="text" class="form-control" name="lokasi" placeholder="ex : Jakarta, Bandung, atau alamat" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Deskripsi Loker</label>
+                                        <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsikan tentang lowongan pekerjaan" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Syarat/Requirements</label>
                                         <textarea name="syarat" id="syarat" class="editor"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi" id="deskripsi" class="editor"></textarea>
+                                        <label>Informasi</label>
+                                        <textarea name="informasi" id="info" class="editor"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>File Poster</label>
@@ -144,28 +140,40 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('perusahaan/addLoker')?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('perusahaan/editLoker')?>" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col col-lg-12">
+                            <div class="col col-lg-12">
                                     <div class="form-group">
-                                        <label>Judul</label>
-                                        <input type="text" class="form-control" name="judul" required="" value="<?= $row->judul ?>">
+                                        <label>Posisi / jabatan yang dibutuhkan</label>
+                                        <input type="text" class="form-control" name="posisi" value="<?php echo $row->posisi?>" placeholder="ex : Engineering Staff, Environment Staff, etc" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Posisi yang dibutuhkan</label>
-                                        <input type="text" class="form-control" name="posisi" required="" value="<?= $row->posisi ?>">
+                                        <label>Deadline</label>
+                                        <input type="date" class="form-control" name="deadline" value="<?php echo strftime('%Y-%m-%d',strtotime($row->deadline))?>" placeholder="etc : 28/04/2020" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lokasi Perkerjaan</label>
+                                        <input type="text" class="form-control" name="lokasi" value="<?php echo $row->lokasi?>" placeholder="ex : Jakarta, Bandung, atau alamat" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Deskripsi Loker</label>
+                                        <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsikan tentang lowongan pekerjaan" class="form-control"><?php echo $row->deskripsi?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Syarat/Requirements</label>
-                                        <textarea name="syarat" id="syarat" class="editor"><?= $row->syarat ?></textarea>
+                                        <textarea name="syarat" id="syarat" class="editor"><?php echo $row->syarat?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Deskripsi</label>
-                                        <textarea name="deskripsi" id="deskripsi" class="editor"><?= $row->deskripsi ?></textarea>
+                                        <label>Informasi</label>
+                                        <textarea name="informasi" id="info" class="editor"><?php echo $row->informasi?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>File Poster</label>
-                                        <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/poster/').$row->poster ?>" name="poster" required="" data-max-file-size="1M" data-allowed-file-extensions="jpg">
+                                        <input type="file" class="dropify" height="100" name="poster" required="" data-max-file-size="1M" data-default-file="<?php echo site_url() ?>assets/upload/poster/<?= $row->poster ?>" data-allowed-file-extensions="jpg png">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Progam studi yang dicari</label>
+                                        <input type="text" class="form-control" name="prodi" required="">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>

@@ -6,11 +6,11 @@
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/src/responsiveslides.min.js"></script>
-<script src="<?php echo base_url() ?>assets/home/src/bootstrap.js"></script>
 <script>
   $(function() {
     $(".rslides").responsiveSlides({
-      auto: true,         
+      auto: true,
+      pager: true,        
       speed: 500  
     });
   });

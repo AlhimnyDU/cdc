@@ -73,6 +73,121 @@
                 </div>
             </div>
         </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    Acara
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                      <div class="row">
+                          <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <table id="" class="table table-striped table-bordered datatable" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%">No</th>
+                                            <th>Nama Event</th>
+                                            <th width="15%">Tanggal Awal</th>
+                                            <th width="15%">Tanggal Akhir</th>
+                                            <th width="8%">Status</th>
+                                            <th width="15%">Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $no=1;
+                                            foreach($event as $row){
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $no ?></td>
+                                            <td><?php echo $row->nama_event ?></td>
+                                            <td><?php echo date("d F Y",strtotime($row->tanggal_awal)) ?></td>
+                                            <td><?php echo date("d F Y",strtotime($row->tanggal_akhir)) ?></td>
+                                            <td><center>
+                                                <?php
+                                                if(!empty($mengikuti)){
+                                                    foreach($mengikuti as $r){
+                                                        if($row->id_event==$r->id_event){ ?>
+                                                        <span class="badge badge-primary">Mengikuti</span>
+                                                <?php    
+                                                    }}}else{
+                                                        ?>
+                                                        <span class="badge badge-danger">Tidak Mengikuti</span>
+                                                <?php
+                                                    }
+                                                ?>  
+                                                </center>
+                                            </td>
+                                            <td> 
+                                                <?php
+                                                if(date('Y-m-d')>$row->tanggal_akhir){
+                                                ?>
+                                                <a class="btn btn-secondary btn-sm" href="#" disabled>Acara telah selesai</a>
+                                                <?php }else{
+                                                if(!empty($mengikuti)){
+                                                    foreach($mengikuti as $r){
+                                                        if($row->id_event==$r->id_event){ ?>
+                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('perusahaan/tidakMengikuti/').$row->id ?>"><i class="fa fa-times"></i> Tidak Mengikuti</a>
+                                                <?php    
+                                                    }}}else{
+                                                        ?>
+                                                    <a class="btn btn-success btn-sm" href="#" data-toggle="modal" data-target="#mengikutiModal<?php echo $row->id_event ?>"><i class="fa fa-check"></i> Mengikuti</a>
+                                                <?php
+                                                    }}
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <?php    
+                                           $no++; 
+                                        } 
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
     </div>
 </div>
 <!-- /page content -->
+<?php 
+            foreach($event as $row){
+        ?>
+         <div id="mengikutiModal<?= $row->id_event ?>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"><?= $row->nama_event ?></h3>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="<?php echo site_url('user/mengikuti/').$row->id_event?>" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col col-lg-12">
+                                    <div class="form-group">
+                                        Dengan mengikuti acara ini, maka perusahaan harus menyetujui peraturan dan ketentuan yang berlaku pada acara ini. 
+                                        <div class="checkbox">
+											<label>
+											    <input type="checkbox" value="" required> <small>Centang untuk menyetujui prosedur dan ketentuan</small>
+											</label>
+										</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Ok</button>
+                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+<?php } ?>

@@ -53,6 +53,7 @@
                                             <td><?php echo $no ?></td>
                                             <td><?php echo $row->nama_perusahaan ?></td>
                                             <td><?php echo $row->email ?></td>
+                                            <td><?php echo $row->telp_perusahaan ?></td>
                                             <td><?php echo $row->pj ?></td>
                                             <td><?php echo $row->telp_pj ?></td>
                                             <td><?php echo $row->alamat ?></td>

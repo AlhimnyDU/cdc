@@ -61,9 +61,10 @@ class User extends CI_Controller {
     public function jobfair(){
         if($this->session->userdata('nama')){
 			if($this->session->userdata('user')){
+                $data['event'] = $this->db->get('tbl_event')->result();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
-                $this->load->view('user/jobfair');
+                $this->load->view('user/jobfair',$data);
                 $this->load->view('user/templates/js');
                 $this->load->view('user/templates/footer');
             }else{
@@ -72,5 +73,32 @@ class User extends CI_Controller {
         }else{
             redirect('login');
         }          
+    }
+
+    public function mengikuti($id){       
+        $data = array(
+			'id_event' => $id,
+            'id_peserta' 	=> $this->session->userdata('id_akun'),
+            'role' 	=> "peserta",
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+		 );
+		$query = $this->db->insert('event_perusahaan',$data);
+		if($query){
+        	$this->session->set_flashdata('insert_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('user/jobfair');
+    }
+
+    public function tidakMengikuti($id){       
+		$query = $this->db->where('id_event',$id)->where('id_perusahaan',$this->session->userdata('id_akun'))->delete('event_perusahaan');
+		if($query){
+        	$this->session->set_flashdata('delete_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('user/jobfair');
     }
 }

@@ -17,9 +17,10 @@
     <link href="<?php echo base_url() ?>assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="<?php echo base_url() ?>assets/admin/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="login">
+  <body class="login" style="background-image: url(<?php echo base_url() ?>assets/admin/background/banner.jpeg);background-repeat:no-repeat;background-size: cover;">

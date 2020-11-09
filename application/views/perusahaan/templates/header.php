@@ -51,7 +51,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo site_url() ?>assets/home/images/user.png" alt="..." class="img-circle profile_img">
+                <img src="<?php echo site_url('assets/upload/logo/'.$user->logo_perusahaan) ?>" width="100" height="45" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>

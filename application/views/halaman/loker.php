@@ -1,16 +1,16 @@
         <div class="body">
         <div class="sidebar">
 				<div class="first">
-					<h2><a href="#">Kategori</a></h2>
+					<h2><a href="#">Category</a></h2>
 					<ul>
 						<li><a href="#">Magang</a></li>
 						<li><a href="#">Fresh Graduate</a></li>
-                        <li><a href="#">Job Fair</a></li>
+                        <li><a href="<?php echo site_url('halaman/jobfair') ?>">Job Fair</a></li>
                         <li><a href="#">Beasiswa</a></li>			
 					</ul>
 				</div>
 				<div>
-                    <h2><a href="#">Program Studi</a></h2>
+                    <h2><a href="#">Major</a></h2>
                     <ul>
                         <li><a href="#">FTI</a></li>
                         <ul>
@@ -40,20 +40,27 @@
 			</div>
             <div class="content">
                 <div class="blog">
+				<center><h2 style="margin-bottom:15px;margin-top:0px;font-family:arial;font-weight:normal;font-size:32px;color: #ffa500;">Job Vacancy</h2></center>
+				<hr style="border-color:#ffa500;">
 					<?php foreach($data as $row){?>
-					<div>
-						<div class="stats">
-							<div class="date"><span><?php echo date("d M Y",strtotime($row->created)) ?></span></div>
-							<div class="share" style="font-family:sans-serif;">
-				
-							</div>
-						</div>
-						<div>
-							<h2><?php echo $row->judul ?></h2>
-							<p>Program Studi : <?php echo $row->prodi ?></p>
-							<p><img style="max-width: 100%; height: auto;" src="<?php echo base_url().'assets/upload/poster/'.$row->poster?>" class="img-thumbnail"></img></p>
-							<?php echo substr($row->deskripsi, 0, 100); ?>
-							<p><a href="<?php echo base_url('halaman/artikel/'.$row->id_loker)?>">See more	</a></p>
+					<div class="job-list" style="width:100%;">
+						<div class="job">
+							<div class="tanggal-post" style="margin-bottom:5px"><span><?php echo date('d F Y',strtotime($row->created)) ?></span></div>
+							<table>
+								<tbody>
+								<tr>
+									<td><img src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>" style="margin-right:10px; height:150px; width:150px;"></td>
+									<td>
+										<h3 style="margin-bottom:5px;margin-top:0px;font-family:arial;font-weight:normal;font-size:20px;color: #ffa500;"><?php echo $row->posisi ?></h3>
+										<p><?php echo $row->nama_perusahaan ?></p>
+										<small style="color:red;">Deadline : <?php echo date('d F Y',strtotime($row->deadline)) ?></small>
+										<p>Job Location : <?php echo $row->lokasi ?>	</p>
+										<p>Program Studi : <?php echo $row->prodi?></p>
+										<a href="<?php echo site_url("halaman/artikel/".$row->id_loker) ?>"><p style="color:blue;">Lihat Loker</p></a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<?php } ?>
