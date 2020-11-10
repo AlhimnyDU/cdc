@@ -950,7 +950,7 @@ class Admin extends CI_Controller {
                 'konten' 	=> $this->input->post('konten'),
                 'user_post' => $this->session->userdata('nama'),
                 'gambar' => $this->upload->data('file_name'),
-                'created'   => $this->input->post('created'),
+                'created'   => date('Y-m-d H:i:s',$this->input->post('created')),
                 'updated'   => date('Y-m-d H:i:s')
             );
         }else{
@@ -959,7 +959,7 @@ class Admin extends CI_Controller {
                 'headline' 	=> $this->input->post('headline'),
                 'konten' 	=> $this->input->post('konten'),
                 'user_post' => $this->session->userdata('nama'),
-                'created'   => $this->input->post('created'),
+                'created'   =>  date('Y-m-d H:i:s',$this->input->post('created')),
                 'updated'   => date('Y-m-d H:i:s')
             );
         }
