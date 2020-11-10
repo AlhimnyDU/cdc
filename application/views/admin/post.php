@@ -118,7 +118,7 @@ foreach($artikel as $row){
                                 <div class="col col-lg-12">
                                     <div class="form-group">
                                         <label>Judul Post</label>
-                                        <input type="text" class="form-control" name="nama_event" placeholder="Nama Event" value="<?php echo $row->judul ?>" required="">
+                                        <input type="text" class="form-control" name="judul" placeholder="Nama Event" value="<?php echo $row->judul ?>" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Headline</label>
