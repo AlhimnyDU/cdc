@@ -24,6 +24,15 @@
         });
       </script>
     <?php } ?>
+    <?php if($this->session->flashdata('nonaktif')){?>
+      <script>
+        swal({
+          title: "Akun Belum Aktif!",
+          text: "Silahkan hubungi admin untuk mengaktifkan akun",
+          icon: "info"
+        });
+      </script>
+    <?php } ?>
     <?php if($this->session->flashdata('perusahaan_ada')){?>
       <script>
         swal({
@@ -34,4 +43,30 @@
         });
       </script>
     <?php } ?>
+    <script>
+        $(function() {
+          $('#umum').hide(); 
+          $('#role').change(function(){
+            if($('#role').val() == 'umum') {
+              $('#umum').show(); 
+              $('#internal').hide(); 
+              $("#NIK").prop( "disabled",false);
+              $("#asal").prop( "disabled",false);
+              $("#NIK").prop( "required",true);
+              $("#asal").prop( "required",true);
+              $("#nrp").prop( "disabled",true);
+              $("#nrp").removeAttr('required');
+            } else {
+              $('#umum').hide();
+              $('#internal').show(); 
+              $("#NIK").prop( "disabled",true);
+              $("#asal").prop( "disabled",true);
+              $("#NIK").removeAttr('required');
+              $("#asal").removeAttr('required');
+              $("#nrp").prop( "disabled",false);
+              $("#nrp").prop( "required",true);
+            } 
+          });
+        });
+      </script>
 </html>

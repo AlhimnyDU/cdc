@@ -41,7 +41,8 @@
                                             <td><?php echo $row->user_post ?></td>
                                             <td><?php echo date("d F Y",strtotime($row->created)) ?></td>
                                             <td>
-                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_event ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_artikel ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-danger" href="<?php echo site_url('admin/hapusArtikel/').$row->id_artikel ?>"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php    
@@ -99,7 +100,7 @@
                 </div>
             </div>
         </div>
-<?php 
+<!-- <?php 
 foreach($event as $row){
 ?>
 <div id="editModal<?= $row->id_event ?>" class="modal fade" role="dialog">
@@ -138,4 +139,4 @@ foreach($event as $row){
         </div>
     </div>
 </div>
-<?php } ?>
+<?php } ?> -->

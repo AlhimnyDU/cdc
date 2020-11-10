@@ -101,5 +101,26 @@
       </script>
     <?php } ?>
 
+    <script type="text/javascript">
+        $('.beforeDelete').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            const href = $(this).attr('href');
+            Swal.fire({
+                title: 'Apakah anda yakin ?',
+                text: "Data akan terhapus secara permanen",
+                icon: 'warning',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#007bff',
+                confirmButtonText: 'Ya, Hapus !',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.value == true) {
+                    document.location.href = href;
+                }
+            })
+        })
+</script>
   </body>
 </html>

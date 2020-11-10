@@ -172,4 +172,58 @@ class Perusahaan extends CI_Controller {
         }
         redirect('perusahaan/jobfair');
     }
+
+    public function setting(){
+        if($this->session->userdata('nama')){
+			if($this->session->userdata('perusahaan')){
+                $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
+                $data['perusahaan'] =$this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
+                $this->load->view('perusahaan/templates/header',$head);
+                $this->load->view('perusahaan/setting',$data);
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            }else{
+                redirect('welcome');
+            }
+        }else{
+            redirect('login');
+        }    
+    }
+
+    public function editProfile($id){
+        if($this->input->post('logo_perusahaan')!=NULL){
+            $config['upload_path'] = './assets/upload/logo/';
+            $config['allowed_types'] = 'jpg';
+            $this->upload->initialize($config);
+            $this->upload->do_upload('logo_perusahaan');
+            $data = array(
+                'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+                'alamat' => $this->input->post('alamat'),
+                'telp_perusahaan' => $this->input->post('telp_perusahaan'),
+                'pj' => $this->input->post('pj'),
+                'telp_pj' => $this->input->post('telp_pj'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'logo_perusahaan' => $this->upload->data('file_name'),
+                'updated' => date('Y-m-d H:i:s')
+             );  
+        }else{
+            $data = array(
+                'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+                'alamat' => $this->input->post('alamat'),
+                'telp_perusahaan' => $this->input->post('telp_perusahaan'),
+                'pj' => $this->input->post('pj'),
+                'telp_pj' => $this->input->post('telp_pj'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'updated' => date('Y-m-d H:i:s')
+             ); 
+        }   
+        
+		$query = $this->db->where('id_perusahaan', $id)->update('tbl_perusahaan',$data);
+		if($query){
+        	$this->session->set_flashdata('update_loker',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('perusahaan/setting');
+    }
 }

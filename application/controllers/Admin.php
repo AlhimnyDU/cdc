@@ -270,6 +270,12 @@ class Admin extends CI_Controller {
         $this->db->where('id_akun', $id)->delete('tbl_akun');
         redirect('admin/umum');
     }
+
+    public function hapusArtikel($id){
+        $this->db->where('id_artikel', $id)->delete('tbl_artikel');
+        redirect('admin/post');
+    }
+
     public function hapusPerusahaan($id){
         $this->db->where('id_admin', $id)->delete('tbl_admin');
         redirect('admin/perusahaan');
@@ -508,6 +514,15 @@ class Admin extends CI_Controller {
         redirect('admin/loker');
     }
 
+    // public function verifikasi($id){
+    //     $data = array(
+    //         'status' => "y",
+    //         'updated' => date('Y-m-d H:i:s')
+    //     );
+    //     $this->db->where('id_perusahaan',$id)->update('tbl_perusahaan',$data);
+    //     redirect('admin/loker');
+    // }
+
     public function unpublishLoker($id){
         $data = array(
             'status' => "Menunggu Konfirmasi",
@@ -518,7 +533,7 @@ class Admin extends CI_Controller {
     }
 
     public function editLoker($id){
-        if($this->input->post('prodi')!=NULL){
+        if($this->input->post('poster')!=NULL){
             $config['upload_path'] = './assets/upload/poster/';
             $config['allowed_types'] = 'jpg';
             $this->upload->initialize($config);
@@ -612,7 +627,7 @@ class Admin extends CI_Controller {
                 $insert_perusahaan = $this->db->insert('tbl_perusahaan',$perusahaan);
                 if($insert_perusahaan){
                     $config['upload_path'] = './assets/upload/poster/';
-                    $config['allowed_types'] = 'jpg';
+                    $config['allowed_types'] = 'jpg|png';
                     $this->upload->initialize($config);
                     $insert_logo = $this->upload->do_upload('poster');        
                     $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
@@ -645,6 +660,136 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('failed',"Tambah Gagal");
             }   
         }     
+        redirect('admin/loker');
+    }
+
+    public function editVacancy($id){
+        // $ada_perusahaan = $this->db->where('nama_perusahaan', $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row_array();
+        // if($ada_perusahaan){
+            if($this->input->post('logo_poster')){
+                // $id_perusahaan= $ada_perusahaan['id_perusahaan'];
+                $config['upload_path'] = './assets/upload/poster/';
+                $config['allowed_types'] = 'jpg';
+                $this->upload->initialize($config);
+                $insert_logo = $this->upload->do_upload('poster');        
+                $poster = $this->upload->data('file_name');
+                $data = array(
+                        'posisi' 	=> $this->input->post('posisi'),
+                        'deadline' => $this->input->post('deadline'),
+                        'lokasi' 	=> $this->input->post('lokasi'),
+                        'syarat' 	=> $this->input->post('syarat'),
+                        'deskripsi' 	=> $this->input->post('deskripsi'),
+                        'informasi' 	=> $this->input->post('informasi'),
+                        'status' 	=> 'Menunggu Konfirmasi',
+                        'prodi' 	=> $this->input->post('prodi'),
+                        'poster'   => $poster,
+                        'jenis'   => "vacancy",
+                        'id_perusahaan' => $id_perusahaan,
+                        'created' => date('Y-m-d H:i:s'),
+                        'updated' => date('Y-m-d H:i:s')
+                );
+            }else{
+                // $id_perusahaan= $ada_perusahaan['id_perusahaan'];
+                $data = array(
+                        'posisi' 	=> $this->input->post('posisi'),
+                        'deadline' => $this->input->post('deadline'),
+                        'lokasi' 	=> $this->input->post('lokasi'),
+                        'syarat' 	=> $this->input->post('syarat'),
+                        'deskripsi' 	=> $this->input->post('deskripsi'),
+                        'informasi' 	=> $this->input->post('informasi'),
+                        'status' 	=> 'Menunggu Konfirmasi',
+                        'prodi' 	=> $this->input->post('prodi'),
+                        'jenis'   => "vacancy",
+                        // 'id_perusahaan' => $id_perusahaan,
+                        'created' => date('Y-m-d H:i:s'),
+                        'updated' => date('Y-m-d H:i:s')
+                );
+            }
+            $query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
+            if($query){
+                $this->session->set_flashdata('insert_loker',"Tambah Berhasil");
+            }else{
+                $this->session->set_flashdata('failed',"Tambah Gagal");
+            }
+        // }else{
+        //     // $config['upload_path'] = './assets/upload/logo/';
+        //     // $config['allowed_types'] = 'jpg|png|jpeg';
+        //     // $this->upload->initialize($config);
+        //     // $upload_logo = $this->upload->do_upload('logo');
+        //     // $logo = $this->upload->data('file_name');
+        //     // if($upload_logo){
+        //     //     $perusahaan = array(
+        //     //         'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+        //     //         'email' => $this->input->post('email'),
+        //     //         'logo_perusahaan' => $logo,
+        //     //         'telp_perusahaan' => $this->input->post('telp_perusahaan'),
+        //     //         'created' => date('Y-m-d H:i:s'),
+        //     //         'updated' => date('Y-m-d H:i:s')
+        //     //     );
+        //     //     $insert_perusahaan = $this->db->insert('tbl_perusahaan',$perusahaan);
+        //         // if($insert_perusahaan){
+        //             if($this->input->post('logo_poster')){
+        //                 $config['upload_path'] = './assets/upload/poster/';
+        //                 $config['allowed_types'] = 'jpg';
+        //                 $this->upload->initialize($config);
+        //                 $insert_logo = $this->upload->do_upload('poster');        
+        //                 $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
+        //                 $poster = $this->upload->data('file_name');
+        //                 $data = array(
+        //                         'posisi' 	=> $this->input->post('posisi'),
+        //                         'deadline' => $this->input->post('deadline'),
+        //                         'lokasi' 	=> $this->input->post('lokasi'),
+        //                         'syarat' 	=> $this->input->post('syarat'),
+        //                         'deskripsi' 	=> $this->input->post('deskripsi'),
+        //                         'informasi' 	=> $this->input->post('informasi'),
+        //                         'status' 	=> 'Menunggu Konfirmasi',
+        //                         'prodi' 	=> $this->input->post('prodi'),
+        //                         'poster'   => $poster,
+        //                         'jenis'   => "vacancy",
+        //                         // 'id_perusahaan' => $id['id_perusahaan'],
+        //                         'created' => date('Y-m-d H:i:s'),
+        //                         'updated' => date('Y-m-d H:i:s')
+        //                 );
+                    // }else{
+                    //     $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
+                    //     $data = array(
+                    //             'posisi' 	=> $this->input->post('posisi'),
+                    //             'deadline' => $this->input->post('deadline'),
+                    //             'lokasi' 	=> $this->input->post('lokasi'),
+                    //             'syarat' 	=> $this->input->post('syarat'),
+                    //             'deskripsi' 	=> $this->input->post('deskripsi'),
+                    //             'informasi' 	=> $this->input->post('informasi'),
+                    //             'status' 	=> 'Menunggu Konfirmasi',
+                    //             'prodi' 	=> $this->input->post('prodi'),
+                    //             'jenis'   => "vacancy",
+                    //             'id_perusahaan' => $id['id_perusahaan'],
+                    //             'created' => date('Y-m-d H:i:s'),
+                    //             'updated' => date('Y-m-d H:i:s')
+                    //     );
+                    // }
+                    $query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
+                    if($query){
+                        $this->session->set_flashdata('insert_loker',"Tambah Berhasil");
+                    }else{
+                        $this->session->set_flashdata('failed',"Tambah Gagal");
+                    }
+                // }else{
+                //     $this->session->set_flashdata('failed',"Tambah Gagal");
+                // }
+            // }else{
+            //     $this->session->set_flashdata('failed',"Tambah Gagal");
+            // }   
+           
+        redirect('admin/loker');
+    }
+
+    public function deleteVacancy($id){       
+		$query = $this->db->where('id_loker',$id)->delete('tbl_loker');
+		if($query){
+        	$this->session->set_flashdata('delete_peserta',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
         redirect('admin/loker');
     }
 
@@ -749,7 +894,7 @@ class Admin extends CI_Controller {
     }
 
     public function verifikasi($id){
-        $this->db->set('aktif','y');
+        $this->db->set('status','y');
         $this->db->where('id_perusahaan', $id);
         $this->db->update('tbl_perusahaan');
         $toemail = $this->db->select('*')->from('tbl_perusahaan')->get()->row_array();

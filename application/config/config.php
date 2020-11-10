@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/cdc/';
+$config['base_url'] = 'http://192.168.111.15/cdc/';
 date_default_timezone_set('Asia/Jakarta');
 
 /*

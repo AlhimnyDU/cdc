@@ -57,14 +57,14 @@
                                             <td><?php echo $row->pj ?></td>
                                             <td><?php echo $row->telp_pj ?></td>
                                             <td><?php echo $row->alamat ?></td>
-                                        <?php if($row->aktif=="n"){ ?>
-                                            <td><a class="btn btn-success" href="<?php echo site_url('Admin/verfikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
+                                        <?php if($row->status=="n"){ ?>
+                                            <td><a class="btn btn-success" href="<?php echo site_url('admin/verifikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
                                                 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
-                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
+                                                <a class="btn btn-danger" href="<?php echo site_url('admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
                                         <?php }else{ ?>
-                                            <td><a class="btn btn-success disabled" href="<?php echo site_url('Admin/verfikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
+                                            <td><a class="btn btn-success disabled" href="<?php echo site_url('admin/verifikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
                                                 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
-                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
+                                                <a class="btn btn-danger" href="<?php echo site_url('admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
                                         <?php } ?>
                                         </tr>
                                         <?php    
@@ -172,7 +172,7 @@
                                         <input type="number" class="form-control" name="telp" required="" value="<?= $row->telp_perusahaan ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact Person</label>
+                                        <label>Nama Contact Person</label>
                                         <input type="text" class="form-control" name="pj" required="" value="<?= $row->pj ?>">
                                     </div>
                                     <div class="form-group">

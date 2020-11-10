@@ -40,8 +40,29 @@
                 <form class="form-label-left input_mask" method="POST" action="<?php echo site_url("login/addMahasiswa"); ?>">
                   <h1>Registrasi Akun</h1>
                   <div class="col-md-12 form-group has-feedback">
-                    <input type="text" class="form-control has-feedback-left" name="nrp" placeholder="NIK/NIM" required="" />
-                    <span class="glyphicon glyphicon-credit-card form-control-feedback left" aria-hidden="true"></span>
+                    <select class="form-control has-feedback-left" id="role" name="role">		
+                      <option value="" selected disabled hidden>Pilih Role</option>
+                      <option value="mahasiswa">Mahasiswa</option>
+                      <option value="alumni">Alumni</option>
+                      <option value="umum">Umum</option>
+                    </select>
+                    <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
+                  </div>
+                  <div id="umum">
+                    <div class="col-md-12 form-group has-feedback">
+                      <input type="text" class="form-control has-feedback-left" id="asal" name="asal_institusi" placeholder="Asal Institusi" required="" />
+                      <span class="glyphicon glyphicon-credit-card form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-12 form-group has-feedback">
+                      <input type="text" class="form-control has-feedback-left" id="nik" name="nrp" placeholder="NIK" required="" />
+                      <span class="glyphicon glyphicon-credit-card form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <div id="internal">
+                    <div class="col-md-12 form-group has-feedback">
+                      <input type="text" class="form-control has-feedback-left" id="nrp" name="nrp" placeholder="NRP/NIM" required="" />
+                      <span class="glyphicon glyphicon-credit-card form-control-feedback left" aria-hidden="true"></span>
+                    </div>
                   </div>
                   <div class="col-md-12 form-group has-feedback">
                     <input type="text" class="form-control has-feedback-left"  name="nama" placeholder="Nama Lengkap" required="" />
@@ -62,15 +83,6 @@
                   <div class="col-md-12 form-group has-feedback">
                     <input type="text" class="form-control has-feedback-left" name="telp" placeholder="Telepon" required="" />
                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
-                  </div>
-                  <div class="col-md-12 form-group has-feedback">
-                    <select class="form-control has-feedback-left" name="role">		
-                      <option value="" selected disabled hidden>Pilih Role</option>
-                      <option value="mahasiswa">Mahasiswa</option>
-                      <option value="alumni">Alumni</option>
-                      <option value="umum">Umum</option>
-                    </select>
-                    <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
                   </div>
                   <div class="col-md-12 form-group has-feedback">
                     <br>

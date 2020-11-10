@@ -40,31 +40,7 @@
                       </div>
                     </li>
                     <li>
-                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/banner (1).jpeg" alt="banner" class="img-fluid">
-                      <div class="banner-content">
-                        <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                          Biro Kemahasiswaan & Alumni Itenas
-                        </div>
-                        <h1 class="mb-0">Career Devolopment Center</h1>
-                        <h1 class="mb-2">
-                          Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
-                        </h1>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/banner (2).jpeg" alt="banner" class="img-fluid">
-                      <div class="banner-content">
-                        <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                          Biro Kemahasiswaan & Alumni Itenas
-                        </div>
-                        <h1 class="mb-0">Career Devolopment Center</h1>
-                        <h1 class="mb-2">
-                          Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
-                        </h1>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/banner (4).jpeg" alt="banner" class="img-fluid">
+                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/bg2.jpeg" alt="banner" class="img-fluid">
                       <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                           Biro Kemahasiswaan & Alumni Itenas
@@ -91,9 +67,9 @@
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                           New Post
                         </div>
-                        <h1 class="mb-0">Career Devolopment Center</h1>
+                        <h1 class="mb-0"><div class="badge badge-dark">Career Devolopment Center</div></h1>
                         <p class="mb-2">
-                          <?php echo substr($main_artikel->headline, 0, 150)?>...<a style="color:white;" href="<?php echo site_url("halaman/artikel/".$main_artikel->id_artikel) ?>"><div class="badge badge-info fs-12 font-weight-bold mb-3">See More</div></a>
+                        <div class="badge badge-dark">C<?php echo substr($main_artikel->headline, 0, 150)?>...<a style="color:white;" href="<?php echo site_url("halaman/artikel/".$main_artikel->id_artikel) ?>"></div><div class="badge badge-info fs-12 font-weight-bold mb-3">See More</div></a>
                         </p>
                       </div>
                 </div>

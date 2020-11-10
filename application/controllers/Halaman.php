@@ -28,9 +28,9 @@ class Halaman extends CI_Controller {
 	
 	public function index(){
 		$data['company'] = $this->db->get('tbl_perusahaan',6)->result();
-		$data['main_artikel'] = $this->db->order_by('created','DESC')->get('tbl_artikel',1)->row();
+		$data['main_artikel'] = $this->db->order_by('updated','DESC')->get('tbl_artikel',1)->row();
 		$data['artikel'] = $this->db->order_by('created','DESC')->get('tbl_artikel',3)->result();
-		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->order_by('updated','DESC')->get('tbl_loker', 3)->result();
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('tbl_loker.status','Disetujui')->order_by('updated','DESC')->get('tbl_loker', 3)->result();
 		$this->session->set_userdata('navbar','beranda');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/home',$data);
@@ -107,7 +107,7 @@ class Halaman extends CI_Controller {
 		
 		$this->pagination->initialize($config);
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->where('jenis','vacancy')->order_by('updated','DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();           
+        $data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('tbl_loker.status','Disetujui')->where('jenis','vacancy')->order_by('updated','DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();           
 		$data['pagination'] = $this->pagination->create_links();
 		
 		$this->load->view('halaman/templates/header');
@@ -143,12 +143,11 @@ class Halaman extends CI_Controller {
         $config['first_tagl_close'] = '</span></li>';
         $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
         $config['last_tagl_close']  = '</span></li>';
-		
 		$this->pagination->initialize($config);
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('status','Disetujui')->where('jenis','jobfair')->order_by('updated','DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();           
 		$data['pagination'] = $this->pagination->create_links();
-		$data['participate'] = $this->db->select('tbl_perusahaan.*')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta','LEFT')->where('role','perusahaan')->order_by('updated','DESC')->get('event_perusahaan')->result();   
+		$data['participate'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta','LEFT')->where('role','perusahaan')->order_by('updated','DESC')->get('event_perusahaan')->result();   
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/jobfair',$data);	
 	}	
@@ -159,10 +158,6 @@ class Halaman extends CI_Controller {
 		$this->load->view('halaman/artikel',$data);
 		$this->load->view('halaman/templates/js');
         $this->load->view('halaman/templates/footer');
-	}
-
-	public function list_artikel(){
-		
 	}
 
 	public function info(){

@@ -70,10 +70,15 @@ class Login extends CI_Controller {
 				}
 			}
 		}else if($selectPerusahaan) {
-			$this->session->set_userdata('nama',$selectPerusahaan->nama_perusahaan);
-			$this->session->set_userdata('perusahaan',"perusahaan");
-			$this->session->set_userdata('id_akun',$selectPerusahaan->id_perusahaan);
-        	redirect('perusahaan');
+			if($selectPerusahaan->status=="y"){
+				$this->session->set_userdata('nama',$selectPerusahaan->nama_perusahaan);
+				$this->session->set_userdata('perusahaan',"perusahaan");
+				$this->session->set_userdata('id_akun',$selectPerusahaan->id_perusahaan);
+				redirect('perusahaan');
+			}else{
+				$this->session->set_flashdata('nonaktif',"Akun belum aktif");
+				redirect('login');
+			}
 		}else if($selectadmin) {
 			$this->session->set_userdata('nama',$selectadmin->nama_admin);
 			$this->session->set_userdata('admin',"admin");

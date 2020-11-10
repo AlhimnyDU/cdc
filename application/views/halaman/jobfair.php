@@ -15,7 +15,7 @@
                           <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                             Biro Kemahasiswaan & Alumni Itenas
                           </div>
-                          <h1 class="mb-0">Career Devolopment Center</h1>
+                          <h1 class="mb-0">Career Development Center</h1>
                           <h1 class="mb-2">
                             Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
                           </h1>
@@ -45,12 +45,12 @@
                               />
                             </div>
                           </div>
-                          <a href="<?php echo site_url("halaman/adv_company/".$row->id_perusahaan) ?>" style="color:#000000;"><h3 class="font-weight-600 mb-0">
+                          <a href="<?php echo site_url("halaman/adv_company/".$row->id_event."/") ?>" style="color:#000000;"><h3 class="font-weight-600 mb-0">
                             <?php echo $row->nama_perusahaan; ?>
                           </h3></a>
                         </div>
                       </div>
-                      <?php } ?>
+                    <?php } ?>
                     </div>
                   </div>
                 </div>
