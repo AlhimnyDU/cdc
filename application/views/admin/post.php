@@ -100,8 +100,8 @@
                 </div>
             </div>
         </div>
-<!-- <?php 
-foreach($event as $row){
+<?php 
+foreach($artikel as $row){
 ?>
 <div id="editModal<?= $row->id_event ?>" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -139,4 +139,4 @@ foreach($event as $row){
         </div>
     </div>
 </div>
-<?php } ?> -->
+<?php } ?>
