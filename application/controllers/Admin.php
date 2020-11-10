@@ -938,11 +938,37 @@ class Admin extends CI_Controller {
         } 
     }
 
-    public function addPost(){
-        $config['upload_path'] = './assets/upload/post/';
-        $config['allowed_types'] = 'png|jpg|jpeg';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('gambar');        
+    public function editPost(){
+        if($this->input->post('gambar')){
+            $config['upload_path'] = './assets/upload/post/';
+            $config['allowed_types'] = 'png|jpg|jpeg';
+            $this->upload->initialize($config);
+            $this->upload->do_upload('gambar');        
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'headline' 	=> $this->input->post('headline'),
+                'konten' 	=> $this->input->post('konten'),
+                'user_post' => $this->session->userdata('nama'),
+                'gambar' => $this->upload->data('file_name'),
+                'updated'   => date('Y-m-d H:i:s')
+            );
+        }else{
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'headline' 	=> $this->input->post('headline'),
+                'konten' 	=> $this->input->post('konten'),
+                'user_post' => $this->session->userdata('nama'),
+                'updated'   => date('Y-m-d H:i:s')
+            );
+        }
+		$query = $this->db->where('id_artikel',$id)->delete('tbl_artikel');
+		if($query){
+        	$this->session->set_flashdata('insert_artikel',"Tambah Berhasil");
+        }else{
+        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        }
+        redirect('admin/post');
+    }    
         $data = array(
 			'judul' => $this->input->post('judul'),
 			'headline' 	=> $this->input->post('headline'),
@@ -960,5 +986,28 @@ class Admin extends CI_Controller {
         }
         redirect('admin/post');
     }
+
+    
+    $config['upload_path'] = './assets/upload/post/';
+    $config['allowed_types'] = 'png|jpg|jpeg';
+    $this->upload->initialize($config);
+    $this->upload->do_upload('gambar');        
+    $data = array(
+        'judul' => $this->input->post('judul'),
+        'headline' 	=> $this->input->post('headline'),
+        'konten' 	=> $this->input->post('konten'),
+        'user_post' => $this->session->userdata('nama'),
+        'gambar' => $this->upload->data('file_name'),
+        'created'   => date('Y-m-d H:i:s'),
+        'updated'   => date('Y-m-d H:i:s')
+     );
+    $query = $this->db->insert('tbl_artikel',$data);
+    if($query){
+        $this->session->set_flashdata('insert_artikel',"Tambah Berhasil");
+    }else{
+        $this->session->set_flashdata('failed',"Tambah Gagal");
+    }
+    redirect('admin/post');
+}
 
 }

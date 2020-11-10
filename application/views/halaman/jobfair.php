@@ -1,11 +1,11 @@
 
 <div class="content-wrapper">
-        <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
-            <div class="col-sm-12 grid-margin" style="margin-top:10px">
-              <center><h2 style="color:#EFEFEF">Registration Job Fair Countdown</h2></center>
-              <center><div id="pendaftaran" class="flipdown"></div></center>
-            </div>
-        </div>
+    <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
+      <div class="col-sm-12 grid-margin" style="margin-top:10px">
+        <center><h2 style="color:#EFEFEF">Registration Job Fair Countdown</h2></center>
+        <center><div id="pendaftaran" class="flipdown"></div></center>
+      </div>
+    </div>
     <div class="container">
               <div class="row" data-aos="fade-up">
                 <div class="col-xl-12 stretch-card grid-margin">

@@ -103,30 +103,38 @@
 <?php 
 foreach($artikel as $row){
 ?>
-<div id="editModal<?= $row->id_event ?>" class="modal fade" role="dialog">
+<div id="editModal<?= $row->id_artikel ?>" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Edit Event</h3>
+                <h3 class="modal-title">Edit Post</h3>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('admin/updateEvent')?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/updateEvent'.$row->id_artikel)?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
-                                        <label>Nama Event</label>
-                                        <input type="text" class="form-control" name="nama_event" placeholder="Nama Event" value="<?php echo $row->nama_event ?>" required="">
+                                        <label>Judul Post</label>
+                                        <input type="text" class="form-control" name="nama_event" placeholder="Nama Event" value="<?php echo $row->judul ?>" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Tanggal Awal</label>
-                                        <input type="date" class="form-control" name="tanggal_awal" value="<?php echo $row->tanggal_awal ?>" required="">
+                                        <label>Headline</label>
+                                        <textarea name="headline" class="form-control"><?php echo $row->headline ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tanggal Akhir</label>
-                                        <input type="date" class="form-control" name="tanggal_akhir" value="<?php echo $row->tanggal_akhir ?>" required="">
+                                        <label>Paragraf Berita</label>
+                                        <textarea name="konten" id="konten" class="editor"><?php echo $row->konten ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Foto Post</label>
+                                        <input type="file" class="dropify" height="100" name="gambar" data-max-file-size="1M" data-allowed-file-extensions="jpg png" data-default-file="<?php echo site_url('assets/upload/post/').$row->gambar ?>" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal Post</label>
+                                        <input type="date" class="form-control" name="created" value="<?php echo date("Y-m-d",strtotime($row->created))?>" required="">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
