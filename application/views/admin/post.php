@@ -130,7 +130,7 @@ foreach($artikel as $row){
                                     </div>
                                     <div class="form-group">
                                         <label>Upload Foto Post</label>
-                                        <input type="file" class="dropify" height="100" name="gambar" data-max-file-size="1M" data-allowed-file-extensions="jpg png" data-default-file="<?php echo site_url('assets/upload/post/').$row->gambar ?>" required="">
+                                        <input type="file" class="dropify" height="100" name="gambar" data-max-file-size="1M" data-allowed-file-extensions="jpg png" data-default-file="<?php echo site_url('assets/upload/post/').$row->gambar ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Post</label>
