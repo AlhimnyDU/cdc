@@ -85,7 +85,6 @@ class Halaman extends CI_Controller {
         $config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];
 		$config["num_links"] = floor($choice);
-		
 		$config['first_link']       = 'First';
         $config['last_link']        = 'Last';
         $config['next_link']        = 'Next';
@@ -168,7 +167,6 @@ class Halaman extends CI_Controller {
         $config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];
 		$config["num_links"] = floor($choice);
-		
 		$config['first_link']       = 'First';
         $config['last_link']        = 'Last';
         $config['next_link']        = 'Next';

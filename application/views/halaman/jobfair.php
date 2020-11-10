@@ -10,7 +10,7 @@
               <div class="row" data-aos="fade-up">
                 <div class="col-xl-12 stretch-card grid-margin">
                   <div class="position-relative">
-                        <img src="<?php echo base_url() ?>assets/halaman/slideshow/banner (4).jpeg" alt="banner" class="img-fluid">
+                        <img src="<?php echo site_url()?>assets/halaman/slideshow/bg2.jpeg" alt="banner" class="img-fluid">
                         <div class="banner-content">
                           <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                             Biro Kemahasiswaan & Alumni Itenas
@@ -127,7 +127,7 @@
                       © <?php echo date("Y") ?> @ <a href="https://www.bootstrapdash.com/" target="_blank" > Career Development Center</a>. All rights reserved.
                     </div>
                     <div class="fs-14 font-weight-600">
-                      Created by <a href="https://www.bootstrapdash.com/" target="_blank">@alhimnydu</a>
+                      
                     </div>
                   </div>
                 </div>
