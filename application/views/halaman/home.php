@@ -3,27 +3,26 @@
           <div class="container">
             <div class="d-lg-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center">
-                <span class="badge badge-dark mr-3">Flash news</span>
+                <span class="badge badge-danger mr-3">Head line news</span>
                 <p class="mb-0">
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s.
+                 <?php echo substr($main_artikel->headline, 0, 100)?>..<a href="<?php echo site_url("halaman/artikel/".$main_artikel->id_artikel) ?>">See More</a>
                 </p>
               </div>
               <div class="d-flex">
-                <span class="mr-3 text-danger">Wed, March 4, 2020</span>
-                <span class="text-danger">30°C,London</span>
+                <span class="mb-0 text-danger"><?php echo date("l")?>,</span>
+                <span class="mb-0 text-danger"><?php echo date("d F Y")?></span>
               </div>
             </div>
           </div>
         </div>
+        <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
+            <div class="col-sm-12 grid-margin" style="margin-top:10px">
+              <center><h2 style="color:#EFEFEF">Registration Job Fair Countdown</h2></center>
+              <center><div id="pendaftaran" class="flipdown"></div></center>
+            </div>
+        </div>
         <div class="content-wrapper">
           <div class="container">
-            <div class="row" data-aos="fade-up">
-              <div class="col-sm-12 grid-margin">
-                <center><h2 style="color:#DD571C">Registration Job Fair Countdown</h2></center>
-                <center><div id="pendaftaran" class="flipdown"></div></center>
-              </div>
-            </div>
             <div class="row" data-aos="fade-up">
               <div class="col-xl-12 stretch-card grid-margin">
                 <div class="position-relative">
@@ -84,18 +83,18 @@
               <div class="col-xl-8 stretch-card grid-margin">
                 <div class="position-relative">
                   <img
-                    src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/banner.jpg"
+                    src="<?php echo base_url('assets/upload/post/'.$main_artikel->gambar) ?>"
                     alt="banner"
                     class="img-fluid"
                   />
                   <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                          Biro Kemahasiswaan & Alumni Itenas
+                          New Post
                         </div>
                         <h1 class="mb-0">Career Devolopment Center</h1>
-                        <h1 class="mb-2">
-                          Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
-                        </h1>
+                        <p class="mb-2">
+                          <?php echo substr($main_artikel->headline, 0, 150)?>...<a style="color:white;" href="<?php echo site_url("halaman/artikel/".$main_artikel->id_artikel) ?>"><div class="badge badge-info fs-12 font-weight-bold mb-3">See More</div></a>
+                        </p>
                       </div>
                 </div>
               </div>
@@ -103,60 +102,26 @@
                 <div class="card bg-dark text-white">
                   <div class="card-body">
                     <h2>Latest news</h2>
-
+                    <?php foreach($artikel   as $row){?>
                     <div
                       class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between"
                     >
                       <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
-                        <div class="fs-12">
-                          <span class="mr-2">Photo </span>10 Minutes ago
-                        </div>
-                      </div>
-                      <div class="rotate-img">
-                        <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_1.jpg"
-                          alt="thumb"
-                          class="img-fluid img-lg"
-                        />
-                      </div>
-                    </div>
 
-                    <div
-                      class="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between"
-                    >
-                      <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
+                        <a style="color:#EFEFEF;" href="<?php echo site_url('halaman/artikel/'.$row->id_artikel) ?>"><h5><?php echo $row->judul ?></h5></a>
                         <div class="fs-12">
-                          <span class="mr-2">Photo </span>10 Minutes ago
+                          <span class="mr-2">Post Date : </span><?php echo date("d M Y",strtotime($row->created)) ?>
                         </div>
                       </div>
                       <div class="rotate-img">
                         <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_2.jpg"
+                          src="<?php echo base_url('assets/upload/post/'.$row->gambar) ?>"
                           alt="thumb"
                           class="img-fluid img-lg"
                         />
                       </div>
                     </div>
-
-                    <div
-                      class="d-flex pt-4 align-items-center justify-content-between"
-                    >
-                      <div class="pr-3">
-                        <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
-                        <div class="fs-12">
-                          <span class="mr-2">Photo </span>10 Minutes ago
-                        </div>
-                      </div>
-                      <div class="rotate-img">
-                        <img
-                          src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/home_3.jpg"
-                          alt="thumb"
-                          class="img-fluid img-lg"
-                        />
-                      </div>
-                    </div>
+                    <?php } ?>
                   </div>
                 </div>
               </div>
@@ -233,21 +198,14 @@
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <a href="<?php echo site_url("halaman/company_profile") ?>"><img
-                                  src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/samsung.png"
-                                  style="width:300px; height:150px;"
+                                  src="<?php echo base_url() ?>assets/upload/logo/Roman Keramik.jpg"
+                                  style="width:300px; height:200px;"
                                   alt="thumb"
                                   class="img-fluid"
                                 /></a>
                               </div>
                               <div class="badge-positioned w-90">
-                                <div
-                                  class="d-flex justify-content-between align-items-center"
-                                >
-                                  <span
-                                    class="badge badge-info font-weight-bold"
-                                    >Samsung Indonesia</span
-                                  >
-                                </div>
+                    
                               </div>
                             </div>
                           </div>
@@ -256,21 +214,14 @@
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/astra.png "
-                                  style="width:300px; height:150px;"
+                                  src="<?php echo base_url() ?>assets/upload/logo/medion.png"
+                                  style="width:250px; height:100px;"
                                   alt="thumb"
                                   class="img-fluid"
                                 />
                               </div>
                               <div class="badge-positioned w-90">
-                                <div
-                                  class="d-flex justify-content-between align-items-center"
-                                >
-                                  <span
-                                    class="badge badge-info font-weight-bold"
-                                    >Astra Indonesia</span
-                                  >
-                                </div>
+                                
                               </div>
                             </div>
                           </div>
@@ -280,20 +231,13 @@
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/krakatau.jpg"
+                                  src="<?php echo base_url() ?>assets/upload/logo/orang tua group.png"
                                   alt="thumb"
                                   class="img-fluid"
                                 />
                               </div>
                               <div class="badge-positioned w-90">
-                                <div
-                                  class="d-flex justify-content-between align-items-center"
-                                >
-                                  <span
-                                    class="badge badge-info font-weight-bold"
-                                    >Krakatau Steel</span
-                                  >
-                                </div>
+                                
                               </div>
                             </div>
                           </div>
@@ -302,8 +246,8 @@
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/lipi.png"
-                                  style="width:300px; max-height:250px;"
+                                  src="<?php echo base_url() ?>assets/upload/logo/PT Yamaha Motor Part Indonesia.png"
+                                  style="width:200px; max-height:200px;"
                                   alt="thumb"
                                   class="img-fluid"
                                 />
@@ -312,13 +256,6 @@
                                 <div
                                   class="d-flex justify-content-between align-items-center"
                                 >
-                                  <span
-                                    class="badge badge-info font-weight-bold"
-                                    >LIPI</span
-                                  >
-                                  <div class="video-icon">
-                                    <i class="mdi mdi-play"></i>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -333,88 +270,38 @@
                             List Company
                           </div>
                         </div>
+                        <?php foreach($company as $row){?>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
                         >
                           <div class="div-w-80 mr-3">
                             <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/gojek.png"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
+                              <?php if($row->logo_perusahaan){?>
+                                <a href="<?php echo site_url("halaman/company/".$row->id_perusahaan)?>">
+                                  <img
+                                    src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
+                                    alt="thumb"
+                                    class="img-fluid"
+                                  />
+                                </a>
+                              <?php }else{ ?>
+                                <a href="<?php echo site_url("halaman/company/".$row->id_perusahaan)?>">
+                                  <img
+                                    src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
+                                    alt="thumb"
+                                    class="img-fluid"
+                                  />
+                                </a>
+                              <?php } ?>
                             </div>
                           </div>
-                          <h3 class="font-weight-600 mb-0">
-                            Apple Introduces Apple Watch
-                          </h3>
+                          <a href="<?php echo site_url('halaman/company/'.$row->id_perusahaan) ?>" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                            <?php echo $row->nama_perusahaan ;?>
+                          </h4></a>
                         </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                        >
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/pertamina.png"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
-                            </div>
-                          </div>
-                          <h3 class="font-weight-600 mb-0">
-                            SEO Strategy & Google Search
-                          </h3>
-                        </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                        >
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/samsung.png"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
-                            </div>
-                          </div>
-                          <h3 class="font-weight-600 mb-0">
-                            Cycling benefit & disadvantag
-                          </h3>
-                        </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                        >
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/yamaha.webp"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
-                            </div>
-                          </div>
-                          <h3 class="font-weight-600">
-                            The Major Health Benefits of
-                          </h3>
-                        </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center pt-3"
-                        >
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <img
-                                src="<?php echo base_url() ?>assets/halaman/assets/images/dashboard/len.png"
-                                alt="thumb"
-                                class="img-fluid"
-                              />
-                            </div>
-                          </div>
-                          <h3 class="font-weight-600 mb-0">
-                            Powerful Moments of Peace
-                          </h3>
-                        </div>
+                        <?php } ?>
                         <br>
-                        <a href="<?php echo site_url("halaman/company") ?>" class="mb-3">Click here to see all company list</a>
+                        <a href="<?php echo site_url("halaman/list_company") ?>" class="mb-3">Click here to see all company list</a>
                       </div>
                     </div>
                   </div>

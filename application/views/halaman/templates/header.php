@@ -102,7 +102,7 @@
                           <a class="nav-link" href="<?php echo site_url("halaman/info") ?>">Information & Event</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="<?php echo site_url("halaman/contact") ?>">Company</a>
+                          <a class="nav-link" href="<?php echo site_url("halaman/list_company") ?>">Company</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="<?php echo site_url("halaman/jobfair") ?>">Job Fair</a>

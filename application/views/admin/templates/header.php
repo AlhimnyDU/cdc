@@ -78,6 +78,7 @@
                       <li><a href="<?php echo site_url() ?>admin/perusahaan">Perusahaan</a></li>
                     </ul>
                   </li>
+                  <li><a href="<?php echo site_url('admin/post') ?>"><i class="fa fa-edit"></i> Post & News</a></li>
                   <li><a><i class="fa fa-briefcase"></i> Pengembangan Karir <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo site_url() ?>admin/event">Event</a></li>

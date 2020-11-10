@@ -32,6 +32,7 @@
 				</div>
 			</div>
 		</div>
+		<?php if($vacancy){?>
 		<div class="row aos-init aos-animate" data-aos="fade-up">
             <div class="row" data-aos="fade-up">
               <div class="col-lg-3 stretch-card grid-margin">
@@ -50,7 +51,7 @@
               <div class="col-lg-9 stretch-card grid-margin">
                 <div class="card">
                   <div class="card-body">
-                  <?php foreach($vacancy as $row){?>
+					<?php foreach($vacancy as $row){?>
                     <div class="row">
                       <div class="col-sm-4 grid-margin">
                         <div class="position-relative">
@@ -83,11 +84,14 @@
                         </p>
                       </div>
                     </div>
-                  <?php } ?>
+					<?php }?>
                   </div>
                 </div>
               </div>
             </div>
 		</div>
+		<?php }else{ ?>
+			<center><h1>Not post job vacancy</h1></center>
+		<?php }?>
 	</div>
 </div>

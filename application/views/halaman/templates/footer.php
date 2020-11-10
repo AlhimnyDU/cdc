@@ -136,10 +136,10 @@
                 <div class="col-sm-12">
                   <div class="d-sm-flex justify-content-between align-items-center">
                     <div class="fs-14 font-weight-600">
-                      © <?php echo date("Y") ?> @ <a href="https://www.bootstrapdash.com/" target="_blank" > Career Development Center</a>. All rights reserved.
+                      © <?php echo date("Y") ?> @ <a href="" target="_blank" > Career Development Center</a>. All rights reserved.
                     </div>
                     <div class="fs-14 font-weight-600">
-                      Created by <a href="https://www.bootstrapdash.com/" target="_blank">@alhimnydu</a>
+                      
                     </div>
                   </div>
                 </div>
