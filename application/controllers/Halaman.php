@@ -227,7 +227,7 @@ class Halaman extends CI_Controller {
 
 	public function company($id){
 		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan',$id)->get('tbl_perusahaan')->row();
-		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('tbl_loker.id_perusahaan',$id)->where('status','Disetujui')->order_by('updated','DESC')->get('tbl_loker')->result();   
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan','tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan','LEFT')->where('tbl_loker.id_perusahaan',$id)->where('tbl_loker.status','Disetujui')->order_by('updated','DESC')->get('tbl_loker')->result();   
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/company',$data);
 		$this->load->view('halaman/templates/js');
