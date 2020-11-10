@@ -950,7 +950,7 @@ class Admin extends CI_Controller {
                 'konten' 	=> $this->input->post('konten'),
                 'user_post' => $this->session->userdata('nama'),
                 'gambar' => $this->upload->data('file_name'),
-                'created'   => date('Y-m-d H:i:s',$this->input->post('created')),
+                'created'   => $this->input->post('created'),
                 'updated'   => date('Y-m-d H:i:s')
             );
         }else{
@@ -959,11 +959,11 @@ class Admin extends CI_Controller {
                 'headline' 	=> $this->input->post('headline'),
                 'konten' 	=> $this->input->post('konten'),
                 'user_post' => $this->session->userdata('nama'),
-                'created'   =>  date('Y-m-d H:i:s',$this->input->post('created')),
+                'created'   =>  $this->input->post('created'),
                 'updated'   => date('Y-m-d H:i:s')
             );
         }
-		$query = $this->db->where('id_artikel',$id)->delete('tbl_artikel');
+		$query = $this->db->where('id_artikel',$id)->update('tbl_artikel',$data);
 		if($query){
         	$this->session->set_flashdata('insert_artikel',"Tambah Berhasil");
         }else{
