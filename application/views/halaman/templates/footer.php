@@ -3,14 +3,17 @@
           <div class="footer-top">
             <div class="container">
               <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-12">
                 <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/halaman/logo.png" style="width:192px;" alt=""/></a>
                   <h5 class="font-weight-normal mt-4 mb-5">
-                    Newspaper is your news, entertainment, music fashion website. We
-                    provide you with the latest breaking news and videos straight from
-                    the entertainment industry.
+                  Contact us : <br>
+                  <b>Biro Kemahasiswaan dan Alumni (Career Development Center/CDC-Itenas)</b> <br>
+                  Jl. PKH. Mustopha No.23 – Bandung 40124, Indonesia <br>
+                  Phone : +62-22-7272215 (ext.235) <br>
+                  Mobile : +62-812-8515-8712 <br>
+                  e-Mail: cdc@itenas.ac.id or cdc.itenas@gmail.com
                   </h5>
-                  <ul class="social-media mb-3">
+                  <!-- <ul class="social-media mb-3">
                     <li>
                       <a href="#">
                         <i class="mdi mdi-facebook"></i>
@@ -26,9 +29,9 @@
                         <i class="mdi mdi-twitter"></i>
                       </a>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                   <h3 class="font-weight-bold mb-3">RECENT POSTS</h3>
                   <div class="row">
                     <div class="col-sm-12">
@@ -93,8 +96,8 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
+                </div> -->
+                <!-- <div class="col-sm-3">
                   <h3 class="font-weight-bold mb-3">CATEGORIES</h3>
                   <div class="footer-border-bottom pb-2">
                     <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +129,7 @@
                       <div class="count">1</div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -136,10 +139,10 @@
                 <div class="col-sm-12">
                   <div class="d-sm-flex justify-content-between align-items-center">
                     <div class="fs-14 font-weight-600">
-                      © <?php echo date("Y") ?> @ <a href="" target="_blank" > Career Development Center</a>. All rights reserved.
+                      © <?php echo date("Y") ?>  <a href="https://cdc.itenas.ac.id/" target="_blank" > Career Development Center</a>. All rights reserved.
                     </div>
                     <div class="fs-14 font-weight-600">
-                      
+                      <!-- Created by <a href="https://informatika.itenas.ac.id/" target="_blank">IF-Itenas</a> -->
                     </div>
                   </div>
                 </div>
