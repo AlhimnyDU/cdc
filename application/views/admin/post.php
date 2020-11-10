@@ -113,7 +113,7 @@ foreach($artikel as $row){
                 </button>
             </div>
             <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('admin/updateEvent'.$row->id_artikel)?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/updatePost/'.$row->id_artikel)?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
