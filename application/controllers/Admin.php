@@ -938,7 +938,7 @@ class Admin extends CI_Controller {
         } 
     }
 
-    public function editPost(){
+    public function editPost($id){
         if($this->input->post('gambar')){
             $config['upload_path'] = './assets/upload/post/';
             $config['allowed_types'] = 'png|jpg|jpeg';
