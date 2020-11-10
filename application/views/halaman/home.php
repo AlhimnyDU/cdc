@@ -28,7 +28,7 @@
                 <div class="position-relative">
                   <ul class="rslides">
                     <li>
-                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/banner.jpeg" alt="banner" class="img-fluid"/>
+                      <img src="<?php echo site_url('assets/halaman/slideshow/banner.jpeg') ?>" alt="banner" class="img-fluid"/>
                       <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                           Biro Kemahasiswaan & Alumni Itenas
@@ -40,7 +40,7 @@
                       </div>
                     </li>
                     <li>
-                      <img src="<?php echo base_url() ?>assets/halaman/slideshow/bg2.jpeg" alt="banner" class="img-fluid">
+                      <img src="<?php echo site_url('assets/halaman/slideshow/bg2.jpeg') ?>" alt="banner" class="img-fluid">
                       <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                           Biro Kemahasiswaan & Alumni Itenas
