@@ -969,6 +969,6 @@ class Admin extends CI_Controller {
         }else{
         	$this->session->set_flashdata('failed',"Tambah Gagal");
         }
-        redirect('admin/post');
+        // redirect('admin/post');
     }    
 }
