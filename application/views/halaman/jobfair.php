@@ -10,7 +10,7 @@
               <div class="row" data-aos="fade-up">
                 <div class="col-xl-12 stretch-card grid-margin">
                   <div class="position-relative">
-                        <img src="<?php echo site_url()?>assets/halaman/slideshow/bg2.jpeg" alt="banner" class="img-fluid">
+                        <img src="<?php echo site_url("assets/halaman/slideshow/bg2.jpeg")?>" alt="banner" class="img-fluid">
                         <div class="banner-content">
                           <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                             Biro Kemahasiswaan & Alumni Itenas
