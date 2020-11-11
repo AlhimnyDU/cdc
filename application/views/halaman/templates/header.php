@@ -58,7 +58,7 @@
                       <?php if($this->session->userdata("nama")!=NULL){?>
                         <a href="<?php echo site_url("login/logout") ?>" class="nav-link">Logout</a>
                       <?php }else{ ?>
-                        <a href="<?php echo site_url("login/perusahaan") ?>" class="nav-link">Registrasi Perusahaan</a>
+                        <a href="<?php echo site_url("login/register") ?>" class="nav-link">Registrasi Perusahaan</a>
                       <?php } ?>
                     </li>
                   </ul>
