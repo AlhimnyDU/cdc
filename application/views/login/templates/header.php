@@ -23,5 +23,4 @@
     <link href="<?php echo base_url() ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
   </head>
 
-
   <body class="login" style="background-image: url(<?php echo base_url('assets/admin/background/bg1.jpeg') ?>);background-repeat:no-repeat;background-size: cover;">
