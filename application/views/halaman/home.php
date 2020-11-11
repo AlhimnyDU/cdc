@@ -187,9 +187,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "CV. Pudak Scientific" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -205,9 +205,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "Roman Keramik" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -223,9 +223,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "ERMA" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -241,9 +241,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "Medion  " ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -259,9 +259,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "Orang Tua Group" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -277,9 +277,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Astra Komponen Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <br>
                         <a href="<?php echo site_url("halaman/list_company") ?>" class="mb-3">Click here to see all company list</a>
@@ -306,9 +306,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Yamaha Motor Part Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -324,9 +324,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT TK Industrial Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -342,9 +342,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Surya Energi Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -360,9 +360,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "Sharing Vision" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -378,9 +378,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Sterling Tulus Cemerlang" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -396,9 +396,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Sansan Saudaratex Jaya.jpg" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <br>
                       </div>
@@ -424,9 +424,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Laju Makmur Sentosa" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -442,9 +442,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Corebes Inovasi Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -460,9 +460,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Catudaya Prakarsa" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -478,9 +478,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT BGP Indonesia" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <div
                           class="d-flex justify-content-between align-items-center border-bottom pb-2"
@@ -496,9 +496,9 @@
                                 </a>
                             </div>
                           </div>
-                          <a href="#" style="color:#000000;"><h4 class="font-weight-600 mb-0">
+                          <a href="#" style="color:#000000;"><h5 class="font-weight-600 mb-0">
                             <?php echo "PT Dynacast.png" ;?>
-                          </h4></a>
+                          </h5></a>
                         </div>
                         <br>
                       </div>
