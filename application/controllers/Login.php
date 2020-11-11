@@ -34,7 +34,7 @@ class Login extends CI_Controller {
         $this->load->view('login/templates/footer');
 	}
 	
-	public function regsiter(){
+	public function register(){
         $this->load->view('login/templates/header');
 		$this->load->view('login/regis_pus');
 		$this->load->view('login/templates/js');
