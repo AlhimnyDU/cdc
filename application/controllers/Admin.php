@@ -475,7 +475,6 @@ class Admin extends CI_Controller {
             'pj'=> $this->input->post('pj'),
             'alamat'	=> $this->input->post('alamat'),
             'telp_perusahaan' => $this->input->post('telp'),
-            'file_cv'   => $this->upload->data('file_name'),
             'created'   => date('Y-m-d H:i:s'),
             'updated'   => date('Y-m-d H:i:s'),
 		 );
