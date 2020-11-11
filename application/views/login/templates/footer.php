@@ -14,6 +14,16 @@
           });
       });
     </script>
+    <?php if($this->session->flashdata('insert_akunP')){?>
+      <script>
+        swal({
+          title: "Registration Success!",
+          text: "Akun sudah tersimpan, silahkan tunggu admin mengaktifkan akun anda",
+          icon: "success",
+          timer: 2000
+        });
+      </script>
+    <?php } ?>
     <?php if($this->session->flashdata('insert_akun')){?>
       <script>
         swal({

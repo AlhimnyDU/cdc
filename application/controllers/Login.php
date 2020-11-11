@@ -138,12 +138,12 @@ class Login extends CI_Controller {
 				);
 				$query = $this->db->insert('tbl_perusahaan',$data);
 				if($query){
-					$this->session->set_flashdata('insert_akun',TRUE);
+					$this->session->set_flashdata('insert_akunP',TRUE);
 				}else{
-					$this->session->set_flashdata('insert_akun',FALSE);
+					$this->session->set_flashdata('insert_akunP',FALSE);
 				}
 			}else{
-				$this->session->set_flashdata('insert_akun',FALSE);
+				$this->session->set_flashdata('insert_akunP',FALSE);
 			}
 		}
         redirect('login');
