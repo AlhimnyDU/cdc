@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://192.168.111.15/cdc/';
-$config['base_url'] = 'https://cdc.itenas.ac.id/demo/';
+$config['base_url'] = 'https://cdc.itenas.ac.id/';
 date_default_timezone_set('Asia/Jakarta');
 
 /*
