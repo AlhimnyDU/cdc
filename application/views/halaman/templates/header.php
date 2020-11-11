@@ -111,7 +111,7 @@
                           <a class="nav-link" href="https://tracerstudy.itenas.ac.id/cdc">Tracer Study</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="<?php echo site_url("halaman/career") ?>">Career Counseling</a>
+                          <a class="nav-link" href="<?php echo site_url("halaman/carrer") ?>">Career Counseling</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="<?php echo site_url("halaman/about") ?>">About Us</a>
