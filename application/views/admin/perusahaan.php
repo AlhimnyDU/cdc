@@ -27,6 +27,7 @@
                   <a class="btn btn-success" href="" data-toggle="modal" data-target="#tambahModal"><i class="fa fa-plus"></i> Tambah</a>
                     <div class="clearfix"></div>
                   </div>
+                  
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
