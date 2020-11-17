@@ -875,6 +875,30 @@ class Admin extends CI_Controller
         }
     }
 
+    public function addPost()
+    {
+        $config['upload_path'] = './assets/upload/post/';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $this->upload->initialize($config);
+        $this->upload->do_upload('gambar');
+        $data = array(
+            'judul' => $this->input->post('judul'),
+            'headline'     => $this->input->post('headline'),
+            'konten'     => $this->input->post('konten'),
+            'user_post' => $this->session->userdata('nama'),
+            'gambar' => $this->upload->data('file_name'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_artikel', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_artikel', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('admin/post');
+    }
+
     public function addJobfair()
     {
         $ada_perusahaan = $this->db->where('nama_perusahaan', $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row_array();
