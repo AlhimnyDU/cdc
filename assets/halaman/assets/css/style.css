@@ -10729,7 +10729,7 @@ footer {
 }
 
 footer .footer-top {
-  background-image: linear-gradient(0deg, #ffe29e 0%, #DD571C 100%);
+  background-image: linear-gradient(0deg, #DD571C 0%, #EFEFEF 120%);
   padding: 74px 0 48px 0;
 }
 
@@ -10788,7 +10788,7 @@ footer .footer-top .count {
 
 footer .footer-bottom {
   padding: 24px 0 48px 0;
-  background: #ffe29e;
+  background: #DD571C;
 }
 
 .error-wrap {

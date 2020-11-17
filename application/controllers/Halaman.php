@@ -233,4 +233,10 @@ class Halaman extends CI_Controller {
 		$this->load->view('halaman/templates/js');
         $this->load->view('halaman/templates/footer');
 	}
+
+	public function carrer(){
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/carrer');
+		$this->load->view('halaman/templates/footer');
+	}
 }
