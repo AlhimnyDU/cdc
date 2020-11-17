@@ -5,7 +5,14 @@
 				<div class="card">
 					<div class="card-body">
                         <center>
-                            <img width="300px" src="<?php echo site_url("assets/upload/logo/".$job->logo_perusahaan) ?>"/>
+                             <?php if(empty($row->logo_perusahaan)){?>
+                              <img
+                                src="<?php echo site_url("assets/upload/logo/default.png")?>"
+                                width="300px"
+                              />
+                            <?php }else{?>
+                              <img width="300px" src="<?php echo site_url("assets/upload/logo/".$job->logo_perusahaan) ?>"/>
+                            <?php }?>
                             <br>
                             <small><?php echo $job->nama_perusahaan ?></small>
                             <h1 id=judul><?php echo $job->posisi ?></h1>

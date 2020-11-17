@@ -86,7 +86,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('admin/addVacancy')?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('perusahaan/addJobfair')?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
@@ -163,47 +163,43 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('admin/editVacancy/').$row->id_loker ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('perusahaan/editJobfair/').$row->id_loker ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
-                                    
                                     <div class="form-group">
                                         <label>Posisi / jabatan yang dibutuhkan</label>
-                                        <input type="text" class="form-control" value="<?php echo $row->posisi ?>" name="posisi" placeholder="ex : Engineering Staff, Environment Staff, etc" required="">
+                                        <input type="text" class="form-control" name="posisi" value="<?php echo $row->posisi?>" placeholder="ex : Engineering Staff, Environment Staff, etc" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Deadline</label>
-                                        <input type="date" class="form-control" value="<?php echo date("Y-m-d",strtotime($row->deadline))?>" name="deadline" placeholder="etc : 28/04/2020" required="">
+                                        <input type="date" class="form-control" name="deadline" value="<?php echo strftime('%Y-%m-%d',strtotime($row->deadline))?>" placeholder="etc : 28/04/2020" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Lokasi Perkerjaan</label>
-                                        <input type="text" class="form-control" value="<?php echo $row->lokasi ?>" name="lokasi" placeholder="ex : Jakarta, Bandung, atau alamat" required="">
+                                        <input type="text" class="form-control" name="lokasi" value="<?php echo $row->lokasi?>" placeholder="ex : Jakarta, Bandung, atau alamat" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Deskripsi Loker</label>
-                                        <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsikan tentang lowongan pekerjaan" class="form-control"><?php echo $row->deskripsi ?></textarea>
+                                        <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsikan tentang lowongan pekerjaan" class="form-control"><?php echo $row->deskripsi?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Syarat/Requirements</label>
-                                        <textarea name="syarat" id="syarat" class="editor"><?php echo $row->syarat ?></textarea>
+                                        <textarea name="syarat" id="syarat" class="editor"><?php echo $row->syarat?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Informasi</label>
-                                        <textarea name="informasi" id="info" class="editor"><?php echo $row->informasi ?></textarea>
+                                        <textarea name="informasi" id="info" class="editor"><?php echo $row->informasi?></textarea>
                                     </div>
-                                    
                                     <div class="form-group">
                                         <label>File Poster</label>
-                                        <small style="color:red">*Bila  tidak diperlukan, dapat dikosongkan</small>
-                                        <input type="file" class="dropify" height="100" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg" data-default-file="<?php echo site_url('assets/upload/poster/').$row->poster ?>">
+                                        <input type="file" class="dropify" height="100" name="poster" required="" data-max-file-size="1M" data-default-file="<?php echo site_url() ?>assets/upload/poster/<?= $row->poster ?>" data-allowed-file-extensions="jpg png">
                                     </div>
                                     <div class="form-group">
-                                        <label>Program studi yang dicari</label>
-                                        <small style="color:red">*Bila tidak diperlukan, dapat dikosongkan</small>
-                                        <input type="text" class="form-control" value="<?php echo $row->prodi ?>" placeholder="ex : Informatika, Teknik Mesin, Teknik Sipil, Desain Interior, etc" name="prodi">
+                                        <label>Progam studi yang dicari</label>
+                                        <input type="text" class="form-control" name="prodi" required="">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Update</button>
+                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
                                         <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>

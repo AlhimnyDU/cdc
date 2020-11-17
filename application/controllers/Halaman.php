@@ -39,7 +39,7 @@ class Halaman extends CI_Controller {
 
 	public function list_company(){
 		//konfigurasi pagination
-        $config['base_url'] = site_url('halaman/loker'); //site url
+        $config['base_url'] = site_url('halaman/list_company'); //site url
         $config['total_rows'] = $this->db->where('status','Disetujui')->where('jenis','vacancy')->from('tbl_loker')->count_all_results(); //total row
         $config['per_page'] = 10;  //show record per halaman
         $config["uri_segment"] = 3;  // uri parameter

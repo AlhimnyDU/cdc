@@ -45,9 +45,9 @@
                               />
                             </div>
                           </div>
-                          <a href="<?php echo site_url("halaman/adv_company/".$row->id_event."/") ?>" style="color:#000000;"><h3 class="font-weight-600 mb-0">
+                          <a href="<?php echo site_url("halaman/adv_company/".$row->id_event."/") ?>" style="color:#000000;"><h4 class="font-weight-600 mb-0">
                             <?php echo $row->nama_perusahaan; ?>
-                          </h3></a>
+                          </h4></a>
                         </div>
                       </div>
                     <?php } ?>
@@ -56,8 +56,8 @@
                 </div>
               </div>
             </div>
-		      <div class="row aos-init aos-animate" data-aos="fade-up">
-            <div class="row" data-aos="fade-up">
+		  <div class="row" data-aos="fade-up">
+            
               <div class="col-lg-3 stretch-card grid-margin">
                 <div class="card">
                   <div class="card-body">
@@ -112,7 +112,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            
           </div>
 	</div>
 </div>

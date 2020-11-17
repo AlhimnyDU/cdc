@@ -54,9 +54,9 @@
                                             <td>
                                                 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> | 
                                                 <?php if($row->status=="Menunggu Konfirmasi"){ ?>
-                                                <a class="btn btn-success" href="<?php echo site_url('admin/accLoker/').$row->id_loker ?>"><i class="fa fa-check"></i> Publish</a>
+                                                <a class="btn btn-success" href="<?php echo site_url('admin/accJobfair/').$row->id_loker ?>"><i class="fa fa-check"></i> Publish</a>
                                                 <?php } else { ?>
-                                                    <a class="btn btn-secondary" href="<?php echo site_url('admin/unpublishLoker/').$row->id_loker ?>"><i class="fa fa-times"></i> Unpublish</a>
+                                                    <a class="btn btn-secondary" href="<?php echo site_url('admin/unpublishJobfair/').$row->id_loker ?>"><i class="fa fa-times"></i> Unpublish</a>
                                                 <?php } ?>
                                             </td>
                                         </tr>

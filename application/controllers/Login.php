@@ -113,9 +113,39 @@ class Login extends CI_Controller {
 	}
 	
 	public function addPerusahaan(){
-		$ada_perusahaan = $this->db->where("nama_perusahaan",$this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->result();
-		if($ada_perusahaan){
+		$ada_perusahaan = $this->db->where("nama_perusahaan",$this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row();
+		if(($ada_perusahaan->nama_perusahaan==$this->input->post('nama_perusahaan'))&&($ada_perusahaan->status_daftar=='pendaftar')){
 			$this->session->set_flashdata('perusahaan_ada',TRUE);
+		}else if(($ada_perusahaan->nama_perusahaan==$this->input->post('nama_perusahaan'))&&($ada_perusahaan->status_daftar=='loker')){
+		    $config['upload_path'] = './assets/upload/logo/';
+			$config['allowed_types'] = 'jpg|png|jpeg|webp';
+			$this->upload->initialize($config);
+			$upload_logo = $this->upload->do_upload('logo');
+			$logo = $this->upload->data('file_name');
+			if($upload_logo){
+				$data = array(
+					'nama_perusahaan'	=> $this->input->post('nama_perusahaan'),
+					'email' 			=> $this->input->post('email'),
+					'password' 				=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+					'telp_perusahaan' 			=> $this->input->post('telp'),
+					'logo_perusahaan' 			=> $this->upload->data('file_name'),
+					'alamat'		=> $this->input->post('alamat'),
+					'pj'		=> $this->input->post('nama_pj'),
+					'telp_pj' 			=> $this->input->post('telp_pj'),
+					'status_daftar' 			=> 'pendaftar',
+					'created' 		=> date('Y-m-d H:i:s'),
+					'updated' 		=> date('Y-m-d H:i:s')
+				
+				);
+				$query = $this->db->where("nama_perusahaan",$this->input->post('nama_perusahaan'))->update('tbl_perusahaan',$data);
+				if($query){
+					$this->session->set_flashdata('insert_akunP',TRUE);
+				}else{
+					$this->session->set_flashdata('insert_akunP',FALSE);
+				}
+			}else{
+				$this->session->set_flashdata('insert_akunP',FALSE);
+			}
 		}else{
 			$config['upload_path'] = './assets/upload/logo/';
 			$config['allowed_types'] = 'jpg|png|jpeg|webp';
@@ -132,6 +162,7 @@ class Login extends CI_Controller {
 					'alamat'		=> $this->input->post('alamat'),
 					'pj'		=> $this->input->post('nama_pj'),
 					'telp_pj' 			=> $this->input->post('telp_pj'),
+					'status_daftar' 			=> 'pendaftar',
 					'created' 		=> date('Y-m-d H:i:s'),
 					'updated' 		=> date('Y-m-d H:i:s')
 				

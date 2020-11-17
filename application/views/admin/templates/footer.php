@@ -100,6 +100,36 @@
         });
       </script>
     <?php } ?>
+    <?php if($this->session->flashdata('update_persh',TRUE)){?>
+      <script>
+        swal({
+          title: "Update Data Perusahaan Sukses!",
+          text: "dara telah berhasil diubah!",
+          icon: "success",
+          timer: 2000
+        });
+      </script>
+    <?php } ?>
+    <?php if($this->session->flashdata('delete_persh',TRUE)){?>
+      <script>
+        swal({
+          title: "Delete Data Perusahaan Sukses!",
+          text: "dara telah berhasil dihapus!",
+          icon: "error",
+          timer: 2000
+        });
+      </script>
+    <?php } ?>
+    <?php if($this->session->flashdata('aktivasi_akun',TRUE)){?>
+      <script>
+        swal({
+          title: "Sukses Aktifkan Akun!",
+          text: "Akun tersebut dapat digunakan!",
+          icon: "success",
+          timer: 2000
+        });
+      </script>
+    <?php } ?>
 
     <script type="text/javascript">
         $('.beforeDelete').on('click', function(e) {

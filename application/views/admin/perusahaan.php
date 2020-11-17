@@ -41,7 +41,7 @@
                                             <th>CP</th>
                                             <th>Telp. (CP)</th>
                                             <th>Alamat</th>
-                                            <th width="20%">Verifikasi | Edit | Hapus</th>
+                                            <th width="25%">Verifikasi | Edit | Ganti Password | Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,11 +59,12 @@
                                             <td><?php echo $row->alamat ?></td>
                                         <?php if($row->status=="n"){ ?>
                                             <td><a class="btn btn-success" href="<?php echo site_url('admin/verifikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
-                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-info" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#passModal<?= $row->id_perusahaan ?>"><i class="fa fa-key"></i></a> |
                                                 <a class="btn btn-danger" href="<?php echo site_url('admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
                                         <?php }else{ ?>
                                             <td><a class="btn btn-success disabled" href="<?php echo site_url('admin/verifikasi/').$row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> | 
-                                                <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | 
+                                                <a class="btn btn-info" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | <a class="btn btn-warning" href="" data-toggle="modal" data-target="#passModal<?= $row->id_perusahaan ?>"><i class="fa fa-key"></i></a> | 
                                                 <a class="btn btn-danger" href="<?php echo site_url('admin/hapusPerusahaan/').$row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
                                         <?php } ?>
                                         </tr>
@@ -164,10 +165,6 @@
                                         <input type="email" class="form-control" name="email" required="" value="<?= $row->email ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" name="password" required="" value="<?= $row->password ?>">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Telp. Perusahaan </label>
                                         <input type="number" class="form-control" name="telp" required="" value="<?= $row->telp_perusahaan ?>">
                                     </div>
@@ -188,7 +185,39 @@
                                         <input type="file" class="dropify" height="100" data-default-file="<?php echo site_url('assets/upload/file_cv/').$row->file_cv ?>" name="file_cv" required="" data-max-file-size="2M" data-allowed-file-extensions="pdf">
                                     </div> -->
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
+                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Update</button>
+                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+<?php } ?>
+        <?php 
+            foreach($perusahaan as $row){
+        ?>
+        <div id="passModal<?= $row->id_perusahaan ?>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Ganti Password Perusahaan</h3>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="<?php echo site_url('admin/gantiPassPerusahaan/').$row->id_perusahaan?>" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col col-lg-12">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" required=""
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Update</button>
                                         <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>

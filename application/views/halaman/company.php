@@ -5,7 +5,14 @@
 				<div class="card">
 					<div class="card-body">
 						<center>
-							<img width="300px" src="<?php echo site_url("assets/upload/logo/".$company->logo_perusahaan) ?>"/>
+							<?php if(empty($row->logo_perusahaan)){?>
+                              <img
+                                src="<?php echo site_url("assets/upload/logo/default.png")?>"
+                                width="300px"
+                              />
+                            <?php }else{?>
+                              <img width="300px" src="<?php echo site_url("assets/upload/logo/".$job->logo_perusahaan) ?>"/>
+                            <?php }?>
 							<br>
 							<h1><?php echo $company->nama_perusahaan ?></h1>
 							<br>
@@ -34,7 +41,6 @@
 		</div>
 		<?php if($vacancy){?>
 		<div class="row aos-init aos-animate" data-aos="fade-up">
-            <div class="row" data-aos="fade-up">
               <div class="col-lg-3 stretch-card grid-margin">
                 <div class="card">
                   <div class="card-body">
@@ -56,11 +62,23 @@
                       <div class="col-sm-4 grid-margin">
                         <div class="position-relative">
                           <div class="rotate-img">
-                            <img
-                              src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
-                              alt="thumb"
-                              class="img-fluid"
-                            />
+                            <?php if(empty($row->logo_perusahaan)){?>
+                            <a href="<?php echo site_url("halaman/company/".$row->id_perusahaan)?>">
+                              <img
+                                src="<?php echo site_url("assets/upload/logo/default.png")?>"
+                                alt="thumb"
+                                class="img-fluid"
+                              />
+                            </a>
+                            <?php }else{?>
+                            <a href="<?php echo site_url("halaman/company/".$row->id_perusahaan)?>">
+                              <img
+                                src="<?php echo site_url("assets/upload/logo/").$row->logo_perusahaan?>"
+                                alt="thumb"
+                                class="img-fluid"
+                              />
+                            </a>
+                            <?php }?>
                           </div>
                           <div class="badge-positioned">
                             <span class="badge badge-danger font-weight-bold"
@@ -88,7 +106,6 @@
                   </div>
                 </div>
               </div>
-            </div>
 		</div>
 		<?php }else{ ?>
 			<center><h1>Not post job vacancy</h1></center>

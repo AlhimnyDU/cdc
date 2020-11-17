@@ -142,7 +142,7 @@
                     <div class="modal-body">
                         <form method="post" action="<?php echo site_url('perusahaan/editLoker')?>" enctype="multipart/form-data">
                             <div class="row">
-                            <div class="col col-lg-12">
+                                <div class="col col-lg-12">
                                     <div class="form-group">
                                         <label>Posisi / jabatan yang dibutuhkan</label>
                                         <input type="text" class="form-control" name="posisi" value="<?php echo $row->posisi?>" placeholder="ex : Engineering Staff, Environment Staff, etc" required="">
@@ -169,11 +169,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File Poster</label>
-                                        <input type="file" class="dropify" height="100" name="poster" required="" data-max-file-size="1M" data-default-file="<?php echo site_url() ?>assets/upload/poster/<?= $row->poster ?>" data-allowed-file-extensions="jpg png">
+                                        <input type="file" class="dropify" height="100" name="poster" data-max-file-size="1M" data-default-file="<?php echo site_url() ?>assets/upload/poster/<?= $row->poster ?>" data-allowed-file-extensions="jpg png">
                                     </div>
                                     <div class="form-group">
                                         <label>Progam studi yang dicari</label>
-                                        <input type="text" class="form-control" name="prodi" required="">
+                                        <input type="text" class="form-control" name="prodi">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
