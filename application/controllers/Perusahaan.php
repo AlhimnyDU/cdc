@@ -54,8 +54,8 @@ class Perusahaan extends CI_Controller
             if ($this->session->userdata('perusahaan')) {
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'vacancy')->get('tbl_loker')->result();
-                $this->load->view('perusahaan/templates/header',$head);
-                $this->load->view('perusahaan/loker',$data);
+                $this->load->view('perusahaan/templates/header', $head);
+                $this->load->view('perusahaan/loker', $data);
                 $this->load->view('perusahaan/templates/js');
                 $this->load->view('perusahaan/templates/footer');
             } else {
@@ -95,32 +95,33 @@ class Perusahaan extends CI_Controller
         }
         redirect('perusahaan/loker');
     }
-    
-    public function addJobfair(){
+
+    public function addJobfair()
+    {
         $config['upload_path'] = './assets/upload/poster/';
         $config['allowed_types'] = 'jpg';
         $this->upload->initialize($config);
         $this->upload->do_upload('poster');
         $data = array(
-            'posisi' 	=> $this->input->post('posisi'),
+            'posisi'     => $this->input->post('posisi'),
             'deadline' => $this->input->post('deadline'),
-            'lokasi' 	=> $this->input->post('lokasi'),
-            'syarat' 	=> $this->input->post('syarat'),
-            'deskripsi' 	=> $this->input->post('deskripsi'),
-            'informasi' 	=> $this->input->post('informasi'),
-            'status' 	=> 'Menunggu Konfirmasi',
-            'prodi' 	=> $this->input->post('prodi'),
+            'lokasi'     => $this->input->post('lokasi'),
+            'syarat'     => $this->input->post('syarat'),
+            'deskripsi'     => $this->input->post('deskripsi'),
+            'informasi'     => $this->input->post('informasi'),
+            'status'     => 'Menunggu Konfirmasi',
+            'prodi'     => $this->input->post('prodi'),
             'poster'   => $this->upload->data('file_name'),
             'jenis'   => "jobfair",
             'id_perusahaan' => $this->session->userdata('id_akun'),
             'created' => date('Y-m-d H:i:s'),
             'updated' => date('Y-m-d H:i:s')
-        );      
-		$query = $this->db->insert('tbl_loker',$data);
-		if($query){
-        	$this->session->set_flashdata('insert_loker',"Tambah Berhasil");
-        }else{
-        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        );
+        $query = $this->db->insert('tbl_loker', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('perusahaan/loker');
     }
@@ -163,58 +164,52 @@ class Perusahaan extends CI_Controller
         }
         redirect('perusahaan/loker');
     }
-    
-        public function editJobfair($id){
-        if($this->input->post('poster')){
+
+    public function editJobfair($id)
+    {
+        if ($this->input->post('poster')) {
             $config['upload_path'] = './assets/upload/poster/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $this->upload->initialize($config);
-            $this->upload->do_upload('poster');        
+            $this->upload->do_upload('poster');
             $data = array(
-                'posisi' 	=> $this->input->post('posisi'),
+                'posisi'     => $this->input->post('posisi'),
                 'deadline' => $this->input->post('deadline'),
-                'lokasi' 	=> $this->input->post('lokasi'),
-                'syarat' 	=> $this->input->post('syarat'),
-                'deskripsi' 	=> $this->input->post('deskripsi'),
-                'informasi' 	=> $this->input->post('informasi'),
-                'prodi' 	=> $this->input->post('prodi'),
+                'lokasi'     => $this->input->post('lokasi'),
+                'syarat'     => $this->input->post('syarat'),
+                'deskripsi'     => $this->input->post('deskripsi'),
+                'informasi'     => $this->input->post('informasi'),
+                'prodi'     => $this->input->post('prodi'),
                 'poster'   => $this->upload->data('file_name'),
                 'updated' => date('Y-m-d H:i:s')
-            ); 
-        }else{
+            );
+        } else {
             $data = array(
-                'posisi' 	=> $this->input->post('posisi'),
+                'posisi'     => $this->input->post('posisi'),
                 'deadline' => $this->input->post('deadline'),
-                'lokasi' 	=> $this->input->post('lokasi'),
-                'syarat' 	=> $this->input->post('syarat'),
-                'deskripsi' 	=> $this->input->post('deskripsi'),
-                'informasi' 	=> $this->input->post('informasi'),
-                'prodi' 	=> $this->input->post('prodi'),
+                'lokasi'     => $this->input->post('lokasi'),
+                'syarat'     => $this->input->post('syarat'),
+                'deskripsi'     => $this->input->post('deskripsi'),
+                'informasi'     => $this->input->post('informasi'),
+                'prodi'     => $this->input->post('prodi'),
                 'updated' => date('Y-m-d H:i:s')
-            ); 
+            );
         }
-		$query = $this->db->where('id_loker', $id)->update('tbl_loker',$data);
-		if($query){
-        	$this->session->set_flashdata('update_loker',"Tambah Berhasil");
-        }else{
-        	$this->session->set_flashdata('failed',"Tambah Gagal");
+        $query = $this->db->where('id_loker', $id)->update('tbl_loker', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_loker', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('perusahaan/loker');
     }
 
 
-<<<<<<< HEAD
-    public function jobfair(){
-        if($this->session->userdata('nama')){
-			if($this->session->userdata('perusahaan')){
-                $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'jobfair')->get('tbl_loker')->result();
-=======
     public function jobfair()
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('perusahaan')) {
-                // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
+                $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'jobfair')->get('tbl_loker')->result();
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['event'] = $this->db->get('tbl_event')->result();
                 $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('role', 'perusahaan')->get('event_perusahaan')->result();

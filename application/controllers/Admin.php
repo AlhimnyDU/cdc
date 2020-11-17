@@ -296,12 +296,8 @@ class Admin extends CI_Controller
 
     public function hapusPerusahaan($id)
     {
-<<<<<<< HEAD
         $this->session->set_flashdata('delete_persh', TRUE);
         $this->db->where('id_perusahaan', $id)->delete('tbl_perusahaan');
-=======
-        $this->db->where('id_admin', $id)->delete('tbl_admin');
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
         redirect('admin/perusahaan');
     }
     public function hapusMahasiswa($id)
@@ -451,11 +447,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-<<<<<<< HEAD
                 $data['perusahaan'] = $this->db->where('status_daftar', 'pendaftar')->get('tbl_perusahaan')->result();
-=======
-                $data['perusahaan'] = $this->db->get('tbl_perusahaan')->result();
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/perusahaan', $data);
                 $this->load->view('admin/templates/js');
@@ -470,7 +462,6 @@ class Admin extends CI_Controller
 
     public function addPerusahaan()
     {
-<<<<<<< HEAD
         //         $config['upload_path'] = './assets/upload/file_cv/';
         //         $config['allowed_types'] = 'pdf';
         //         $this->upload->initialize($config);
@@ -502,16 +493,6 @@ class Admin extends CI_Controller
         $data = array(
             'nama_perusahaan' => $this->input->post('nama_perusahaan'),
             'email'     => $this->input->post('email'),
-=======
-        $config['upload_path'] = './assets/upload/file_cv/';
-        $config['allowed_types'] = 'pdf';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('file_cv');
-        $data = array(
-            'nama_perusahaan' => $this->input->post('nama_perusahaan'),
-            'email'     => $this->input->post('email'),
-            'password'     => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
             'telp_pj'         => $this->input->post('telp_pj'),
             'jabatan'        => "-",
             'pj' => $this->input->post('pj'),
@@ -520,58 +501,26 @@ class Admin extends CI_Controller
             'created'   => date('Y-m-d H:i:s'),
             'updated'   => date('Y-m-d H:i:s'),
         );
-<<<<<<< HEAD
         $query = $this->db->where('id_perusahaan', $id)->update('tbl_perusahaan', $data);
         if ($query) {
             $this->session->set_flashdata('update_persh', TRUE);
-=======
-        $query = $this->db->insert('tbl_perusahaan', $data);
-        if ($query) {
-            $this->session->set_flashdata('insert_persh', "Tambah Berhasil");
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('admin/perusahaan');
     }
 
-<<<<<<< HEAD
     public function gantiPassPerusahaan($id)
     {
         $data = array(
             'password'     => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-=======
-    public function editPerusahaan($id)
-    {
-        $config['upload_path'] = './assets/upload/file_cv/';
-        $config['allowed_types'] = 'pdf';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('file_cv');
-
-        $data = array(
-            'nama_perusahaan' => $this->input->post('nama_perusahaan'),
-            'email'     => $this->input->post('email'),
-            'password'     => $this->input->post('password'),
-            'telp_pj'         => $this->input->post('telp_pj'),
-            'jabatan'        => "-",
-            'pj' => $this->input->post('pj'),
-            'alamat'    => $this->input->post('alamat'),
-            'telp_perusahaan' => $this->input->post('telp'),
-            'created'   => date('Y-m-d H:i:s'),
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
             'updated'   => date('Y-m-d H:i:s'),
         );
         $query = $this->db->where('id_perusahaan', $id)->update('tbl_perusahaan', $data);
         if ($query) {
-<<<<<<< HEAD
             $this->session->set_flashdata('update_persh', TRUE);
         } else {
             $this->session->set_flashdata('failed', TRUE);
-=======
-            $this->session->set_flashdata('update_persh', "Tambah Berhasil");
-        } else {
-            $this->session->set_flashdata('failed', "Tambah Gagal");
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
         }
         redirect('admin/perusahaan');
     }
@@ -581,11 +530,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-<<<<<<< HEAD
                 $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->order_by('tbl_loker.created', 'DESC')->get()->result();
-=======
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->order_by('tbl_loker.created', 'DESC')->get()->result();
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/loker', $data);
                 $this->load->view('admin/templates/js');
@@ -637,7 +582,6 @@ class Admin extends CI_Controller
         redirect('admin/loker');
     }
 
-<<<<<<< HEAD
     public function unpublishJobfair($id)
     {
         $data = array(
@@ -648,8 +592,6 @@ class Admin extends CI_Controller
         redirect('admin/jobfair');
     }
 
-=======
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
     public function editLoker($id)
     {
         if ($this->input->post('poster') != NULL) {
@@ -695,38 +637,8 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('delete_peserta', "Tambah Berhasil");
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
-<<<<<<< HEAD
         }
         redirect('admin/peserta/' . $id);
-=======
-        }
-        redirect('admin/peserta/' . $id);
-    }
-
-    public function addPost()
-    {
-        $config['upload_path'] = './assets/upload/post/';
-        $config['allowed_types'] = 'jpg';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('poster');
-        $gambar = $this->upload->data('file_name');
-        $data = array(
-            'judul'     => $this->input->post('judul'),
-            'headline' => $this->input->post('headline'),
-            'konten' => $this->input->post('konten'),
-            'gambar'     => $gambar,
-            'user_post'     => "Admin",
-            'created' => date('Y-m-d H:i:s'),
-            'updated' => date('Y-m-d H:i:s')
-        );
-        $query = $this->db->insert('tbl_artikel', $data);
-        if ($query) {
-            $this->session->set_flashdata('insert_artikel', "Tambah Berhasil");
-        } else {
-            $this->session->set_flashdata('failed', "Tambah Gagal");
-        }
-        redirect('admin/post');
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
     }
 
     public function addVacancy()
@@ -950,11 +862,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-<<<<<<< HEAD
                 $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'jobfair')->order_by('tbl_loker.created', 'DESC')->get()->result();
-=======
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->where('jenis', 'jobfair')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->order_by('tbl_loker.created', 'DESC')->get()->result();
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/jobfair', $data);
                 $this->load->view('admin/templates/js');
@@ -1072,10 +980,7 @@ class Admin extends CI_Controller
 
         //Send mail 
         if ($this->email->send()) {
-<<<<<<< HEAD
             $this->session->set_flashdata("aktivasi_akun", TRUE);
-=======
->>>>>>> dc11bcdc3e318787125140ed8d160b97e797c412
             // $this->session->set_flashdata("draft","Email berhasil terkirim.");
             //return true;
             redirect('admin/perusahaan');
