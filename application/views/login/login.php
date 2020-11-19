@@ -43,7 +43,7 @@
                 <select class="form-control has-feedback-left" id="role" name="role">
                   <option value="" selected disabled hidden>Pilih Role</option>
                   <option value="mahasiswa">Mahasiswa Itenas</option>
-                  <option value="alumni">Alumni Itenas</option>
+                  <option value="alumni">Alumni</option>
                   <option value="umum">Umum</option>
                 </select>
                 <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
