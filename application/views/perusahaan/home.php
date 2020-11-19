@@ -13,14 +13,14 @@
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
-                                <h5>Terima kasih perusahaan yang telah mendaftar di Career Development Center Itenas</h5>
+                                <h5>Terima kasih perusahaan telah mendaftar di Career Development Center Itenas</h5>
                                 <p>Career Development Center Itenas sedang mengadakan acara Job Fair Itenas 2020, jika perusahaan yang ingin mengikuti acara job fair harus mengikuti peraturan dan ketentuan yang berlaku pada acara Job Fair Itenas 2020.</p>
                                 <a href="#">Peraturan dan Ketentuan Job Fair Itenas 2020</a>
                                 <input type="checkbox" value="" required> <small>Centang untuk menyetujui prosedur dan ketentuan</small>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
-                                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Mengikuti</button>
+                                <button class="btn btn-danger" type="button" data-dismiss="modal">Lain Kali</button>
                             </div>
                         </div>
                     </div>
