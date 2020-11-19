@@ -1,10 +1,3 @@
-<script>
-    $(document).ready(function() {
-        <?php if (empty($mengikuti)) { ?>
-            $("#tambahModal").modal('show');
-        <?php } ?>
-    });
-</script>
 <!-- page content -->
 <div id="tambahModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
