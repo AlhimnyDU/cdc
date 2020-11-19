@@ -75,6 +75,10 @@
           $(document).ready(function() {
             $('.datatable').DataTable();
             <?php if (empty($mengikuti)) { ?>
+              $('#tambahModal').modal({
+                backdrop: 'static',
+                keyboard: false
+              });
               $("#tambahModal").modal('show');
             <?php } ?>
           });
