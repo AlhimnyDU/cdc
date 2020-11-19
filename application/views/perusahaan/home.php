@@ -1,32 +1,34 @@
-<!-- page content -->
-<div id="tambahModal" class="modal fade show" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Tambah Lowongan Pekerjaan</h3>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="<?php echo site_url('perusahaan/addLoker') ?>" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col col-lg-12">
-                            <div class="form-group">
-                                <label>Progam studi yang dicari</label>
-                                <input type="text" class="form-control" name="prodi" required="">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
-                                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+<?php if ($mengikuti) { ?>
+    <!-- page content -->
+    <div id="tambahModal" class="modal fade show" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Tambah Lowongan Pekerjaan</h3>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="<?php echo site_url('perusahaan/addLoker') ?>" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <div class="form-group">
+                                    <label>Progam studi yang dicari</label>
+                                    <input type="text" class="form-control" name="prodi" required="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
+                                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php } ?>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">

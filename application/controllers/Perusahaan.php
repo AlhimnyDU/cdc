@@ -212,7 +212,7 @@ class Perusahaan extends CI_Controller
                 $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'jobfair')->get('tbl_loker')->result();
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['event'] = $this->db->get('tbl_event')->result();
-                $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('role', 'perusahaan')->get('event_perusahaan')->result();
+                $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('id_event', 'perusahaan')->where('role', 'perusahaan')->get('event_perusahaan')->result();
                 $this->load->view('perusahaan/templates/header', $head);
                 $this->load->view('perusahaan/jobfair', $data);
                 $this->load->view('perusahaan/templates/js');
