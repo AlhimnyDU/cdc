@@ -1,4 +1,4 @@
-<?php if ($mengikuti) { ?>
+<?php if (empty($mengikuti)) { ?>
     <!-- page content -->
     <div id="tambahModal" class="modal fade show" role="dialog">
         <div class="modal-dialog modal-lg">
