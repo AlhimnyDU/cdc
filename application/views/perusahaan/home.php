@@ -1,6 +1,6 @@
 <?php if (empty($mengikuti)) { ?>
     <!-- page content -->
-    <div id="tambahModal" class="modal fade show" role="dialog">
+    <div id="tambahModal" class="modal fade show" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
