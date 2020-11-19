@@ -68,7 +68,7 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['event'] = $this->db->get('tbl_event')->result();
-                $data['mengikuti'] = $this->db->where('role', 'perusahaan')->where('id_event', 2)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
+                $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/jobfair', $data);
