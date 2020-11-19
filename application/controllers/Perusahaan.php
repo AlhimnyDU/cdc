@@ -213,6 +213,7 @@ class Perusahaan extends CI_Controller
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['event'] = $this->db->get('tbl_event')->result();
                 $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('role', 'perusahaan')->get('event_perusahaan')->result();
+                $data['jobfair'] = $this->db->where('role', 'perusahaan')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 $this->load->view('perusahaan/templates/header', $head);
                 $this->load->view('perusahaan/jobfair', $data);
                 $this->load->view('perusahaan/templates/js');

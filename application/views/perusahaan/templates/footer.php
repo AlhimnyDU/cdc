@@ -75,11 +75,11 @@
           $(document).ready(function() {
             $('.datatable').DataTable();
             <?php if (empty($mengikuti)) { ?>
-              $('#tambahModal').modal({
+              $('#jobModal').modal({
                 backdrop: 'static',
                 keyboard: false
               });
-              $("#tambahModal").modal('show');
+              $("#jobModal").modal('show');
             <?php } ?>
           });
         </script>

@@ -1,5 +1,5 @@
 <!-- page content -->
-<div id="tambahModal" class="modal fade" role="dialog">
+<div id="jobModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
