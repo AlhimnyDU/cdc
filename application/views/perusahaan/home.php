@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('perusahaan/mengikuti/') . $mengikuti->id_event ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url('perusahaan/mengikuti/1') ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
