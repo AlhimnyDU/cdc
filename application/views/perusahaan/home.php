@@ -3,18 +3,20 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Tambah Lowongan Pekerjaan</h3>
+                <h3 class="modal-title">Job Fair Itenas 2020</h3>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('perusahaan/addLoker') ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url('perusahaan/mengikuti/') . $mengikuti->id_event ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
-                                <label>Progam studi yang dicari</label>
-                                <input type="text" class="form-control" name="prodi" required="">
+                                <h5>Terima kasih perusahaan yang telah mendaftar di Career Development Center Itenas</h5>
+                                <p>Career Development Center Itenas sedang mengadakan acara Job Fair Itenas 2020, jika perusahaan yang ingin mengikuti acara job fair harus mengikuti peraturan dan ketentuan yang berlaku pada acara Job Fair Itenas 2020.</p>
+                                <a href="#">Peraturan dan Ketentuan Job Fair Itenas 2020</a>
+                                <input type="checkbox" value="" required> <small>Centang untuk menyetujui prosedur dan ketentuan</small>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
