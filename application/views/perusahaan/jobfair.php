@@ -131,7 +131,7 @@
                                                             if (!empty($mengikuti)) {
                                                                 foreach ($mengikuti as $r) {
                                                                     if ($row->id_event == $r->id_event) { ?>
-                                                                        <a class="btn btn-danger btn-sm" href="<?php echo site_url('perusahaan/tidakMengikuti/' . $r->id) ?>"><i class="fa fa-times"></i> Tidak Mengikuti</a>
+                                                                        <a class="btn btn-danger btn-sm disabled" href="<?php echo site_url('perusahaan/tidakMengikuti/' . $r->id) ?>">Sudah Mengikuti</a>
                                                                 <?php
                                                                     }
                                                                 }
