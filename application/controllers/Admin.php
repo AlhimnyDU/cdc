@@ -323,6 +323,61 @@ class Admin extends CI_Controller
         }
     }
 
+    public function schedule()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['schedule'] = $this->db->order_by('jadwal_meeting', 'ASC')->get('tbl_schedule')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/schedule', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function pelamar($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,,tbl_akun.nama,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/pelamar', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function data_pelamar($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['akun'] = $this->db->where('id_akun', $id)->get('tbl_akun')->row();
+                $data['pendidikan'] = $this->db->where('id_akun', $id)->get('tbl_pendidikan')->result();
+                $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
+                $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
+                $data['sertifikat'] = $this->db->where('id_akun', $id)->get('tbl_sertifikat')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/data_pelamar', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function addAlumni()
     {
         $data = array(
@@ -344,6 +399,35 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('admin/alumni');
+    }
+
+    public function addSchedule()
+    {
+        $data = array(
+            'nama_meeting' => $this->input->post('nama_meeting'),
+            'jadwal_meeting' => $this->input->post('jadwal_meeting'),
+            'link' => $this->input->post('link'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->insert('tbl_schedule', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('admin/schedule');
+    }
+
+    public function deleteSchedule($id)
+    {
+        $query = $this->db->where('id_schedule', $id)->delete('tbl_schedule');
+        if ($query) {
+            $this->session->set_flashdata('delete_data', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('admin/schedule');
     }
 
     public function addUmum()

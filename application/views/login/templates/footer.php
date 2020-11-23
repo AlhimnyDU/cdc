@@ -4,53 +4,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $("#btnSubmit").click(function () {
-                var password = $("#password").val();
-                var confirmPassword = $("#conf_password").val();
-                if (password != confirmPassword) {
-                    swal("Password Tidak Cocok", "Harap isi password dengan sama", "error");
-                    return false;
-                }
-                return true;
-            });
-            $('#umum').hide(); 
-            $('#role').change(function(){
-            if($('#role').val() == 'umum') {
-              $('#umum').show(); 
-              $('#internal').hide(); 
-              $("#NIK").prop( "disabled",false);
-              $("#asal").prop( "disabled",false);
-              $("#NIK").prop( "required",true);
-              $("#asal").prop( "required",true);
-              $("#nrp").prop( "disabled",true);
-              $("#nrp").removeAttr('required');
-            } else {
-              $('#umum').hide();
-              $('#internal').show(); 
-              $("#NIK").prop( "disabled",true);
-              $("#asal").prop( "disabled",true);
-              $("#NIK").removeAttr('required');
-              $("#asal").removeAttr('required');
-              $("#nrp").prop( "disabled",false);
-              $("#nrp").prop( "required",true);
-            } 
-          });
-        });
-    </script>
-    <script>
-      $( document ).ready(function() {
-          $('.dropify').dropify({
-          messages: {
-          'default': 'Drag and drop a file here or click',
-          'replace': 'Drag and drop or click to replace',
-          'remove':  'Remove',
-          'error':   'Ooops, something wrong happended.'
+      $(function() {
+        $("#btnSubmit").click(function() {
+          var password = $("#password").val();
+          var confirmPassword = $("#conf_password").val();
+          if (password != confirmPassword) {
+            swal("Password Tidak Cocok", "Harap isi password dengan sama", "error");
+            return false;
           }
-          });
+          return true;
+        });
+        $('#umum').hide();
+        $('#role').change(function() {
+          if ($('#role').val() == 'umum') {
+            $('#umum').show();
+            $('#internal').hide();
+            $("#nik").prop("disabled", false);
+            $("#asal").prop("disabled", false);
+            $("#nik").prop("required", true);
+            $("#asal").prop("required", true);
+            $("#nrp").prop("disabled", true);
+            $("#nrp").removeAttr('required');
+          } else {
+            $('#umum').hide();
+            $('#internal').show();
+            $("#nik").prop("disabled", true);
+            $("#asal").prop("disabled", true);
+            $("#nik").removeAttr('required');
+            $("#asal").removeAttr('required');
+            $("#nrp").prop("disabled", false);
+            $("#nrp").prop("required", true);
+          }
+        });
       });
     </script>
-    <?php if($this->session->flashdata('insert_akunP')){?>
+    <script>
+      $(document).ready(function() {
+        $('.dropify').dropify({
+          messages: {
+            'default': 'Drag and drop a file here or click',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong happended.'
+          }
+        });
+      });
+    </script>
+    <?php if ($this->session->flashdata('insert_akunP')) { ?>
       <script>
         swal({
           title: "Registration Success!",
@@ -60,7 +60,7 @@
         });
       </script>
     <?php } ?>
-    <?php if($this->session->flashdata('insert_akun')){?>
+    <?php if ($this->session->flashdata('insert_akun')) { ?>
       <script>
         swal({
           title: "Registration Success!",
@@ -70,7 +70,7 @@
         });
       </script>
     <?php } ?>
-    <?php if($this->session->flashdata('nonaktif')){?>
+    <?php if ($this->session->flashdata('nonaktif')) { ?>
       <script>
         swal({
           title: "Akun Belum Aktif!",
@@ -79,7 +79,7 @@
         });
       </script>
     <?php } ?>
-    <?php if($this->session->flashdata('perusahaan_ada')){?>
+    <?php if ($this->session->flashdata('perusahaan_ada')) { ?>
       <script>
         swal({
           title: "Registration Failed!",
@@ -90,8 +90,9 @@
       </script>
     <?php } ?>
     <script>
-        $(function() {
-          
-        });
-      </script>
-</html>
+      $(function() {
+
+      });
+    </script>
+
+    </html>

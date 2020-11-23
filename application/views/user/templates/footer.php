@@ -65,13 +65,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
         <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <!-- Custom Theme Scripts -->
         <script src="<?php echo base_url() ?>assets/admin/build/js/custom.min.js"></script>
-
+        <script src="<?php echo base_url() ?>assets/admin/vendors/jquery.inputmask/dist/inputmask/inputmask.js"></script>
         <script>
           $(document).ready(function() {
             $('.datatable').DataTable();
+            $('.datatable2').DataTable({
+              "lengthChange": false,
+              "searching": false,
+              "paging": false,
+              "info": false
+            });
             <?php if (empty($mengikuti)) { ?>
               $('#jobModal').modal({
                 backdrop: 'static',
@@ -96,7 +103,118 @@
             });
           });
         </script>
-
+        <?php if ($this->session->flashdata('insert_akun', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Registration Success!",
+              text: "You clicked the button!",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <?php if ($this->session->flashdata('insert_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Insert Success!",
+              text: "Data anda telah berhasil masuk!",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <?php if ($this->session->flashdata('update_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Update Success!",
+              text: "Data anda telah berhasil update!",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <?php if ($this->session->flashdata('sudah_mengajukan', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Lamaran ditolak!",
+              text: "Anda telah melakukan pengajuan pada lowongan kerja ini!",
+              icon: "warning",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <script type="text/javascript">
+          $('.beforeDelete').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Apakah anda yakin ?',
+              text: "Data Akan dihapus",
+              icon: 'warning',
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
+        <script type="text/javascript">
+          $('.beforeAjukan').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Apakah anda yakin akan melamar pada lowongan kerja ini ?',
+              text: "Data anda akan diajukan ke perusahaan",
+              icon: 'warning',
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((result) => {
+              if (result) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
+        <script type="text/javascript">
+          $('.beforeTolak').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Menolak lamaran',
+              text: "Jika lamaran ditolak, maka anda tidak dapat mengajukan kembali lamaran kerja ini. Apakah anda sudah yakin?",
+              icon: 'warning',
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((result) => {
+              if (result) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
+        <script type="text/javascript">
+          $('.beforeTerima').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Menerima lamaran',
+              text: "Anda akan menjadi penerima lowongan kerja pada perusahaan ini harus menyetujui ketentuan dari perusahaan ini, apakah anda sudah yakin?",
+              icon: 'warning',
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((result) => {
+              if (result) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
         </body>
 
         </html>

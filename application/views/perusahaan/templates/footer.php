@@ -65,7 +65,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- Custom Theme Scripts -->
         <script src="<?php echo base_url() ?>assets/admin/build/js/custom.min.js"></script>
         <script>
@@ -96,9 +96,70 @@
                 'error': 'Ooops, something wrong happended.'
               }
             });
+            $('.datatable2').DataTable({
+              "lengthChange": false,
+              "searching": false,
+              "paging": false,
+              "info": false
+            });
           });
         </script>
 
+        <?php if ($this->session->flashdata('update_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Update Success!",
+              text: "data change",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <?php if ($this->session->flashdata('delete_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Delete Success!",
+              text: "data deleted",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <script type="text/javascript">
+          $('.beforeTolak').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Menolak lamaran kerja',
+              text: "Lamaran akan ditolak, apakah anda sudah yakin?",
+              icon: 'warning',
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((result) => {
+              if (result) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
+        <script type="text/javascript">
+          $('.beforeDelete').on('click', function(e) {
+            e.preventDefault(); // prevent form submit
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
+              title: 'Menghapus Data',
+              text: "Jika anda menghapus data, maka semua data tersebut akan dihapus",
+              type: 'warning',
+              buttons: true,
+              dangerMode: true,
+            }).then((result) => {
+              if (result) {
+                window.location.href = urlToRedirect;
+              }
+            })
+          })
+        </script>
         </body>
 
         </html>

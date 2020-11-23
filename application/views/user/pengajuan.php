@@ -3,7 +3,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Lowongan Pekerjaan</h3>
+                <h3>Pengajuan Lamaran</h3>
             </div>
 
             <div class="title_right">
@@ -36,25 +36,37 @@
                                             <th width="5%">No</th>
                                             <th>Perusahaan</th>
                                             <th>Posisi yang dibutuhkan</th>
-                                            <th>Persyaratan</th>
-                                            <th>Poster</th>
-                                            <th width="20%">Pengajuan</th>
+                                            <th>Status</th>
+                                            <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($loker as $row) {
+                                        foreach ($pengajuan as $row) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->nama_perusahaan ?></td>
-                                                <!-- <td><?php echo $row->judul ?></td> -->
                                                 <td><?php echo $row->posisi ?></td>
-                                                <td><?php echo $row->syarat ?></td>
-                                                <td><img src="<?php echo site_url('/assets/upload/poster/') . $row->poster ?>" alt="" class="thumbnail"></td>
                                                 <td>
-                                                    <a href="<?php echo site_url('user/ajukan/' . $row->id_loker) ?>" class="btn btn-warning beforeAjukan"><i class="fa fa-edit"></i>Ajukan Lamaran</a>
+                                                    <center>
+                                                        <?php if (($row->status == "Ditolak") || ($row->status == "Pelamar Menolak")) { ?>
+                                                            <span class="badge badge-danger"><?php echo $row->status ?></span>
+                                                        <?php } else { ?>
+                                                            <span class="badge badge-info"><?php echo $row->status ?></span>
+                                                        <?php } ?>
+                                                    </center>
+                                                </td>
+                                                <td>
+                                                    <center>
+                                                        <?php if (($row->status == "Diterima")) { ?>
+                                                            <a class="btn btn-success btn-sm beforeTerima" href="<?php echo site_url('user/terima_lamaran/' . $row->id_lamaran) ?>"><i class="fa fa-check"></i> Terima</a> |
+                                                            <a class="btn btn-danger btn-sm beforeTolak" href="<?php echo site_url('user/tolak_lamaran/' . $row->id_lamaran) ?>"><i class="fa fa-times"></i> Tolak</a>
+                                                        <?php } else { ?>
+                                                            <span class="badge badge-info">Nothing Action</span>
+                                                        <?php } ?>
+                                                    </center>
                                                 </td>
                                             </tr>
                                         <?php

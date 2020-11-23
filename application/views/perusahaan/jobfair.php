@@ -131,7 +131,7 @@
                                                             if (!empty($mengikuti)) {
                                                                 foreach ($mengikuti as $r) {
                                                                     if ($row->id_event == $r->id_event) { ?>
-                                                                        <a class="btn btn-danger btn-sm disabled" href="<?php echo site_url('perusahaan/tidakMengikuti/' . $r->id) ?>">Sudah Mengikuti</a>
+                                                                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#videoModal<?php echo $r->id ?>" ?>Masukkan Video</a>
                                                                 <?php
                                                                     }
                                                                 }
@@ -175,7 +175,7 @@
                                                     <th width="5%">No</th>
                                                     <th>Jabatan/Posisi</th>
                                                     <th>Status Loker</th>
-                                                    <th width="25%">Edit</th>
+                                                    <th width="28%">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -188,8 +188,9 @@
                                                         <td><?php echo $row->posisi ?></td>
                                                         <td><?php echo $row->status ?></td>
                                                         <td>
-                                                            <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> |
-                                                            <a class="btn btn-danger" href="<?php echo site_url('admin/deleteVacancy/' . $row->id_loker) ?>"><i class="fa fa-trash"></i></a>
+                                                            <a class="btn btn-info btn-sm" href="<?php echo site_url('perusahaan/pelamar/' . $row->id_loker) ?>"><i class="fa fa-users"></i> Pelamar</a> |
+                                                            <a class="btn btn-warning btn-sm" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i> Edit</a> |
+                                                            <a class="btn btn-danger btn-sm beforeDelete" href="<?php echo site_url('perusahaan/deleteJob/' . $row->id_loker) ?>"><i class="fa fa-trash"></i> Hapus</a>
                                                         </td>
                                                     </tr>
                                                 <?php
@@ -205,8 +206,9 @@
                     </div>
                 </div>
             </div>
+        <?php } ?>
     </div>
-<?php } ?>
+</div>
 <!-- /page content -->
 <div id="tambahModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -321,12 +323,12 @@ foreach ($loker as $row) {
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 <?php } ?>
 <!-- /page content -->
 <?php
@@ -364,5 +366,36 @@ foreach ($event as $row) {
             </div>
         </div>
     </div>
-
+<?php } ?>
+<?php foreach ($mengikuti as $r) { ?>
+    <div id="videoModal<?php echo $r->id ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Masukkan Link Youtube Video</h3>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="<?php echo site_url('perusahaan/linkVideo/') . $r->id ?>" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <div class="col col-lg-12">
+                                    <div class="form-group">
+                                        <label>Masukkan Link Video</label>
+                                        <p><small style="color:red">*upload video pengenalan ke youtube, masukkan alamat link video youtube dibawah</small></p>
+                                        <input type="text" class="form-control" value="<?php echo $r->link ?>" name="link">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Update</button>
+                                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php } ?>

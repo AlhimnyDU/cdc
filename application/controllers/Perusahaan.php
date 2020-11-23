@@ -226,6 +226,57 @@ class Perusahaan extends CI_Controller
         }
     }
 
+    public function pelamar($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('perusahaan')) {
+                $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
+                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,tbl_akun.nama')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
+                $this->load->view('perusahaan/templates/header', $head);
+                $this->load->view('perusahaan/pelamar', $data);
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function deleteJob($id)
+    {
+        $query = $this->db->where('id_loker', $id)->delete('tbl_loker');
+        if ($query) {
+            $this->session->set_flashdata('delete_data', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function data_pelamar($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('perusahaan')) {
+                $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
+                $data['akun'] = $this->db->where('id_akun', $id)->get('tbl_akun')->row();
+                $data['pendidikan'] = $this->db->where('id_akun', $id)->get('tbl_pendidikan')->result();
+                $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
+                $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
+                $data['sertifikat'] = $this->db->where('id_akun', $id)->get('tbl_sertifikat')->result();
+                $this->load->view('perusahaan/templates/header', $head);
+                $this->load->view('perusahaan/data_pelamar', $data);
+                $this->load->view('perusahaan/templates/js');
+                $this->load->view('perusahaan/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function mengikuti($id)
     {
         $data = array(
@@ -309,5 +360,65 @@ class Perusahaan extends CI_Controller
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('perusahaan/setting');
+    }
+
+    public function linkVideo($id)
+    {
+        $data = array(
+            'link' => $this->input->post('link'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id', $id)->update('event_perusahaan', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('perusahaan/jobfair');
+    }
+
+    public function verifikasi($id_loker, $id_lamaran)
+    {
+        $data = array(
+            'status' => "Telah Diverifikasi",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('perusahaan/pelamar/' . $id_loker);
+    }
+
+    public function terima_lamaran($id_loker, $id_lamaran)
+    {
+        $data = array(
+            'status' => "Diterima",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('perusahaan/pelamar/' . $id_loker);
+    }
+
+    public function tolak_lamaran($id_loker, $id_lamaran)
+    {
+        $data = array(
+            'status' => "Ditolak",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('perusahaan/pelamar/' . $id_loker);
     }
 }

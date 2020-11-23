@@ -77,9 +77,11 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
-	public function adv_company()
+	public function adv_company($id)
 	{
-		$this->load->view('halaman/adv_company');
+		$data['id_perusahaan'] = $id;
+		$data['video'] = $this->db->where('id_peserta', $id)->where('id_event', 1)->where('role', 'perusahaan')->get('event_perusahaan')->row();
+		$this->load->view('halaman/adv_company', $data);
 	}
 
 	public function loker()
@@ -154,6 +156,7 @@ class Halaman extends CI_Controller
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$data['participate'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('role', 'perusahaan')->order_by('updated', 'DESC')->get('event_perusahaan')->result();
+		$data['schedule'] = $this->db->order_by('jadwal_meeting', 'ASC')->get('tbl_schedule')->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/jobfair', $data);
 	}

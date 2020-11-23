@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -76,12 +76,12 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'cdc_db',
-	'username' => 'cdcitenas_user',
-	'password' => 'cdc_1t3n4$',
-	'database' => 'cdcitenas_new',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'cdc_db',
+	// 'username' => 'cdcitenas_user',
+	// 'password' => 'cdc_1t3n4$',
+	// 'database' => 'cdcitenas_new',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
