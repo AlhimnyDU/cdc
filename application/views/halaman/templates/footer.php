@@ -192,6 +192,9 @@
         <script>
           $(document).ready(function() {
             $('.datatable').DataTable();
+            $(".buttonSubmit").click(function() {
+              $(".overlay").removeAttr('required');
+            });
           });
         </script>
         <script>
@@ -228,6 +231,11 @@
             });
           </script>
         <?php } ?>
+        <div class="overlay" hidden>
+          <div class="overlay__inner">
+            <div class="overlay__content"><span class="spinner"></span></div>
+          </div>
+        </div>
         </body>
 
         </html>
