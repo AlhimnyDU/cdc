@@ -50,7 +50,7 @@
                                     <small style="color:red;">*Login required for user only</small>
                                 <?php } ?>
                             <?php } else { ?>
-                                <a class="btn btn-danger disabled" href="#">Batas Waktu</a>
+                                <a class="btn btn-danger disabled" href="#">Telah Melewati Batas Waktu</a>
                             <?php } ?>
                         </center>
                     </div>
