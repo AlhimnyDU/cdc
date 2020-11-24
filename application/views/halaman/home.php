@@ -63,7 +63,7 @@
             <div class="row" data-aos="fade-up">
               <div class="col-xl-8 stretch-card grid-margin">
                 <div class="position-relative">
-                  <img src="<?php echo base_url('assets/upload/post/' . $main_artikel->gambar) ?>" alt="banner" class="img-fluid" />
+                  <a href="<?php echo base_url('login#signup') ?>"><img src="<?php echo base_url('assets/upload/post/' . $main_artikel->gambar) ?>" alt="banner" class="img-fluid" /></a>
                   <div class="banner-content">
                     <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                       New Post
@@ -90,7 +90,7 @@
                             <h5><?php echo $row->judul ?></h5>
                           </a>
                           <div class="fs-12">
-                            <span class="mr-2">Post Date : </span><?php echo date("d M Y", strtotime($row->created)) ?>
+                            <span class="mr-2">Post Date : </span><?php echo date("d M Y", strtotime($row->updated)) ?>
                           </div>
                         </div>
                         <div class="rotate-img">
