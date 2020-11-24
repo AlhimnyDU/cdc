@@ -102,7 +102,7 @@
                     <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
                       <div class="div-w-80 mr-3">
                         <div class="rotate-img">
-                          <img style="width: auto; height:100px;" src="<?php echo site_url("assets/upload/logo/" . $row->logo_perusahaan) ?>" alt="thumb" class="img-fluid" />
+                          <img style="width: auto; height:500px;" src="<?php echo site_url("assets/upload/logo/" . $row->logo_perusahaan) ?>" alt="thumb" class="img-fluid" />
                         </div>
                       </div>
                       <a href="<?php echo site_url("halaman/adv_company/" . $row->id_perusahaan . "/") ?>" style="color:#000000;">
