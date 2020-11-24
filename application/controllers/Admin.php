@@ -772,12 +772,12 @@ class Admin extends CI_Controller
                     'updated' => date('Y-m-d H:i:s')
                 );
                 $insert_perusahaan = $this->db->insert('tbl_perusahaan', $perusahaan);
+                $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
                 if ($insert_perusahaan) {
                     $config['upload_path'] = './assets/upload/poster/';
                     $config['allowed_types'] = 'jpg|png';
                     $this->upload->initialize($config);
                     $insert_logo = $this->upload->do_upload('poster');
-                    $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
                     $poster = $this->upload->data('file_name');
                     $data = array(
                         'posisi'     => $this->input->post('posisi'),
@@ -991,7 +991,7 @@ class Admin extends CI_Controller
             $config['upload_path'] = './assets/upload/poster/';
             $config['allowed_types'] = 'jpg';
             $this->upload->initialize($config);
-            $insert_logo = $this->upload->do_upload('poster');
+            $this->upload->do_upload('poster');
             $poster = $this->upload->data('file_name');
             $data = array(
                 'posisi'     => $this->input->post('posisi'),
