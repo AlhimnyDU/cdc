@@ -126,7 +126,7 @@ class Halaman extends CI_Controller
 	public function jobfair()
 	{
 		//konfigurasi pagination
-		$config['base_url'] = site_url('halaman/loker'); //site url
+		$config['base_url'] = site_url('halaman/jobfair'); //site url
 		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'jobfair')->from('tbl_loker')->count_all_results(); //total row
 		$config['per_page'] = 5;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
@@ -155,7 +155,7 @@ class Halaman extends CI_Controller
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
-		$data['participate'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('role', 'perusahaan')->order_by('updated', 'DESC')->get('event_perusahaan')->result();
+		$data['participate'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('role', 'perusahaan')->order_by('created', 'ASC')->get('event_perusahaan')->result();
 		$data['schedule'] = $this->db->order_by('jadwal_meeting', 'ASC')->get('tbl_schedule')->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/jobfair', $data);
