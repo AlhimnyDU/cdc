@@ -772,7 +772,7 @@ class Admin extends CI_Controller
                     'updated' => date('Y-m-d H:i:s')
                 );
                 $insert_perusahaan = $this->db->insert('tbl_perusahaan', $perusahaan);
-                $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row_array();
+                $id = $this->db->where('created', date('Y-m-d H:i:s'))->get('tbl_perusahaan')->row();
                 echo date('Y-m-d H:i:s');
                 if ($insert_perusahaan) {
                     $config['upload_path'] = './assets/upload/poster/';
@@ -791,7 +791,7 @@ class Admin extends CI_Controller
                         'prodi'     => $this->input->post('prodi'),
                         'poster'   => $poster,
                         'jenis'   => "vacancy",
-                        'id_perusahaan' => $id['id_perusahaan'],
+                        'id_perusahaan' => $id->id_perusahaan,
                         'created' => date('Y-m-d H:i:s'),
                         'updated' => date('Y-m-d H:i:s')
                     );
