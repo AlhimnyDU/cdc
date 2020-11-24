@@ -87,7 +87,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('perusahaan/addJobfair') ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url('perusahaan/addVacancy') ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
@@ -164,7 +164,7 @@ foreach ($loker as $row) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('perusahaan/editJobfair/') . $row->id_loker ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('perusahaan/editVacancy/') . $row->id_loker ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">

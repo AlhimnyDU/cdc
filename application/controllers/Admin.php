@@ -774,36 +774,36 @@ class Admin extends CI_Controller
                 $insert_perusahaan = $this->db->insert('tbl_perusahaan', $perusahaan);
                 $id = $this->db->where('created', $perusahaan['created'])->get('tbl_perusahaan')->row();
                 // echo date('Y-m-d H:i:s');
-                // if ($insert_perusahaan) {
-                //     $config['upload_path'] = './assets/upload/poster/';
-                //     $config['allowed_types'] = 'jpg|png';
-                //     $this->upload->initialize($config);
-                //     $insert_logo = $this->upload->do_upload('poster');
-                //     $poster = $this->upload->data('file_name');
-                //     $data = array(
-                //         'posisi'     => $this->input->post('posisi'),
-                //         'deadline' => $this->input->post('deadline'),
-                //         'lokasi'     => $this->input->post('lokasi'),
-                //         'syarat'     => $this->input->post('syarat'),
-                //         'deskripsi'     => $this->input->post('deskripsi'),
-                //         'informasi'     => $this->input->post('informasi'),
-                //         'status'     => 'Menunggu Konfirmasi',
-                //         'prodi'     => $this->input->post('prodi'),
-                //         'poster'   => $poster,
-                //         'jenis'   => "vacancy",
-                //         'id_perusahaan' => $id->id_perusahaan,
-                //         'created' => date('Y-m-d H:i:s'),
-                //         'updated' => date('Y-m-d H:i:s')
-                //     );
-                //     $query = $this->db->insert('tbl_loker', $data);
-                //     if ($query) {
-                //         $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
-                //     } else {
-                //         $this->session->set_flashdata('failed', "Tambah Gagal");
-                //     }
-                // } else {
-                //     $this->session->set_flashdata('failed', "Tambah Gagal");
-                // }
+                if ($insert_perusahaan) {
+                    $config['upload_path'] = './assets/upload/poster/';
+                    $config['allowed_types'] = 'jpg|png';
+                    $this->upload->initialize($config);
+                    $insert_logo = $this->upload->do_upload('poster');
+                    $poster = $this->upload->data('file_name');
+                    $data = array(
+                        'posisi'     => $this->input->post('posisi'),
+                        'deadline' => $this->input->post('deadline'),
+                        'lokasi'     => $this->input->post('lokasi'),
+                        'syarat'     => $this->input->post('syarat'),
+                        'deskripsi'     => $this->input->post('deskripsi'),
+                        'informasi'     => $this->input->post('informasi'),
+                        'status'     => 'Menunggu Konfirmasi',
+                        'prodi'     => $this->input->post('prodi'),
+                        'poster'   => $poster,
+                        'jenis'   => "vacancy",
+                        'id_perusahaan' => $id->id_perusahaan,
+                        'created' => date('Y-m-d H:i:s'),
+                        'updated' => date('Y-m-d H:i:s')
+                    );
+                    $query = $this->db->insert('tbl_loker', $data);
+                    if ($query) {
+                        $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+                    } else {
+                        $this->session->set_flashdata('failed', "Tambah Gagal");
+                    }
+                } else {
+                    $this->session->set_flashdata('failed', "Tambah Gagal");
+                }
             } else {
                 $this->session->set_flashdata('failed', "Tambah Gagal");
             }
