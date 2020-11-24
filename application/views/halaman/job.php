@@ -38,7 +38,7 @@
                         <?php } ?>
                         <hr>
                         <center>
-                            <?php if (strtotime($job->deadline) <= strtotime('now')) { ?>
+                            <?php if (strtotime('now') <= strtotime($job->deadline)) { ?>
                                 <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && ($this->session->userdata('mengikuti'))) { ?>
                                     <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
                                 <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && (empty($this->session->userdata('mengikuti')))) { ?>
