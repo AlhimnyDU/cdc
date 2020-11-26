@@ -54,7 +54,22 @@
                                                 <td><?php echo $row->syarat ?></td>
                                                 <td><img src="<?php echo site_url('/assets/upload/poster/') . $row->poster ?>" alt="" class="thumbnail"></td>
                                                 <td>
-                                                    <a href="<?php echo site_url('user/ajukan/' . $row->id_loker) ?>" class="btn btn-warning beforeAjukan"><i class="fa fa-edit"></i>Ajukan Lamaran</a>
+                                                    <?php
+                                                    $today = date("Y-m-d");
+                                                    if ($today <= $row->deadline) { ?>
+                                                        <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'jobfair') && ($this->session->userdata('mengikuti'))) { ?>
+                                                            <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $row->id_loker) ?>">Apply job here</a>
+                                                        <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'jobfair') && (empty($this->session->userdata('mengikuti')))) { ?>
+                                                            <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
+                                                        <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'vacancy')) { ?>
+                                                            <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $row->id_loker) ?>">Apply job here</a>
+                                                        <?php } else { ?>
+                                                            <a class="btn btn-info disabled" href="#">Apply job here</a> | <a class="btn btn-info" href="<?php echo site_url("login") ?>">Login</a> <br>
+                                                            <small style="color:red;">*Login required for user only</small>
+                                                        <?php } ?>
+                                                    <?php } else { ?>
+                                                        <a class="btn btn-danger disabled" href="#">Telah Melewati Batas Waktu</a>
+                                                    <?php } ?>
                                                 </td>
                                             </tr>
                                         <?php

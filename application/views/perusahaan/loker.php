@@ -142,7 +142,7 @@ foreach ($loker as $row) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('perusahaan/editLoker') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('perusahaan/editLoker/' . $row->id_loker) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -178,7 +178,7 @@ foreach ($loker as $row) {
                                     <input type="text" class="form-control" name="prodi">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Tambah</button>
+                                    <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Update</button>
                                     <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>

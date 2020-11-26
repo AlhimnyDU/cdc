@@ -35,6 +35,7 @@ class User extends CI_Controller
             if ($this->session->userdata('user')) {
                 $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
+                $data['berkas'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->result();
                 $data['pendidikan'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_pendidikan')->result();
                 $data['organisasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_prestasi')->result();
@@ -72,7 +73,7 @@ class User extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->get()->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/loker', $data);
                 $this->load->view('user/templates/js');
@@ -139,6 +140,7 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
+                $data['berkas'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->result();
                 $data['pendidikan'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_pendidikan')->result();
                 $data['organisasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_prestasi')->result();
@@ -198,7 +200,7 @@ class User extends CI_Controller
 
         $query = $this->db->where('id_akun', $this->session->userdata('id_akun'))->update('tbl_akun', $data);
         if ($query) {
-            $this->session->set_flashdata('insert_peserta', "Tambah Berhasil");
+            $this->session->set_flashdata('insert_data', "Tambah Berhasil");
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
@@ -207,7 +209,7 @@ class User extends CI_Controller
 
     public function upload_pasfoto()
     {
-        $nama_file = str_replace(" ", "_", $this->session->userdata('nama'));
+        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . "PASFOTO");
         $config['upload_path'] = './assets/upload/pas_foto/';
         $config['file_name'] = $nama_file;
         $config['allowed_types'] = 'jpg|png|pdf';
@@ -348,7 +350,9 @@ class User extends CI_Controller
 
     public function upload_prestasi()
     {
+        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . "PRESTASI");
         $config['upload_path'] = './assets/upload/prestasi/';
+        $config['file_name'] = $nama_file;
         $config['allowed_types'] = 'jpeg|jpg|png|pdf';
         $this->upload->initialize($config);
         $upload = $this->upload->do_upload('file');
@@ -391,7 +395,9 @@ class User extends CI_Controller
 
     public function upload_sertifikat()
     {
+        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . "SERTIFIKAT");
         $config['upload_path'] = './assets/upload/sertifikat/';
+        $config['file_name'] = $nama_file;
         $config['allowed_types'] = 'jpeg|jpg|png|pdf';
         $this->upload->initialize($config);
         $upload = $this->upload->do_upload('file');
@@ -401,6 +407,74 @@ class User extends CI_Controller
         }
     }
 
+    public function addBerkas()
+    {
+        $this->upload_berkas();
+        $data = array(
+            'nama_berkas' => $this->input->post('nama_berkas'),
+            'file' => $this->upload->data('file_name'),
+            'id_akun' => $this->session->userdata('id_akun'),
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_berkas', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('user/cv');
+    }
+
+    public function updateBerkas($id)
+    {
+
+        if ($_FILES["berkas"]["name"]) {
+            $this->upload_berkas();
+            $data = array(
+                'file' => $this->upload->data('file_name'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('user/cv');
+        }
+        $query = $this->db->where('id_berkas', $id)->update('tbl_berkas', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('user/cv');
+    }
+
+    public function deleteBerkas($id, $file)
+    {
+        unlink('assets/upload/berkas/' . $file);
+        $query = $this->db->where('id_berkas', $id)->delete('tbl_berkas');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('user/cv');
+    }
+
+    public function upload_berkas()
+    {
+        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . $this->input->post('nama_berkas'));
+        $config['upload_path'] = './assets/upload/berkas/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('berkas');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('user/cv');
+        }
+    }
+
+
     public function ajukan($id)
     {
         $check = $this->db->where('id_loker', $id)->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_lamaran')->row();
@@ -408,18 +482,24 @@ class User extends CI_Controller
             $this->session->set_flashdata('sudah_mengajukan', TRUE);
             redirect($_SERVER['HTTP_REFERER']);
         } else {
-            $data = array(
-                'id_loker' => $id,
-                'id_akun' => $this->session->userdata('id_akun'),
-                'status' => "Menunggu Verifikasi",
-                'created' => date('Y-m-d H:i:s'),
-                'updated' => date('Y-m-d H:i:s')
-            );
-            $query = $this->db->insert('tbl_lamaran', $data);
-            if ($query) {
-                $this->session->set_flashdata('insert_data', TRUE);
+            $validasi = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            if (empty($validasi)) {
+                $this->session->set_flashdata('lengkapi_persyaratan', TRUE);
+                redirect($_SERVER['HTTP_REFERER']);
             } else {
-                $this->session->set_flashdata('failed', TRUE);
+                $data = array(
+                    'id_loker' => $id,
+                    'id_akun' => $this->session->userdata('id_akun'),
+                    'status' => "Menunggu Verifikasi",
+                    'created' => date('Y-m-d H:i:s'),
+                    'updated' => date('Y-m-d H:i:s')
+                );
+                $query = $this->db->insert('tbl_lamaran', $data);
+                if ($query) {
+                    $this->session->set_flashdata('insert_data', TRUE);
+                } else {
+                    $this->session->set_flashdata('failed', TRUE);
+                }
             }
             redirect('user/pengajuan');
         }

@@ -62,7 +62,7 @@
                                                     } ?> value="Pria">Pria</option>
                                             <option <?php if ($akun->jenis_kelamin == "Wanita") {
                                                         echo "selected";
-                                                    } ?>value="Wanita">Wanita</option>
+                                                    } ?> value="Wanita">Wanita</option>
                                         </select></div>
                                 </div>
                                 <div class="field item form-group">
@@ -132,8 +132,52 @@
                         </div>
                     </div>
                     <div class="x_content">
+                        <div style="margin-top:20px">
+                            <span class="section">2. Berkas - Berkas</span>
+                            <div class="col-sm-12">
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki seperti Photocopy Ijazah Legalisir, Transkrip Nilai, TOEFL/IELTS, dan Hasil Psikotest</p>
+                                <div class="card-box table-responsive">
+                                    <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
+                                        <a href="#" class="btn btn-info" style="margin-left:15px;" data-toggle="modal" data-target="#tambahBrModal"><i class="fa fa-plus"></i> Tambah Berkas</a>
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Nama Berkas</th>
+                                                <th width="15%">File Berkas</th>
+                                                <th width="15%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($berkas as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no ?></td>
+                                                    <td><?php echo $row->nama_berkas ?></td>
+                                                    <td>
+                                                        <center><a href="<?php echo base_url('assets/upload/berkas/' . $row->file) ?>" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> Lihat</a></center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editBrModal<?php echo $row->id_berkas ?>"><i class="fa fa-edit"></i> Edit</a>
+                                                            <a href="<?php echo site_url('user/deleteBerkas/' . $row->id_berkas . '/' . $row->file) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                        </center>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x_content">
                         <div style="padding-top:10px">
-                            <span class="section">2. Riwayat Pendidikan</span>
+                            <span class="section">3. Riwayat Pendidikan</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -178,7 +222,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">3. Riwayat Pengalaman Organisasi</span>
+                            <span class="section">4. Riwayat Pengalaman Organisasi</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -222,7 +266,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">4. Riwayat Prestasi</span>
+                            <span class="section">5. Riwayat Prestasi</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan prestasi seperti juara perlombaan, beasiswa, dan prestasi lainnya sebagai portofolio anda</p>
                                 <div class="card-box table-responsive">
@@ -265,9 +309,9 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">5. Sertifikat Keahlian</span>
+                            <span class="section">6. Sertifikat Keahlian</span>
                             <div class="col-sm-12">
-                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki seperti TOEFL/IELTS, Psikotest ,Sertifikat Pelatihan, dan Sertifikat keahlian sesuai dengan bidang anda sebagai penunjang dari keahlian anda.</p>
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki Sertifikat Pelatihan atau Sertifikat keahlian sesuai dengan bidang anda sebagai penunjang dari keahlian anda.</p>
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
                                         <a href="#" class="btn btn-info" style="margin-left:15px;" data-toggle="modal" data-target="#tambahSrModal"><i class="fa fa-plus"></i> Tambah Sertifikat</a>
@@ -564,7 +608,7 @@
                             <div class="col col-lg-12">
                                 <div class="form-group">
                                     <label>Nama Sertifikat</label>
-                                    <input class="form-control" name="nama_sertifikat" required="required" type="text" placeholder="ex: TOEFL/IELTS, Psikotest, atau Sertifikat kemampuan lainnya">
+                                    <input class="form-control" name="nama_sertifikat" required="required" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label>Upload Sertifikat</label>
@@ -581,4 +625,77 @@
             </div>
         </div>
     </div>
+    <div id="tambahBrModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"> Upload Berkas </h3>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="<?php echo site_url('user/addBerkas/') ?>" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <div class="form-group">
+                                    <label>Pilih Berkas</label>
+                                    <select name="nama_berkas" class="form-control" required>
+                                        <option value="" selected disabled hidden>Pilih..</option>
+                                        <option value="Photocopy Ijazah Legalisir">Photocopy ijazah legalisir</option>
+                                        <option value="Transkrip Nilai">Transkrip Nilai</option>
+                                        <option value="Hasil Psikotest">Hasil Psikotest</option>
+                                        <option value="Hasil TOEFL atau IELTS">Hasil TOEFL atau IELTS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Berkas</label>
+                                    <input type="file" class="dropify" height="50" name="berkas" required="required" data-max-file-size="2M" data-allowed-file-extensions="pdf">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Ok</button>
+                                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    foreach ($berkas as $row) {
+    ?>
+        <div id="editBrModal<?php echo $row->id_berkas ?>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"> Edit Berkas </h3>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="<?php echo site_url('user/updateBerkas/' . $row->id_berkas) ?>" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control" name="nama_berkas" value="<?php echo $row->nama_berkas ?>" readonly type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Berkas</label>
+                                        <input type="file" class="dropify" height="50" name="berkas" required="required" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/berkas/' . $row->file) ?>" data-allowed-file-extensions="pdf">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Ok</button>
+                                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 </div>

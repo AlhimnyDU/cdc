@@ -279,7 +279,7 @@ foreach ($loker as $row) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('perusahaan/editJobfair/') . $row->id_loker ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('perusahaan/editJobfair/' . $row->id_loker)  ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="col col-lg-12">

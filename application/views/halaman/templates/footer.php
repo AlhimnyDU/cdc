@@ -231,6 +231,16 @@
             });
           </script>
         <?php } ?>
+        <?php if ($this->session->flashdata('lengkapi_persyaratan', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Anda belum bisa mengajukan lamaran!",
+              text: "Isi terlebih dahulu berkas minimal photocopy ijazah legalisir dan hasil psikotest di profil anda",
+              icon: "warning",
+              timer: 5000
+            });
+          </script>
+        <?php } ?>
         <div class="overlay" hidden>
           <div class="overlay__inner">
             <div class="overlay__content"><span class="spinner"></span></div>

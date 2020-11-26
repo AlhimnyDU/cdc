@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         <center>
-                            <?php if (empty($row->logo_perusahaan)) { ?>
+                            <?php if (empty($job->logo_perusahaan)) { ?>
                                 <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" width="300px" />
                             <?php } else { ?>
                                 <img width="300px" src="<?php echo site_url("assets/upload/logo/" . $job->logo_perusahaan) ?>" />
@@ -38,7 +38,9 @@
                         <?php } ?>
                         <hr>
                         <center>
-                            <?php if (strtotime('now') <= strtotime($job->deadline)) { ?>
+                            <?php
+                            $today = date("Y-m-d");
+                            if ($today <= $job->deadline) { ?>
                                 <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && ($this->session->userdata('mengikuti'))) { ?>
                                     <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
                                 <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && (empty($this->session->userdata('mengikuti')))) { ?>

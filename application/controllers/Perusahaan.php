@@ -128,7 +128,7 @@ class Perusahaan extends CI_Controller
 
     public function editLoker($id)
     {
-        if ($this->input->post('poster')) {
+        if ($_FILES["poster"]["name"]) {
             $config['upload_path'] = './assets/upload/poster/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $this->upload->initialize($config);
@@ -167,7 +167,7 @@ class Perusahaan extends CI_Controller
 
     public function editJobfair($id)
     {
-        if ($this->input->post('poster')) {
+        if ($_FILES["poster"]["name"]) {
             $config['upload_path'] = './assets/upload/poster/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $this->upload->initialize($config);
@@ -201,7 +201,7 @@ class Perusahaan extends CI_Controller
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
-        redirect('perusahaan/loker');
+        redirect('perusahaan/jobfair');
     }
 
 
@@ -261,6 +261,7 @@ class Perusahaan extends CI_Controller
             if ($this->session->userdata('perusahaan')) {
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['akun'] = $this->db->where('id_akun', $id)->get('tbl_akun')->row();
+                $data['berkas'] = $this->db->where('id_akun', $id)->get('tbl_berkas')->result();
                 $data['pendidikan'] = $this->db->where('id_akun', $id)->get('tbl_pendidikan')->result();
                 $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
