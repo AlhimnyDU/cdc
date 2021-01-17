@@ -79,7 +79,10 @@
               "paging": false,
               "info": false
             });
-            <?php if (empty($mengikuti)) { ?>
+            <?php
+            $daftar = date('Y-m-d', strtotime($akun->created));
+            $batas = date('Y-m-d', strtotime("2020-12-03"));
+            if ((empty($mengikuti)) && ($daftar <=  $batas)) { ?>
               $('#jobModal').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -117,7 +120,7 @@
           <script>
             swal({
               title: "Anda belum bisa mengajukan lamaran!",
-              text: "Isi terlebih dahulu berkas minimal photocopy ijazah legalisir dan hasil psikotest di profil anda",
+              text: "Isi terlebih dahulu berkas minimal photocopy ijazah legalisir, transkrip nilai, dan hasil psikotest di profil anda",
               icon: "warning",
               timer: 5000
             });

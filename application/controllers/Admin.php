@@ -366,6 +366,7 @@ class Admin extends CI_Controller
                 $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
                 $data['sertifikat'] = $this->db->where('id_akun', $id)->get('tbl_sertifikat')->result();
+                $data['berkas'] = $this->db->where('id_akun', $id)->get('tbl_berkas')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/data_pelamar', $data);
                 $this->load->view('admin/templates/js');
@@ -943,6 +944,30 @@ class Admin extends CI_Controller
         redirect('admin/loker');
     }
 
+    public function cv($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['akun'] = $this->db->where('id_akun', $id)->get('tbl_akun')->row();
+                $data['berkas'] = $this->db->where('id_akun', $id)->get('tbl_berkas')->result();
+                $data['pendidikan'] = $this->db->where('id_akun', $id)->get('tbl_pendidikan')->result();
+                $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
+                $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
+                $data['sertifikat'] = $this->db->where('id_akun', $id)->get('tbl_sertifikat')->result();
+                $data['kerja'] = $this->db->where('id_akun', $id)->get('tbl_kerja')->result();
+                // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/cv', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function jobfair()
     {
         if ($this->session->userdata('nama')) {
@@ -1150,5 +1175,350 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('admin/post');
+    }
+
+    public function identitasDiri($id)
+    {
+
+        if ($_FILES["pas_foto"]["name"]) {
+            $this->upload_pasfoto();
+            $data = array(
+                'nama' => $this->input->post('nama'),
+                'agama' => $this->input->post('agama'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'tempat_lahir' => $this->input->post('tempat_lahir'),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+                'telp' => $this->input->post('telp'),
+                'alamat' => $this->input->post('alamat'),
+                'desa_kelurahan' => $this->input->post('desa_kelurahan'),
+                'kecamatan' => $this->input->post('kecamatan'),
+                'kota_kabupaten' => $this->input->post('kota_kabupaten'),
+                'provinsi' => $this->input->post('provinsi'),
+                'kode_pos' => $this->input->post('kode_pos'),
+                'pas_foto' => $this->upload->data('file_name'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+        } else {
+            $data = array(
+                'nama' => $this->input->post('nama'),
+                'agama' => $this->input->post('agama'),
+                'email' => $this->input->post('email'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'tempat_lahir' => $this->input->post('tempat_lahir'),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+                'telp' => $this->input->post('telp'),
+                'alamat' => $this->input->post('alamat'),
+                'desa_kelurahan' => $this->input->post('desa_kelurahan'),
+                'kecamatan' => $this->input->post('kecamatan'),
+                'kota_kabupaten' => $this->input->post('kota_kabupaten'),
+                'provinsi' => $this->input->post('provinsi'),
+                'kode_pos' => $this->input->post('kode_pos'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+        }
+
+        $query = $this->db->where('id_akun', $id)->update('tbl_akun', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function upload_pasfoto()
+    {
+        $nama_file = str_replace(" ", "_", "EDITEDADMIN_" . "PASFOTO");
+        $config['upload_path'] = './assets/upload/pas_foto/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'jpg|png|pdf';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('pas_foto');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv');
+        }
+    }
+
+    public function addPendidikan($id)
+    {
+        $data = array(
+            'jenjang_pendidikan' => $this->input->post('jenjang_pendidikan'),
+            'tempat_pendidikan' => $this->input->post('tempat_pendidikan'),
+            'jurusan' => $this->input->post('jurusan'),
+            'tahun_lulus' => $this->input->post('tahun_lulus'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_pendidikan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function addKerja($id)
+    {
+        $data = array(
+            'riwayat_kerja' => $this->input->post('riwayat_kerja'),
+            'tahun' => $this->input->post('tahun'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_kerja', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/' . $id);
+    }
+
+    public function deleteKerja($id, $akun)
+    {
+        $query = $this->db->where('id_kerja', $id)->delete('tbl_kerja');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function updatePendidikan($id, $akun)
+    {
+        $data = array(
+            'jenjang_pendidikan' => $this->input->post('jenjang_pendidikan'),
+            'tempat_pendidikan' => $this->input->post('tempat_pendidikan'),
+            'jurusan' => $this->input->post('jurusan'),
+            'tahun_lulus' => $this->input->post('tahun_lulus'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_pendidikan', $id)->update('tbl_pendidikan', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function deletePendidikan($id, $akun)
+    {
+        $query = $this->db->where('id_pendidikan', $id)->delete('tbl_pendidikan');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function addOrganisasi($id)
+    {
+        $data = array(
+            'nama_organisasi' => $this->input->post('nama_organisasi'),
+            'jabatan' => $this->input->post('jabatan'),
+            'tahun_aktif' => $this->input->post('tahun_aktif'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_organisasi', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function updateOrganisasi($id, $akun)
+    {
+        $data = array(
+            'nama_organisasi' => $this->input->post('nama_organisasi'),
+            'jabatan' => $this->input->post('jabatan'),
+            'tahun_aktif' => $this->input->post('tahun_aktif'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_organisasi', $id)->update('tbl_organisasi', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function deleteOrganisasi($id, $akun)
+    {
+        $query = $this->db->where('id_organisasi', $id)->delete('tbl_organisasi');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function addPrestasi($id)
+    {
+        $this->upload_prestasi();
+        $data = array(
+            'nama_prestasi' => $this->input->post('nama_prestasi'),
+            'file' => $this->upload->data('file_name'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_prestasi', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function deletePrestasi($id, $file, $akun)
+    {
+        unlink('assets/upload/prestasi/' . $file);
+        $query = $this->db->where('id_prestasi', $id)->delete('tbl_prestasi');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function upload_prestasi()
+    {
+        $nama_file = str_replace(" ", "_", $this->session->admindata('nama') . "_" . "PRESTASI");
+        $config['upload_path'] = './assets/upload/prestasi/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'jpeg|jpg|png|pdf';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('file');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv');
+        }
+    }
+
+    public function addSertifikat($id)
+    {
+        $this->upload_sertifikat();
+        $data = array(
+            'nama_sertifikat' => $this->input->post('nama_sertifikat'),
+            'file' => $this->upload->data('file_name'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_sertifikat', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function deleteSertifikat($id, $file, $akun)
+    {
+        unlink('assets/upload/sertifikat/' . $file);
+        $query = $this->db->where('id_sertifikat', $id)->delete('tbl_sertifikat');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function upload_sertifikat()
+    {
+        $nama_file = str_replace(" ", "_", $this->session->admindata('nama') . "_" . "SERTIFIKAT");
+        $config['upload_path'] = './assets/upload/sertifikat/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'jpeg|jpg|png|pdf';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('file');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv');
+        }
+    }
+
+    public function addBerkas($id)
+    {
+        $this->upload_berkas();
+        $data = array(
+            'nama_berkas' => $this->input->post('nama_berkas'),
+            'file' => $this->upload->data('file_name'),
+            'id_akun' => $id,
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_berkas', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $id);
+    }
+
+    public function updateBerkas($id, $akun)
+    {
+
+        if ($_FILES["berkas"]["name"]) {
+            $this->upload_berkas();
+            $data = array(
+                'file' => $this->upload->data('file_name'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv/' . $akun);
+        }
+        $query = $this->db->where('id_berkas', $id)->update('tbl_berkas', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function deleteBerkas($id, $file, $akun)
+    {
+        unlink('assets/upload/berkas/' . $file);
+        $query = $this->db->where('id_berkas', $id)->delete('tbl_berkas');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('admin/cv/' . $akun);
+    }
+
+    public function upload_berkas()
+    {
+        $nama_file = str_replace(" ", "_", "editedADMIN_" . $this->input->post('nama_berkas'));
+        $config['upload_path'] = './assets/upload/berkas/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('berkas');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv');
+        }
     }
 }

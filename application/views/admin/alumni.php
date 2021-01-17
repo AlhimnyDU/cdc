@@ -54,7 +54,7 @@
                                             <td><?php echo $row->telp ?></td>
                                             <td><?php echo $row->alamat ?></td>
                                             <td> <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_akun ?>"><i class="fa fa-edit"></i></a> | 
-                                                <a class="btn btn-danger" href="<?php echo site_url('Admin/hapusAlumni/').$row->id_akun ?>"><i class="fa fa-trash"></i></a></td>
+                                                <a class="btn btn-danger beforeDelete" href="<?php echo site_url('Admin/hapusAlumni/').$row->id_akun ?>"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                         <?php    
                                            $no++; 

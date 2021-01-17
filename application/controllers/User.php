@@ -40,10 +40,11 @@ class User extends CI_Controller
                 $data['organisasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_prestasi')->result();
                 $data['sertifikat'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_sertifikat')->result();
+                $data['kerja'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_kerja')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/home', $data);
                 $this->load->view('user/templates/js');
-                $this->load->view('user/templates/footer');
+                $this->load->view('user/templates/footer', $data);
             } else {
                 redirect('welcome');
             }
@@ -56,11 +57,12 @@ class User extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
+                $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
                 $data['pengajuan'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_lamaran')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/pengajuan', $data);
                 $this->load->view('user/templates/js');
-                $this->load->view('user/templates/footer');
+                $this->load->view('user/templates/footer', $data);
             } else {
                 redirect('welcome');
             }
@@ -73,11 +75,12 @@ class User extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->get()->result();
+                $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'vacancy')->get()->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/loker', $data);
                 $this->load->view('user/templates/js');
-                $this->load->view('user/templates/footer');
+                $this->load->view('user/templates/footer', $data);
             } else {
                 redirect('welcome');
             }
@@ -92,11 +95,14 @@ class User extends CI_Controller
             if ($this->session->userdata('user')) {
                 $data['event'] = $this->db->get('tbl_event')->result();
                 $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->result();
+                $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'jobfair')->get()->result();
+                $data['jobfair'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/jobfair', $data);
                 $this->load->view('user/templates/js');
-                $this->load->view('user/templates/footer');
+                $this->load->view('user/templates/footer', $data);
             } else {
                 redirect('welcome');
             }
@@ -145,6 +151,7 @@ class User extends CI_Controller
                 $data['organisasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_prestasi')->result();
                 $data['sertifikat'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_sertifikat')->result();
+                $data['kerja'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_kerja')->result();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/cv', $data);
@@ -235,6 +242,35 @@ class User extends CI_Controller
         $query = $this->db->insert('tbl_pendidikan', $data);
         if ($query) {
             $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('user/cv');
+    }
+
+    public function addKerja()
+    {
+        $data = array(
+            'riwayat_kerja' => $this->input->post('riwayat_kerja'),
+            'tahun' => $this->input->post('tahun'),
+            'id_akun' => $this->session->userdata('id_akun'),
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_kerja', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect('user/cv');
+    }
+
+    public function deleteKerja($id)
+    {
+        $query = $this->db->where('id_kerja', $id)->delete('tbl_kerja');
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
         } else {
             $this->session->set_flashdata('failed', TRUE);
         }
@@ -482,8 +518,10 @@ class User extends CI_Controller
             $this->session->set_flashdata('sudah_mengajukan', TRUE);
             redirect($_SERVER['HTTP_REFERER']);
         } else {
-            $validasi = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
-            if (empty($validasi)) {
+            $ijazah = $this->db->where('nama_berkas', "Photocopy ijazah legalisir")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            $transkrip = $this->db->where('nama_berkas', "Transkrip Nilai")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            $psikotest = $this->db->where('nama_berkas', "Hasil Psikotest")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            if (empty($ijazah) || empty($transkrip) || empty($psikotest)) {
                 $this->session->set_flashdata('lengkapi_persyaratan', TRUE);
                 redirect($_SERVER['HTTP_REFERER']);
             } else {

@@ -75,6 +75,12 @@
         <script>
           $(document).ready(function() {
             $('.datatable').DataTable();
+            $('.datatable2').DataTable({
+              "lengthChange": false,
+              "searching": false,
+              "paging": false,
+              "info": false
+            });
           });
         </script>
         <script>
@@ -129,23 +135,40 @@
             });
           </script>
         <?php } ?>
+        <?php if ($this->session->flashdata('insert_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Insert Success!",
+              text: "Data anda telah berhasil masuk!",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
+        <?php if ($this->session->flashdata('update_data', TRUE)) { ?>
+          <script>
+            swal({
+              title: "Update Success!",
+              text: "Data anda telah berhasil update!",
+              icon: "success",
+              timer: 2000
+            });
+          </script>
+        <?php } ?>
         <script type="text/javascript">
           $('.beforeDelete').on('click', function(e) {
             e.preventDefault(); // prevent form submit
-            const href = $(this).attr('href');
-            Swal.fire({
+            var urlToRedirect = e.currentTarget.getAttribute('href');
+            swal({
               title: 'Apakah anda yakin ?',
-              text: "Data akan terhapus secara permanen",
+              text: "Data Akan dihapus",
               icon: 'warning',
               type: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#dc3545',
-              cancelButtonColor: '#007bff',
-              confirmButtonText: 'Ya, Hapus !',
-              cancelButtonText: 'Batal'
-            }).then((result) => {
-              if (result.value == true) {
-                document.location.href = href;
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                window.location.href = urlToRedirect;
               }
             })
           })

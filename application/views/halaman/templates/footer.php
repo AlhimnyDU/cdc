@@ -198,7 +198,7 @@
           });
         </script>
         <script>
-          var tm = new Date("2020/12/01");
+          var tm = new Date("2020/12/02");
           var flipdown = new FlipDown(tm.getTime() / 1000, "pendaftaran", {
             theme: "dark",
           }).start();

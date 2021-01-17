@@ -16,7 +16,7 @@
                     </div>
                     <div class="x_content">
                         <div>
-                            <form action="<?php echo site_url('user/identitasDiri') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/identitasDiri/' . $akun->id_akun) ?>" method="post" enctype="multipart/form-data">
                                 <span class="section">1. Identitas Diri</span>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Lengkap<span class="required">*</span></label>
@@ -161,7 +161,7 @@
                                                     <td>
                                                         <center>
                                                             <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editBrModal<?php echo $row->id_berkas ?>"><i class="fa fa-edit"></i> Edit</a>
-                                                            <a href="<?php echo site_url('user/deleteBerkas/' . $row->id_berkas . '/' . $row->file) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deleteBerkas/' . $row->id_berkas . '/' . $row->file . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -206,7 +206,7 @@
                                                     <td>
                                                         <center>
                                                             <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editPdModal<?php echo $row->id_pendidikan ?>"><i class="fa fa-edit"></i> Edit</a>
-                                                            <a href="<?php echo site_url('user/deletePendidikan/' . $row->id_pendidikan) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deletePendidikan/' . $row->id_pendidikan . '/' . $akun->id_akun . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -249,7 +249,7 @@
                                                     <td>
                                                         <center>
                                                             <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editOrModal<?php echo $row->id_organisasi ?>"><i class="fa fa-edit"></i> Edit</a>
-                                                            <a href="<?php echo site_url('user/deleteOrganisasi/' . $row->id_organisasi) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deleteOrganisasi/' . $row->id_organisasi . '/' . $akun->id_akun . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -262,7 +262,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
@@ -293,7 +292,7 @@
                                                     </td>
                                                     <td>
                                                         <center>
-                                                            <a href="<?php echo site_url('user/deletePrestasi/' . $row->id_prestasi . '/' . $row->file) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deletePrestasi/' . $row->id_prestasi . '/' . $row->file . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -336,7 +335,7 @@
                                                     </td>
                                                     <td>
                                                         <center>
-                                                            <a href="<?php echo site_url('user/deleteSertifikat/' . $row->id_sertifikat . '/' . $row->file) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deleteSertifikat/' . $row->id_sertifikat . '/' . $row->file . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -375,11 +374,11 @@
                                                     <td><?php echo $no ?></td>
                                                     <td><?php echo $row->riwayat_kerja ?></td>
                                                     <td>
-                                                       <?php echo $row->tahun ?>
+                                                        <?php echo $row->tahun ?>
                                                     </td>
                                                     <td>
                                                         <center>
-                                                            <a href="<?php echo site_url('user/deleteKerja/' . $row->id_kerja) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
+                                                            <a href="<?php echo site_url('admin/deleteKerja/' . $row->id_kerja . '/' . $akun->id_akun) ?>" class="btn btn-danger btn-sm beforeDelete"><i class="fa fa-trash"></i> Hapus</a>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -408,7 +407,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addKerja/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addKerja/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -440,7 +439,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addPendidikan/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addPendidikan/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -496,7 +495,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('user/updatePendidikan/' . $row->id_pendidikan) ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/updatePendidikan/' . $row->id_pendidikan . '/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
@@ -570,7 +569,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addOrganisasi/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addOrganisasi/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -609,7 +608,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('user/updateOrganisasi/' . $row->id_organisasi) ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/updateOrganisasi/' . $row->id_organisasi . '/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">
@@ -646,7 +645,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addPrestasi/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addPrestasi/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -678,7 +677,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addSertifikat/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addSertifikat/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -710,7 +709,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="<?php echo site_url('user/addBerkas/') ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo site_url('admin/addBerkas/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col col-lg-12">
                                 <div class="form-group">
@@ -751,7 +750,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo site_url('user/updateBerkas/' . $row->id_berkas) ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo site_url('admin/updateBerkas/' . $row->id_berkas . '/' . $akun->id_akun) ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col col-lg-12">
                                     <div class="form-group">

@@ -1,11 +1,11 @@
-<?php if (empty($this->session->userdata('nama'))) { ?>
+<?php if (empty($this->session->userdata('mengikuti'))) { ?>
   <div class="flash-news-banner">
     <div class="container">
       <div class="d-lg-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-          <span class="badge badge-danger mr-3">Login Required</span>
+          <span class="badge badge-danger mr-3">Information</span>
           <p class="mb-0">
-            <center>Wajib mempunyai akun dan login terlebih dahulu, untuk mengikuti dan mengakses web Job Fair Itenas 2020</center>
+            <center>Wajib mendaftarkan akun sebelum 3 Desember 2020, untuk mengikuti dan mengakses web Job Fair Itenas 2020</center>
           </p>
         </div>
         <div class="d-flex">
@@ -21,10 +21,10 @@
     <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
       <div class="col-sm-12 grid-margin" style="margin-top:10px">
         <center>
-          <h2 style="color:#EFEFEF">Registration Job Fair Countdown</h2>
+          <h2 style="color:#EFEFEF">Wajib login untuk mengakses halaman ini</h2>
         </center>
         <center>
-          <div id="pendaftaran" class="flipdown"></div>
+          <h2 style="color:#EFEFEF">Hanya Peserta dan Perusahaan yang sebagai participan yang dapat mengakses halaman Job Fair Itenas 2020</h2>
         </center>
       </div>
     </div>
@@ -140,7 +140,7 @@
                   <div class="col-sm-4 grid-margin">
                     <div class="position-relative">
                       <div class="rotate-img">
-                        <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
+                        <img style="width: auto; height:170px;" src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
                       </div>
                       <div class="badge-positioned">
                         <span class="badge badge-danger font-weight-bold"><?php echo $row->jenis ?></span>
@@ -165,14 +165,20 @@
                   </div>
                 </div>
               <?php } ?>
-              <?php echo $pagination; ?>
             </div>
           </div>
         </div>
       </div>
+      <!-- <div class="row" data-aos="fade-up">
+        <div class="col-sm-12 grid-margin">
+          <div class="card">
+            
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
-  <?php if (empty($this->session->userdata('nama'))) { ?>
+  <?php if (empty($this->session->userdata('mengikuti'))) { ?>
   </div>
 <?php } ?>
 <!-- partial:partials/_footer.html -->
@@ -242,7 +248,7 @@
   });
 </script>
 <script>
-  var tm = new Date("2020/12/01");
+  var tm = new Date("2020/12/02");
   var flipdown = new FlipDown(tm.getTime() / 1000, "pendaftaran", {
     theme: "dark",
   }).start();

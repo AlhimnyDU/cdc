@@ -389,6 +389,42 @@
                             </div>
                         </div>
                     </div>
+                    <div class="x_content">
+                        <div style="margin-top:20px">
+                            <span class="section">7. Riwayat Pengalaman Kerja</span>
+                            <div class="col-sm-12">
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan riwayat pengalaman kerja.</p>
+                                <div class="card-box table-responsive">
+                                    <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Pengalaman Kerja</th>
+                                                <th width="15%">Tahun</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($kerja as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no ?></td>
+                                                    <td><?php echo $row->riwayat_kerja ?></td>
+                                                    <td>
+                                                       <?php echo $row->tahun ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

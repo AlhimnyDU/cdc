@@ -123,7 +123,7 @@ class Perusahaan extends CI_Controller
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
-        redirect('perusahaan/loker');
+        redirect('perusahaan/jobfair');
     }
 
     public function editLoker($id)
@@ -266,6 +266,7 @@ class Perusahaan extends CI_Controller
                 $data['organisasi'] = $this->db->where('id_akun', $id)->get('tbl_organisasi')->result();
                 $data['prestasi'] = $this->db->where('id_akun', $id)->get('tbl_prestasi')->result();
                 $data['sertifikat'] = $this->db->where('id_akun', $id)->get('tbl_sertifikat')->result();
+                $data['kerja'] = $this->db->where('id_akun', $id)->get('tbl_kerja')->result();
                 $this->load->view('perusahaan/templates/header', $head);
                 $this->load->view('perusahaan/data_pelamar', $data);
                 $this->load->view('perusahaan/templates/js');

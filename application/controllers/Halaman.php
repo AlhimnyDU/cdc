@@ -32,7 +32,7 @@ class Halaman extends CI_Controller
 	{
 		$data['company'] = $this->db->get('tbl_perusahaan', 6)->result();
 		$data['main_artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 1)->row();
-		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 6)->result();
+		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 3)->result();
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker', 3)->result();
 		$this->session->set_userdata('navbar', 'beranda');
 		$this->load->view('halaman/templates/header');
@@ -81,7 +81,11 @@ class Halaman extends CI_Controller
 	{
 		$data['id_perusahaan'] = $id;
 		$data['video'] = $this->db->where('id_peserta', $id)->where('id_event', 1)->where('role', 'perusahaan')->get('event_perusahaan')->row();
-		$this->load->view('halaman/adv_company', $data);
+		if (empty($data['video']->link)) {
+			$this->load->view('halaman/company', $id);
+		} else {
+			$this->load->view('halaman/adv_company', $data);
+		}
 	}
 
 	public function loker()
@@ -126,34 +130,34 @@ class Halaman extends CI_Controller
 	public function jobfair()
 	{
 		//konfigurasi pagination
-		$config['base_url'] = site_url('halaman/jobfair'); //site url
-		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'jobfair')->from('tbl_loker')->count_all_results(); //total row
-		$config['per_page'] = 5;  //show record per halaman
-		$config["uri_segment"] = 3;  // uri parameter
-		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = floor($choice);
+		// $config['base_url'] = site_url('halaman/jobfair'); //site url
+		// $config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'jobfair')->from('tbl_loker')->count_all_results(); //total row
+		// $config['per_page'] = 5;  //show record per halaman
+		// $config["uri_segment"] = 3;  // uri parameter
+		// $choice = $config["total_rows"] / $config["per_page"];
+		// $config["num_links"] = floor($choice);
 
-		$config['first_link']       = 'First';
-		$config['last_link']        = 'Last';
-		$config['next_link']        = 'Next';
-		$config['prev_link']        = 'Prev';
-		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-		$config['full_tag_close']   = '</ul></nav></div>';
-		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['num_tag_close']    = '</span></li>';
-		$config['cur_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['cur_tag_close']    = '<span class="sr-only"></span></span></li>';
-		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['prev_tagl_close']  = '</span>Next</li>';
-		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-		$config['first_tagl_close'] = '</span></li>';
-		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['last_tagl_close']  = '</span></li>';
-		$this->pagination->initialize($config);
-		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
+		// $config['first_link']       = 'First';
+		// $config['last_link']        = 'Last';
+		// $config['next_link']        = 'Next';
+		// $config['prev_link']        = 'Prev';
+		// $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+		// $config['full_tag_close']   = '</ul></nav></div>';
+		// $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+		// $config['num_tag_close']    = '</span></li>';
+		// $config['cur_tag_open']     = '<li class="page-item"><span class="page-link">';
+		// $config['cur_tag_close']    = '<span class="sr-only"></span></span></li>';
+		// $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+		// $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+		// $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+		// $config['prev_tagl_close']  = '</span>Next</li>';
+		// $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+		// $config['first_tagl_close'] = '</span></li>';
+		// $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+		// $config['last_tagl_close']  = '</span></li>';
+		// $this->pagination->initialize($config);
+		// $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker')->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$data['participate'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id_event')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('role', 'perusahaan')->order_by('updated', 'ASC')->get('event_perusahaan')->result();
 		$data['schedule'] = $this->db->order_by('jadwal_meeting', 'ASC')->get('tbl_schedule')->result();

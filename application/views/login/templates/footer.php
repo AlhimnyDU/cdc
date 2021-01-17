@@ -97,5 +97,15 @@
     });
   </script>
 <?php } ?>
+<?php if ($this->session->flashdata('akun_ada')) { ?>
+  <script>
+    swal({
+      title: "Registration Failed!",
+      text: "Akun sudah terdaftar!",
+      icon: "error",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
 
 </html>

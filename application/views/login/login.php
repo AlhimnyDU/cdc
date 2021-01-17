@@ -90,7 +90,7 @@
               </div>
               <hr>
               <div>
-                <button type="submit" class="btn btn-primary btn-sm submit buttonSubmit">Submit</button>
+                <button class="btn btn-primary btn-sm submit buttonSubmit">Daftar</button>
               </div>
               <div class="clearfix"></div>
               <div class="separator">

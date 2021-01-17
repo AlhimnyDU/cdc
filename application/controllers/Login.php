@@ -81,6 +81,7 @@ class Login extends CI_Controller
 			}
 		} else if ($selectPerusahaan) {
 			if ($selectPerusahaan->status == "y") {
+				$this->session->set_userdata('mengikuti', TRUE);
 				$this->session->set_userdata('nama', $selectPerusahaan->nama_perusahaan);
 				$this->session->set_userdata('perusahaan', "perusahaan");
 				$this->session->set_userdata('id_akun', $selectPerusahaan->id_perusahaan);
@@ -90,6 +91,7 @@ class Login extends CI_Controller
 				redirect('login');
 			}
 		} else if ($selectadmin) {
+			$this->session->set_userdata('mengikuti', TRUE);
 			$this->session->set_userdata('nama', $selectadmin->nama_admin);
 			$this->session->set_userdata('admin', "admin");
 			$this->session->set_userdata('id_admin', $selectadmin->id_admin);
@@ -102,17 +104,23 @@ class Login extends CI_Controller
 
 	public function addMahasiswa()
 	{
-		$data = array(
-			'nama'			=> $this->input->post('nama'),
-			'email' 		=> $this->input->post('email'),
-			'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-			'telp' 			=> $this->input->post('telp'),
-			'role'			=> "mahasiswa",
-			'nomor_induk'	=> $this->input->post('nrp'),
-			'alamat'		=> $this->input->post('alamat'),
-			'created' 		=> date('Y-m-d H:i:s'),
-			'updated' 		=> date('Y-m-d H:i:s')
-		);
+		$ada_akun = $this->db->where('email', $this->input->post('email'))->get('tbl_akun')->row_array();
+		if ($ada_akun['email'] == $this->input->post('email')) {
+			$this->session->set_flashdata('akun_ada', TRUE);
+			redirect('login');
+		} else {
+			$data = array(
+				'nama'			=> $this->input->post('nama'),
+				'email' 		=> $this->input->post('email'),
+				'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'telp' 			=> $this->input->post('telp'),
+				'role'			=> "mahasiswa",
+				'nomor_induk'	=> $this->input->post('nrp'),
+				'alamat'		=> $this->input->post('alamat'),
+				'created' 		=> date('Y-m-d H:i:s'),
+				'updated' 		=> date('Y-m-d H:i:s')
+			);
+		}
 		$query = $this->db->insert('tbl_akun', $data);
 		if ($query) {
 			$this->session->set_flashdata('insert_akun', "Tambah Berhasil");
@@ -124,10 +132,10 @@ class Login extends CI_Controller
 
 	public function addPerusahaan()
 	{
-		$ada_perusahaan = $this->db->where("nama_perusahaan", $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row();
-		if (($ada_perusahaan->nama_perusahaan == $this->input->post('nama_perusahaan')) && ($ada_perusahaan->status_daftar == 'pendaftar')) {
+		$ada_perusahaan = $this->db->where('nama_perusahaan', $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row_array();
+		if (($ada_perusahaan['nama_perusahaan'] == $this->input->post('nama_perusahaan')) && ($ada_perusahaan->status_daftar == 'pendaftar')) {
 			$this->session->set_flashdata('perusahaan_ada', TRUE);
-		} else if (($ada_perusahaan->nama_perusahaan == $this->input->post('nama_perusahaan')) && ($ada_perusahaan->status_daftar == 'loker')) {
+		} else if (($ada_perusahaan['nama_perusahaan'] == $this->input->post('nama_perusahaan')) && ($ada_perusahaan->status_daftar == 'loker')) {
 			$config['upload_path'] = './assets/upload/logo/';
 			$config['allowed_types'] = 'jpg|png|jpeg|webp';
 			$this->upload->initialize($config);
