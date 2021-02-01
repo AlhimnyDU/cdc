@@ -31,8 +31,7 @@ class Halaman extends CI_Controller
 	public function index()
 	{
 		$data['company'] = $this->db->get('tbl_perusahaan', 6)->result();
-		$data['main_artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 1)->row();
-		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 3)->result();
+		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 6)->result();
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker', 3)->result();
 		$this->session->set_userdata('navbar', 'beranda');
 		$this->load->view('halaman/templates/header');
@@ -83,11 +82,11 @@ class Halaman extends CI_Controller
 		$data['video'] = $this->db->where('id_peserta', $id)->where('id_event', 1)->where('role', 'perusahaan')->get('event_perusahaan')->row();
 		if (empty($data['video']->link)) {
 			$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
-		    $data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker')->result();
-		    $this->load->view('halaman/templates/header');
-		    $this->load->view('halaman/company', $data);
-		    $this->load->view('halaman/templates/js');
-		    $this->load->view('halaman/templates/footer');
+			$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker')->result();
+			$this->load->view('halaman/templates/header');
+			$this->load->view('halaman/company', $data);
+			$this->load->view('halaman/templates/js');
+			$this->load->view('halaman/templates/footer');
 		} else {
 			$this->load->view('halaman/adv_company', $data);
 		}
@@ -102,24 +101,16 @@ class Halaman extends CI_Controller
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
 		$config["num_links"] = floor($choice);
-		$config['first_link']       = 'First';
-		$config['last_link']        = 'Last';
-		$config['next_link']        = 'Next';
-		$config['prev_link']        = 'Prev';
-		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-		$config['full_tag_close']   = '</ul></nav></div>';
-		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['num_tag_close']    = '</span></li>';
-		$config['cur_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['cur_tag_close']    = '<span class="sr-only"></span></span></li>';
-		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['prev_tagl_close']  = '</span>Next</li>';
-		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-		$config['first_tagl_close'] = '</span></li>';
-		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['last_tagl_close']  = '</span></li>';
+		$config['full_tag_open']    = '<div class="blog-pagination" data-aos="fade-up"><ul class="justify-content-center">';
+		$config['full_tag_close']   = '</ul></div>';
+		$config['num_tag_open']     = '<li>';
+		$config['num_tag_close']    = '</li>';
+		$config['cur_tag_open']     = '<li class="active"><a>';
+		$config['cur_tag_close']    = '</a></li>';
+		$config['next_tag_open']    = '<li>';
+		$config['next_tagl_close']  = '</li>';
+		$config['prev_tag_open']    = '<li>';
+		$config['prev_tagl_close']  = '</li>';
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -184,31 +175,23 @@ class Halaman extends CI_Controller
 		//konfigurasi pagination
 		$config['base_url'] = site_url('halaman/info'); //site url
 		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'vacancy')->from('tbl_loker')->count_all_results(); //total row
-		$config['per_page'] = 10;  //show record per halaman
+		$config['per_page'] = 6;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
 		$config["num_links"] = floor($choice);
-		$config['first_link']       = 'First';
-		$config['last_link']        = 'Last';
-		$config['next_link']        = 'Next';
-		$config['prev_link']        = 'Prev';
-		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-		$config['full_tag_close']   = '</ul></nav></div>';
-		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['num_tag_close']    = '</span></li>';
-		$config['cur_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['cur_tag_close']    = '<span class="sr-only"></span></span></li>';
-		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['prev_tagl_close']  = '</span>Next</li>';
-		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-		$config['first_tagl_close'] = '</span></li>';
-		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['last_tagl_close']  = '</span></li>';
+		$config['full_tag_open']    = '<div class="blog-pagination" data-aos="fade-up"><ul class="justify-content-center">';
+		$config['full_tag_close']   = '</ul></div>';
+		$config['num_tag_open']     = '<li>';
+		$config['num_tag_close']    = '</li>';
+		$config['cur_tag_open']     = '<li class="active"><a>';
+		$config['cur_tag_close']    = '</a></li>';
+		$config['next_tag_open']    = '<li>';
+		$config['next_tagl_close']  = '</li>';
+		$config['prev_tag_open']    = '<li>';
+		$config['prev_tagl_close']  = '</li>';
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['artikel'] = $this->db->order_by('created','DESC')->get('tbl_artikel', $config["per_page"], $data['page'])->result();
+		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/list_artikel', $data);
@@ -226,8 +209,30 @@ class Halaman extends CI_Controller
 
 	public function magang()
 	{
+		//konfigurasi pagination
+		$config['base_url'] = site_url('halaman/magang'); //site url
+		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'magang')->from('tbl_loker')->count_all_results(); //total row
+		$config['per_page'] = 10;  //show record per halaman
+		$config["uri_segment"] = 3;  // uri parameter
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
+		$config['full_tag_open']    = '<div class="blog-pagination" data-aos="fade-up"><ul class="justify-content-center">';
+		$config['full_tag_close']   = '</ul></div>';
+		$config['num_tag_open']     = '<li>';
+		$config['num_tag_close']    = '</li>';
+		$config['cur_tag_open']     = '<li class="active"><a>';
+		$config['cur_tag_close']    = '</a></li>';
+		$config['next_tag_open']    = '<li>';
+		$config['next_tagl_close']  = '</li>';
+		$config['prev_tag_open']    = '<li>';
+		$config['prev_tagl_close']  = '</li>';
+
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'magang')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
+		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('halaman/templates/header');
-		$this->load->view('halaman/beasiswa');
+		$this->load->view('halaman/magang', $data);
 		$this->load->view('halaman/templates/js');
 		$this->load->view('halaman/templates/footer');
 	}
@@ -243,7 +248,10 @@ class Halaman extends CI_Controller
 
 	public function job($id)
 	{
+		$data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
 		$data['job'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('id_loker', $id)->get('tbl_loker')->row();
+		$data['persyaratan'] = $this->db->select('tbl_persyaratan.*,syarat_lowongan.id_syarat')->from('syarat_lowongan')->join('tbl_persyaratan', 'tbl_persyaratan.id_persyaratan=syarat_lowongan.id_persyaratan', 'left')->where('syarat_lowongan.id_loker', $id)->get()->result();
+		$data['lamaran'] = $this->db->where('id_loker', $id)->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_lamaran')->row();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/job', $data);
 		$this->load->view('halaman/templates/js');

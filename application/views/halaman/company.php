@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
     <div class="row aos-init aos-animate" data-aos="fade-up">
       <div class="col-sm-12 grid-margin">
@@ -6,12 +6,12 @@
           <div class="card-body">
             <center>
               <?php if (empty($company->logo_perusahaan)) { ?>
-                <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" width="300px" />
+                <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" width="200px" />
               <?php } else { ?>
-                <img width="300px" src="<?php echo site_url("assets/upload/logo/" . $company->logo_perusahaan) ?>" />
+                <img width="200px" src="<?php echo site_url("assets/upload/logo/" . $company->logo_perusahaan) ?>" />
               <?php } ?>
               <br>
-              <h1><?php echo $company->nama_perusahaan ?></h1>
+              <h3><?php echo $company->nama_perusahaan ?></h3>
               <br>
               <h3>Email</h3>
               <i><?php echo $company->email ?></i>
@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+    <br>
     <?php if ($vacancy) { ?>
       <div class="row aos-init aos-animate" data-aos="fade-up">
         <div class="col-lg-3 stretch-card grid-margin">
@@ -56,41 +57,45 @@
             <div class="card-body">
               <?php foreach ($vacancy as $row) { ?>
                 <div class="row">
-                  <div class="col-sm-4 grid-margin">
+                  <div class="col-sm-3 grid-margin">
                     <div class="position-relative">
                       <div class="rotate-img">
-                        <?php if (empty($row->logo_perusahaan)) { ?>
-                          <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                            <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" />
-                          </a>
-                        <?php } else { ?>
-                          <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                            <img style="width: auto; height:170px;" src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
-                          </a>
-                        <?php } ?>
+                        <center>
+                          <?php if (empty($row->logo_perusahaan)) { ?>
+                            <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
+                              <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" />
+                            </a>
+                          <?php } else { ?>
+                            <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
+                              <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" style="width:150px;height:auto;" />
+                            </a>
+                          <?php } ?>
+                        </center>
                       </div>
                       <div class="badge-positioned">
                         <span class="badge badge-danger font-weight-bold"><?php echo $row->jenis ?></span>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-8  grid-margin">
+                  <div class="col-sm-9  grid-margin">
                     <a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">
-                      <h2 class="mb-2 font-weight-600">
+                      <h4>
                         <?php echo $row->posisi ?>
-                      </h2>
+                      </h4>
                     </a>
                     <div class="fs-13 mb-2">
-                      <span class="mr-2">Deadline : </span> <?php echo date("d M Y", strtotime($row->deadline)) ?>
+                      <span class="badge badge-danger">Deadline : <?php echo date("d M Y", strtotime($row->deadline)) ?></span>
                     </div>
                     <div class="fs-13 mb-2">
-                      <span class="mr-2">Location : </span> <?php echo $row->lokasi ?>
+                      <span class="badge badge-light">Location : </span>
+                      <p style="text-align: justify;font-size: 14px;"><?php echo $row->lokasi ?></p>
                     </div>
-                    <p class="mb-0">
-                      <?php echo substr($row->deskripsi, 0, 150) ?>..<a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">See More</a>
+                    <p style="text-align: justify;font-size: 14px;">
+                      <?php echo substr($row->deskripsi, 0, 150) ?>..<a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">Read More</a>
                     </p>
                   </div>
                 </div>
+                <hr>
               <?php } ?>
             </div>
           </div>
@@ -102,4 +107,4 @@
       </center>
     <?php } ?>
   </div>
-</div>
+</section>

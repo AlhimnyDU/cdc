@@ -50,7 +50,8 @@
                                             <option <?php if ($akun->agama == "Lainnya") {
                                                         echo "selected";
                                                     } ?> value="Lainnya">Lainnya</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span class="required">*</span></label>
@@ -63,63 +64,231 @@
                                             <option <?php if ($akun->jenis_kelamin == "Wanita") {
                                                         echo "selected";
                                                     } ?> value="Wanita">Wanita</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Tempat Lahir<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" value="<?php echo $akun->tempat_lahir ?>" name="tempat_lahir" type="text" required></div>
+                                        <input class="form-control" value="<?php echo $akun->tempat_lahir ?>" name="tempat_lahir" type="text" required>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Lahir<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="tanggal_lahir" type="date" value="<?php echo $akun->tanggal_lahir ?>" required></div>
+                                        <input class="form-control" name="tanggal_lahir" type="date" value="<?php echo $akun->tanggal_lahir ?>" required>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Email<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control " name="email" required="required" value="<?php echo $akun->email ?>" type="text"></div>
+                                        <input class="form-control " name="email" required="required" value="<?php echo $akun->email ?>" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nomor Handphone<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control telp" id="telp" name="telp" required="required" value="<?php echo $akun->telp ?>" type="text"></div>
+                                        <input class="form-control telp" id="telp" name="telp" required="required" value="<?php echo $akun->telp ?>" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Alamat Tinggal<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <textarea class="form-control" rows="3" required="required" name="alamat"><?php echo $akun->alamat ?></textarea></div>
+                                        <textarea class="form-control" rows="3" required="required" name="alamat"><?php echo $akun->alamat ?></textarea>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Desa / Kelurahan<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="desa_kelurahan" value="<?php echo $akun->desa_kelurahan ?>" required="required" type="text"></div>
+                                        <input class="form-control" name="desa_kelurahan" value="<?php echo $akun->desa_kelurahan ?>" required="required" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kecamatan<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kecamatan" value="<?php echo $akun->kecamatan ?>" required="required" type="text"></div>
+                                        <input class="form-control" name="kecamatan" value="<?php echo $akun->kecamatan ?>" required="required" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kota / Kabupaten<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kota_kabupaten" value="<?php echo $akun->kota_kabupaten ?>" required="required" type="text"></div>
+                                        <input class="form-control" name="kota_kabupaten" value="<?php echo $akun->kota_kabupaten ?>" required="required" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Provinsi<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="provinsi" value="<?php echo $akun->provinsi ?>" required="required" type="text"></div>
+                                        <input class="form-control" name="provinsi" value="<?php echo $akun->provinsi ?>" required="required" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kode Pos<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kode_pos" value="<?php echo $akun->kode_pos ?>" required="required" type="text"></div>
+                                        <input class="form-control" name="kode_pos" value="<?php echo $akun->kode_pos ?>" required="required" type="text">
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Pas Foto</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/pas_foto/' . $akun->pas_foto) ?>" data-allowed-file-extensions="png jpg jpeg"></div>
+                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/pas_foto/' . $akun->pas_foto) ?>" data-allowed-file-extensions="png jpg jpeg">
+                                    </div>
                                 </div>
+                                <span class="section">2. Data Akademik</span>
+                                <?php if (($akun->role == "mahasiswa") || ($akun->role == "alumni")) { ?>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="nomor_induk" value="<?php echo $akun->nomor_induk ?>" required="required" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="universitas" value="Universitas Teknologi Nasional Bandung" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Fakultas<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select class="custom-select" name="fakultas" required>
+                                                <option value="" disabled hidden selected>Pilih</option>
+                                                <option value="Fakultas Teknologi Industri" <?php if ($akun->fakultas == "Fakultas Teknologi Industri") {
+                                                                                                echo "selected";
+                                                                                            } ?>>
+                                                    Fakultas Teknologi Industri
+                                                </option>
+                                                <option value="Fakultas Teknik Sipil dan Perencanaan" <?php if ($akun->fakultas == "Fakultas Teknik Sipil dan Perencanaan") {
+                                                                                                            echo "selected";
+                                                                                                        } ?>>
+                                                    Fakultas Teknik Sipil dan Perencanaan
+                                                </option>
+                                                <option value="Fakultas Arsitektur dan Desain" <?php if ($akun->fakultas == "Fakultas Arsitektur dan Desain") {
+                                                                                                    echo "selected";
+                                                                                                } ?>>
+                                                    Fakultas Arsitektur dan Desain
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Program Studi<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select class="custom-select" name="prodi" required>
+                                                <option value="" disabled hidden selected>Pilih</option>
+                                                <option value="Teknik Elektro" <?php if ($akun->prodi == "Teknik Elektro") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Elektro
+                                                </option>
+                                                <option value="Teknik Mesin" <?php if ($akun->prodi == "Teknik Mesin") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Mesin
+                                                </option>
+                                                <option value="Teknik Industri" <?php if ($akun->prodi == "Teknik Industri") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Industri
+                                                </option>
+                                                <option value="Teknik Kimia" <?php if ($akun->prodi == "Teknik Kimia") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Kimia
+                                                </option>
+                                                <option value="Informatika" <?php if ($akun->prodi == "Informatika") {
+                                                                                echo "selected";
+                                                                            } ?>>
+                                                    Informatika
+                                                </option>
+                                                <option value="Sistem Informasi" <?php if ($akun->prodi == "Sistem Informasi") {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                    Sistem Informasi
+                                                </option>
+                                                <option value="Teknik Sipil" <?php if ($akun->prodi == "Teknik Sipil") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Sipil
+                                                </option>
+                                                <option value="Teknik Geodesi" <?php if ($akun->prodi == "Teknik Geodesi") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Teknik Geodesi
+                                                </option>
+                                                <option value="Perencanaan Wilayah dan Kota" <?php if ($akun->prodi == "Perencanaan Wilayah dan Kota") {
+                                                                                                    echo "selected";
+                                                                                                } ?>>
+                                                    Perencanaan Wilayah dan Kota
+                                                </option>
+                                                <option value="Teknik Lingkungan" <?php if ($akun->prodi == "Teknik Lingkungan") {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                    Teknik Lingkungan
+                                                </option>
+                                                <option value="Arsitektur" <?php if ($akun->prodi == "Arsitektur") {
+                                                                                echo "selected";
+                                                                            } ?>>
+                                                    Arsitektur
+                                                </option>
+                                                <option value="Desain Interior" <?php if ($akun->prodi == "Desain Interior") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Desain Interior
+                                                </option>
+                                                <option value="Desain Produk" <?php if ($akun->prodi == "Desain Produk") {
+                                                                                    echo "selected";
+                                                                                } ?>>
+                                                    Desain Produk
+                                                </option>
+                                                <option value="Desain Komunikasi dan Visual" <?php if ($akun->prodi == "Desain Komunikasi dan Visual") {
+                                                                                                    echo "selected";
+                                                                                                } ?>>
+                                                    Desain Komunikasi dan Visual
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Nilai IPK Terakhir<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
+                                        </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="nomor_induk" value="<?php echo $akun->nomor_induk ?>" required="required" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="universitas" value="Universitas Teknologi Nasional Bandung" required>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Fakultas<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="fakultas" value="<?php echo $akun->fakultas ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Program Studi<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="prodi" value="<?php echo $akun->prodi ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Nilai IPK Terakhir<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
                                 <div class="form-group">
                                     <center>
                                         <div class="col-md-6 offset-md-3">
@@ -130,10 +299,11 @@
                                 </div>
                             </form>
                         </div>
+
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">2. Berkas - Berkas</span>
+                            <span class="section">3. Berkas - Berkas</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan berkas yang anda miliki seperti Photocopy Ijazah Legalisir, Transkrip Nilai, TOEFL/IELTS, dan Hasil Psikotest</p>
                                 <div class="card-box table-responsive">
@@ -177,7 +347,7 @@
                     </div>
                     <div class="x_content">
                         <div style="padding-top:10px">
-                            <span class="section">3. Riwayat Pendidikan</span>
+                            <span class="section">4. Riwayat Pendidikan</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -222,7 +392,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">4. Riwayat Pengalaman Organisasi</span>
+                            <span class="section">5. Riwayat Pengalaman Organisasi</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -266,7 +436,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">5. Riwayat Prestasi</span>
+                            <span class="section">6. Riwayat Prestasi</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan prestasi seperti juara perlombaan, beasiswa, dan prestasi lainnya sebagai portofolio anda</p>
                                 <div class="card-box table-responsive">
@@ -309,7 +479,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">6. Sertifikat Keahlian</span>
+                            <span class="section">7. Sertifikat Keahlian</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki Sertifikat Pelatihan atau Sertifikat keahlian sesuai dengan bidang anda sebagai penunjang dari keahlian anda.</p>
                                 <div class="card-box table-responsive">
@@ -352,7 +522,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">7. Riwayat Pengalaman Kerja</span>
+                            <span class="section">8. Riwayat Pengalaman Kerja</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan riwayat pengalaman kerja.</p>
                                 <div class="card-box table-responsive">
@@ -375,7 +545,7 @@
                                                     <td><?php echo $no ?></td>
                                                     <td><?php echo $row->riwayat_kerja ?></td>
                                                     <td>
-                                                       <?php echo $row->tahun ?>
+                                                        <?php echo $row->tahun ?>
                                                     </td>
                                                     <td>
                                                         <center>

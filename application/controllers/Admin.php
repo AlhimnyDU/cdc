@@ -615,9 +615,132 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->order_by('tbl_loker.created', 'DESC')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'vacancy')->order_by('tbl_loker.created', 'DESC')->get()->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/loker', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function loker_persyaratan($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['loker'] = $this->db->where('id_loker', $id)->get('tbl_loker')->row();
+                $data['syarat'] = $this->db->get('tbl_persyaratan')->result();
+                $data['persyaratan'] = $this->db->select('tbl_persyaratan.*,syarat_lowongan.id_syarat')->from('syarat_lowongan')->join('tbl_persyaratan', 'tbl_persyaratan.id_persyaratan=syarat_lowongan.id_persyaratan', 'left')->where('syarat_lowongan.id_loker', $id)->get()->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/loker_persyaratan', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addPersyaratan($id)
+    {
+        $data = array(
+            'id_persyaratan' =>  $this->input->post('id_persyaratan'),
+            'id_loker' =>  $id,
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('syarat_lowongan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_alumni', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deletePersyaratan($id)
+    {
+        $query = $this->db->where('id_syarat', $id)->delete('syarat_lowongan');
+        if ($query) {
+            $this->session->set_flashdata('delete_peserta', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function persyaratan()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['persyaratan'] = $this->db->get('tbl_persyaratan')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/persyaratan', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addSyarat()
+    {
+        $data = array(
+            'nama_syarat' =>  $this->input->post('nama_syarat'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_persyaratan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_alumni', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function updateSyarat($id)
+    {
+        $data = array(
+            'nama_syarat' =>  $this->input->post('nama_syarat'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_persyaratan', $id)->update('tbl_persyaratan', $data);
+        if ($query) {
+            $this->session->set_flashdata('delete_peserta', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteSyarat($id)
+    {
+        $query = $this->db->where('id_syarat', $id)->delete('syarat_lowongan');
+        if ($query) {
+            $this->session->set_flashdata('delete_peserta', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function magang()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'magang')->order_by('tbl_loker.created', 'DESC')->get()->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/magang', $data);
                 $this->load->view('admin/templates/js');
                 $this->load->view('admin/templates/footer');
             } else {
@@ -635,7 +758,7 @@ class Admin extends CI_Controller
             'updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('id_loker', $id)->update('tbl_loker', $data);
-        redirect('admin/loker');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function accJobfair($id)
@@ -645,7 +768,7 @@ class Admin extends CI_Controller
             'updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('id_loker', $id)->update('tbl_loker', $data);
-        redirect('admin/jobfair');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     // public function verifikasi($id){
@@ -664,7 +787,7 @@ class Admin extends CI_Controller
             'updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('id_loker', $id)->update('tbl_loker', $data);
-        redirect('admin/loker');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function unpublishJobfair($id)
@@ -674,7 +797,7 @@ class Admin extends CI_Controller
             'updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('id_loker', $id)->update('tbl_loker', $data);
-        redirect('admin/jobfair');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function editLoker($id)
@@ -810,6 +933,92 @@ class Admin extends CI_Controller
             }
         }
         redirect('admin/loker');
+    }
+
+    public function addMagang()
+    {
+        $ada_perusahaan = $this->db->where('nama_perusahaan', $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row_array();
+        if ($ada_perusahaan) {
+            $id_perusahaan = $ada_perusahaan['id_perusahaan'];
+            $config['upload_path'] = './assets/upload/poster/';
+            $config['allowed_types'] = 'jpg';
+            $this->upload->initialize($config);
+            $insert_logo = $this->upload->do_upload('poster');
+            $poster = $this->upload->data('file_name');
+            $data = array(
+                'posisi'     => $this->input->post('posisi'),
+                'deadline' => $this->input->post('deadline'),
+                'lokasi'     => $this->input->post('lokasi'),
+                'syarat'     => $this->input->post('syarat'),
+                'deskripsi'     => $this->input->post('deskripsi'),
+                'informasi'     => $this->input->post('informasi'),
+                'status'     => 'Menunggu Konfirmasi',
+                'prodi'     => $this->input->post('prodi'),
+                'poster'   => $poster,
+                'jenis'   => "magang",
+                'id_perusahaan' => $id_perusahaan,
+                'created' => date('Y-m-d H:i:s'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+            $query = $this->db->insert('tbl_loker', $data);
+            if ($query) {
+                $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+            } else {
+                $this->session->set_flashdata('failed', "Tambah Gagal");
+            }
+        } else {
+            $config['upload_path'] = './assets/upload/logo/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $this->upload->initialize($config);
+            $upload_logo = $this->upload->do_upload('logo');
+            $logo = $this->upload->data('file_name');
+            if ($upload_logo) {
+                $perusahaan = array(
+                    'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+                    'email' => $this->input->post('email'),
+                    'logo_perusahaan' => $logo,
+                    'telp_perusahaan' => $this->input->post('telp_perusahaan'),
+                    'created' => date('Y-m-d H:i:s'),
+                    'updated' => date('Y-m-d H:i:s')
+                );
+                $insert_perusahaan = $this->db->insert('tbl_perusahaan', $perusahaan);
+                $id = $this->db->where('created', $perusahaan['created'])->get('tbl_perusahaan')->row();
+                // echo date('Y-m-d H:i:s');
+                if ($insert_perusahaan) {
+                    $config['upload_path'] = './assets/upload/poster/';
+                    $config['allowed_types'] = 'jpg|png';
+                    $this->upload->initialize($config);
+                    $insert_logo = $this->upload->do_upload('poster');
+                    $poster = $this->upload->data('file_name');
+                    $data = array(
+                        'posisi'     => $this->input->post('posisi'),
+                        'deadline' => $this->input->post('deadline'),
+                        'lokasi'     => $this->input->post('lokasi'),
+                        'syarat'     => $this->input->post('syarat'),
+                        'deskripsi'     => $this->input->post('deskripsi'),
+                        'informasi'     => $this->input->post('informasi'),
+                        'status'     => 'Menunggu Konfirmasi',
+                        'prodi'     => $this->input->post('prodi'),
+                        'poster'   => $poster,
+                        'jenis'   => "magang",
+                        'id_perusahaan' => $id->id_perusahaan,
+                        'created' => date('Y-m-d H:i:s'),
+                        'updated' => date('Y-m-d H:i:s')
+                    );
+                    $query = $this->db->insert('tbl_loker', $data);
+                    if ($query) {
+                        $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+                    } else {
+                        $this->session->set_flashdata('failed', "Tambah Gagal");
+                    }
+                } else {
+                    $this->session->set_flashdata('failed', "Tambah Gagal");
+                }
+            } else {
+                $this->session->set_flashdata('failed', "Tambah Gagal");
+            }
+        }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function editVacancy($id)

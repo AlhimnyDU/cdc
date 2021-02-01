@@ -76,7 +76,7 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'vacancy')->order_by('tbl_loker.', 'DESC')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'vacancy')->order_by('tbl_loker.created', 'DESC')->get()->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/loker', $data);
                 $this->load->view('user/templates/js');
@@ -552,8 +552,10 @@ class User extends CI_Controller
 
         $cv = array(
             'nama' => $this->input->post('nama'),
-            'email' => $this->input->post('email'),
+            'agama' => $this->input->post('agama'),
             'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'tempat_lahir' => $this->input->post('tempat_lahir'),
+            'tanggal_lahir' => $this->input->post('tanggal_lahir'),
             'telp' => $this->input->post('telp'),
             'alamat' => $this->input->post('alamat'),
             'desa_kelurahan' => $this->input->post('desa_kelurahan'),
@@ -565,9 +567,9 @@ class User extends CI_Controller
             'fakultas' => $this->input->post('fakultas'),
             'prodi' => $this->input->post('prodi'),
             'ipk' => $this->input->post('ipk'),
+            'keahlian' => $this->input->post('keahlian'),
             'nomor_induk' => $this->input->post('nomor_induk'),
             'semester' => $this->input->post('semester'),
-            'keahlian' => $this->input->post('keahlian'),
             'updated' => date('Y-m-d H:i:s')
         );
         $query = $this->db->where('id_akun', $this->session->userdata('id_akun'))->update('tbl_akun', $cv);

@@ -37,9 +37,9 @@
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->nama_syarat ?></td>
                                                 <td>
-                                                    <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_persyaratan ?>"><i class="fa fa-edit"></i></a> |
-                                                    <a class="btn btn-danger" href="<?php echo site_url('admin/deleteSyarat/' . $row->id_persyaratan) ?>"><i class="fa fa-trash"></i></a>
-                                                </td>
+                                                    <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_persyaratan ?>"><i class="fa fa-edit"></i></a>
+                                                    <!-- <a class="btn btn-danger" href="<?php echo site_url('admin/deleteSyarat/' . $row->id_persyaratan) ?>"><i class="fa fa-trash"></i></a>
+                                                </td> -->
                                             </tr>
                                         <?php
                                             $no++;

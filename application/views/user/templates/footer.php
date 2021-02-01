@@ -69,7 +69,7 @@
 
         <!-- Custom Theme Scripts -->
         <script src="<?php echo base_url() ?>assets/admin/build/js/custom.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/admin/vendors/jquery.inputmask/dist/inputmask/inputmask.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js" integrity="sha512-sR3EKGp4SG8zs7B0MEUxDeq8rw9wsuGVYNfbbO/GLCJ59LBE4baEfQBVsP2Y/h2n8M19YV1mujFANO1yA3ko7Q==" crossorigin="anonymous"></script>
         <script>
           $(document).ready(function() {
             $('.datatable').DataTable();
@@ -104,6 +104,7 @@
                 'error': 'Ooops, something wrong happended.'
               }
             });
+            $('.ipk').inputmask("9.99");
           });
         </script>
         <?php if ($this->session->flashdata('insert_akun', TRUE)) { ?>

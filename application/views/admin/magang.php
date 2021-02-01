@@ -80,11 +80,11 @@
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
-                                <label>Perusahaan / Instansi</label>
+                                <label>Perusahaan / Instansi Penyelenggara</label>
                                 <input type="text" class="form-control" name="nama_perusahaan" placeholder="ex :  Institut Teknologi Nasional" required="">
                             </div>
                             <div class="form-group">
-                                <label>Logo Perusahaan</label>
+                                <label>Logo Penyelenggara</label>
                                 <input type="file" class="dropify" height="100" name="logo" data-max-file-size="1M" data-allowed-file-extensions="jpg png">
                             </div>
                             <div class="form-group">
@@ -96,11 +96,12 @@
                                 <input type="email" class="form-control" name="email" placeholder="ex : Itenas@itenas.ac.id">
                             </div>
                             <div class="form-group">
-                                <label>Jabatan / Posisi yang dibutuhkan</label>
+                                <label>Nama Acara magang</label>
                                 <input type="text" class="form-control" name="posisi" placeholder="ex : Engineering Staff, Environment Staff, etc">
+                                <small>*tuliskan saja nama event dari acara magang oleh penyelenggara</small>
                             </div>
                             <div class="form-group">
-                                <label>Deadline</label>
+                                <label>Deadline Pendaftaran</label>
                                 <input type="date" class="form-control" name="deadline" placeholder="etc : 28/04/2020">
                             </div>
                             <div class="form-group">
@@ -121,7 +122,7 @@
                             </div>
                             <div class="form-group">
                                 <label>File Poster</label>
-                                <input type="file" class="dropify" height="100" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg png" required>
+                                <input type="file" class="dropify" height="100" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg png">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Submit</button>

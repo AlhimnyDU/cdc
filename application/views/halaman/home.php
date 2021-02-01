@@ -1,106 +1,55 @@
         <!-- partial -->
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
 
-        <div class="flash-news-banner">
-          <div class="container">
-            <div class="d-lg-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <span class="badge badge-danger mr-3">Head line news</span>
-                <p class="mb-0">
-                  <?php echo substr($main_artikel->headline, 0, 100) ?>..<a href="<?php echo site_url("halaman/artikel/" . $main_artikel->id_artikel) ?>">See More</a>
-                </p>
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="<?php echo site_url('assets/halaman/slideshow/bg1.jpeg') ?>" alt="First slide">
               </div>
-              <div class="d-flex">
-                <span class="mb-0 text-danger"><?php echo date("l") ?>,</span>
-                <span class="mb-0 text-danger"><?php echo date("d F Y") ?></span>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo site_url('assets/halaman/slideshow/bg2.jpeg') ?>" alt="Second slide">
               </div>
             </div>
           </div>
-        </div>
-        <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
-          <div class="col-sm-12 grid-margin" style="margin-top:10px">
-            <center>
-              <h2 style="color:#EFEFEF">Registration Company Job Fair Countdown</h2>
-            </center>
-            <center>
-              <div id="pendaftaran" class="flipdown"></div>
-            </center>
-          </div>
-        </div>
-        <div class="content-wrapper">
+
+        </section><!-- End Breadcrumbs -->
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
           <div class="container">
-            <div class="row" data-aos="fade-up">
-              <div class="col-xl-12 stretch-card grid-margin">
-                <div class="position-relative">
-                  <ul class="rslides">
-                    <li>
-                      <img src="<?php echo site_url('assets/halaman/slideshow/bg1.jpeg') ?>" alt="banner" class="img-fluid" />
-                      <div class="banner-content">
-                        <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                          Biro Kemahasiswaan & Alumni Itenas
-                        </div>
-                        <h1 class="mb-0">Career Devolopment Center</h1>
-                        <h1 class="mb-2">
-                          Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
-                        </h1>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="<?php echo site_url('assets/halaman/slideshow/bg2.jpeg') ?>" alt="banner" class="img-fluid">
-                      <div class="banner-content">
-                        <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                          Biro Kemahasiswaan & Alumni Itenas
-                        </div>
-                        <h1 class="mb-0">Career Devolopment Center</h1>
-                        <h1 class="mb-2">
-                          Web Ini Berisikan Informasi Karir, Lowongan Kerja, dan Event yang berhubungan dengan karir
-                        </h1>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <div class="section-title" data-aos="fade-up">
+              <h2>Recent News</h2>
             </div>
-            <div class="row" data-aos="fade-up">
-              <div class="col-xl-8 stretch-card grid-margin">
-                <div class="position-relative">
-                  <a href="<?php echo base_url('login#signup') ?>"><img src="<?php echo base_url('assets/upload/post/' . $main_artikel->gambar) ?>" alt="banner" class="img-fluid" /></a>
-                  <div class="banner-content">
-                    <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                      New Post
+            <div class="row">
+              <?php foreach ($artikel   as $row) { ?>
+                <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                  <article class="entry">
+                    <div class="entry-img">
+                      <img src="<?php echo base_url('assets/upload/post/' . $row->gambar) ?>" alt="" class="img-fluid">
                     </div>
-                    <h1 class="mb-0">
-                      <div class="badge badge-dark">Career Devolopment Center</div>
-                    </h1>
-                    <p class="mb-2">
-                      <div class="badge badge-dark">C<?php echo substr($main_artikel->headline, 0, 150) ?>...<a style="color:white;" href="<?php echo site_url("halaman/artikel/" . $main_artikel->id_artikel) ?>"></div>
-                      <div class="badge badge-info fs-12 font-weight-bold mb-3">See More</div></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-4 stretch-card grid-margin">
-                <div class="card bg-dark text-white">
-                  <div class="card-body">
-                    <h2>Latest news</h2>
-                    <?php foreach ($artikel   as $row) { ?>
-                      <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
-                        <div class="pr-3">
-
-                          <a style="color:#EFEFEF;" href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>">
-                            <h5><?php echo $row->judul ?></h5>
-                          </a>
-                          <div class="fs-12">
-                            <span class="mr-2">Post Date : </span><?php echo date("d M Y", strtotime($row->updated)) ?>
-                          </div>
-                        </div>
-                        <div class="rotate-img">
-                          <img src="<?php echo base_url('assets/upload/post/' . $row->gambar) ?>" alt="thumb" class="img-fluid img-lg" />
-                        </div>
+                    <h2 class="entry-title">
+                      <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>"><?php echo $row->judul ?></a>
+                    </h2>
+                    <div class="entry-content">
+                      <p>
+                        <?php echo substr($row->konten, 0, 160) ?>
+                      </p>
+                      <div class="read-more">
+                        <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>">Read More</a>
                       </div>
-                    <?php } ?>
-                  </div>
+                    </div>
+
+                  </article><!-- End blog entry -->
                 </div>
-              </div>
+              <?php } ?>
+            </div>
+          </div>
+        </section><!-- End Blog Section -->
+        <section id="blog" class="blog">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Vacancy</h2>
             </div>
             <div class="row" data-aos="fade-up">
               <div class="col-lg-3 stretch-card grid-margin">
@@ -121,321 +70,346 @@
                   <div class="card-body">
                     <?php foreach ($vacancy as $row) { ?>
                       <div class="row">
-                        <div class="col-sm-4 grid-margin">
+                        <div class="col-sm-3 grid-margin">
                           <div class="position-relative">
                             <div class="rotate-img">
-                              <?php if (empty($row->logo_perusahaan)) { ?>
-                                <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                                  <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" />
-                                </a>
-                              <?php } else { ?>
-                                <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                                  <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
-                                </a>
-                              <?php } ?>
+                              <center>
+                                <?php if (empty($row->logo_perusahaan)) { ?>
+                                  <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
+                                    <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" />
+                                  </a>
+                                <?php } else { ?>
+                                  <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
+                                    <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" style="width:150px;height:auto;" />
+                                  </a>
+                                <?php } ?>
+                              </center>
                             </div>
                             <div class="badge-positioned">
                               <span class="badge badge-danger font-weight-bold"><?php echo $row->jenis ?></span>
                             </div>
                           </div>
                         </div>
-                        <div class="col-sm-8  grid-margin">
+                        <div class="col-sm-9  grid-margin">
                           <a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">
-                            <h2 class="mb-2 font-weight-600">
+                            <h4>
                               <?php echo $row->posisi ?>
-                            </h2>
+                            </h4>
                           </a>
                           <div class="fs-13 mb-2">
-                            <span class="mr-2" style="color:red">Deadline : <?php echo date("d M Y", strtotime($row->deadline)) ?></span>
+                            <span class="badge badge-danger">Deadline : <?php echo date("d M Y", strtotime($row->deadline)) ?></span>
                           </div>
                           <div class="fs-13 mb-2">
-                            <span class="mr-2">Location : </span> <?php echo $row->lokasi ?>
+                            <span class="badge badge-light">Location : </span>
+                            <p style="text-align: justify;font-size: 14px;"><?php echo $row->lokasi ?></p>
                           </div>
-                          <p class="mb-0">
-                            <?php echo substr($row->deskripsi, 0, 160) ?>..<a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">See More</a>
+                          <p style="text-align: justify;font-size: 14px;">
+                            <?php echo substr($row->deskripsi, 0, 150) ?>..<a href="<?php echo site_url("halaman/job/" . $row->id_loker) ?>">Read More</a>
                           </p>
                         </div>
                       </div>
+                      <hr>
                     <?php } ?>
                     <div style="margin-left:500px;"><a href="<?php echo site_url("halaman/loker") ?>" class="mb-3">Click here to see all job vacancy list</a></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row" data-aos="fade-up">
-              <div class="col-sm-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="card-title">
-                            List Company
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/CV_Pudak.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "CV. Pudak Scientific"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/Roman_Keramik.jpg") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "Roman Keramik"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/ERMA.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "ERMA"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/medion.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "Medion  "; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/orangtua.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "Orang Tua Group"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Astra_Komponen_Indonesia.jpg") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Astra Komponen Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <br>
-                        <a href="<?php echo site_url("halaman/list_company") ?>" class="mb-3">Click here to see all company list</a>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="card-title">
+          </div>
+          </div>
+        </section>
+        <section id="clients" class="clients">
+          <div class="container" data-aos="fade-up">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Company</h2>
+            </div>
+            <div class="owl-carousel clients-carousel">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-1.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-2.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-3.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-4.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-5.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-6.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-7.png" alt="">
+              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-8.png" alt="">
+            </div>
 
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Yamaha_Motor_Part_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Yamaha Motor Part Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_TK_Industrial_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT TK Industrial Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Surya_Energi_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Surya Energi Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/Sharing_Vision.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "Sharing Vision"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Sterling_Tulus_Cemerlang.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Sterling Tulus Cemerlang"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Sansan_Saudaratex_Jaya.jpg") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Sansan Saudaratex Jaya.jpg"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <br>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="card-title">
-
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Laju_Makmur_Sentosa.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Laju Makmur Sentosa"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Corebes_Inovasi_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Corebes Inovasi Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Catudaya_Prakarsa.jpg") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Catudaya Prakarsa"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_BGP_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT BGP Indonesia"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
-                          <div class="div-w-80 mr-3">
-                            <div class="rotate-img">
-                              <a href="#">
-                                <img src="<?php echo site_url("assets/upload/logo/fix/PT_Dynacast.png") ?>" alt="thumb" class="img-fluid" />
-                              </a>
-                            </div>
-                          </div>
-                          <a href="#" style="color:#000000;">
-                            <h5 class="font-weight-600 mb-0">
-                              <?php echo "PT Dynacast.png"; ?>
-                            </h5>
-                          </a>
-                        </div>
-                        <br>
+          </div>
+        </section><!-- End Clients Section -->
+        <!-- <div class="row" data-aos="fade-up">
+          <div class="col-sm-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="card-title">
+                        List Company
                       </div>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/CV_Pudak.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "CV. Pudak Scientific"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/Roman_Keramik.jpg") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "Roman Keramik"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/ERMA.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "ERMA"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/medion.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "Medion  "; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/orangtua.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "Orang Tua Group"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Astra_Komponen_Indonesia.jpg") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Astra Komponen Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <br>
+                    <a href="<?php echo site_url("halaman/list_company") ?>" class="mb-3">Click here to see all company list</a>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="card-title">
+
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Yamaha_Motor_Part_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Yamaha Motor Part Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_TK_Industrial_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT TK Industrial Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Surya_Energi_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Surya Energi Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/Sharing_Vision.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "Sharing Vision"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Sterling_Tulus_Cemerlang.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Sterling Tulus Cemerlang"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Sansan_Saudaratex_Jaya.jpg") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Sansan Saudaratex Jaya.jpg"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="card-title">
+
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Laju_Makmur_Sentosa.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Laju Makmur Sentosa"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Corebes_Inovasi_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Corebes Inovasi Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Catudaya_Prakarsa.jpg") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Catudaya Prakarsa"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_BGP_Indonesia.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT BGP Indonesia"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                      <div class="div-w-80 mr-3">
+                        <div class="rotate-img">
+                          <a href="#">
+                            <img src="<?php echo site_url("assets/upload/logo/fix/PT_Dynacast.png") ?>" alt="thumb" class="img-fluid" />
+                          </a>
+                        </div>
+                      </div>
+                      <a href="#" style="color:#000000;">
+                        <h5 class="font-weight-600 mb-0">
+                          <?php echo "PT Dynacast.png"; ?>
+                        </h5>
+                      </a>
+                    </div>
+                    <br>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <div class="row" data-aos="fade-up">
+          </div>
+        </div> -->
+        <!-- <div class="row" data-aos="fade-up">
               <div class="col-sm-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
@@ -570,8 +544,5 @@
                 </div>
               </div>
             </div> -->
-
-          </div>
-        </div>
         <!-- main-panel ends -->
         <!-- container-scroller ends -->

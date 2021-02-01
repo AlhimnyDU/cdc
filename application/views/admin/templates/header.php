@@ -37,6 +37,8 @@
 
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url() ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="nav-md">
@@ -84,7 +86,13 @@
                   <ul class="nav child_menu">
                     <li><a href="<?php echo site_url() ?>admin/event">Event</a></li>
                     <li><a href="<?php echo site_url() ?>admin/loker">Vacancy</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/magang">Magang</a></li>
                     <li><a href="<?php echo site_url() ?>admin/jobfair">Jobfair</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-briefcase"></i> Pengeturan <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="<?php echo site_url() ?>admin/persyaratan">Persyaratan</a></li>
                   </ul>
                 </li>
                 <li><a href="<?php echo site_url('admin/schedule') ?>"><i class="fa fa-laptop"></i> Schedule Meeting</a></li>

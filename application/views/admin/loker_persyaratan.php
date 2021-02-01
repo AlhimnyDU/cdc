@@ -85,8 +85,8 @@
                             <div class="form-group">
                                 <label>Nama Persyaratan untuk di upload di website</label>
                                 <br>
-                                <select name="id_syarat" class="syarat_select form-control" style="width: 100%;">
-                                    <option value="" hidden selected disabled>Cari Persyaratan</option>
+                                <select name="id_persyaratan" class="syarat_select form-control" style="width: 100%;" required>
+                                    <option value="" hidden selected disabled>Cari Persyaratan..</option>
                                     <?php
                                     foreach ($syarat as $row) {
                                     ?>
