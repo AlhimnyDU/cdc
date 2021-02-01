@@ -74,7 +74,12 @@
         </script>
         <script>
           $(document).ready(function() {
-            $('.datatable').DataTable();
+            $('.datatable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
             $('.datatable2').DataTable({
               "lengthChange": false,
               "searching": false,

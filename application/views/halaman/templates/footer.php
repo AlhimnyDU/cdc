@@ -181,6 +181,8 @@
         <script src="<?php echo base_url() ?>assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
         <script src="<?php echo base_url() ?>assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
         <script src="<?php echo base_url() ?>assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <script>
           $(function() {
             $(".rslides").responsiveSlides({
@@ -194,6 +196,16 @@
             $('.datatable').DataTable();
             $(".buttonSubmit").click(function() {
               $(".overlay").removeAttr('required');
+            });
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                autoplay: false,
+                items: 1,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                dotsContainer: '.cover_dots',
+                nav    : true,
+                navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"]
             });
           });
         </script>
@@ -235,7 +247,7 @@
           <script>
             swal({
               title: "Anda belum bisa mengajukan lamaran!",
-              text: "Isi terlebih dahulu berkas minimal photocopy ijazah legalisir dan hasil psikotest di profil anda",
+              text: "Harap menguploadkan ijazah pada profil anda",
               icon: "warning",
               timer: 5000
             });

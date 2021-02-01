@@ -120,7 +120,7 @@
           <script>
             swal({
               title: "Anda belum bisa mengajukan lamaran!",
-              text: "Isi terlebih dahulu berkas minimal photocopy ijazah legalisir, transkrip nilai, dan hasil psikotest di profil anda",
+              text: "Harap menguploadkan ijazah pada profil anda",
               icon: "warning",
               timer: 5000
             });

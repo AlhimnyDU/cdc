@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                                <table id="" class="table table-striped table-bordered datatable" style="width:100%">
+                                <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>

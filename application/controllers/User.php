@@ -76,7 +76,7 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'vacancy')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'vacancy')->order_by('tbl_loker.', 'DESC')->get()->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/loker', $data);
                 $this->load->view('user/templates/js');
@@ -184,6 +184,12 @@ class User extends CI_Controller
                 'provinsi' => $this->input->post('provinsi'),
                 'kode_pos' => $this->input->post('kode_pos'),
                 'pas_foto' => $this->upload->data('file_name'),
+                'universitas' => $this->input->post('universitas'),
+                'fakultas' => $this->input->post('fakultas'),
+                'prodi' => $this->input->post('prodi'),
+                'ipk' => $this->input->post('ipk'),
+                'nomor_induk' => $this->input->post('nomor_induk'),
+                'semester' => $this->input->post('semester'),
                 'updated' => date('Y-m-d H:i:s')
             );
         } else {
@@ -201,6 +207,12 @@ class User extends CI_Controller
                 'kota_kabupaten' => $this->input->post('kota_kabupaten'),
                 'provinsi' => $this->input->post('provinsi'),
                 'kode_pos' => $this->input->post('kode_pos'),
+                'universitas' => $this->input->post('universitas'),
+                'fakultas' => $this->input->post('fakultas'),
+                'prodi' => $this->input->post('prodi'),
+                'ipk' => $this->input->post('ipk'),
+                'nomor_induk' => $this->input->post('nomor_induk'),
+                'semester' => $this->input->post('semester'),
                 'updated' => date('Y-m-d H:i:s')
             );
         }
@@ -509,7 +521,72 @@ class User extends CI_Controller
             redirect('user/cv');
         }
     }
+    public function daftarMagang($id)
+    {
+        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_berkasMagang");
+        $config['upload_path'] = './assets/upload/berkas/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'pdf';
+        $this->upload->initialize($config);
+        $jumlah_berkas = count($_FILES['berkas']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['berkas']['name'][$i])) {
 
+                $_FILES['file']['name'] = $_FILES['berkas']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['berkas']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['berkas']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['berkas']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['berkas']['size'][$i];
+
+                if ($this->upload->do_upload('file')) {
+                    $berkas = array(
+                        'nama_berkas' =>  $_POST['nama_berkas'][$i],
+                        'file' => $this->upload->data('file_name'),
+                        'id_akun' => $this->session->userdata('id_akun'),
+                        'updated' => date('Y-m-d H:i:s')
+                    );
+                    $this->db->insert('tbl_berkas', $berkas);
+                }
+            }
+        }
+
+        $cv = array(
+            'nama' => $this->input->post('nama'),
+            'email' => $this->input->post('email'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'telp' => $this->input->post('telp'),
+            'alamat' => $this->input->post('alamat'),
+            'desa_kelurahan' => $this->input->post('desa_kelurahan'),
+            'kecamatan' => $this->input->post('kecamatan'),
+            'kota_kabupaten' => $this->input->post('kota_kabupaten'),
+            'provinsi' => $this->input->post('provinsi'),
+            'kode_pos' => $this->input->post('kode_pos'),
+            'universitas' => $this->input->post('universitas'),
+            'fakultas' => $this->input->post('fakultas'),
+            'prodi' => $this->input->post('prodi'),
+            'ipk' => $this->input->post('ipk'),
+            'nomor_induk' => $this->input->post('nomor_induk'),
+            'semester' => $this->input->post('semester'),
+            'keahlian' => $this->input->post('keahlian'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_akun', $this->session->userdata('id_akun'))->update('tbl_akun', $cv);
+
+        $data = array(
+            'id_loker' => $id,
+            'id_akun' => $this->session->userdata('id_akun'),
+            'status' => "Menunggu Verifikasi",
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', TRUE);
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 
     public function ajukan($id)
     {

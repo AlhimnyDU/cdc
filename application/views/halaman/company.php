@@ -65,7 +65,7 @@
                           </a>
                         <?php } else { ?>
                           <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                            <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
+                            <img style="width: auto; height:170px;" src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
                           </a>
                         <?php } ?>
                       </div>

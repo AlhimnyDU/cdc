@@ -31,6 +31,7 @@
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
                                 <table id="" class="table table-striped table-bordered datatable" style="width:100%">
+                                    <span class="badge badge-primary">EXPORT TABEL</span>
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>

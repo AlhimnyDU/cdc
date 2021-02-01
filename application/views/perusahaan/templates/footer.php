@@ -73,7 +73,12 @@
         </script>
         <script>
           $(document).ready(function() {
-            $('.datatable').DataTable();
+            $('.datatable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
             <?php if (empty($mengikuti)) { ?>
               $('#jobModal').modal({
                 backdrop: 'static',

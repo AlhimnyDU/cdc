@@ -23,8 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/cdc/';
-// $config['base_url'] = 'https://cdc.itenas.ac.id/';
+// $config['base_url'] = 'http://localhost/cdc/';
+$config['base_url'] = 'https://cdc.itenas.ac.id/';
 date_default_timezone_set('Asia/Jakarta');
 
 /*
@@ -251,7 +251,6 @@ $config['log_path'] = '';
 |
 */
 $config['log_file_extension'] = '';
-
 /*
 |--------------------------------------------------------------------------
 | Log File Permissions
@@ -523,3 +522,17 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['enable_hooks'] = TRUE;
+
+/*
+|--------------------------------------------------------------------------
+| Maintenance Mode
+|--------------------------------------------------------------------------
+|
+| For whatever reason sometimes a site needs to be taken offline.
+| Set $config['maintenance_mode'] to TRUE if the site has to be offline
+|
+| $config['maintenance_mode'] = TRUE; // site is offline
+| $config['maintenance_mode'] = FALSE; // site is online
+*/
+$config['maintenance_mode'] = FALSE;

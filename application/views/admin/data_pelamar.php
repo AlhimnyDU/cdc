@@ -62,7 +62,7 @@
                                                     } ?> value="Pria">Pria</option>
                                             <option <?php if ($akun->jenis_kelamin == "Wanita") {
                                                         echo "selected";
-                                                    } ?>value="Wanita">Wanita</option>
+                                                    } ?> value="Wanita">Wanita</option>
                                         </select></div>
                                 </div>
                                 <div class="field item form-group">
@@ -124,8 +124,44 @@
                         </div>
                     </div>
                     <div class="x_content">
+                        <div style="margin-top:20px">
+                            <span class="section">2. Berkas - Berkas</span>
+                            <div class="col-sm-12">
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki seperti Photocopy Ijazah Legalisir, Transkrip Nilai, TOEFL/IELTS, dan Hasil Psikotest</p>
+                                <div class="card-box table-responsive">
+                                    <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Nama Berkas</th>
+                                                <th width="15%">File Berkas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($berkas as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no ?></td>
+                                                    <td><?php echo $row->nama_berkas ?></td>
+                                                    <td>
+                                                        <center><a href="<?php echo base_url('assets/upload/berkas/' . $row->file) ?>" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> Lihat</a></center>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x_content">
                         <div style="padding-top:10px">
-                            <span class="section">2. Riwayat Pendidikan</span>
+                            <span class="section">3. Riwayat Pendidikan</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -162,7 +198,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">3. Riwayat Pengalaman Organisasi</span>
+                            <span class="section">4. Riwayat Pengalaman Organisasi</span>
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
@@ -198,7 +234,7 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">4. Riwayat Prestasi</span>
+                            <span class="section">5. Riwayat Prestasi</span>
                             <div class="col-sm-12">
                                 <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan prestasi seperti juara perlombaan, beasiswa, dan prestasi lainnya sebagai portofolio anda</p>
                                 <div class="card-box table-responsive">
@@ -234,16 +270,16 @@
                     </div>
                     <div class="x_content">
                         <div style="margin-top:20px">
-                            <span class="section">5. Sertifikat Keahlian</span>
+                            <span class="section">6. Sertifikat Keahlian</span>
                             <div class="col-sm-12">
-                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki seperti TOEFL/IELTS, Psikotest ,Sertifikat Pelatihan, dan Sertifikat keahlian sesuai dengan bidang anda sebagai penunjang dari keahlian anda.</p>
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan sertifikat yang anda miliki seperti Sertifikat Pelatihan atau Sertifikat keahlian sesuai dengan bidang anda sebagai penunjang dari keahlian anda.</p>
                                 <div class="card-box table-responsive">
                                     <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th width="5%">No</th>
                                                 <th>Nama Sertifikat</th>
-                                                <th width="15%">Bukti Sertifikat</th>
+                                                <th>Bukti Sertifikat</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -256,6 +292,42 @@
                                                     <td><?php echo $row->nama_sertifikat ?></td>
                                                     <td>
                                                         <center><a href="<?php echo base_url('assets/upload/sertifikat/' . $row->file) ?>" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> Lihat</a></center>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x_content">
+                        <div style="margin-top:20px">
+                            <span class="section">7. Riwayat Pengalaman Kerja</span>
+                            <div class="col-sm-12">
+                                <p style="margin-left:15px;">Pada tabel ini anda dapat mengisikan riwayat pengalaman kerja.</p>
+                                <div class="card-box table-responsive">
+                                    <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Pengalaman Kerja</th>
+                                                <th width="15%">Tahun</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($kerja as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no ?></td>
+                                                    <td><?php echo $row->riwayat_kerja ?></td>
+                                                    <td>
+                                                       <?php echo $row->tahun ?>
                                                     </td>
                                                 </tr>
                                             <?php

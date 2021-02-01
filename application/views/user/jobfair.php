@@ -166,6 +166,7 @@
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
+                            Lowongan Kerja Khusus di Event Job Fair
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
