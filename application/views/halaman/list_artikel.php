@@ -14,11 +14,14 @@
               <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>"><?php echo $row->judul ?></a>
             </h2>
             <div class="entry-content">
-              <?php echo substr($row->konten, 0, 160) ?>
+              <p>
+                <?php echo substr($row->konten, 0, 160) ?>
+              </p>
               <div class="read-more">
                 <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>">Read More</a>
               </div>
             </div>
+
           </article><!-- End blog entry -->
         </div>
       <?php } ?>
