@@ -14,9 +14,7 @@
               <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>"><?php echo $row->judul ?></a>
             </h2>
             <div class="entry-content">
-              <p>
-                <?php echo substr($row->konten, 0, 160) ?>
-              </p>
+              <?php echo substr($row->konten, 0, 160) ?>
               <div class="read-more">
                 <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>">Read More</a>
               </div>
