@@ -65,7 +65,9 @@
                     <ul class="vertical-menu">
                       <li><a href="<?php echo site_url("halaman/loker") ?>">Vacancy</a></li>
                       <li><a href="<?php echo site_url("halaman/jobfair") ?>">Job Fair</a></li>
-                      <li><a href="<?php echo site_url("halaman/magang") ?>">Magang</a></li>
+                      <li><a href="<?php echo site_url("halaman/info") ?>">Informasi Magang</a></li>
+                      <li><a href="<?php echo site_url("halaman/magang") ?>">Magang Bersertifikasi BUMN</a></li>
+                      <li><a href="<?php echo site_url("halaman/carrer") ?>">Magang Mahasiswa</a></li>
                       <li><a href="<?php echo site_url("halaman/beasiswa") ?>">Beasiswa</a></li>
                     </ul>
                   </div>
