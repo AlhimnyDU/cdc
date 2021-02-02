@@ -535,4 +535,4 @@ $config['enable_hooks'] = TRUE;
 | $config['maintenance_mode'] = TRUE; // site is offline
 | $config['maintenance_mode'] = FALSE; // site is online
 */
-$config['maintenance_mode'] = FALSE;
+$config['maintenance_mode'] = TRUE;

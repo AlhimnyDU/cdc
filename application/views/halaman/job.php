@@ -187,7 +187,7 @@
                             <div class="form-group">
                                 <label>Perguruan Tinggi<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="universitas" value="Universitas Teknologi Nasional Bandung" readonly>
+                                    <input class="form-control" name="universitas" value="Institut Teknologi Nasional Bandung" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
