@@ -114,7 +114,7 @@ class Login extends CI_Controller
 				'email' 		=> $this->input->post('email'),
 				'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				'telp' 			=> $this->input->post('telp'),
-				'role'			=> "mahasiswa",
+				'role'			=> $this->input->post('role'),
 				'nomor_induk'	=> $this->input->post('nrp'),
 				'alamat'		=> $this->input->post('alamat'),
 				'created' 		=> date('Y-m-d H:i:s'),
