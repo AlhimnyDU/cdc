@@ -11,7 +11,7 @@
 								<br>
 								<h2 id=judul><?php echo $artikel->judul ?></h2>
 								<div style="margin-top:10px;">
-									<small><?php echo date("d M Y", strtotime($artikel->created)) ?></small> - <i><?php echo $artikel->user_post ?></i>
+									<small><?php echo date("d F Y", strtotime($artikel->created)) ?></small> - <i><?php echo $artikel->user_post ?></i>
 								</div>
 								<br>
 								<div>
