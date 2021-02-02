@@ -253,7 +253,7 @@
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">Nilai IPK Terakhir<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
+                                            <input type="text" class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
                                         </div>
                                     </div>
                                 <?php } else { ?>
