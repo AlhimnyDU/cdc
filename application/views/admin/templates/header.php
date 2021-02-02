@@ -86,7 +86,7 @@
                   <ul class="nav child_menu">
                     <li><a href="<?php echo site_url() ?>admin/event">Event</a></li>
                     <li><a href="<?php echo site_url() ?>admin/loker">Vacancy</a></li>
-                    <li><a href="<?php echo site_url() ?>admin/magang">Magang</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/magang">Magang Bersertifikasi BUMN</a></li>
                     <li><a href="<?php echo site_url() ?>admin/jobfair">Jobfair</a></li>
                   </ul>
                 </li>
