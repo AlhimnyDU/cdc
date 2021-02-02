@@ -25,9 +25,9 @@
           </article><!-- End blog entry -->
         </div>
       <?php } ?>
+      <center>
+        <?php echo $pagination; ?>
+      </center>
     </div>
-    <center>
-      <?php echo $pagination; ?>
-    </center>
   </div>
 </section><!-- End Blog Section -->
