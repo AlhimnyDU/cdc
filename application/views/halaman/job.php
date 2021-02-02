@@ -296,7 +296,7 @@
                             <div class="form-group">
                                 <label>Nilai IPK Terakhir<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
+                                    <input type="text" class="form-control ipk" name="ipk" value="<?php echo $akun->ipk ?>" required>
                                 </div>
                             </div>
                         </div>
