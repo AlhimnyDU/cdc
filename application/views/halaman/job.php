@@ -51,7 +51,7 @@
                                     <?php } else if (($this->session->userdata('user') == "mahasiswa") && ($job->jenis == 'magang')) { ?>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuModal">Klik disini untuk daftar</button>
                                     <?php } else { ?>
-                                        <a class="btn btn-info disabled" href="#">Apply job here</a> | <a class="btn btn-info" href="<?php echo site_url("login") ?>">Login</a> <br>
+                                        <a class="btn btn-info disabled" href="#">Buat akun terlebih dahulu</a> | <a class="btn btn-info" href="<?php echo site_url("login") ?>">Registrasi Disini</a> <br>
                                         <small style="color:red;">*Login required for user only</small>
                                     <?php } ?>
                                 <?php } else { ?>
