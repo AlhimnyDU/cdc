@@ -90,7 +90,7 @@
                     <li><a href="<?php echo site_url() ?>admin/jobfair">Jobfair</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-briefcase"></i> Pengeturan <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-cog"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo site_url() ?>admin/persyaratan">Persyaratan</a></li>
                   </ul>
