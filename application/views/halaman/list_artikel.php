@@ -15,7 +15,7 @@
             </h2>
             <div class="entry-content">
 
-              <?php echo substr($row->konten, 0, 160) ?>
+              <?php echo substr($row->headline, 0, 160) ?>
 
               <div class="read-more">
                 <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>">Read More</a>
