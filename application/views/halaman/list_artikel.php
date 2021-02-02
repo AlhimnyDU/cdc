@@ -8,7 +8,7 @@
         <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
           <article class="entry">
             <div class="entry-img">
-              <img src="<?php echo base_url('assets/upload/post/' . $row->gambar) ?>" alt="" class="img-fluid">
+              <img src="<?php echo base_url('assets/upload/post/' . $row->gambar) ?>" alt="" class="img-fluid" style="height: 300px;width: auto;">
             </div>
             <h2 class="entry-title">
               <a href="<?php echo site_url('halaman/artikel/' . $row->id_artikel) ?>"><?php echo $row->judul ?></a>
