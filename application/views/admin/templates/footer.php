@@ -81,9 +81,15 @@
               "lengthChange": true,
               "lengthMenu": [10, 25, 50, 75, 100, "ALL"],
               dom: 'Blfrtip',
-              buttons: [
-                'csv', 'excel', 'pdf', 'print'
-              ]
+              buttons: [{
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                  'excel',
+                  'csv',
+                  'pdf'
+                ]
+              }]
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
