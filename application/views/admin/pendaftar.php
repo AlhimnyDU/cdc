@@ -36,8 +36,9 @@
                                             <th>No HP</th>
                                             <th>Email</th>
                                             <th>Keahlian</th>
-                                            <th>Surat Pernyataan</th>
-                                            <th>Transkrip Nilai</th>
+                                            <?php foreach ($berkas as $row) { ?>
+                                                <th><?php echo $row->nama_syarat ?></th>
+                                            <?php } ?>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -61,17 +62,9 @@
                                                 <td><?php echo $row->telp ?></td>
                                                 <td><?php echo $row->email ?></td>
                                                 <td><?php echo $row->keahlian ?></td>
-                                                <td>Ada</td>
-                                                <td>Ada</td>
-                                                <td>
-                                                    <center>
-                                                        <?php if (($row->status == "Ditolak") || ($row->status == "Pelamar Menolak")) { ?>
-                                                            <span class="badge badge-danger"><?php echo $row->status ?></span>
-                                                        <?php } else { ?>
-                                                            <span class="badge badge-info"><?php echo $row->status ?></span>
-                                                        <?php } ?>
-                                                    </center>
-                                                </td>
+                                                <?php foreach ($berkas as $row) { ?>
+                                                    <td>Ada</td>
+                                                <?php } ?>
                                                 <td>
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/data_pelamar/' . $row->id_akun) ?>"><i class="fa fa-user"></i> Data Pelamar</a>
                                                 </td>
