@@ -80,17 +80,23 @@
               "scrollX": true,
               "lengthChange": true,
               "lengthMenu": [10, 25, 50, 75, 100, 250],
-              dom: 'Blfrtip',
+              dom: 'Bfrtip',
+              lengthMenu: [
+                [10, 25, 50, -1],
+                ['10 rows', '25 rows', '50 rows', 'Show all']
+              ],
               buttons: [{
-                extend: 'collection',
-                className: 'btn btn-sm btn-primary',
-                text: 'Export Data',
-                buttons: [
-                  'excel',
-                  'csv',
-                  'pdf'
-                ]
-              }]
+                  extend: 'collection',
+                  className: 'btn btn-sm btn-primary',
+                  text: 'Export Data',
+                  buttons: [
+                    'excel',
+                    'csv',
+                    'pdf'
+                  ]
+                },
+                'pageLength'
+              ]
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
