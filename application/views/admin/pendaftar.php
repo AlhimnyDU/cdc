@@ -62,8 +62,10 @@
                                                 <td><?php echo $row->telp ?></td>
                                                 <td><?php echo $row->email ?></td>
                                                 <td><?php echo $row->keahlian ?></td>
-                                                <?php foreach ($berkas as $row) { ?>
-                                                    <td>Ada</td>
+                                                <?php foreach ($berkas as $r) {
+                                                    if (($r->nama_syarat == $row->nama_berkas) && ($r->id_akun == $row->id_akun)) { ?>
+                                                        <td><a href="<?php echo base_url('assets/upload/berkas/' . $r->file) ?>">Ada</a></td>
+                                                    <?php } ?>
                                                 <?php } ?>
                                                 <td>
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/data_pelamar/' . $row->id_akun) ?>"><i class="fa fa-user"></i> Data Pelamar</a>
