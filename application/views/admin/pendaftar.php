@@ -71,11 +71,11 @@
                                                 } ?>
                                                 <td>
                                                     <!-- <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/data_pelamar/' . $row->id_akun) ?>"><i class="fa fa-user"></i> Data Pelamar</a> | -->
-                                                    <?php if ($row->status == "Menunggu Verifikasi") { ?>
+                                                    <?php if ($row->lamaran == "Menunggu Verifikasi") { ?>
                                                         <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-check"></i> Terima</a> | <a class="btn btn-danger btn-sm beforeTolak" href="<?php echo site_url('perusahaan/tolak_lamaran/' . $row->id_loker . '/' . $row->id_lamaran) ?>"><i class="fa fa-times"></i> Tolak</a>
-                                                    <?php } else if ($row->status == "Telah diverifikasi") { ?>
+                                                    <?php } else if ($row->lamaran == "Telah diverifikasi") { ?>
                                                         <a class="btn btn-primary btn-sm disabled" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-check"></i> Terima</a>
-                                                    <?php } else if ($row->status == "Ditolak") { ?>
+                                                    <?php } else if ($row->lamaran == "Ditolak") { ?>
                                                         <a class="btn btn-danger btn-sm disabled" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-times"></i> Tolak</a>
 
                                                     <?php } ?>
