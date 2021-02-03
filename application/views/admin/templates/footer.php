@@ -79,11 +79,11 @@
             $('.datatable').DataTable({
               "scrollX": true,
               "lengthChange": true,
-              "lengthMenu": [10, 25, 50, 75, 100]
-              // dom: 'Bfrtip',
-              // buttons: [
-              //   'csv', 'excel', 'pdf', 'print'
-              // ]
+              "lengthMenu": [10, 25, 50, 75, 100, ALL],
+              dom: 'Blfrtip',
+              buttons: [
+                'csv', 'excel', 'pdf', 'print'
+              ]
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
