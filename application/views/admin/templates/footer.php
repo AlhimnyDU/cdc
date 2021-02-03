@@ -83,6 +83,7 @@
               ],
               "scrollX": true,
               "lengthChange": true,
+              "lengthMenu": [10, 25, 50, 75, 100]
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
