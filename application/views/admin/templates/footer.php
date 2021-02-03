@@ -95,7 +95,9 @@
                     'pdf'
                   ]
                 },
-                'pageLength'
+                pageLength: {
+                  className: 'btn btn-sm btn-primary'
+                }
               ]
             });
             $('.datatable2').DataTable({
