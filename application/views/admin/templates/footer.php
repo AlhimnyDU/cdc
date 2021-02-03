@@ -77,13 +77,13 @@
         <script>
           $(document).ready(function() {
             $('.datatable').DataTable({
-              dom: 'Bfrtip',
-              buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-              ],
               "scrollX": true,
               "lengthChange": true,
-              "lengthMenu": [10, 25, 50, 75, 100]
+              "lengthMenu": [10, 25, 50, 75, 100],
+              dom: 'Bfrtip',
+              buttons: [
+                'csv', 'excel', 'pdf', 'print'
+              ]
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
