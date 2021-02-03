@@ -41,7 +41,7 @@
                                                 <td><?php echo $row->posisi ?></td>
                                                 <td><?php echo $row->status ?></td>
                                                 <td>
-                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/pelamar/' . $row->id_loker) ?>"><i class="fa fa-users"></i> Pelamar</a> |
+                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/pendaftar/' . $row->id_loker) ?>"><i class="fa fa-users"></i> Pelamar</a> |
                                                     <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> |
                                                     <?php if ($row->status == "Menunggu Konfirmasi") { ?>
                                                         <a class="btn btn-success" href="<?php echo site_url('admin/loker_persyaratan/') . $row->id_loker ?>"><i class="fa fa-check"></i> Publish</a>

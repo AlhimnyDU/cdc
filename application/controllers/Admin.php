@@ -357,6 +357,23 @@ class Admin extends CI_Controller
         }
     }
 
+    public function pendaftar($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_akun.*')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/pendaftar', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');
+            } else {
+                redirect('welcome');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function data_pelamar($id)
     {
         if ($this->session->userdata('nama')) {
