@@ -80,6 +80,7 @@
               "scrollX": true,
               "lengthChange": true,
               "lengthMenu": [10, 25, 50, 75, 100, 250],
+              responsive: true,
               dom: 'Bfrtip',
               lengthMenu: [
                 [10, 25, 50, -1],
