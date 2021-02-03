@@ -80,7 +80,8 @@
               dom: 'Bfrtip',
               buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
-              ]
+              ],
+              "scrollX": true
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
