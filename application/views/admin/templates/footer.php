@@ -81,7 +81,8 @@
               buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
               ],
-              "scrollX": true
+              "scrollX": true,
+              "lengthChange": true,
             });
             $('.datatable2').DataTable({
               "lengthChange": false,
