@@ -72,21 +72,18 @@
                                                 <td>
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/data_pelamar/' . $row->id_akun) ?>"><i class="fa fa-user"></i> Data Pelamar</a> |
                                                     <?php if ($row->status == "Menunggu Verifikasi") { ?>
-                                                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"> Verifikasi</a>
+                                                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-check"></i> Terima</a> | <a class="btn btn-danger btn-sm beforeTolak" href="<?php echo site_url('perusahaan/tolak_lamaran/' . $row->id_loker . '/' . $row->id_lamaran) ?>"><i class="fa fa-times"></i> Tolak</a>
                                                     <?php } else if ($row->status == "Telah diverifikasi") { ?>
-                                                        <a class="btn btn-success btn-sm" href="<?php echo site_url('admin/terima_lamaran/' . $row->id_lamaran) ?>"><i class="fa fa-user"></i> Terima Pelamar</a>
-                                                    <?php } ?>
-                                                    <?php if (($row->status == "Diterima") || ($row->status == "Ditolak") || ($row->status == "Pelamar Menerima") || ($row->status == "Pelamar Menolak")) { ?>
+                                                        <a class="btn btn-primary btn-sm disabled" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-check"></i> Terima</a>
+                                                    <?php } else if ($row->status == "Ditolak") { ?>
+                                                        <a class="btn btn-danger btn-sm disabled" href="<?php echo site_url('admin/verifikasi/' . $row->id_lamaran) ?>"><i class="fa fa-times"></i> Tolak</a>
 
-                                                    <?php } else { ?>
-                                                        <a class="btn btn-danger btn-sm beforeTolak" href="<?php echo site_url('admin/tolak_lamaran/' . $row->id_lamaran) ?>"><i class="fa fa-trash"></i> Tolak</a>
                                                     <?php } ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                            $no++;
-                                        }
-                                        ?>
+
+                                                <?php
+                                                $no++;
+                                            }
+                                                ?>
                                     </tbody>
                                 </table>
                             </div>
