@@ -376,6 +376,51 @@ class Admin extends CI_Controller
         }
     }
 
+    public function verif($id_lamaran)
+    {
+        $data = array(
+            'status' => "Telah Diverifikasi",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function terima_lamaran($id_lamaran)
+    {
+        $data = array(
+            'status' => "Diterima",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function tolak_lamaran($id_lamaran)
+    {
+        $data = array(
+            'status' => "Ditolak",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function data_pelamar($id)
     {
         if ($this->session->userdata('nama')) {
