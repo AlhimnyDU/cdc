@@ -361,7 +361,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_akun.*')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
+                $data['pendaftar'] = $this->db->select('tbl_lamaran.*,tbl_akun.*')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/pendaftar', $data);
                 $this->load->view('admin/templates/js');
