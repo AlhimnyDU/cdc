@@ -79,7 +79,7 @@
             $('.datatable').DataTable({
               "scrollX": true,
               "lengthChange": true,
-              "lengthMenu": [10, 25, 50, 75, 100, "ALL"],
+              "lengthMenu": [10, 25, 50, 75, 100, 250],
               dom: 'Blfrtip',
               buttons: [{
                 extend: 'collection',
