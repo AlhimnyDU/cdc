@@ -58,7 +58,7 @@
                                                 <td>S1</td>
                                                 <td><?php echo $row->prodi ?></td>
                                                 <td><?php echo $row->ipk ?></td>
-                                                <td><?php echo $row->no_hp ?></td>
+                                                <td><?php echo $row->telp ?></td>
                                                 <td><?php echo $row->email ?></td>
                                                 <td><?php echo $row->keahlian ?></td>
                                                 <td>Ada</td>
