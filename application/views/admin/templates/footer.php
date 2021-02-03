@@ -83,7 +83,8 @@
               dom: 'Blfrtip',
               buttons: [{
                 extend: 'collection',
-                text: 'Export',
+                className: 'btn btn-sm btn-primary',
+                text: 'Export Data',
                 buttons: [
                   'excel',
                   'csv',
