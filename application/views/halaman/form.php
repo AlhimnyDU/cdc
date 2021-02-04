@@ -13,7 +13,7 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="nomor_induk" required="required" type="number">
+                                    <input class="form-control" name="nim" required="required" type="number">
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -37,27 +37,25 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="perguruan_tinggi" type="text">
+                                    <input class="form-control" name="perguruan_tinggi" type="text" required="required">
                                 </div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Fakultas<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="fakultas" type="text">
+                                    <input class="form-control" name="fakultas" type="text" required="required">
                                 </div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Program Studi<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="prodi" type="text">
+                                    <input class="form-control" name="prodi" type="text" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <center>
-                                    <div class="col-md-6 offset-md-3">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                        <button type="reset" class="btn btn-success">Reset</button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-success">Reset</button>
                                 </center>
                             </div>
                         </form>
