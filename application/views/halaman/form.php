@@ -3,9 +3,11 @@
         <div class="row aos-init aos-animate" data-aos="fade-up">
             <div class="col-sm-12 grid-margin">
                 <div class="card">
+                    <div class="card-title">
+                        <h4>Pendaftaran Peserta Acara <?php echo $acara->nama_acara ?></h4>
+                    </div>
                     <div class="card-body">
                         <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data">
-                            <span class="section">Pendaftaran Peserta Acara <?php echo $acara->nama_acara ?></span>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
                                 <div>
