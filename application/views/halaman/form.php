@@ -3,8 +3,10 @@
         <div class="row aos-init aos-animate" data-aos="fade-up">
             <div class="col-sm-12 grid-margin">
                 <div class="card">
-                    <div class="card-title">
-                        <h4>Pendaftaran Peserta Acara <?php echo $acara->nama_acara ?></h4>
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h4>Pendaftaran Peserta Acara <?php echo $acara->nama_acara ?></h4>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data">
