@@ -223,7 +223,7 @@ class Halaman extends CI_Controller
 			'nim'    => $this->input->post('nim'),
 			'email'    => $this->input->post('email'),
 			'no_hp'    => $this->input->post('no_hp'),
-			'perguruaan_tinggi'    => $this->input->post('perguruan_tinggi'),
+			'perguruan_tinggi'    => $this->input->post('perguruan_tinggi'),
 			'fakultas'    => $this->input->post('fakultas'),
 			'prodi'    => $this->input->post('prodi'),
 			'id_acara'    => $id,

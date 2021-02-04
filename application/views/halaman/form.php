@@ -37,7 +37,7 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="perguruaan_tinggi" type="text">
+                                    <input class="form-control" name="perguruan_tinggi" type="text">
                                 </div>
                             </div>
                             <div class="field item form-group">
