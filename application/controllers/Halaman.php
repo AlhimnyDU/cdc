@@ -207,6 +207,14 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
+	public function daftar()
+	{
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/form');
+		$this->load->view('halaman/templates/js');
+		$this->load->view('halaman/templates/footer');
+	}
+
 	public function magang()
 	{
 		//konfigurasi pagination
