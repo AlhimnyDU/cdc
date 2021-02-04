@@ -168,7 +168,7 @@ class Admin extends CI_Controller
     {
         $data = array(
             'nama_acara'    => $this->input->post('nama_acara'),
-            'tanggal_pelaksanaan'    => $this->input->post('tanggal_acara'),
+            'tanggal_pelaksanaan'    => $this->input->post('tanggal_pelaksanaan'),
             'created'   => date('Y-m-d H:i:s'),
             'updated'   => date('Y-m-d H:i:s'),
         );
