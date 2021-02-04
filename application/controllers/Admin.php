@@ -130,6 +130,68 @@ class Admin extends CI_Controller
         }
     }
 
+    public function pesertaAcara($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['acara'] = $this->db->where('id_acara', $id)->get('tbl_peserta')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/pesertaAcara', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function acara()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['acara'] = $this->db->get('tbl_acara')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/acara', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addAcara()
+    {
+        $data = array(
+            'nama_acara'    => $this->input->post('nama_acara'),
+            'tanggal_pelaksanaan'    => $this->input->post('tanggal_acara'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->insert('tbl_acara', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteAcara($id)
+    {
+        $query = $this->db->where('id_acara', $id)->delete('tbl_acara');
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function addEvent()
     {
         $data = array(

@@ -207,12 +207,36 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
-	public function daftar()
+	public function daftar($id)
 	{
+		$data['acara'] = $this->db->where('id_acara', $id)->get('tbl_acara')->row();
 		$this->load->view('halaman/templates/header');
-		$this->load->view('halaman/form');
+		$this->load->view('halaman/form', $data);
 		$this->load->view('halaman/templates/js');
 		$this->load->view('halaman/templates/footer');
+	}
+
+	public function daftarAcara($id)
+	{
+		$data = array(
+			'nama_peserta'    => $this->input->post('nama_peserta'),
+			'nim'    => $this->input->post('nim'),
+			'email'    => $this->input->post('email'),
+			'no_hp'    => $this->input->post('no_hp'),
+			'perguruaan_tinggi'    => $this->input->post('perguruan_tinggi'),
+			'fakultas'    => $this->input->post('fakultas'),
+			'prodi'    => $this->input->post('prodi'),
+			'id_acara'    => $id,
+			'created'   => date('Y-m-d H:i:s'),
+			'updated'   => date('Y-m-d H:i:s'),
+		);
+		$query = $this->db->insert('tbl_peserta', $data);
+		if ($query) {
+			$this->session->set_flashdata('daftar_berhasil', TRUE);
+		} else {
+			$this->session->set_flashdata('failed', "Tambah Gagal");
+		}
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function magang()

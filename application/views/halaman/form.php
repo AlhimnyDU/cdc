@@ -136,7 +136,6 @@
                                             Desain Komunikasi dan Visual
                                         </option>
                                     </select>
-
                                 </div>
                             </div>
                         </form>

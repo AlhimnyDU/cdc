@@ -143,6 +143,16 @@
     });
   </script>
 <?php } ?>
+<?php if ($this->session->flashdata('daftar_berhasil', TRUE)) { ?>
+  <script>
+    swal({
+      title: "Registrasi Success!",
+      text: "Data anda telah berhasil masuk! ditunggu partisipasinya",
+      icon: "success",
+      timer: 5000
+    });
+  </script>
+<?php } ?>
 
 </body>
 
