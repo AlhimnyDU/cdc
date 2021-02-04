@@ -101,6 +101,8 @@
       }
     });
     $('.ipk').inputmask("9.99");
+    $('.telp').inputmask("9999999999999");
+
     // $("#form").submit(function(e) {
 
     //   //stop submitting the form to see the disabled button effect

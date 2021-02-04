@@ -19,7 +19,7 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Lengkap<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control" name="nama" required="required" disabled>
+                                    <input class="form-control" name="nama" required="required" type="text">
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -31,7 +31,7 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nomor Handphone<span class="required">*</span></label>
                                 <div>
-                                    <input class="form-control telp" id="telp" name="telp" required="required" type="text" disabled>
+                                    <input class="form-control telp" name="no_hp" required="required" type="text">
                                 </div>
                             </div>
                             <div class="field item form-group">
