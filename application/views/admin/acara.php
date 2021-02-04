@@ -40,7 +40,7 @@
                                                 <td><?php echo date("d F Y", strtotime($row->tanggal_pelaksanaan)) ?></td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm" href="<?php echo site_url('admin/deleteAcara/') . $row->id_acara ?>"><i class="fa fa-trash"></i>Edit</a> |
-                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/peserta/') . $row->id_acara ?>"><i class="fa fa-user"></i>Peserta</a>
+                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/pesertaAcara/') . $row->id_acara ?>"><i class="fa fa-user"></i>Peserta</a>
                                                 </td>
                                             </tr>
                                         <?php
