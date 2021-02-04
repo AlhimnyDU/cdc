@@ -134,7 +134,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['acara'] = $this->db->where('id_acara', $id)->get('tbl_peserta')->result();
+                $data['peserta'] = $this->db->where('id_acara', $id)->get('tbl_peserta')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/pesertaAcara', $data);
                 $this->load->view('admin/templates/js');
