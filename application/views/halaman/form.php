@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4>Pendaftaran Peserta Acara <?php echo $acara->nama_acara ?></h4>
+                            <h4>Peserta Acara <?php echo $acara->nama_acara ?></h4>
                         </div>
                     </div>
                     <div class="card-body">
