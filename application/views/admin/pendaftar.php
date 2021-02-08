@@ -36,7 +36,8 @@
                                             <th>No HP</th>
                                             <th>Email</th>
                                             <th>Keahlian</th>
-                                            <?php foreach ($berkas as $row) { ?>
+                                            <?php
+                                            foreach ($berkas as $row) { ?>
                                                 <th><?php echo $row->nama_syarat ?></th>
                                             <?php } ?>
                                             <th>Aksi</th>
@@ -66,6 +67,8 @@
                                                     foreach ($data as $d) {
                                                         if (($r->nama_syarat == $d->nama_berkas) && ($row->id_akun == $d->id_akun)) { ?>
                                                             <td><a href="<?php echo base_url('assets/upload/berkas/' . $d->file) ?>">Ada</a></td>
+                                                        <?php } else { ?>
+                                                            <td><a href="#">Kosong</a></td>
                                                         <?php } ?>
                                                 <?php }
                                                 } ?>
