@@ -5,63 +5,85 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4>Peserta Acara <?php echo $acara->nama_acara ?></h4>
+                            <h4>Formulir <?php echo $acara->nama_acara ?></h4>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data">
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control" name="nim" required="required" type="number">
+                        <?php if ($acara->status == "Aktif") { ?>
+                            <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data" class="form-floating" id="formulir">
+                                <?php foreach ($form as $row) { ?>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
+                                        <div class="mb-3">
+                                            <?php if ($row->jenis_jawaban == "email") { ?>
+                                                <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="email">
+                                            <?php } else if ($row->jenis_jawaban == "textfield") { ?>
+                                                <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="text">
+                                            <?php } else if ($row->jenis_jawaban == "textfield_number") { ?>
+                                                <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="number">
+                                            <?php } else if ($row->jenis_jawaban == "textarea") { ?>
+                                                <textarea class="form-control" name="<?php echo $row->id_soal ?>" required="required" rows="5"></textarea>
+                                            <?php } else if ($row->jenis_jawaban == "pilihanganda") { ?>
+                                                <div class="alert alert-light" role="alert">
+
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="Ya" required="required">
+                                                        <label class="form-check-label" for="inlineRadio1">Ya</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Tidak" required="required">
+                                                        <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                                                    </div>
+                                                </div>
+
+                                            <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
+                                                <div class="alert alert-light" role="alert">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="Sangat Kurang" required="required">
+                                                        <label class="form-check-label" for="inlineRadio1">Sangat Kurang</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Kurang">
+                                                        <label class="form-check-label" for="inlineRadio2">Kurang</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Cukup">
+                                                        <label class="form-check-label" for="inlineRadio2">Cukup</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Baik">
+                                                        <label class="form-check-label" for="inlineRadio2">Baik</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Sangat Baik">
+                                                        <label class="form-check-label" for="inlineRadio2">Sangat Baik</label>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                <?php } ?>
+                                <div class="form-group">
+                                    <center>
+                                        <input type="submit" class="btn btn-primary" value="Submit">
+                                        <!-- <button type="reset" class="btn btn-success">Reset</button> -->
+                                    </center>
                                 </div>
+                            </form>
+                        <?php } else { ?>
+                            <div class="alert alert-danger" role="alert">
+                                Formulir sudah tidak menerima responden lagi karena sesi sudah berakhir atau sesi formulir belum dimulai
                             </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Lengkap<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control" name="nama_peserta" required="required" type="text">
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Email<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control " name="email" required="required" type="email">
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Nomor Handphone<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control telp" name="no_hp" required="required" type="text">
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control" name="perguruan_tinggi" type="text" required="required">
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Fakultas<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control" name="fakultas" type="text" required="required">
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Program Studi<span class="required">*</span></label>
-                                <div>
-                                    <input class="form-control" name="prodi" type="text" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <center>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-success">Reset</button>
-                                </center>
-                            </div>
-                        </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    $('#formulir').submit(function() {
+        $(this).find(':input[type=submit]').prop('disabled', true);
+    });
+</script>

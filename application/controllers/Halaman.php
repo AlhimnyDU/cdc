@@ -188,6 +188,7 @@ class Halaman extends CI_Controller
 	public function daftar($id)
 	{
 		$data['acara'] = $this->db->where('id_acara', $id)->get('tbl_acara')->row();
+		$data['form'] = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/form', $data);
 		$this->load->view('halaman/templates/js');
@@ -196,19 +197,24 @@ class Halaman extends CI_Controller
 
 	public function daftarAcara($id)
 	{
-		$data = array(
-			'nama_peserta'    => $this->input->post('nama_peserta'),
-			'nim'    => $this->input->post('nim'),
-			'email'    => $this->input->post('email'),
-			'no_hp'    => $this->input->post('no_hp'),
-			'perguruan_tinggi'    => $this->input->post('perguruan_tinggi'),
-			'fakultas'    => $this->input->post('fakultas'),
-			'prodi'    => $this->input->post('prodi'),
-			'id_acara'    => $id,
-			'created'   => date('Y-m-d H:i:s'),
-			'updated'   => date('Y-m-d H:i:s'),
-		);
-		$query = $this->db->insert('tbl_peserta', $data);
+		$form = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
+		$max = $this->db->select_max("responden")->where('id_acara', $id)->get('tbl_jawaban')->row();
+		if ($max->responden == NULL) {
+			$max->responden = 1;
+		} else {
+			$max->responden = $max->responden + 1;
+		}
+		foreach ($form as $row) {
+			$data = array(
+				'jawaban' => $this->input->post($row->id_soal),
+				'responden' => $max->responden,
+				'id_soal' => $row->id_soal,
+				'id_acara'   => $id,
+				'created'   => date('Y-m-d H:i:s'),
+				'updated'   => date('Y-m-d H:i:s'),
+			);
+			$query = $this->db->insert('tbl_jawaban', $data);
+		}
 		if ($query) {
 			$this->session->set_flashdata('daftar_berhasil', TRUE);
 		} else {

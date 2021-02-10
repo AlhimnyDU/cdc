@@ -130,6 +130,26 @@ class Admin extends CI_Controller
         }
     }
 
+    public function responden($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['form'] = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
+                $data['jawaban'] = $this->db->where('id_acara', $id)->get('tbl_jawaban')->result();
+                $data['max'] = $this->db->select_max("responden")->where('id_acara', $id)->get('tbl_jawaban')->row();
+                $data['acara'] = $this->db->where('id_acara', $id)->get('tbl_acara')->row();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/responden', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function pesertaAcara($id)
     {
         if ($this->session->userdata('nama')) {
@@ -164,6 +184,103 @@ class Admin extends CI_Controller
         }
     }
 
+    public function soal()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['soal'] = $this->db->get('tbl_soal')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/soal', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function form($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['acara'] = $this->db->where('id_acara', $id)->get('tbl_acara')->row();
+                $data['soal'] = $this->db->get('tbl_soal')->result();
+                $data['form'] = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/form_soal', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addSoal()
+    {
+        $data = array(
+            'soal'    => $this->input->post('soal'),
+            'jenis_jawaban'    => $this->input->post('jenis_jawaban'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->insert('tbl_soal', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function updateSoal($id)
+    {
+        $data = array(
+            'soal'    => $this->input->post('soal'),
+            'jenis_jawaban'    => $this->input->post('jenis_jawaban'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_soal', $id)->update('tbl_soal', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function addFormSoal($id)
+    {
+        $data = array(
+            'id_soal' =>  $this->input->post('id_soal'),
+            'id_acara' =>  $id,
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('form_soal', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_alumni', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteFormSoal($id)
+    {
+        $query = $this->db->where('id_form', $id)->delete('form_soal');
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function addAcara()
     {
         $data = array(
@@ -173,6 +290,36 @@ class Admin extends CI_Controller
             'updated'   => date('Y-m-d H:i:s'),
         );
         $query = $this->db->insert('tbl_acara', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function mulaiKuesioner($id)
+    {
+        $data = array(
+            'status'    => "Aktif",
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_acara', $id)->update('tbl_acara', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function akhiriKuesioner($id)
+    {
+        $data = array(
+            'status'    => "Tidak Aktif",
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_acara', $id)->update('tbl_acara', $data);
         if ($query) {
             $this->session->set_flashdata('insert_event', "Tambah Berhasil");
         } else {

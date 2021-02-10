@@ -26,7 +26,8 @@
                                             <th width="5%">No</th>
                                             <th>Nama Event</th>
                                             <th width="15%">Tanggal Pelaksanaan</th>
-                                            <th width="25%">Aksi</th>
+                                            <th width="18%">Pengaktifan Kuesioner</th>
+                                            <th align="center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,10 +39,18 @@
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->nama_acara ?></td>
                                                 <td><?php echo date("d F Y", strtotime($row->tanggal_pelaksanaan)) ?></td>
+                                                <td align="center">
+                                                    <?php if ($row->status == "Aktif") { ?>
+                                                        <a class="btn btn-secondary btn-sm" href="<?php echo site_url('admin/akhiriKuesioner/') . $row->id_acara ?>">Nonaktifkan</a>
+                                                    <?php } else if ($row->status == "Tidak Aktif") { ?>
+                                                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/mulaiKuesioner/') . $row->id_acara ?>">Aktifkan</a>
+                                                    <?php } ?>
+                                                </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('halaman/daftar/') . $row->id_acara ?>"><i class="fa fa-trash"></i>Link Form</a> |
-                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('admin/deleteAcara/') . $row->id_acara ?>"><i class="fa fa-trash"></i>Edit</a> |
-                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/pesertaAcara/') . $row->id_acara ?>"><i class="fa fa-user"></i>Peserta</a>
+                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('halaman/daftar/') . $row->id_acara ?>"><i class="fa fa-link"></i> Link Form</a> |
+                                                    <a class="btn btn-warning btn-sm" href="<?php echo site_url('admin/form/') . $row->id_acara ?>"><i class="fa fa-question"></i> Pertanyaan</a> |
+                                                    <!-- <a class="btn btn-danger btn-sm" href="<?php echo site_url('admin/deleteAcara/') . $row->id_acara ?>"><i class="fa fa-trash"></i>Edit</a> | -->
+                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/responden/') . $row->id_acara ?>"><i class="fa fa-user"></i>Responden</a>
                                                 </td>
                                             </tr>
                                         <?php
