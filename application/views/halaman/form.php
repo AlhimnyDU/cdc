@@ -46,16 +46,16 @@
                                                         <label class="form-check-label" for="inlineRadio2">Kurang</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Cukup">
-                                                        <label class="form-check-label" for="inlineRadio2">Cukup</label>
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio3" value="Cukup">
+                                                        <label class="form-check-label" for="inlineRadio3">Cukup</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Baik">
-                                                        <label class="form-check-label" for="inlineRadio2">Baik</label>
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio4" value="Baik">
+                                                        <label class="form-check-label" for="inlineRadio4">Baik</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Sangat Baik">
-                                                        <label class="form-check-label" for="inlineRadio2">Sangat Baik</label>
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio5" value="Sangat Baik">
+                                                        <label class="form-check-label" for="inlineRadio5">Sangat Baik</label>
                                                     </div>
                                                 </div>
                                             <?php } ?>
