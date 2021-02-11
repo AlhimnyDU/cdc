@@ -217,7 +217,7 @@ class Halaman extends CI_Controller
 			$query = $this->db->insert('tbl_jawaban', $data);
 		}
 		if ($query) {
-			$this->session->set_flashdata('daftar_berhasil', TRUE);
+			$this->session->set_flashdata('insert_data', TRUE);
 		} else {
 			$this->session->set_flashdata('failed', "Tambah Gagal");
 		}
