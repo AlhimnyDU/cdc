@@ -12,7 +12,7 @@
                         <?php if ($acara->status == "Aktif") { ?>
                             <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data" class="form-floating" id="formulir">
                                 <?php foreach ($form as $row) { ?>
-                                    <div class="field item form-group">
+                                    <div class="form-group">
                                         <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
                                         <div class="mb-3">
                                             <?php if ($row->jenis_jawaban == "email") { ?>
@@ -25,7 +25,6 @@
                                                 <textarea class="form-control" name="<?php echo $row->id_soal ?>" required="required" rows="5"></textarea>
                                             <?php } else if ($row->jenis_jawaban == "pilihanganda") { ?>
                                                 <div class="alert alert-light" role="alert">
-
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="Ya" required="required">
                                                         <label class="form-check-label" for="inlineRadio1">Ya</label>
@@ -82,8 +81,3 @@
         </div>
     </div>
 </section>
-<script>
-    $('#formulir').submit(function() {
-        $(this).find(':input[type=submit]').prop('disabled', true);
-    });
-</script>
