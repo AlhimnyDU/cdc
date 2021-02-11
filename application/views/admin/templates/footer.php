@@ -105,6 +105,9 @@
               "paging": false,
               "info": false
             });
+            $('#formulir').submit(function() {
+              $(this).find(':input[type=submit]').prop('disabled', true);
+            });
           });
         </script>
         <script>

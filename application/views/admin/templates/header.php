@@ -85,7 +85,8 @@
                 <li><a><i class="fa fa-briefcase"></i> Pengembangan Karir <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo site_url() ?>admin/event">Event</a></li>
-                    <li><a href="<?php echo site_url() ?>admin/loker">Vacancy</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/iklan">Iklan Vacancy/Magang/Beasiswa</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/loker">Semi Requirement</a></li>
                     <li><a href="<?php echo site_url() ?>admin/magang">Magang Bersertifikasi BUMN</a></li>
                     <li><a href="<?php echo site_url() ?>admin/jobfair">Jobfair</a></li>
                   </ul>

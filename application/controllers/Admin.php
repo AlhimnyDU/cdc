@@ -130,6 +130,106 @@ class Admin extends CI_Controller
         }
     }
 
+    public function iklan()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['iklan'] = $this->db->get('tbl_iklan')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/iklan', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function tambahIklan()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/add_iklan');
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function updIklan($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['iklan'] = $this->db->where('id_iklan', $id)->get('tbl_iklan')->row();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/upd_iklan');
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addIklan()
+    {
+        $this->upload_poster();
+        $data = array(
+            'judul'    => $this->input->post('judul'),
+            'informasi'    => $this->input->post('informasi'),
+            'status'    => $this->input->post('status'),
+            'poster'    => $this->upload->data('file_name'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->insert('tbl_iklan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('admin/iklan');
+    }
+
+    public function updateIklan($id)
+    {
+        $data = array(
+            'judul'    => $this->input->post('judul'),
+            'informasi'    => $this->input->post('informasi'),
+            'status'    => $this->input->post('status'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_iklan', $id)->update('tbl_iklan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteIklan($id, $file)
+    {
+        unlink('assets/upload/iklan/' . $file);
+        $query = $this->db->where('id_iklan', $id)->delete('tbl_iklan');
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function responden($id)
     {
         if ($this->session->userdata('nama')) {
@@ -1719,6 +1819,20 @@ class Admin extends CI_Controller
         if (empty($upload)) {
             $this->session->set_flashdata('failed', "Tambah Gagal");
             redirect('admin/cv');
+        }
+    }
+
+    public function upload_poster()
+    {
+        $nama_file = date("dMYHis");
+        $config['upload_path'] = './assets/upload/iklan/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('poster');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect($_SERVER['HTTP_REFERER']);
         }
     }
 
