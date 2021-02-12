@@ -44,7 +44,7 @@ class Halaman extends CI_Controller
 	{
 		//konfigurasi pagination
 		$config['base_url'] = site_url('halaman/list_company'); //site url
-		$config['total_rows'] = $this->db->where('tbl_loker.status', 'Pendaftar')->from('tbl_perusahaan')->count_all_results(); //total row
+		$config['total_rows'] = $this->db->where('tbl_perusahaan.status', 'Pendaftar')->from('tbl_perusahaan')->count_all_results(); //total row
 		$config['per_page'] = 10;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
@@ -70,7 +70,7 @@ class Halaman extends CI_Controller
 		$config['last_tagl_close']  = '</span></li>';
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['company'] = $this->db->where('tbl_loker.status', 'Pendaftar')->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
+		$data['company'] = $this->db->where('tbl_perusahaan.status', 'Pendaftar')->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/list_company', $data);
