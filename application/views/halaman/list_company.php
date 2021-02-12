@@ -1,7 +1,7 @@
 <section id="blog" class="blog">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-      <h2>Vacancy</h2>
+      <h2>List Company</h2>
     </div>
     <div class="row" data-aos="fade-up">
       <div class="col-lg-3 stretch-card grid-margin">
