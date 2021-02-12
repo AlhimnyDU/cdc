@@ -83,25 +83,26 @@
             </ul>
           </li>
           <li><a href="<?php echo site_url('halaman/info') ?>">News</a></li>
+          <li><a href="<?php echo site_url('halaman/jobfair') ?>">Job Fair</a></li>
           <li><a href="<?php echo site_url('halaman/carrer') ?>">Career Counseling</a></li>
           <li><a href="<?php echo site_url('halaman/list_company') ?>">Company</a></li>
           <?php if ($this->session->userdata("nama") != NULL) {
             if ($this->session->userdata('user')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('user') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('user') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>
                 </ul>
               </li>
             <?php } else if ($this->session->userdata('admin')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('admin') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('admin') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>
                 </ul>
               </li>
             <?php } else if ($this->session->userdata('perusahaan')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('perusahaan') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('perusahaan') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>

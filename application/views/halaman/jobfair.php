@@ -42,6 +42,6 @@
         <h1>Coming Soon</h1>
         <p>Job Fair ITENAS 2021</p>
         <!-- Use a button to pause/play the video with JavaScript -->
-        <button id="myBtn">Pause</button>
+        <button id="myBtn">Coming Soon</button>
     </center>
 </div>
