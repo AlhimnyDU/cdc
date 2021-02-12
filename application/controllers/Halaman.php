@@ -44,7 +44,7 @@ class Halaman extends CI_Controller
 	{
 		//konfigurasi pagination
 		$config['base_url'] = site_url('halaman/list_company'); //site url
-		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'vacancy')->from('tbl_loker')->count_all_results(); //total row
+		$config['total_rows'] = $this->db->where('tbl_loker.status', 'Pendaftar')->from('tbl_perusahaan')->count_all_results(); //total row
 		$config['per_page'] = 10;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
@@ -70,7 +70,7 @@ class Halaman extends CI_Controller
 		$config['last_tagl_close']  = '</span></li>';
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['company'] = $this->db->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
+		$data['company'] = $this->db->where('tbl_loker.status', 'Pendaftar')->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/list_company', $data);
@@ -83,7 +83,7 @@ class Halaman extends CI_Controller
 		$data['video'] = $this->db->where('id_peserta', $id)->where('id_event', 1)->where('role', 'perusahaan')->get('event_perusahaan')->row();
 		if (empty($data['video']->link)) {
 			$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
-			$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Pendaftar')->order_by('updated', 'DESC')->get('tbl_loker')->result();
+			$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Pendaftar')->order_by('updated', 'DESC')->get('tbl_loker')->result();
 			$this->load->view('halaman/templates/header');
 			$this->load->view('halaman/company', $data);
 			$this->load->view('halaman/templates/js');
