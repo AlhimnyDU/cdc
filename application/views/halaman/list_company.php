@@ -46,7 +46,7 @@
                     </a>
                     <div class="fs-13 mb-2">
                       <span class="badge badge-light">Location : </span>
-                      <p style="text-align: justify;font-size: 14px;"><?php echo $row->lokasi ?></p>
+                      <p style="text-align: justify;font-size: 14px;"><?php echo $row->alamat ?></p>
                     </div>
                   </div>
                 </div>
