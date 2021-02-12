@@ -24,13 +24,14 @@
         </section><!-- End Breadcrumbs -->
 
         <!-- ======= Blog Section ======= -->
-        <section id="blog" class="blog">
+        <section id="blog" class="blog section-bg">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Recent News</h2>
+              <p data-aos="fade-up" class="aos-init aos-animate">See all info & news at <a href="<?php echo site_url("halaman/loker") ?>" class="mb-3">Information & News</a></p>
             </div>
             <div class="row">
-              <?php foreach ($artikel   as $row) { ?>
+              <?php foreach ($artikel as $row) { ?>
                 <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
                   <article class="entry">
                     <div class="entry-img">
@@ -52,10 +53,39 @@
             </div>
           </div>
         </section><!-- End Blog Section -->
+        <!-- ======= Blog Section ======= -->
         <section id="blog" class="blog">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
-              <h2>Vacancy</h2>
+              <h2>Advertisement</h2>
+              <p data-aos="fade-up" class="aos-init aos-animate">See all advertise at<a href="<?php echo site_url("halaman/loker") ?>" class="mb-3"> Advertisement and Job</a></p>
+            </div>
+            <div class="row">
+              <?php foreach ($iklan as $row) { ?>
+                <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                  <article class="entry">
+                    <div class="entry-img">
+                      <img src="<?php echo base_url('assets/upload/iklan/' . $row->file) ?>" alt="" class="img-fluid" style="width:350px ;height:250px;">
+                    </div>
+                    <h2 class="entry-title">
+                      <a href="<?php echo site_url('halaman/artikel/' . $row->id_iklan) ?>"><?php echo $row->judul ?></a>
+                    </h2>
+                    <div class="entry-content">
+                      <span class="badge badge-danger"><?php echo $row->status ?></span>
+                      <div class="read-more">
+                        <a href="<?php echo site_url('halaman/iklan/' . $row->id_iklan) ?>">Read More</a>
+                      </div>
+                    </div>
+                  </article><!-- End blog entry -->
+                </div>
+              <?php } ?>
+            </div>
+          </div>
+        </section><!-- End Blog Section -->
+        <section id="blog" class="blog section-bg">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Requirement Vacancy At this site</h2>
             </div>
             <div class="row" data-aos="fade-up">
               <div class="col-lg-3 stretch-card grid-margin">
@@ -63,11 +93,12 @@
                   <div class="card-body">
                     <h2>Category</h2>
                     <ul class="vertical-menu">
-                      <li><a href="<?php echo site_url("halaman/loker") ?>">Vacancy</a></li>
+                      <li><a href="<?php echo site_url("halaman/list_iklan") ?>">Iklan Lowongan</a></li>
+                      <li><a href="<?php echo site_url("halaman/loker") ?>">Vacancy (Recruitment)</a></li>
                       <li><a href="<?php echo site_url("halaman/jobfair") ?>">Job Fair</a></li>
                       <li><a href="<?php echo site_url("halaman/info") ?>">Informasi Magang</a></li>
                       <li><a href="<?php echo site_url("halaman/magang") ?>">Magang Bersertifikasi BUMN</a></li>
-                      <li><a href="<?php echo site_url("halaman/carrer") ?>">Magang Mahasiswa</a></li>
+                      <li><a href="<?php echo site_url("halaman/magang") ?>">Magang Mahasiswa</a></li>
                       <li><a href="<?php echo site_url("halaman/beasiswa") ?>">Beasiswa</a></li>
                     </ul>
                   </div>

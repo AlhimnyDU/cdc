@@ -43,7 +43,7 @@
     <div class="container d-flex">
       <div class="contact-info mr-auto">
         <ul>
-          <li><i class="icofont-envelope"></i><a href="#">cdc@itenas.ac.id or cdc.itenas@gmail.com</a></li>
+          <li><i class="icofont-envelope"></i><a href="#">cdc@itenas.ac.id</a></li>
           <li><i class="icofont-phone"></i> +62-22-7272215 (ext.235)</li>
           <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 8am - 5pm</li>
         </ul>
@@ -63,7 +63,7 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></h1>
+        <h1 class="text-light"><a href="<?php echo site_url() ?>"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -75,8 +75,8 @@
             <ul>
               <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>">Vacancy</a>
                 <ul>
-                  <li><a href="#">Internal</a></li>
-                  <li><a href="#">Eksternal</a></li>
+                  <li><a href="<?php echo site_url('halaman/list_iklan') ?>">Iklan Lowongan</a></li>
+                  <li><a href="<?php echo site_url('halaman/loker') ?>">Recruitment</a></li>
                 </ul>
               </li>
               <li><a href="<?php echo site_url('halaman/magang') ?>">Internship</a></li>

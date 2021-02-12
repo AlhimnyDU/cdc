@@ -168,6 +168,20 @@
     }
   });
 
+   // Clients carousel (uses the Owl Carousel library)
+   $(".image-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    singleItem: true,
+    nav:true,
+    navText: [
+      '<i class="icofont-hand-drawn-left"></i>',
+      '<i class="icofont-hand-drawn-right"></i>'
+    ],
+    items: 1
+  });
+
   // Testimonials carousel (uses the Owl Carousel library)
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,

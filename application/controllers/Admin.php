@@ -168,8 +168,9 @@ class Admin extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
                 $data['iklan'] = $this->db->where('id_iklan', $id)->get('tbl_iklan')->row();
+                $data['poster'] = $this->db->where('created', $data['iklan']->created)->get('tbl_poster')->result();
                 $this->load->view('admin/templates/header');
-                $this->load->view('admin/upd_iklan');
+                $this->load->view('admin/upd_iklan', $data);
                 $this->load->view('admin/templates/js');
                 $this->load->view('admin/templates/footer');;
             } else {
@@ -182,14 +183,41 @@ class Admin extends CI_Controller
 
     public function addIklan()
     {
-        $this->upload_poster();
+        $tanggal = date('Y-m-d H:i:s');
+        $nama_file = date("dMYHis");
+        $config['upload_path'] = './assets/upload/iklan/';
+        $config['file_name'] = $nama_file;
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $jumlah_berkas = count($_FILES['poster']['name']);
+        $this->upload->initialize($config);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['poster']['name'][$i])) {
+                $_FILES['file']['name'] = $_FILES['poster']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['poster']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['poster']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['poster']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['poster']['size'][$i];
+
+                if ($this->upload->do_upload('file')) {
+                    $poster = array(
+                        'file' => $this->upload->data('file_name'),
+                        'created' => $tanggal,
+                        'updated' => $tanggal
+                    );
+                    $this->db->insert('tbl_poster', $poster);
+                    echo "Berhasil";
+                } else {
+                    echo "gagal";
+                }
+            }
+        }
         $data = array(
             'judul'    => $this->input->post('judul'),
             'informasi'    => $this->input->post('informasi'),
             'status'    => $this->input->post('status'),
-            'poster'    => $this->upload->data('file_name'),
-            'created'   => date('Y-m-d H:i:s'),
-            'updated'   => date('Y-m-d H:i:s'),
+            'video'    => $this->input->post('video'),
+            'created'   => $tanggal,
+            'updated'   => $tanggal,
         );
         $query = $this->db->insert('tbl_iklan', $data);
         if ($query) {
@@ -205,8 +233,8 @@ class Admin extends CI_Controller
         $data = array(
             'judul'    => $this->input->post('judul'),
             'informasi'    => $this->input->post('informasi'),
+            'video'    => $this->input->post('video'),
             'status'    => $this->input->post('status'),
-            'created'   => date('Y-m-d H:i:s'),
             'updated'   => date('Y-m-d H:i:s'),
         );
         $query = $this->db->where('id_iklan', $id)->update('tbl_iklan', $data);
@@ -218,9 +246,9 @@ class Admin extends CI_Controller
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-    public function deleteIklan($id, $file)
+    public function deleteIklan($id)
     {
-        unlink('assets/upload/iklan/' . $file);
+        // unlink('assets/upload/iklan/' . $file);
         $query = $this->db->where('id_iklan', $id)->delete('tbl_iklan');
         if ($query) {
             $this->session->set_flashdata('insert_event', "Tambah Berhasil");

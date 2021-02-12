@@ -40,7 +40,7 @@
 												<td><?php echo $row->status ?></td>
 												<td>
 													<a class="btn btn-sm btn-info" href="<?php echo site_url('admin/updIklan/' . $row->id_iklan) ?>"><i class="fa fa-edit"></i></a> |
-													<a class="btn btn-sm btn-danger" href="<?php echo site_url('admin/deleteIklan/' . $row->id_iklan . '/' . $row->poster) ?>"><i class="fa fa-trash"></i></a>
+													<a class="btn btn-sm btn-danger" href="<?php echo site_url('admin/deleteIklan/' . $row->id_iklan) ?>"><i class="fa fa-trash"></i></a>
 												</td>
 											</tr>
 										<?php

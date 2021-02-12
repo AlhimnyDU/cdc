@@ -1591,10 +1591,11 @@ section {
 # Blog
 --------------------------------------------------------------*/
 .blog {
-	padding: 0 0 40px 0;
+	padding: 40px 0 40px 0;
 }
 
 .blog .entry {
+	background-color: #ffffff;
 	padding: 20px;
 	margin-bottom: 60px;
 	overflow: hidden;

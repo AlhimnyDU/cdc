@@ -7,7 +7,6 @@
         </div>
     </div>
     <div class="clearfix"></div>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
@@ -42,7 +41,14 @@
                         <div class="field item form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Poster</label>
                             <div class="col-md-6 col-sm-6">
-                                <input type="file" class="dropify" height="50" name="poster" data-max-file-size="2M" data-allowed-file-extensions="png jpg jpeg">
+                                <input type="file" class="dropify" height="50" name="poster[]" data-max-file-size="5M" data-allowed-file-extensions="png jpg jpeg" multiple>
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">URL Video</label>
+                            <small style="color: red;">*jika ada</small>
+                            <div class="col-md-6 col-sm-6">
+                                <input class="form-control" name="video">
                             </div>
                         </div>
                         <div class="form-group">
