@@ -40,15 +40,17 @@
                   </div>
                   <div class="col-sm-8  grid-margin">
                     <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                      <h2 class="mb-2 font-weight-600">
+                      <h4>
                         <?php echo $row->nama_perusahaan ?>
-                      </h2>
+                      </h4>
                     </a>
                     <div class="fs-13 mb-2">
-                      <span class="mr-2">Location : </span> <?php echo $row->alamat ?>
+                      <span class="badge badge-light">Location : </span>
+                      <p style="text-align: justify;font-size: 14px;"><?php echo $row->lokasi ?></p>
                     </div>
                   </div>
                 </div>
+                <hr>
               <?php } ?>
               <?php echo $pagination; ?>
             </div>
