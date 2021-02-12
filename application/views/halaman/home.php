@@ -163,14 +163,9 @@
               <h2>Company</h2>
             </div>
             <div class="owl-carousel clients-carousel">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-1.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-2.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-3.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-4.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-5.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-6.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-7.png" alt="">
-              <img src="<?php echo base_url() ?>assets/home/assets/img/clients/client-8.png" alt="">
+              <?php foreach ($client as $row) { ?>
+                <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" style="width:150px;height:auto;">
+              <?php } ?>
             </div>
 
           </div>

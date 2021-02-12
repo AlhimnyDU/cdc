@@ -28,11 +28,11 @@
                       <div class="rotate-img">
                         <?php if (empty($row->logo_perusahaan)) { ?>
                           <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                            <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" />
+                            <img src="<?php echo site_url("assets/upload/logo/default.png") ?>" alt="thumb" class="img-fluid" style="width:150px;height:auto;" />
                           </a>
                         <?php } else { ?>
                           <a href="<?php echo site_url("halaman/company/" . $row->id_perusahaan) ?>">
-                            <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" />
+                            <img src="<?php echo site_url("assets/upload/logo/") . $row->logo_perusahaan ?>" alt="thumb" class="img-fluid" style="width:150px;height:auto;" />
                           </a>
                         <?php } ?>
                       </div>

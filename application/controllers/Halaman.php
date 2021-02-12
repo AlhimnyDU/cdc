@@ -34,6 +34,7 @@ class Halaman extends CI_Controller
 		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 6)->result();
 		$data['iklan'] = $this->db->select('tbl_iklan.*,tbl_poster.file')->join('tbl_poster', 'tbl_poster.created=tbl_iklan.created')->order_by('created', 'DESC')->group_by('id_iklan')->get('tbl_iklan', 6)->result();
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker', 3)->result();
+		$data['client'] = $this->db->where('status_daftar', 'pendaftar')->get('tbl_perusahaan')->result();
 		$this->session->set_userdata('navbar', 'beranda');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/home', $data);
@@ -44,33 +45,25 @@ class Halaman extends CI_Controller
 	{
 		//konfigurasi pagination
 		$config['base_url'] = site_url('halaman/list_company'); //site url
-		$config['total_rows'] = $this->db->where('tbl_perusahaan.status', 'Pendaftar')->from('tbl_perusahaan')->count_all_results(); //total row
+		$config['total_rows'] = $this->db->where('status_daftar', 'pendaftar')->from('tbl_perusahaan')->count_all_results(); //total row
 		$config['per_page'] = 10;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
 		$config["num_links"] = floor($choice);
 
-		$config['first_link']       = 'First';
-		$config['last_link']        = 'Last';
-		$config['next_link']        = 'Next';
-		$config['prev_link']        = 'Prev';
-		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-		$config['full_tag_close']   = '</ul></nav></div>';
-		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['num_tag_close']    = '</span></li>';
-		$config['cur_tag_open']     = '<li class="page-item"><span class="page-link">';
-		$config['cur_tag_close']    = '<span class="sr-only"></span></span></li>';
-		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['prev_tagl_close']  = '</span>Next</li>';
-		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-		$config['first_tagl_close'] = '</span></li>';
-		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-		$config['last_tagl_close']  = '</span></li>';
+		$config['full_tag_open']    = '<div class="blog-pagination" data-aos="fade-up"><ul class="justify-content-center">';
+		$config['full_tag_close']   = '</ul></div>';
+		$config['num_tag_open']     = '<li>';
+		$config['num_tag_close']    = '</li>';
+		$config['cur_tag_open']     = '<li class="active"><a>';
+		$config['cur_tag_close']    = '</a></li>';
+		$config['next_tag_open']    = '<li>';
+		$config['next_tagl_close']  = '</li>';
+		$config['prev_tag_open']    = '<li>';
+		$config['prev_tagl_close']  = '</li>';
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['company'] = $this->db->where('tbl_perusahaan.status', 'Pendaftar')->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
+		$data['company'] = $this->db->where('status_daftar', 'pendaftar')->get('tbl_perusahaan', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/list_company', $data);
