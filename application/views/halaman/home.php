@@ -2,7 +2,7 @@
         <section id="blog" class="blog" style="background-color: #ff5821;">
           <div class="col-sm-12 grid-margin" style="margin-top:10px">
             <center>
-              <h2 style="color:#ff5821">JOB FAIR</h2>
+              <h2 style="color:#ffffff">JOB FAIR</h2>
             </center>
             <center>
               <div id="pendaftaran" class="flipdown"></div>

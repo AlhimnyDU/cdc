@@ -53,7 +53,7 @@
 /* Delimeters */
 .flipdown.flipdown__theme-light .rotor-group:nth-child(n+2):nth-child(-n+3):before,
 .flipdown.flipdown__theme-light .rotor-group:nth-child(n+2):nth-child(-n+3):after {
-	background-color: #DDDDDD;
+	background-color: #ff5821;
 }
 
 /* Rotor tops */
@@ -61,7 +61,7 @@
 .flipdown.flipdown__theme-light .rotor-top,
 .flipdown.flipdown__theme-light .rotor-leaf-front {
 	color: #222222;
-	background-color: #DDDDDD;
+	background-color: #ff5821;
 }
 
 /* Rotor bottoms */
