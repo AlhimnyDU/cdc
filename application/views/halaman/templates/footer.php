@@ -115,7 +115,7 @@
     $('#formulir').submit(function() {
       $(this).find(':input[type=submit]').prop('disabled', true);
     });
-    var tm = new Date("2020/12/02");
+    var tm = new Date("2021/04/05");
     var flipdown = new FlipDown(tm.getTime() / 1000, "pendaftaran", {
       theme: "dark",
     }).start();
