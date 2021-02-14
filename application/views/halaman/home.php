@@ -5,10 +5,10 @@
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo site_url('assets/halaman/slideshow/bg1.jpeg') ?>" alt="First slide" style="width: auto;height:800px">
+                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/bg_jobfair.jpeg" alt="First slide" style="width: auto;height:800px">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="<?php echo site_url('assets/halaman/slideshow/bg2.jpeg') ?>" alt="Second slide" style="width: auto;height:800px">
+                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/bg_jobfair.jpeg" alt="Second slide" style="width: auto;height:800px">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
