@@ -1,5 +1,5 @@
         <!-- partial -->
-        <section id="blog" class="blog" style="background-color: #fc766aff;">
+        <section id="blog" class="blog" style="background-color: #ff5821;">
           <div class="col-sm-12 grid-margin" style="margin-top:10px">
             <center>
               <h2 style="color:#ff5821">JOB FAIR</h2>
