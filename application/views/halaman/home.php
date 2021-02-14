@@ -2,7 +2,7 @@
         <section id="blog" class="blog section-bg">
           <div class="col-sm-12 grid-margin" style="margin-top:10px">
             <center>
-              <h2 style="color:#EFEFEF">JOB FAIR</h2>
+              <h2 style="color:#ff5821">JOB FAIR</h2>
             </center>
             <center>
               <div id="pendaftaran" class="flipdown"></div>
@@ -11,7 +11,6 @@
         </section>
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
-
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -30,7 +29,6 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-
         </section><!-- End Breadcrumbs -->
 
 
