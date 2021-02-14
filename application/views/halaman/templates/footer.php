@@ -83,7 +83,7 @@
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/aos/aos.js"></script>
-
+<script src="<?php echo base_url() ?>assets/halaman/flipdown/flipdown.js"></script>
 <!-- Template Main JS File -->
 <script src="<?php echo base_url() ?>assets/home/assets/js/main.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -112,9 +112,13 @@
     //   return true;
 
     // });
-  });
-  $('#formulir').submit(function() {
-    $(this).find(':input[type=submit]').prop('disabled', true);
+    $('#formulir').submit(function() {
+      $(this).find(':input[type=submit]').prop('disabled', true);
+    });
+    var tm = new Date("2020/12/02");
+    var flipdown = new FlipDown(tm.getTime() / 1000, "pendaftaran", {
+      theme: "dark",
+    }).start();
   });
 </script>
 <?php if ($this->session->flashdata('sudah_mengajukan', TRUE)) { ?>

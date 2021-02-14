@@ -1,4 +1,18 @@
         <!-- partial -->
+        <section id="blog" class="blog section-bg">
+          <div class="container">
+            <div class="row" style="background-color:#DD571C;margin-bottom:10px;" data-aos="fade-up">
+              <div class="col-sm-12 grid-margin" style="margin-top:10px">
+                <center>
+                  <h2 style="color:#EFEFEF">JOB FAIR</h2>
+                </center>
+                <center>
+                  <div id="pendaftaran" class="flipdown"></div>
+                </center>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
 
@@ -22,6 +36,7 @@
           </div>
 
         </section><!-- End Breadcrumbs -->
+
 
         <!-- ======= Blog Section ======= -->
         <section id="blog" class="blog section-bg">
