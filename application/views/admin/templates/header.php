@@ -93,6 +93,7 @@
                 </li>
                 <li><a><i class="fa fa-cog"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
+                    <li><a href="<?php echo site_url() ?>admin/sertifikat">E-Sertifikat</a></li>
                     <li><a href="<?php echo site_url() ?>admin/persyaratan">Persyaratan</a></li>
                     <li><a href="<?php echo site_url() ?>admin/acara">Buat Form & Kuesioner</a></li>
                     <li><a href="<?php echo site_url() ?>admin/soal">Pertanyaan & Soal</a></li>

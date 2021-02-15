@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Admin extends CI_Controller
 {
 
@@ -128,6 +127,118 @@ class Admin extends CI_Controller
         } else {
             redirect('login');
         }
+    }
+
+    public function sertifikat()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['acara'] = $this->db->get('tbl_acara')->result();
+                $data['sertifikat'] = $this->db->get('e_sertifikat')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/sertifikat', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addESertifikat()
+    {
+        $data = array(
+            'nama_lengkap'    => $this->input->post('nama_lengkap'),
+            'nim'    => $this->input->post('nim'),
+            'email'    => $this->input->post('email'),
+            'acara'    => $this->input->post('acara'),
+            'drive'    => $this->input->post('drive'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('e_sertifikat', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function importESertifikat()
+    {
+        include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+        $config['upload_path'] = realpath('./excel/');
+        $config['allowed_types'] = 'xlsx|xls|csv';
+        $config['max_size'] = '10000';
+        $config['encrypt_name'] = true;
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('file')) {
+            //upload gagal
+            $this->session->set_flashdata('notifGagal', 'error');
+            //redirect halaman
+            $error = array('error' => $this->upload->display_errors());
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            $data_upload = $this->upload->data();
+            $excelreader     = new PHPExcel_Reader_Excel2007();
+            $loadexcel         = $excelreader->load('excel/' . $data_upload['file_name']); // Load file yang telah diupload ke folder excel
+            $sheet             = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+            $data = array();
+            $numrow = 1;
+            foreach ($sheet as $row) {
+                if ($numrow > 1) {
+                    array_push($data, array(
+                        'nim'      => $row['A'],
+                        'nama_lengkap'      => $row['B'],
+                        'email'      => $row['C'],
+                        'acara'      => $row['D'],
+                        'drive'      => $row['E'],
+                        'created'    => date('Y-m-d H:i:s'),
+                        'updated'    => date('Y-m-d H:i:s')
+                    ));
+                }
+                $numrow++;
+            }
+            $this->db->insert_batch('e_sertifikat', $data);
+            //delete file from server
+            unlink(realpath('excel/' . $data_upload['file_name']));
+            //redirect halaman
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function updateESertifikat($id)
+    {
+        $data = array(
+            'nama_lengkap'    => $this->input->post('nama_lengkap'),
+            'nim'    => $this->input->post('nim'),
+            'email'    => $this->input->post('email'),
+            'acara'    => $this->input->post('acara'),
+            'drive'    => $this->input->post('drive'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_sertifikat', $id)->update('e_sertifikat', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteESertifikat($id)
+    {
+        $query = $this->db->where('id_sertifikat', $id)->delete('e_sertifikat');
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function iklan()

@@ -141,6 +141,16 @@
     });
   </script>
 <?php } ?>
+<?php if ($this->session->flashdata('nothing', TRUE)) { ?>
+  <script>
+    swal({
+      title: "Sertifikat Tidak Ada",
+      text: "anda tidak mengikuti acara/webinar/seminar",
+      icon: "warning",
+      timer: 5000
+    });
+  </script>
+<?php } ?>
 <?php if ($this->session->flashdata('insert_data', TRUE)) { ?>
   <script>
     swal({

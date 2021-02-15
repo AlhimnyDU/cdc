@@ -15,6 +15,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +85,9 @@
           </li>
           <li><a href="<?php echo site_url('halaman/info') ?>">News</a></li>
           <li><a href="<?php echo site_url('halaman/jobfair') ?>">Job Fair</a></li>
-          <li><a href="<?php echo site_url('halaman/carrer') ?>">Career Counseling</a></li>
+          <li><a href="<?php echo site_url('halaman/sertifikat') ?>">E-Sertifikat</a></li>
+
+          <!-- <li><a href="<?php echo site_url('halaman/carrer') ?>">Career Counseling</a></li> -->
           <li><a href="<?php echo site_url('halaman/list_company') ?>">Company</a></li>
           <?php if ($this->session->userdata("nama") != NULL) {
             if ($this->session->userdata('user')) { ?>

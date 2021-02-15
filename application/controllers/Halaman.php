@@ -86,6 +86,32 @@ class Halaman extends CI_Controller
 		}
 	}
 
+	public function sertifikat()
+	{
+		$data['acara'] = $this->db->get('tbl_acara')->result();
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/sertifikat', $data);
+		$this->load->view('halaman/templates/footer');
+	}
+
+	public function esertifikat($id, $acara)
+	{
+		$data['acara'] = $this->db->get('tbl_acara')->result();
+		$data['sertifikat'] = $this->db->select('e_sertifikat.*,tbl_acara.nama_acara')->join('tbl_acara', 'tbl_acara.id_acara=e_sertifikat.acara')->where('nim', $id)->where('acara', $acara)->get('e_sertifikat')->result();
+		if ($data['sertifikat'] == NULL) {
+			$this->session->set_flashdata('nothing', TRUE);
+		}
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/esertifikat', $data);
+		$this->load->view('halaman/templates/footer');
+	}
+
+	public function cariEsertifikat()
+	{
+		redirect('halaman/esertifikat/' . $this->input->post('nim') . '/' . $this->input->post('acara'));
+	}
+
+
 	public function loker()
 	{
 		//konfigurasi pagination
