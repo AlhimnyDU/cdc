@@ -105,7 +105,7 @@ class Halaman extends CI_Controller
 	public function daftarJobfair()
 	{
 		$select = $this->db->where('email', $this->input->post('email'))->get('tbl_jobfair')->row();
-		if (!$select) {
+		if (!$select->email) {
 			$this->upload_pernyataan();
 			$data = array(
 				'status'    		=> $this->input->post('status'),
