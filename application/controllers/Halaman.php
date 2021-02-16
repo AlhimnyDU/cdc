@@ -119,7 +119,7 @@ class Halaman extends CI_Controller
 				'jabatan'    => $this->input->post('jabatan'),
 				'cp'    => $this->input->post('cp'),
 				'paket'    => $this->input->post('paket'),
-				'pernyataan'    => $this->upload->data('file_name'),,
+				'pernyataan'    => $this->upload->data('file_name'),
 				'created'   => date('Y-m-d H:i:s'),
 				'updated'   => date('Y-m-d H:i:s')
 			);
