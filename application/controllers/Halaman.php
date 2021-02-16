@@ -101,6 +101,54 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
+	public function daftarJobfair()
+	{
+		$select = $this->db->where('email', $this->input->post('email'))->get('tbl_jobfair')->result();
+		if ($select == NULL) {
+			$this->upload_pernyataan();
+			$data = array(
+				'status'    => $this->input->post('status'),
+				'nama_perusahaan'    => $this->input->post('nama_lengkap'),
+				'bidang'    => $this->input->post('bidang'),
+				'email'    => $this->input->post('email'),
+				'telp_perusahaan'    => $this->input->post('telp_perusahaan'),
+				'link_website'    => $this->input->post('link_website'),
+				'fax'    => $this->input->post('fax'),
+				'alamat'    => $this->input->post('alamat'),
+				'nama_pic'    => $this->input->post('nama_pic'),
+				'jabatan'    => $this->input->post('jabatan'),
+				'cp'    => $this->input->post('cp'),
+				'pernyataan'    => $this->upload->data('file_name'),,
+				'created'   => date('Y-m-d H:i:s'),
+				'updated'   => date('Y-m-d H:i:s')
+			);
+			$query = $this->db->insert('tbl_jobfair', $data);
+			if ($query) {
+				$this->session->set_flashdata('data_berhasil', TRUE);
+			} else {
+				$this->session->set_flashdata('failed', "Tambah Gagal");
+			}
+		} else {
+			$this->session->set_flashdata('telah_daftar', TRUE);
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function upload_pernyataan()
+	{
+		$nama_file = date('YmdHis');
+		$config['upload_path'] = './assets/upload/pas_foto/';
+		$config['file_name'] = $nama_file;
+		$config['allowed_types'] = 'jpg|png|pdf';
+		$this->upload->initialize($config);
+		$upload = $this->upload->do_upload('pernyataan');
+		if (empty($upload)) {
+			$this->session->set_flashdata('failed', "Tambah Gagal");
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+
 	public function esertifikat($id, $acara)
 	{
 		$data['acara'] = $this->db->get('tbl_acara')->result();

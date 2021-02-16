@@ -52,8 +52,8 @@
       </div>
       <div class="cta">
         <?php if ($this->session->userdata("nama") == NULL) { ?>
-          <a href="<?php echo site_url('login#signup') ?>" class="scrollto">Register</a>
-          <a href="<?php echo site_url('login/register') ?>" class="scrollto">Register Perusahaan</a>
+          <a href="<?php echo site_url('login#signup') ?>" class="scrollto">Registrasi Akun</a>
+          <a href="<?php echo site_url('halaman/formulirRegistrasi') ?>" class="scrollto">Registrasi Job Fair</a>
         <?php } ?>
       </div>
     </div>
