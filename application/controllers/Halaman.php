@@ -105,7 +105,7 @@ class Halaman extends CI_Controller
 	public function daftarJobfair()
 	{
 		$select = $this->db->where('email', $this->input->post('email'))->get('tbl_jobfair')->row();
-		if ($select->email == NULL) {
+		if ($select == NULL) {
 			$this->upload_pernyataan();
 			$data = array(
 				'status'    		=> $this->input->post('status'),
@@ -133,7 +133,7 @@ class Halaman extends CI_Controller
 		} else {
 			$this->session->set_flashdata('telah_daftar', TRUE);
 		}
-		// redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function upload_pernyataan()
@@ -146,7 +146,7 @@ class Halaman extends CI_Controller
 		$upload = $this->upload->do_upload('pernyataan');
 		if (empty($upload)) {
 			$this->session->set_flashdata('failed', "Tambah Gagal");
-			// redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 
