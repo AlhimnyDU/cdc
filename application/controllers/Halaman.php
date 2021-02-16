@@ -130,8 +130,10 @@ class Halaman extends CI_Controller
 			} else {
 				$this->session->set_flashdata('failed', "Tambah Gagal");
 			}
+			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			$this->session->set_flashdata('telah_daftar', TRUE);
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 		redirect($_SERVER['HTTP_REFERER']);
 	}
