@@ -126,7 +126,7 @@ class Halaman extends CI_Controller
 			);
 			$query = $this->db->insert('tbl_jobfair', $data);
 			if ($query) {
-				$this->session->set_flashdata('data_berhasil', TRUE);
+				$this->session->set_flashdata('daftar_berhasil', TRUE);
 			} else {
 				$this->session->set_flashdata('failed', "Tambah Gagal");
 			}
