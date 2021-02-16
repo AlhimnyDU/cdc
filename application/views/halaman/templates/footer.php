@@ -171,7 +171,16 @@
     });
   </script>
 <?php } ?>
-
+<?php if ($this->session->flashdata('telah_daftar', TRUE)) { ?>
+  <script>
+    swal({
+      title: "Registrasi ditolak!",
+      text: "Anda telah melakukan pendaftaran!",
+      icon: "warning",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
 </body>
 
 </html>
