@@ -94,6 +94,13 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
+	public function formulirRegistrasi()
+	{
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/daftar_jobfair');
+		$this->load->view('halaman/templates/footer');
+	}
+
 	public function esertifikat($id, $acara)
 	{
 		$data['acara'] = $this->db->get('tbl_acara')->result();
