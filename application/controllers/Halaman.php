@@ -133,7 +133,7 @@ class Halaman extends CI_Controller
 		} else {
 			$this->session->set_flashdata('telah_daftar', TRUE);
 		}
-		redirect($_SERVER['HTTP_REFERER']);
+		// redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function upload_pernyataan()
