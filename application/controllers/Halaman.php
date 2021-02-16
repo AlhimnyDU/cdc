@@ -108,9 +108,9 @@ class Halaman extends CI_Controller
 		if ($select->email == NULL) {
 			$this->upload_pernyataan();
 			$data = array(
-				'status'    => $this->input->post('status'),
-				'nama_perusahaan'    => $this->input->post('nama_lengkap'),
-				'bidang'    => $this->input->post('bidang'),
+				'status'    		=> $this->input->post('status'),
+				'nama_perusahaan'	=> $this->input->post('nama_perusahaan'),
+				'bidang'   => $this->input->post('bidang'),
 				'email'    => $this->input->post('email'),
 				'telp_perusahaan'    => $this->input->post('telp_perusahaan'),
 				'link_website'    => $this->input->post('link_website'),
@@ -126,8 +126,6 @@ class Halaman extends CI_Controller
 			);
 			$query = $this->db->insert('tbl_jobfair', $data);
 			if ($query) {
-				echo "gagal";
-
 				$this->session->set_flashdata('data_berhasil', TRUE);
 			} else {
 				$this->session->set_flashdata('failed', "Tambah Gagal");
@@ -135,7 +133,7 @@ class Halaman extends CI_Controller
 		} else {
 			$this->session->set_flashdata('telah_daftar', TRUE);
 		}
-		// redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function upload_pernyataan()
@@ -148,8 +146,7 @@ class Halaman extends CI_Controller
 		$upload = $this->upload->do_upload('pernyataan');
 		if (empty($upload)) {
 			$this->session->set_flashdata('failed', "Tambah Gagal");
-			echo "gagal";
-			// redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 
