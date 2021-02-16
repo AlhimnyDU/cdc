@@ -53,7 +53,7 @@
                                 <label class="col-form-label label-align">Link Website</label>
                                 <small style="color:red;">*Kosongkan, bila tidak ada</small>
                                 <div class="mb-3">
-                                    <input class="form-control" name="link_web" type="text">
+                                    <input class="form-control" name="link_website" type="text">
                                 </div>
                             </div>
                             <hr>
