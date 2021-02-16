@@ -15,7 +15,7 @@
                                 <div class="mb-3">
                                     <select name="status" class="custom-select">
                                         <option value="" disabled hidden selected>Pilih...</option>
-                                        <option value="perusahaan">Perusahaan</option>
+                                        <option value="peserta">Peserta</option>
                                         <option value="sponsorship">Sponsorship</option>
                                         <option value="scholarship">Scholarship</option>
                                     </select>
@@ -88,13 +88,13 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Contact Person/HP (PIC)</label>
                                 <div class="mb-3">
-                                    <input class="form-control" name="nama_perusahaan" required="required" type="text">
+                                    <input class="form-control" name="cp" required="required" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label label-align">Surat Pernyataan</label>
                                 <div class="mb-3">
-                                    <input type="file" class="dropify" height="50" name="berkas[]" data-max-file-size="2M" data-allowed-file-extensions="pdf" required>
+                                    <input type="file" class="dropify" height="50" name="pernyataan" data-max-file-size="2M" data-allowed-file-extensions="pdf" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,7 +119,7 @@
                             <div class="form-group">
                                 <div class="alert alert-info" role="alert">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Kami menyetujui segala peraturan dan ketentuan mengenai pembayaran dan pembatalan yang ditetapkan oleh panitia.
                                         </label>

@@ -118,6 +118,7 @@ class Halaman extends CI_Controller
 				'nama_pic'    => $this->input->post('nama_pic'),
 				'jabatan'    => $this->input->post('jabatan'),
 				'cp'    => $this->input->post('cp'),
+				'paket'    => $this->input->post('paket'),
 				'pernyataan'    => $this->upload->data('file_name'),,
 				'created'   => date('Y-m-d H:i:s'),
 				'updated'   => date('Y-m-d H:i:s')
@@ -137,7 +138,7 @@ class Halaman extends CI_Controller
 	public function upload_pernyataan()
 	{
 		$nama_file = date('YmdHis');
-		$config['upload_path'] = './assets/upload/pas_foto/';
+		$config['upload_path'] = './assets/upload/pernyataan/';
 		$config['file_name'] = $nama_file;
 		$config['allowed_types'] = 'jpg|png|pdf';
 		$this->upload->initialize($config);
