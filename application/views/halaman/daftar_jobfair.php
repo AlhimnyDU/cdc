@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Fax</label>
                                 <div class="mb-3">
-                                    <input class="form-control" name="fax" required="required" type="text">
+                                    <input class="form-control telp" name="fax" required="required" type="text">
                                 </div>
                             </div>
                             <hr>
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Contact Person/HP (PIC)</label>
                                 <div class="mb-3">
-                                    <input class="form-control" name="cp" required="required" type="text">
+                                    <input class="form-control telp" name="cp" required="required" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
