@@ -100,7 +100,9 @@
       }
     });
     $('.ipk').inputmask("9.99");
-    $('.telp').inputmask("9999999999999");
+    $('.telp').inputmask('Regex', {
+      regex: "^[0-9]{1,6}(\\.\\d{1,2})?$"
+    });
 
     // $("#form").submit(function(e) {
 
