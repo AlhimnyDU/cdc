@@ -130,12 +130,12 @@ class Halaman extends CI_Controller
 			} else {
 				$this->session->set_flashdata('failed', "Tambah Gagal");
 			}
-			redirect('halaman/formulirRegistrasi');
+			// redirect('halaman/formulirRegistrasi');
 		} else {
 			$this->session->set_flashdata('telah_daftar', TRUE);
-			redirect('halaman/formulirRegistrasi');
+			// redirect('halaman/formulirRegistrasi');
 		}
-		redirect('halaman/formulirRegistrasi');
+		// redirect('halaman/formulirRegistrasi');
 	}
 
 	public function upload_pernyataan()
