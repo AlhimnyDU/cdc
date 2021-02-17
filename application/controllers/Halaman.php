@@ -148,7 +148,7 @@ class Halaman extends CI_Controller
 		$upload = $this->upload->do_upload('pernyataan');
 		if (empty($upload)) {
 			$this->session->set_flashdata('failed', "Tambah Gagal");
-			redirect('halaman/formulirRegistrasi');
+			// redirect('halaman/formulirRegistrasi');
 		}
 	}
 
