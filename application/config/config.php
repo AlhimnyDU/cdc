@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-gi$config['base_url'] = 'http://localhost/cdc/';
+$config['base_url'] = 'http://localhost/cdc';
 // $config['base_url'] = 'https://cdc.itenas.ac.id/';
 date_default_timezone_set('Asia/Jakarta');
 
