@@ -77,7 +77,7 @@
                       <img src="<?php echo base_url('assets/upload/iklan/' . $row->file) ?>" alt="" class="img-fluid" style="width:350px ;height:250px;">
                     </div>
                     <h2 class="entry-title">
-                      <a href="<?php echo site_url('halaman/artikel/' . $row->id_iklan) ?>"><?php echo $row->judul ?></a>
+                      <a href="<?php echo site_url('halaman/iklan/' . $row->id_iklan) ?>"><?php echo $row->judul ?></a>
                     </h2>
                     <div class="entry-content">
                       <span class="badge badge-danger"><?php echo $row->status ?></span>

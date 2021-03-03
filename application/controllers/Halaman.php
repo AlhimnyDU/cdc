@@ -89,7 +89,7 @@ class Halaman extends CI_Controller
 
 	public function sertifikat()
 	{
-		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish', 'y')->get('tbl_acara')->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/sertifikat', $data);
 		$this->load->view('halaman/templates/footer');
@@ -155,7 +155,7 @@ class Halaman extends CI_Controller
 
 	public function esertifikat($id, $acara)
 	{
-		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish', 'y')->get('tbl_acara')->result();
 		$data['sertifikat'] = $this->db->select('e_sertifikat.*,tbl_acara.nama_acara')->join('tbl_acara', 'tbl_acara.id_acara=e_sertifikat.acara')->where('nim', $id)->where('acara', $acara)->get('e_sertifikat')->result();
 		if ($data['sertifikat'] == NULL) {
 			$this->session->set_flashdata('nothing', TRUE);
@@ -213,6 +213,15 @@ class Halaman extends CI_Controller
 	{
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair_stand');
+		$this->load->view('halaman/templates/jobfair_f');
+	}
+
+	public function estand($id)
+	{
+		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
+		$data['jobfair'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker')->result();
+		$this->load->view('halaman/templates/jobfair_h');
+		$this->load->view('halaman/estand');
 		$this->load->view('halaman/templates/jobfair_f');
 	}
 
