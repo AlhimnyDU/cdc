@@ -207,6 +207,7 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair');
 		// $this->load->view('halaman/templates/jobfair_f');
+		$this->load->view('halaman/templates/jobfair_end');
 	}
 
 	public function stand()
@@ -214,6 +215,7 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair_stand');
 		$this->load->view('halaman/templates/jobfair_f');
+		$this->load->view('halaman/templates/jobfair_end');
 	}
 
 	public function estand($id)
@@ -223,6 +225,8 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/estand');
 		$this->load->view('halaman/templates/jobfair_f');
+		$this->load->view('halaman/templates/jobfair_estand');
+		$this->load->view('halaman/templates/jobfair_end');
 	}
 
 

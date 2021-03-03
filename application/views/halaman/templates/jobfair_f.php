@@ -155,7 +155,3 @@
     });
   </script>
 <?php } ?>
-
-</body>
-
-</html>
