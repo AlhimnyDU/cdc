@@ -89,7 +89,7 @@ class Halaman extends CI_Controller
 
 	public function sertifikat()
 	{
-		$data['acara'] = $this->db->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/sertifikat', $data);
 		$this->load->view('halaman/templates/footer');
@@ -155,7 +155,7 @@ class Halaman extends CI_Controller
 
 	public function esertifikat($id, $acara)
 	{
-		$data['acara'] = $this->db->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
 		$data['sertifikat'] = $this->db->select('e_sertifikat.*,tbl_acara.nama_acara')->join('tbl_acara', 'tbl_acara.id_acara=e_sertifikat.acara')->where('nim', $id)->where('acara', $acara)->get('e_sertifikat')->result();
 		if ($data['sertifikat'] == NULL) {
 			$this->session->set_flashdata('nothing', TRUE);

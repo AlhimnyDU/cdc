@@ -1,7 +1,7 @@
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
         <div class="row aos-init aos-animate" data-aos="fade-up">
-            <div class="col-sm-12 grid-margin">
+            <div class="col-md-8 grid-margin" style="margin-left: 200px;">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
@@ -58,6 +58,84 @@
                                                         <label class="form-check-label" for="inlineRadio5">Sangat Baik</label>
                                                     </div>
                                                 </div>
+                                            <?php } else if ($row->jenis_jawaban == "prodi") { ?>
+                                                <select class="custom-select" name="<?php echo $row->id_soal ?>" required>
+                                                    <option value="" disabled hidden selected>Pilih</option>
+                                                    <option value="Teknik Elektro">
+                                                        Teknik Elektro
+                                                    </option>
+                                                    <option value="Teknik Mesin" >
+                                                        Teknik Mesin
+                                                    </option>
+                                                    <option value="Teknik Industri">
+                                                        Teknik Industri
+                                                    </option>
+                                                    <option value="Teknik Kimia">
+                                                        Teknik Kimia
+                                                    </option>
+                                                    <option value="Informatika">
+                                                        Informatika
+                                                    </option>
+                                                    <option value="Sistem Informasi">
+                                                        Sistem Informasi
+                                                    </option>
+                                                    <option value="Teknik Sipil">
+                                                        Teknik Sipil
+                                                    </option>
+                                                    <option value="Teknik Geodesi">
+                                                        Teknik Geodesi
+                                                    </option>
+                                                    <option value="Perencanaan Wilayah dan Kota">
+                                                        Perencanaan Wilayah dan Kota
+                                                    </option>
+                                                    <option value="Teknik Lingkungan">
+                                                        Teknik Lingkungan
+                                                    </option>
+                                                    <option value="Arsitektur">
+                                                        Arsitektur
+                                                    </option>
+                                                    <option value="Desain Interior">
+                                                        Desain Interior
+                                                    </option>
+                                                    <option value="Desain Produk">
+                                                        Desain Produk
+                                                    </option>
+                                                    <option value="Desain Komunikasi Visual">
+                                                        Desain Komunikasi Visual
+                                                    </option>
+                                                </select>
+                                            <?php } else if ($row->jenis_jawaban == "fakultas") { ?>
+                                                <select class="custom-select" name="<?php echo $row->id_soal ?>" required>
+                                                    <option value="" disabled hidden selected>Pilih</option>
+                                                    <option value="Fakultas Teknologi Industri">
+                                                        Fakultas Teknologi Industri
+                                                    </option>
+                                                    <option value="Fakultas Teknik Sipil dan Perencanaan">
+                                                        Fakultas Teknik Sipil dan Perencanaan
+                                                    </option>
+                                                    <option value="Fakultas Arsitektur dan Desain">
+                                                        Fakultas Arsitektur dan Desain
+                                                    </option>
+                                                </select>
+                                            <?php } else if ($row->jenis_jawaban == "info") { ?>
+                                                <select class="custom-select" name="<?php echo $row->id_soal ?>" required>
+                                                    <option value="" disabled hidden selected>Pilih</option>
+                                                    <option value="Whatsapp">
+                                                        Whatsapp
+                                                    </option>
+                                                    <option value="Instagram">
+                                                        Instagram
+                                                    </option>
+                                                    <option value="Website">
+                                                        Website Itenas
+                                                    </option>
+                                                    <option value="Sosmed Lainnya">
+                                                        Social Media Lainnya
+                                                    </option>
+                                                    <option value="Lainnya">
+                                                        Lainnya
+                                                    </option>
+                                                </select>
                                             <?php } ?>
                                         </div>
                                     </div>

@@ -18,9 +18,7 @@
 									<?php echo $artikel->headline ?>
 								</div>
 								<br>
-								<div>
 									<?php echo $artikel->konten ?>
-								</div>
 								<br>
 								<center>
 									<div class="owl-carousel owl-theme">

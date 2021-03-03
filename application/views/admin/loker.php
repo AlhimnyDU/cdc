@@ -37,7 +37,9 @@
                                             <th width="5%">No</th>
                                             <th>Perusahaan</th>
                                             <th>Jabatan/Posisi</th>
+                                            <th>Deadline</th>
                                             <th>Status Loker</th>
+                                            <th>Created</th>
                                             <th width="25%">Edit</th>
                                         </tr>
                                     </thead>
@@ -50,7 +52,9 @@
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->nama_perusahaan ?></td>
                                                 <td><?php echo $row->posisi ?></td>
+                                                <td><?php echo $row->deadline ?></td>
                                                 <td><?php echo $row->status ?></td>
+                                                <th><?php echo $row->created ?></th>
                                                 <td>
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/pelamar/' . $row->id_loker) ?>"><i class="fa fa-users"></i> Pelamar</a> |
                                                     <a class="btn btn-warning" href="" data-toggle="modal" data-target="#editModal<?= $row->id_loker ?>"><i class="fa fa-edit"></i></a> |

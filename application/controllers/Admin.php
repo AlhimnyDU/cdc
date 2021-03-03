@@ -170,7 +170,7 @@ class Admin extends CI_Controller
     public function importESertifikat()
     {
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
-        $config['upload_path'] = realpath('./excel/');
+        $config['upload_path'] = './assets/excel/';
         $config['allowed_types'] = 'xlsx|xls|csv';
         $config['max_size'] = '10000';
         $config['encrypt_name'] = true;
@@ -180,11 +180,12 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('notifGagal', 'error');
             //redirect halaman
             $error = array('error' => $this->upload->display_errors());
-            redirect($_SERVER['HTTP_REFERER']);
+            print_r($error);
+            // redirect($_SERVER['HTTP_REFERER']);
         } else {
             $data_upload = $this->upload->data();
             $excelreader     = new PHPExcel_Reader_Excel2007();
-            $loadexcel         = $excelreader->load('excel/' . $data_upload['file_name']); // Load file yang telah diupload ke folder excel
+            $loadexcel         = $excelreader->load('./assets/excel/'. $data_upload['file_name']); // Load file yang telah diupload ke folder excel
             $sheet             = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
             $data = array();
             $numrow = 1;
@@ -204,7 +205,7 @@ class Admin extends CI_Controller
             }
             $this->db->insert_batch('e_sertifikat', $data);
             //delete file from server
-            unlink(realpath('excel/' . $data_upload['file_name']));
+            unlink('./assets/excel/' . $data_upload['file_name']);
             //redirect halaman
             redirect($_SERVER['HTTP_REFERER']);
         }
@@ -536,6 +537,36 @@ class Admin extends CI_Controller
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
+    
+    public function mulaiPublish($id)
+    {
+        $data = array(
+            'publish'    => "y",
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_acara', $id)->update('tbl_acara', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    
+    public function tidakPublish($id)
+    {
+        $data = array(
+            'publish'    => "n",
+            'updated'   => date('Y-m-d H:i:s'),
+        );
+        $query = $this->db->where('id_acara', $id)->update('tbl_acara', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 
     public function mulaiKuesioner($id)
     {
@@ -792,7 +823,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,,tbl_akun.nama,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
+                $data['pelamar'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,tbl_akun.nomor_induk,tbl_akun.nama,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_lamaran.id_loker', $id)->get('tbl_lamaran')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/pelamar', $data);
                 $this->load->view('admin/templates/js');

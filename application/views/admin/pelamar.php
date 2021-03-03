@@ -30,10 +30,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                                <table id="" class="table table-striped table-bordered datatable2" style="width:100%">
+                                <table id="" class="table table-striped table-bordered datatable" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>
+                                            <th>NIM/NIK</th>
                                             <th>Pelamar</th>
                                             <th>Perusahaan</th>
                                             <th>Posisi/Jabatan yang dilamar</th>
@@ -48,6 +49,7 @@
                                         ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
+                                                <td><?php echo $row->nomor_induk ?></td>
                                                 <td><?php echo $row->nama ?></td>
                                                 <td><?php echo $row->nama_perusahaan ?></td>
                                                 <td><?php echo $row->posisi ?></td>

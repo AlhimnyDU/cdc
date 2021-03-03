@@ -600,7 +600,7 @@ class User extends CI_Controller
             $ijazah = $this->db->where('nama_berkas', "Photocopy ijazah legalisir")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
             $transkrip = $this->db->where('nama_berkas', "Transkrip Nilai")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
             $psikotest = $this->db->where('nama_berkas', "Hasil Psikotest")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
-            if (empty($ijazah) || empty($transkrip) || empty($psikotest)) {
+            if (empty($ijazah) || empty($transkrip)) {
                 $this->session->set_flashdata('lengkapi_persyaratan', TRUE);
                 redirect($_SERVER['HTTP_REFERER']);
             } else {

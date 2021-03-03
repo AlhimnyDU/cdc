@@ -27,6 +27,7 @@
                                             <th>Nama Event</th>
                                             <th width="15%">Tanggal Pelaksanaan</th>
                                             <th width="18%">Pengaktifan Kuesioner</th>
+                                            <th width="18%">Publish E-Sertifikat</th>
                                             <th align="center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -44,6 +45,13 @@
                                                         <a class="btn btn-secondary btn-sm" href="<?php echo site_url('admin/akhiriKuesioner/') . $row->id_acara ?>">Nonaktifkan</a>
                                                     <?php } else if ($row->status == "Tidak Aktif") { ?>
                                                         <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/mulaiKuesioner/') . $row->id_acara ?>">Aktifkan</a>
+                                                    <?php } ?>
+                                                </td>
+                                                <td align="center">
+                                                    <?php if ($row->publish == "y") { ?>
+                                                        <a class="btn btn-secondary btn-sm" href="<?php echo site_url('admin/tidakPublish/') . $row->id_acara ?>">Not Publish</a>
+                                                    <?php } else if ($row->publish == "n") { ?>
+                                                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/mulaiPublish/') . $row->id_acara ?>">Publish</a>
                                                     <?php } ?>
                                                 </td>
                                                 <td>

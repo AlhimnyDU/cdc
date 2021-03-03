@@ -85,7 +85,9 @@
                                     <option value="textarea">Text Area (Memo)</option>
                                     <option value="pilihanganda">Pilihan Ganda (Ya/Tidak)</option>
                                     <option value="penilaian">Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
-
+                                    <option value="prodi">Program Studi Itenas</option>
+                                    <option value="fakultas">Fakultas Itenas</option>
+                                    <option value="info">Informasi Seminar / Webinar / Acara</option>
                                 </select>
                             </div>
                             <div class="modal-footer">
@@ -141,6 +143,15 @@ foreach ($soal as $row) {
                                         <option value="penilaian" <?php if ($row->jenis_jawaban == "penilaian") {
                                                                         echo "selected";
                                                                     } ?>>Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
+                                        <option value="prodi" <?php if ($row->jenis_jawaban == "prodi") {
+                                                                        echo "selected";
+                                                                    } ?>>Program Studi Itenas</option>
+                                        <option value="fakultas"<?php if ($row->jenis_jawaban == "fakultas") {
+                                                                        echo "selected";
+                                                                    } ?>>Fakultas Itenas</option>
+                                        <option value="info" <?php if ($row->jenis_jawaban == "info") {
+                                                                        echo "selected";
+                                                                    } ?>>Informasi Seminar / Webinar / Acara</option>
                                     </select>
                                 </div>
                                 <div class="modal-footer">
