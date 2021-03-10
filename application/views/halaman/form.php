@@ -64,7 +64,7 @@
                                                     <option value="Teknik Elektro">
                                                         Teknik Elektro
                                                     </option>
-                                                    <option value="Teknik Mesin" >
+                                                    <option value="Teknik Mesin">
                                                         Teknik Mesin
                                                     </option>
                                                     <option value="Teknik Industri">
@@ -136,6 +136,8 @@
                                                         Lainnya
                                                     </option>
                                                 </select>
+                                            <?php } else if ($row->jenis_jawaban == "file") { ?>
+                                                <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="2M" data-allowed-file-extensions="pdf png jpg jpeg" required>
                                             <?php } ?>
                                         </div>
                                     </div>
