@@ -12,6 +12,9 @@
                         <?php if ($acara->status == "Aktif") { ?>
                             <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data" class="form-floating" id="formulir">
                                 <?php foreach ($form as $row) { ?>
+                                    <?php if ($row->jenis_jawaban == "label") { ?>
+                                        <h4 class="col-form-label label-align"><?php echo $row->soal  ?></h4>
+                                    <?php }else{ ?>
                                     <div class="form-group">
                                         <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
                                         <div class="mb-3">
@@ -21,6 +24,8 @@
                                                 <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="text">
                                             <?php } else if ($row->jenis_jawaban == "textfield_number") { ?>
                                                 <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="number">
+                                            <?php } else if ($row->jenis_jawaban == "textfield_number_non") { ?>
+                                                <input class="form-control" name="<?php echo $row->id_soal ?>" type="number">
                                             <?php } else if ($row->jenis_jawaban == "textarea") { ?>
                                                 <textarea class="form-control" name="<?php echo $row->id_soal ?>" required="required" rows="5"></textarea>
                                             <?php } else if ($row->jenis_jawaban == "pilihanganda") { ?>
@@ -64,7 +69,53 @@
                                                     <option value="Teknik Elektro">
                                                         Teknik Elektro
                                                     </option>
-                                                    <option value="Teknik Mesin">
+                                                    <option value="Teknik Mesin" >
+                                                        Teknik Mesin
+                                                    </option>
+                                                    <option value="Teknik Industri">
+                                                        Teknik Industri
+                                                    </option>
+                                                    <option value="Teknik Kimia">
+                                                        Teknik Kimia
+                                                    </option>
+                                                    <option value="Informatika">
+                                                        Informatika
+                                                    </option>
+                                                    <option value="Sistem Informasi">
+                                                        Sistem Informasi
+                                                    </option>
+                                                    <option value="Teknik Sipil">
+                                                        Teknik Sipil
+                                                    </option>
+                                                    <option value="Teknik Geodesi">
+                                                        Teknik Geodesi
+                                                    </option>
+                                                    <option value="Perencanaan Wilayah dan Kota">
+                                                        Perencanaan Wilayah dan Kota
+                                                    </option>
+                                                    <option value="Teknik Lingkungan">
+                                                        Teknik Lingkungan
+                                                    </option>
+                                                    <option value="Arsitektur">
+                                                        Arsitektur
+                                                    </option>
+                                                    <option value="Desain Interior">
+                                                        Desain Interior
+                                                    </option>
+                                                    <option value="Desain Produk">
+                                                        Desain Produk
+                                                    </option>
+                                                    <option value="Desain Komunikasi Visual">
+                                                        Desain Komunikasi Visual
+                                                    </option>
+                                                </select>
+                                            <?php } else if ($row->jenis_jawaban == "prodi_non") { ?>
+                                                <select class="custom-select" name="<?php echo $row->id_soal ?>">
+                                                    <option value="" disabled hidden selected>Pilih</option>
+                                                    <option value="Teknik Elektro">
+                                                        Teknik Elektro
+                                                    </option>
+                                                    <option value="Teknik Mesin" >
                                                         Teknik Mesin
                                                     </option>
                                                     <option value="Teknik Industri">
@@ -136,12 +187,41 @@
                                                         Lainnya
                                                     </option>
                                                 </select>
-                                            <?php } else if ($row->jenis_jawaban == "file") { ?>
-                                                <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="2M" data-allowed-file-extensions="pdf png jpg jpeg" required>
+                                            <?php } else if ($row->jenis_jawaban == "pdf") { ?>
+                                                <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="pdf" required>
+                                            <?php } else if ($row->jenis_jawaban == "gambar") { ?>
+                                                <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg" required>
+                                            <?php } else if ($row->jenis_jawaban == "textfield_non") { ?>
+                                                <input class="form-control" name="<?php echo $row->id_soal ?>" type="text">
+                                            <?php } else if ($row->jenis_jawaban == "PKMI") { ?>
+                                                <div class="alert alert-light" role="alert">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="KBMI" required="required">
+                                                        <label class="form-check-label" for="inlineRadio1">Kegiatan Berwirausaha Mahasiswa Indonesia (KBMI)</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="ASMI" required="required">
+                                                        <label class="form-check-label" for="inlineRadio2">Akselerasi Startup Mahasiswa Indonesia (ASMI)k</label>
+                                                    </div>
+                                                </div>
                                             <?php } ?>
                                         </div>
                                     </div>
                                     <hr>
+                                    <?php } ?>
+
+                                <?php } ?>
+                                <?php if ($acara->id_acara == 7) { ?>
+                                    <div class="form-group">
+                                        <div class="alert alert-warning" role="alert">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="defaultCheck1" required>
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Menyetujui ketentuan dan persyaratan kegiatan PKMI dan bersedia mengikuti kegiatan selama 6 bulan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php } ?>
                                 <div class="form-group">
                                     <center>

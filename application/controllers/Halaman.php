@@ -89,7 +89,7 @@ class Halaman extends CI_Controller
 
 	public function sertifikat()
 	{
-		$data['acara'] = $this->db->where('publish', 'y')->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/sertifikat', $data);
 		$this->load->view('halaman/templates/footer');
@@ -106,21 +106,19 @@ class Halaman extends CI_Controller
 	{
 		$select = $this->db->where('email', $this->input->post('email'))->get('tbl_jobfair')->result();
 		if ($select == NULL) {
-			$this->upload_pernyataan();
 			$data = array(
 				'status'    		=> $this->input->post('status'),
 				'nama_perusahaan'	=> $this->input->post('nama_perusahaan'),
 				'bidang'   => $this->input->post('bidang'),
 				'email'    => $this->input->post('email'),
-				'telp_perusahaan'    => $this->input->post('telp_perusahaan'),
+				'telp_perusahaan'    => str_replace("_","",$this->input->post('telp_perusahaan')),
 				'link_website'    => $this->input->post('link_website'),
-				'fax'    => $this->input->post('fax'),
+				'fax'    => str_replace("_","",$this->input->post('fax')),
 				'alamat'    => $this->input->post('alamat'),
 				'nama_pic'    => $this->input->post('nama_pic'),
 				'jabatan'    => $this->input->post('jabatan'),
-				'cp'    => $this->input->post('cp'),
+				'cp'    => str_replace("_","",$this->input->post('cp')),
 				'paket'    => $this->input->post('paket'),
-				'pernyataan'    => $this->upload->data('file_name'),
 				'created'   => date('Y-m-d H:i:s'),
 				'updated'   => date('Y-m-d H:i:s')
 			);
@@ -155,7 +153,7 @@ class Halaman extends CI_Controller
 
 	public function esertifikat($id, $acara)
 	{
-		$data['acara'] = $this->db->where('publish', 'y')->get('tbl_acara')->result();
+		$data['acara'] = $this->db->where('publish','y')->get('tbl_acara')->result();
 		$data['sertifikat'] = $this->db->select('e_sertifikat.*,tbl_acara.nama_acara')->join('tbl_acara', 'tbl_acara.id_acara=e_sertifikat.acara')->where('nim', $id)->where('acara', $acara)->get('e_sertifikat')->result();
 		if ($data['sertifikat'] == NULL) {
 			$this->session->set_flashdata('nothing', TRUE);
@@ -207,7 +205,6 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair');
 		// $this->load->view('halaman/templates/jobfair_f');
-		$this->load->view('halaman/templates/jobfair_end');
 	}
 
 	public function stand()
@@ -215,18 +212,6 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair_stand');
 		$this->load->view('halaman/templates/jobfair_f');
-		$this->load->view('halaman/templates/jobfair_end');
-	}
-
-	public function estand($id)
-	{
-		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
-		$data['jobfair'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker')->result();
-		$this->load->view('halaman/templates/jobfair_h');
-		$this->load->view('halaman/estand');
-		$this->load->view('halaman/templates/jobfair_f');
-		$this->load->view('halaman/templates/jobfair_estand');
-		$this->load->view('halaman/templates/jobfair_end');
 	}
 
 
@@ -307,14 +292,35 @@ class Halaman extends CI_Controller
 			$max->responden = $max->responden + 1;
 		}
 		foreach ($form as $row) {
-			$data = array(
-				'jawaban' => $this->input->post($row->id_soal),
-				'responden' => $max->responden,
-				'id_soal' => $row->id_soal,
-				'id_acara'   => $id,
-				'created'   => date('Y-m-d H:i:s'),
-				'updated'   => date('Y-m-d H:i:s'),
-			);
+		    if(($row->jenis_jawaban=="pdf")||($row->jenis_jawaban=="gambar")){
+        		$config['upload_path'] = './assets/upload/form/';
+        		$config['encrypt_name'] = TRUE;
+        		$config['allowed_types'] = 'jpg|png|pdf';
+        		$this->upload->initialize($config);
+        		$upload = $this->upload->do_upload($row->id_soal);
+        		if (empty($upload)) {
+        			echo "error";
+        		}
+        		$data_upload = $this->upload->data();
+		        $data = array(
+    				'jawaban' => $data_upload['file_name'],
+    				'responden' => $max->responden,
+    				'id_soal' => $row->id_soal,
+    				'id_acara'   => $id,
+    				'created'   => date('Y-m-d H:i:s'),
+    				'updated'   => date('Y-m-d H:i:s'),
+    			);
+		    }else{
+		        $data = array(
+    				'jawaban' => $this->input->post($row->id_soal),
+    				'responden' => $max->responden,
+    				'id_soal' => $row->id_soal,
+    				'id_acara'   => $id,
+    				'created'   => date('Y-m-d H:i:s'),
+    				'updated'   => date('Y-m-d H:i:s'),
+    			);
+		    }
+			
 			$query = $this->db->insert('tbl_jawaban', $data);
 		}
 		if ($query) {

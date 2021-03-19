@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Daftar Sebagai : </label>
                                 <div class="mb-3">
-                                    <select name="status" class="custom-select">
+                                    <select name="status" id="jenis" class="custom-select">
                                         <option value="" disabled hidden selected>Pilih...</option>
                                         <option value="peserta">Peserta</option>
                                         <option value="sponsorship">Sponsorship</option>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Telp/HP Perusahaan</label>
                                 <div class="mb-3">
-                                    <input class="form-control" name="telp_perusahaan" required="required" type="text">
+                                    <input class="form-control telp" name="telp_perusahaan" required="required" type="text">
                                 </div>
                             </div>
                             <hr>
@@ -59,8 +59,9 @@
                             <hr>
                             <div class="form-group">
                                 <label class="col-form-label label-align">Fax</label>
+                                <small style="color:red;">*Kosongkan, bila tidak ada</small>
                                 <div class="mb-3">
-                                    <input class="form-control telp" name="fax" required="required" type="text">
+                                    <input class="form-control telp" name="fax" type="text">
                                 </div>
                             </div>
                             <hr>
@@ -91,26 +92,20 @@
                                     <input class="form-control telp" name="cp" required="required" type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-form-label label-align">Surat Pernyataan</label>
-                                <div class="mb-3">
-                                    <input type="file" class="dropify" height="50" name="pernyataan" data-max-file-size="2M" data-allowed-file-extensions="pdf" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group" id="paket">
                                 <label class="col-form-label label-align">Menyatakan bahwa kami berminat ikut sebagai peserta dalam kegiatan "Itenas Virtual Job Fair 2021" dalam paket :</label>
                                 <div class="mb-3">
                                     <div class="alert alert-warning" role="alert">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio1" value="Platinum" required="required">
+                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio1" value="Platinum" disabled>
                                             <label class="form-check-label" for="inlineRadio1">Platinum</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio2" value="Gold" required="required">
+                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio2" value="Gold" disabled>
                                             <label class="form-check-label" for="inlineRadio2">Gold</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio3" value="Bronze" required="required">
+                                            <input class="form-check-input" type="radio" name="paket" id="inlineRadio3" value="Bronze" disabled>
                                             <label class="form-check-label" for="inlineRadio3">Bronze</label>
                                         </div>
                                     </div>
@@ -121,7 +116,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Kami menyetujui segala peraturan dan ketentuan mengenai pembayaran dan pembatalan yang ditetapkan oleh panitia.
+                                            Kami menyetujui segala peraturan dan ketentuan yang ditetapkan oleh panitia.
                                         </label>
                                     </div>
                                 </div>

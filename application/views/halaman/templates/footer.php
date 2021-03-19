@@ -91,18 +91,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <script>
   $(document).ready(function() {
+    $('#paket').hide();
+    $("#jenis").change(function() {
+        if ($('#jenis').val() == 'peserta') {
+            $("#inlineRadio1").prop("disabled", true);
+            $("#inlineRadio2").prop("disabled", true);
+            $("#inlineRadio3").prop("disabled", true);
+            $("#inlineRadio1").removeAttr('required');
+            $('#paket').hide();
+        } else if (($('#jenis').val() == 'sponsorship') || ($('#jenis').val() == 'scholarship')) {
+            $("#inlineRadio1").prop("disabled", false);
+            $("#inlineRadio2").prop("disabled", false);
+            $("#inlineRadio3").prop("disabled", false);
+            $("#inlineRadio1").prop("required", true);
+            $('#paket').show();
+        }
+    });
     $('.dropify').dropify({
       messages: {
-        'default': 'Drag and drop / Click',
-        'replace': 'Drag and drop / Click',
+        'default': '',
+        'replace': '',
         'remove': 'Remove',
         'error': 'Ooops, something wrong happended.'
       }
     });
     $('.ipk').inputmask("9.99");
-    $('.telp').inputmask('Regex', {
-      regex: "^[0-9]{1,6}(\\.\\d{1,2})?$"
-    });
+    $('.telp').inputmask("99999999999999");
 
     // $("#form").submit(function(e) {
 
