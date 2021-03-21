@@ -79,6 +79,7 @@
                     <li><a href="<?php echo site_url() ?>admin/alumni">Alumni</a></li>
                     <li><a href="<?php echo site_url() ?>admin/umum">Umum</a></li>
                     <li><a href="<?php echo site_url() ?>admin/perusahaan">Perusahaan</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/peserta_jobfair">Pendaftar Jobfair April 2021</a></li>
                   </ul>
                 </li>
                 <li><a href="<?php echo site_url('admin/post') ?>"><i class="fa fa-edit"></i> Post & News</a></li>

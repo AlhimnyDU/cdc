@@ -23,15 +23,12 @@
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?php echo base_url() ?>assets/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
-  <link href="<?php echo base_url() ?>assets/home/assets/animatedmodal/css/animate.min.css" rel="stylesheet">
-
-
 
   <!-- Template Main CSS File -->
   <link href="<?php echo base_url() ?>assets/home/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />
+  <link href="<?php echo base_url() ?>assets/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/home/assets/animatedmodal/css/animate.min.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Flexor - v2.4.0

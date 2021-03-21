@@ -1,3 +1,7 @@
 [16-Feb-2021 17:28:01 Asia/Jakarta] PHP Fatal error:  Cannot use empty array elements in arrays in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 122
 [16-Feb-2021 17:28:08 Asia/Jakarta] PHP Fatal error:  Cannot use empty array elements in arrays in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 122
 [16-Feb-2021 17:28:47 Asia/Jakarta] PHP Fatal error:  Cannot use empty array elements in arrays in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 122
+[10-Mar-2021 10:40:26 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Admin::peserta() in /home/cdcitenas/public_html/application/controllers/Admin.php on line 130
+[18-Mar-2021 11:30:24 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Halaman::upload_pernyataan() in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 325
+[18-Mar-2021 11:30:42 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Halaman::upload_pernyataan() in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 325
+[18-Mar-2021 11:30:54 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Halaman::upload_pernyataan() in /home/cdcitenas/public_html/application/controllers/Halaman.php on line 325

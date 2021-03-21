@@ -6,7 +6,6 @@
   <div class="footer-top">
     <div class="container">
       <div class="row">
-
         <div class="col-lg-3 col-md-6 footer-contact">
           <h3><img src="<?php echo site_url('assets/halaman/logo.png') ?>" style="width: 200px;"></h3>
           <p>
@@ -113,10 +112,26 @@
         $("#nrp").prop("required", true);
       }
     });
+    $('#paket').hide();
+    $("#jenis").change(function() {
+      if ($('#jenis').val() == 'peserta') {
+        $("#inlineRadio1").prop("disabled", true);
+        $("#inlineRadio2").prop("disabled", true);
+        $("#inlineRadio3").prop("disabled", true);
+        $("#inlineRadio1").removeAttr('required');
+        $('#paket').hide();
+      } else if (($('#jenis').val() == 'sponsorship') || ($('#jenis').val() == 'scholarship')) {
+        $("#inlineRadio1").prop("disabled", false);
+        $("#inlineRadio2").prop("disabled", false);
+        $("#inlineRadio3").prop("disabled", false);
+        $("#inlineRadio1").prop("required", true);
+        $('#paket').show();
+      }
+    });
     $('.dropify').dropify({
       messages: {
-        'default': 'Drag and drop / Click',
-        'replace': 'Drag and drop / Click',
+        'default': '',
+        'replace': '',
         'remove': 'Remove',
         'error': 'Ooops, something wrong happended.'
       }
