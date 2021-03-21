@@ -71,11 +71,16 @@
                 <li><a href="<?php echo site_url() ?>perusahaan"><i class="fa fa-home"></i> Home </a></li>
                 <li><a><i class="fa fa-users"></i>Pengembangan Karir<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?php echo site_url() ?>perusahaan/jobfair">Job Fair</a></li>
                     <li><a href="<?php echo site_url() ?>perusahaan/loker">Lowongan Kerja</a></li>
                   </ul>
                 </li>
-                <li><a href="<?php echo site_url() ?>perusahaan/setting"><i class="fa fa-gear"></i> Setting</a></li>
+                <li>
+                  <a href="<?php echo site_url() ?>perusahaan/setting"><i class="fa fa-gear"></i>Virtual Job Fair 2021<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="<?php echo site_url() ?>perusahaan/jobfair">Post Lowongan</a></li>
+                    <li><a href="<?php echo site_url() ?>perusahaan/setting">Company Profile</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
 

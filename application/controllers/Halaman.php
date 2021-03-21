@@ -210,10 +210,20 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_end');
 	}
 
+	public function jobfair_home()
+	{
+		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 6)->result();
+		$this->load->view('halaman/templates/jobfair_h');
+		$this->load->view('halaman/jobfair_home', $data);
+		$this->load->view('halaman/templates/jobfair_f');
+		$this->load->view('halaman/templates/jobfair_end');
+	}
+
 	public function stand()
 	{
+		$data['perusahaan'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id, event_perusahaan.link, event_perusahaan.id_event, tbl_event.nama_event')->join('tbl_event', 'tbl_event.id_event=event_perusahaan.id_event', 'LEFT')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('event_perusahaan.id_event', 2)->where('event_perusahaan.role', 'perusahaan')->get('event_perusahaan')->result();
 		$this->load->view('halaman/templates/jobfair_h');
-		$this->load->view('halaman/jobfair_stand');
+		$this->load->view('halaman/jobfair_stand', $data);
 		$this->load->view('halaman/templates/jobfair_f');
 		$this->load->view('halaman/templates/jobfair_end');
 	}
@@ -221,15 +231,20 @@ class Halaman extends CI_Controller
 	public function estand($id)
 	{
 		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
-		$data['jobfair'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'jobfair')->order_by('updated', 'DESC')->get('tbl_loker')->result();
+		$data['jobfair'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'Job Fair 2021')->order_by('updated', 'DESC')->get('tbl_loker')->result();
 		$this->load->view('halaman/templates/jobfair_h');
-		$this->load->view('halaman/estand');
+		$this->load->view('halaman/estand', $data);
 		$this->load->view('halaman/templates/jobfair_f');
 		$this->load->view('halaman/templates/jobfair_estand');
 		$this->load->view('halaman/templates/jobfair_end');
 	}
 
-
+	public function daftar_peserta()
+	{
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/daftar_peserta');
+		$this->load->view('halaman/templates/footer');
+	}
 
 	public function artikel($id)
 	{
@@ -403,6 +418,7 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/js');
 		$this->load->view('halaman/templates/footer');
 	}
+
 
 	public function company($id)
 	{

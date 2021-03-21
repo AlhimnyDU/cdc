@@ -44,8 +44,8 @@
     }
 
     .flip-card-back {
-        background-color: #2980b9;
-        color: white;
+        background-color: #fff9f7;
+        color: black;
         transform: rotateY(180deg);
     }
 
@@ -58,7 +58,7 @@
         width: 100%;
         height: 100%;
         pointer-events: auto;
-        background-color: #fffdd0;
+        background-color: #fff9f7;
         background-clip: padding-box;
         border: 1px solid rgba(0, 0, 0, .2);
         border-radius: .3rem;
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <center>
                             <hr>
-                            <h3>Institut Teknologi Nasional Bandung</h3>
+                            <h3><?php echo $company->nama_perusahaan ?></h3>
                             <hr>
                             <div class="flip-card">
                                 <div class="flip-card-inner">
@@ -95,7 +95,7 @@
                                                             Nama Perusahaan
                                                         </td>
                                                         <td>
-                                                            : Institut Teknologi Nasional Bandung
+                                                            : <?php echo $company->nama_perusahaan ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -103,7 +103,7 @@
                                                             Bergerak di Bidang
                                                         </td>
                                                         <td>
-                                                            : Pendidikan
+                                                            : <?php echo $company->bidang ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -111,7 +111,7 @@
                                                             Nomor Telepon
                                                         </td>
                                                         <td>
-                                                            : 022-7272215
+                                                            : <?php echo $company->telp_perusahaan ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -119,7 +119,7 @@
                                                             Alamat Perusahaan
                                                         </td>
                                                         <td>
-                                                            : Jl. P.H.H. Mustofa
+                                                            : <?php echo $company->alamat ?>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -128,13 +128,13 @@
                                         <hr>
                                         <div class="row" style="margin-left: 10px;margin-right: 10px;">
                                             <div class="col-md-12">
-                                                <p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                                <p align="justify"><?php echo substr($company->deskripsi, 0, 500) ?>..<a href="#">Read More</a></p>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <img src="<?php echo site_url('assets/halaman/slideshow/bg1.jpeg') ?>" class="img-thumbnail">
+                                                        <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan ?>" class="img-thumbnail">
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <img src="<?php echo site_url('assets/halaman/slideshow/bg2.jpeg') ?>" class="img-thumbnail">
+                                                        <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan2 ?>" class="img-thumbnail">
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,149 +157,32 @@
 <div id="animatedModal">
     <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID -->
     <center>
-        <div class="close-animatedModal" style="margin-top: 10px;"><i class="fa fa-times-circle" style="color: green; font-size: 30px;"></i></div>
+        <div class="close-animatedModal" style="margin-top: 10px;"><i class="fa fa-times-circle" style="color: silver; font-size: 30px;"></i></div>
     </center>
     <div class="center">
         <center>
             <h2 style="margin-top: 10px;">Lowongan Kerja</h2>
         </center>
         <div class="row">
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
+            <?php foreach ($jobfair as $row) { ?>
+                <div class="col-md-4" style="margin-bottom: 10px;">
+                    <div class="card">
                         <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
+                            <img class="card-img-top" src="<?php echo site_url('assets/upload/logo/' . $row->logo_perusahaan) ?>" style="width: 200px;height: auto;" alt="Card image cap">
                         </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a> | <a href="#" class="btn btn-primary btn-sm">Info</a>
-
-                        </center>
+                        <div class="card-body">
+                            <center>
+                                <span class="badge badge-warning" style="margin-bottom: 10px;"><?php echo $row->posisi ?></span>
+                            </center>
+                            <p style="font-size: 10px; text-align: justify;"><?php echo substr($row->deskripsi, 0, 50) ?></p>
+                            <hr>
+                            <center>
+                                <a href="<?php echo site_url('halaman/job/' . $row->id_loker) ?>" class="btn btn-success btn-sm">Ajukan Lamaran</a>
+                            </center>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="margin-bottom: 10px;">
-                <div class="card">
-                    <img class="card-img-top" src="<?php echo site_url('assets/halaman/Logo-itenas.jpg') ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <center>
-                            <span class="badge badge-warning" style="margin-bottom: 10px;">Tenaga Kependidikan</span>
-                        </center>
-                        <p style="font-size: 10px; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <hr>
-                        <center>
-                            <a href="#" class="btn btn-success btn-sm">Ajukan Lamaran</a>
-                        </center>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>

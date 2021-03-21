@@ -52,7 +52,7 @@
       </div>
       <div class="cta">
         <?php if ($this->session->userdata("nama") == NULL) { ?>
-          <a href="<?php echo site_url('login#signup') ?>" class="scrollto">Registrasi Akun</a>
+          <a href="<?php echo site_url('halaman/daftar_peserta') ?>" class="scrollto">Registrasi Akun</a>
           <a href="<?php echo site_url('halaman/formulirRegistrasi') ?>" class="scrollto">Registrasi Job Fair</a>
         <?php } ?>
       </div>

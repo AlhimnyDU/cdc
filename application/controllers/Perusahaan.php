@@ -34,7 +34,7 @@ class Perusahaan extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('perusahaan')) {
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
-                $data['mengikuti'] = $this->db->where('role', 'perusahaan')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
+                $data['mengikuti'] = $this->db->where('role', 'perusahaan')->where('id_event', 2)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 $this->load->view('perusahaan/templates/header', $head);
                 $this->load->view('perusahaan/home', $data);
                 $this->load->view('perusahaan/templates/js');
@@ -74,7 +74,7 @@ class Perusahaan extends CI_Controller
         $this->upload->do_upload('poster');
         $data = array(
             'posisi'     => $this->input->post('posisi'),
-            'deadline' => $this->input->post('deadline'),
+            'deadline' => $this->input->post('deadline') . " 23:59:59",
             'lokasi'     => $this->input->post('lokasi'),
             'syarat'     => $this->input->post('syarat'),
             'deskripsi'     => $this->input->post('deskripsi'),
@@ -104,7 +104,7 @@ class Perusahaan extends CI_Controller
         $this->upload->do_upload('poster');
         $data = array(
             'posisi'     => $this->input->post('posisi'),
-            'deadline' => $this->input->post('deadline'),
+            'deadline' => $this->input->post('deadline') . " 23:59:59",
             'lokasi'     => $this->input->post('lokasi'),
             'syarat'     => $this->input->post('syarat'),
             'deskripsi'     => $this->input->post('deskripsi'),
@@ -112,7 +112,7 @@ class Perusahaan extends CI_Controller
             'status'     => 'Menunggu Konfirmasi',
             'prodi'     => $this->input->post('prodi'),
             'poster'   => $this->upload->data('file_name'),
-            'jenis'   => "jobfair",
+            'jenis'   => "Job Fair 2021",
             'id_perusahaan' => $this->session->userdata('id_akun'),
             'created' => date('Y-m-d H:i:s'),
             'updated' => date('Y-m-d H:i:s')
@@ -209,11 +209,11 @@ class Perusahaan extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('perusahaan')) {
-                $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'jobfair')->get('tbl_loker')->result();
+                $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->where('jenis', 'Job Fair 2021')->get('tbl_loker')->result();
                 $head['user'] = $this->db->where('id_perusahaan', $this->session->userdata('id_akun'))->get('tbl_perusahaan')->row();
                 $data['event'] = $this->db->get('tbl_event')->result();
-                $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('role', 'perusahaan')->get('event_perusahaan')->result();
-                $data['jobfair'] = $this->db->where('role', 'perusahaan')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
+                $data['mengikuti'] = $this->db->where('id_peserta', $this->session->userdata('id_akun'))->where('role', 'perusahaan')->where('id_event', 2)->get('event_perusahaan')->result();
+                $data['jobfair'] = $this->db->where('role', 'perusahaan')->where('id_event', 2)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 $this->load->view('perusahaan/templates/header', $head);
                 $this->load->view('perusahaan/jobfair', $data);
                 $this->load->view('perusahaan/templates/js');
@@ -341,6 +341,7 @@ class Perusahaan extends CI_Controller
                 'telp_pj' => $this->input->post('telp_pj'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'logo_perusahaan' => $this->upload->data('file_name'),
+                'bidang' => $this->input->post('bidang'),
                 'updated' => date('Y-m-d H:i:s')
             );
         } else {
@@ -350,6 +351,7 @@ class Perusahaan extends CI_Controller
                 'telp_perusahaan' => $this->input->post('telp_perusahaan'),
                 'pj' => $this->input->post('pj'),
                 'telp_pj' => $this->input->post('telp_pj'),
+                'bidang' => $this->input->post('bidang'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'updated' => date('Y-m-d H:i:s')
             );
@@ -422,5 +424,50 @@ class Perusahaan extends CI_Controller
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
         redirect('perusahaan/pelamar/' . $id_loker);
+    }
+
+    public function upload_foto()
+    {
+        $config['upload_path'] = './assets/upload/foto_perusahaan/';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['encrypt_name'] = true;
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('foto');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            // redirect('admin/cv');
+        } else {
+            return $this->upload->data('file_name');
+        }
+    }
+    public function upload_foto2()
+    {
+        $config['upload_path'] = './assets/upload/foto_perusahaan/';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['encrypt_name'] = true;
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('foto2');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            // redirect('admin/cv');
+        } else {
+            return $this->upload->data('file_name');
+        }
+    }
+
+    public function update_foto($id)
+    {
+        $data = array(
+            'foto_perusahaan' => $this->upload_foto(),
+            'foto_perusahaan2' =>  $this->upload_foto2(),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_perusahaan', $id)->update('tbl_perusahaan', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_loker', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect('perusahaan/setting');
     }
 }

@@ -35,7 +35,7 @@
                                         <span class="step_no">1</span>
                                         <span class="step_descr">
                                             Step 1<br>
-                                            <small>Step 1 Pendaftaran Perusahaan (s/d 30 November 2020)</small>
+                                            <small>Step 1 Pendaftaran Perusahaan (s/d 31 Maret 2021)</small>
                                         </span>
                                     </a>
                                 </li>
@@ -44,7 +44,7 @@
                                         <span class="step_no">2</span>
                                         <span class="step_descr">
                                             Step 2<br>
-                                            <small>Step 2 Verifikasi oleh admin (s/d 30 November 2020)</small>
+                                            <small>Step 2 Verifikasi oleh admin (s/d 31 Maret 2021)</small>
                                         </span>
                                     </a>
                                 </li>
@@ -53,7 +53,7 @@
                                         <span class="step_no">3</span>
                                         <span class="step_descr">
                                             Step 3<br>
-                                            <small>Step 3 Periode submit loker oleh peserta Job Fair</small>
+                                            <small>Step 3 Pelaksanaan Virtual Job Fair 5 - 9 April 2021</small>
                                         </span>
                                     </a>
                                 </li>
@@ -62,7 +62,7 @@
                                         <span class="step_no">4</span>
                                         <span class="step_descr">
                                             Step 4<br>
-                                            <small>Step 4 Acara Job Fair Online (via Zoom)</small>
+                                            <small>Step 4 Posting lowongan pekerjaan yang akan dipost dihalaman website CDC Job Fair Itenas 2021</small>
                                         </span>
                                     </a>
                                 </li>
@@ -83,7 +83,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
-                                    <table id="" class="table table-striped table-bordered datatable" style="width:100%">
+                                    <table class="table table-striped table-bordered datatable" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th width="5%">No</th>
@@ -112,6 +112,8 @@
                                                                     if ($row->id_event == $r->id_event) { ?>
                                                                         <span class="badge badge-primary">Mengikuti</span>
                                                                 <?php
+                                                                    } else {
+                                                                        echo "<span class='badge badge-danger'>Tidak Mengikuti</span>";
                                                                     }
                                                                 }
                                                             } else {
@@ -131,16 +133,15 @@
                                                             if (!empty($mengikuti)) {
                                                                 foreach ($mengikuti as $r) {
                                                                     if ($row->id_event == $r->id_event) { ?>
-                                                                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#videoModal<?php echo $r->id ?>" ?>Masukkan Video</a>
-                                                                <?php
-                                                                    }
-                                                                }
-                                                            } else {
-                                                                ?>
+                                                                        <a class="btn btn-primary btn-sm disabled" href="#" disabled>Acara Sedang Berlangsung</a> <?php
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        } else {
+                                                                                                                                                                    ?>
                                                                 <a class="btn btn-success btn-sm" href="#" data-toggle="modal" data-target="#mengikutiModal<?php echo $row->id_event ?>"><i class="fa fa-check"></i> Mengikuti</a>
                                                         <?php
-                                                            }
-                                                        }
+                                                                                                                                                        }
+                                                                                                                                                    }
                                                         ?>
                                                     </td>
                                                 </tr>
@@ -157,7 +158,7 @@
                 </div>
             </div>
         </div>
-        <?php if ($jobfair) { ?>
+        <?php if ($mengikuti) { ?>
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
@@ -169,7 +170,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
-                                        <table id="" class="table table-striped table-bordered datatable" style="width:100%">
+                                        <table class="table table-striped table-bordered datatable" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th width="5%">No</th>
@@ -252,7 +253,7 @@
                                 <input type="file" class="dropify" height="100" name="poster" data-max-file-size="1M" data-allowed-file-extensions="jpg">
                             </div>
                             <div class="form-group">
-                                <label>Progam studi yang dicari</label>
+                                <label>Program studi yang dicari</label>
                                 <input type="text" class="form-control" name="prodi">
                             </div>
                             <div class="modal-footer">

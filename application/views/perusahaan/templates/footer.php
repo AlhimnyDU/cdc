@@ -73,12 +73,7 @@
         </script>
         <script>
           $(document).ready(function() {
-            $('.datatable').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'csv', 'excel', 'pdf', 'print'
-                ]
-            } );
+            $('.datatable').DataTable();
             <?php if (empty($mengikuti)) { ?>
               $('#jobModal').modal({
                 backdrop: 'static',
@@ -93,6 +88,12 @@
         </script>
         <script>
           $(document).ready(function() {
+            $('#tableexport').DataTable({
+              dom: 'Bfrtip',
+              buttons: [
+                'csv', 'excel', 'pdf', 'print'
+              ]
+            });
             $('.dropify').dropify({
               messages: {
                 'default': 'Drag and drop a file here or click',

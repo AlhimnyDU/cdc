@@ -42,6 +42,7 @@
                                             <th>CP</th>
                                             <th>Telp. (CP)</th>
                                             <th>Alamat</th>
+                                            <th>Ikut Jobfair</th>
                                             <th width="25%">Verifikasi | Edit | Ganti Password | Hapus</th>
                                         </tr>
                                     </thead>
@@ -58,9 +59,18 @@
                                                 <td><?php echo $row->pj ?></td>
                                                 <td><?php echo $row->telp_pj ?></td>
                                                 <td><?php echo $row->alamat ?></td>
+                                                <td>
+                                                    <?php
+                                                    $jobfair = $this->db->where('id_peserta', $row->id_perusahaan)->where('role', 'perusahaan')->where('id_event', 2)->get('event_perusahaan')->row();
+                                                    if ($jobfair) { ?>
+                                                        <a class="btn btn-secondary btn-sm disabled " href="<?php echo site_url('admin/ikut_jobfair/') ?>">Sudah ikut</a>
+                                                    <?php } else { ?>
+                                                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/ikut_jobfair/' . $row->id_perusahaan) ?>">Klik Mengikuti</a>
+                                                    <?php } ?>
+                                                </td>
                                                 <?php if ($row->status == "n") { ?>
                                                     <td>
-                                                        <a class="btn btn-success" href="<?php echo site_url('admin/verifikasi/') . $row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> |
+                                                        <a class="btn btn-success" href="<?php echo site_url('admin/verifikasi/') . $row->id_perusahaan ?>"><i class="fa fa-check"></i>Aktif</a> |
                                                         <a class="btn btn-info" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> |
                                                         <a class="btn btn-warning" href="" data-toggle="modal" data-target="#passModal<?= $row->id_perusahaan ?>"><i class="fa fa-key"></i></a> |
                                                         <a class="btn btn-danger" href="<?php echo site_url('admin/hapusPerusahaan/') . $row->id_perusahaan ?>"><i class="fa fa-trash"></i></a>
@@ -69,7 +79,8 @@
                                                     <td>
                                                         <a class="btn btn-success disabled" href="<?php echo site_url('admin/verifikasi/') . $row->id_perusahaan ?>"><i class="fa fa-check"></i> Aktif</a> |
                                                         <a class="btn btn-info" href="" data-toggle="modal" data-target="#editModal<?= $row->id_perusahaan ?>"><i class="fa fa-edit"></i></a> | <a class="btn btn-warning" href="" data-toggle="modal" data-target="#passModal<?= $row->id_perusahaan ?>"><i class="fa fa-key"></i></a> |
-                                                        <a class="btn btn-danger beforeDelete" href="<?php echo site_url('admin/hapusPerusahaan/') . $row->id_perusahaan ?>"><i class="fa fa-trash"></i></a></td>
+                                                        <a class="btn btn-danger beforeDelete" href="<?php echo site_url('admin/hapusPerusahaan/') . $row->id_perusahaan ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } ?>
                                             </tr>
                                         <?php

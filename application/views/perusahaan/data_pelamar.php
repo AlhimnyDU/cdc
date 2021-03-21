@@ -50,7 +50,8 @@
                                             <option <?php if ($akun->agama == "Lainnya") {
                                                         echo "selected";
                                                     } ?> value="Lainnya">Lainnya</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span class="required">*</span></label>
@@ -63,62 +64,74 @@
                                             <option <?php if ($akun->jenis_kelamin == "Wanita") {
                                                         echo "selected";
                                                     } ?> value="Wanita">Wanita</option>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Tempat Lahir<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" value="<?php echo $akun->tempat_lahir ?>" name="tempat_lahir" type="text" required disabled></div>
+                                        <input class="form-control" value="<?php echo $akun->tempat_lahir ?>" name="tempat_lahir" type="text" required disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Lahir<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="tanggal_lahir" type="date" value="<?php echo $akun->tanggal_lahir ?>" required disabled></div>
+                                        <input class="form-control" name="tanggal_lahir" type="date" value="<?php echo $akun->tanggal_lahir ?>" required disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Email<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control " name="email" required="required" value="<?php echo $akun->email ?>" type="text" disabled></div>
+                                        <input class="form-control " name="email" required="required" value="<?php echo $akun->email ?>" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nomor Handphone<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control telp" id="telp" name="telp" required="required" value="<?php echo $akun->telp ?>" type="text" disabled></div>
+                                        <input class="form-control telp" id="telp" name="telp" required="required" value="<?php echo $akun->telp ?>" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Alamat Tinggal<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <textarea class="form-control" rows="3" required="required" name="alamat" disabled><?php echo $akun->alamat ?></textarea></div>
+                                        <textarea class="form-control" rows="3" required="required" name="alamat" disabled><?php echo $akun->alamat ?></textarea>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Desa / Kelurahan<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="desa_kelurahan" value="<?php echo $akun->desa_kelurahan ?>" required="required" type="text" disabled></div>
+                                        <input class="form-control" name="desa_kelurahan" value="<?php echo $akun->desa_kelurahan ?>" required="required" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kecamatan<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kecamatan" value="<?php echo $akun->kecamatan ?>" required="required" type="text" disabled></div>
+                                        <input class="form-control" name="kecamatan" value="<?php echo $akun->kecamatan ?>" required="required" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kota / Kabupaten<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kota_kabupaten" value="<?php echo $akun->kota_kabupaten ?>" required="required" type="text" disabled></div>
+                                        <input class="form-control" name="kota_kabupaten" value="<?php echo $akun->kota_kabupaten ?>" required="required" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Provinsi<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="provinsi" value="<?php echo $akun->provinsi ?>" required="required" type="text" disabled></div>
+                                        <input class="form-control" name="provinsi" value="<?php echo $akun->provinsi ?>" required="required" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Kode Pos<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="kode_pos" value="<?php echo $akun->kode_pos ?>" required="required" type="text" disabled></div>
+                                        <input class="form-control" name="kode_pos" value="<?php echo $akun->kode_pos ?>" required="required" type="text" disabled>
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Pas Foto</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/pas_foto/' . $akun->pas_foto) ?>" data-allowed-file-extensions="png jpg jpeg" disabled></div>
+                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/pas_foto/' . $akun->pas_foto) ?>" data-allowed-file-extensions="png jpg jpeg" disabled>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -327,7 +340,7 @@
                                                     <td><?php echo $no ?></td>
                                                     <td><?php echo $row->riwayat_kerja ?></td>
                                                     <td>
-                                                       <?php echo $row->tahun ?>
+                                                        <?php echo $row->tahun ?>
                                                     </td>
                                                 </tr>
                                             <?php

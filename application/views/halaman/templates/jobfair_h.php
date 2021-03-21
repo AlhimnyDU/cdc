@@ -42,71 +42,38 @@
 </head>
 
 <body>
-
-  <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-none d-lg-block">
-    <div class="container d-flex">
-      <div class="contact-info mr-auto">
-        <ul>
-          <li><i class="icofont-envelope"></i><a href="#">cdc@itenas.ac.id or cdc.itenas@gmail.com</a></li>
-          <li><i class="icofont-phone"></i> +62-22-7272215 (ext.235)</li>
-          <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 8am - 5pm</li>
-        </ul>
-
-      </div>
-      <div class="cta">
-        <?php if ($this->session->userdata("nama") == NULL) { ?>
-          <a href="<?php echo site_url('login#signup') ?>" class="scrollto">Register</a>
-          <a href="<?php echo site_url('login/register') ?>" class="scrollto">Register Perusahaan</a>
-        <?php } ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Header ======= -->
   <header id="header">
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="text-light"><a href="<?php echo site_url() ?>"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="<?php echo site_url() ?>">Home</a></li>
-          <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>">Job</a>
-            <ul>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>">Vacancy</a>
-                <ul>
-                  <li><a href="#">Internal</a></li>
-                  <li><a href="#">Eksternal</a></li>
-                </ul>
-              </li>
-              <li><a href="<?php echo site_url('halaman/magang') ?>">Internship</a></li>
-            </ul>
-          </li>
-          <li><a href="<?php echo site_url('halaman/info') ?>">News</a></li>
-          <li><a href="<?php echo site_url('halaman/carrer') ?>">Career Counseling</a></li>
-          <li><a href="<?php echo site_url('halaman/list_company') ?>">Company</a></li>
+          <li><a href="<?php echo site_url('halaman/jobfair_home') ?>">Home</a></li>
+          <li><a href="#info">Information</a></li>
+          <li><a href="#about">Event</a></li>
+          <li><a href="<?php echo site_url('halaman/stand') ?>">Stand Company</a></li>
+          <li><a href="#list">List Company</a></li>
+          <li><a href="<?php echo site_url() ?>">Back to CDC</a></li>
           <?php if ($this->session->userdata("nama") != NULL) {
             if ($this->session->userdata('user')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('user') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('user') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>
                 </ul>
               </li>
             <?php } else if ($this->session->userdata('admin')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('admin') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('admin') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>
                 </ul>
               </li>
             <?php } else if ($this->session->userdata('perusahaan')) { ?>
-              <li class="drop-down"><a href="<?php echo site_url('halaman/loker') ?>"><?php echo $this->session->userdata("nama") ?></a>
+              <li class="drop-down"><a href="<?php echo site_url('perusahaan') ?>"><?php echo $this->session->userdata("nama") ?></a>
                 <ul>
                   <li><a href="<?php echo site_url('perusahaan') ?>" class="nav-link">Check Profile</a></li>
                   <li><a href="<?php echo site_url("login/logout") ?>">Logout</a></li>

@@ -105,29 +105,50 @@ class Login extends CI_Controller
 	public function addMahasiswa()
 	{
 		$ada_akun = $this->db->where('email', $this->input->post('email'))->get('tbl_akun')->row_array();
+		$date = date('Y-m-d H:i:s');
 		if ($ada_akun['email'] == $this->input->post('email')) {
 			$this->session->set_flashdata('akun_ada', TRUE);
-			redirect('login');
+			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			$data = array(
 				'nama'			=> $this->input->post('nama'),
 				'email' 		=> $this->input->post('email'),
 				'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-				'telp' 			=> $this->input->post('telp'),
+				'telp' 			=> str_replace("_", "", $this->input->post('telp')),
 				'role'			=> $this->input->post('role'),
 				'nomor_induk'	=> $this->input->post('nrp'),
 				'alamat'		=> $this->input->post('alamat'),
-				'created' 		=> date('Y-m-d H:i:s'),
-				'updated' 		=> date('Y-m-d H:i:s')
+				'agama' => $this->input->post('agama'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'tempat_lahir' => $this->input->post('tempat_lahir'),
+				'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+				'telp' => $this->input->post('telp'),
+				'alamat' => $this->input->post('alamat'),
+				'desa_kelurahan' => $this->input->post('desa_kelurahan'),
+				'kecamatan' => $this->input->post('kecamatan'),
+				'kota_kabupaten' => $this->input->post('kota_kabupaten'),
+				'provinsi' => $this->input->post('provinsi'),
+				'kode_pos' => $this->input->post('kode_pos'),
+				'created' 		=> $date,
+				'updated' 		=> $date
 			);
 		}
 		$query = $this->db->insert('tbl_akun', $data);
 		if ($query) {
+			$akun = $this->db->where('created', $date)->get('tbl_akun')->row();
+			$data = array(
+				'id_event' => 2,
+				'id_peserta'     => $akun->id_akun,
+				'role'     => "peserta",
+				'created' => date('Y-m-d H:i:s'),
+				'updated' => date('Y-m-d H:i:s')
+			);
+			$jobfair = $this->db->insert('event_perusahaan', $data);
 			$this->session->set_flashdata('insert_akun', "Tambah Berhasil");
 		} else {
 			$this->session->set_flashdata('insert_akun', "Tambah Gagal");
 		}
-		redirect('login');
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function addPerusahaan()
@@ -202,6 +223,6 @@ class Login extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('login');
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 }

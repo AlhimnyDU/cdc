@@ -114,7 +114,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['perusahaan'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id, event_perusahaan.id_event, tbl_event.nama_event')->join('tbl_event', 'tbl_event.id_event=event_perusahaan.id_event', 'LEFT')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('event_perusahaan.id_event', $id)->where('event_perusahaan.role', 'perusahaan')->get('event_perusahaan')->result();
+                $data['perusahaan'] = $this->db->select('tbl_perusahaan.*, event_perusahaan.id, event_perusahaan.link, event_perusahaan.id_event, tbl_event.nama_event')->join('tbl_event', 'tbl_event.id_event=event_perusahaan.id_event', 'LEFT')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta', 'LEFT')->where('event_perusahaan.id_event', $id)->where('event_perusahaan.role', 'perusahaan')->get('event_perusahaan')->result();
                 $data['peserta'] = $this->db->select('tbl_akun.*, event_perusahaan.id, event_perusahaan.id_event, tbl_event.nama_event')->join('tbl_event', 'tbl_event.id_event=event_perusahaan.id_event', 'LEFT')->join('tbl_akun', 'tbl_akun.id_akun=event_perusahaan.id_peserta', 'LEFT')->where('event_perusahaan.id_event', $id)->where('event_perusahaan.role', 'peserta')->get('event_perusahaan')->result();
                 $data['nama'] = $this->db->select('nama_event')->where('id_event', $id)->get('tbl_event')->row();
                 $this->load->view('admin/templates/header');
@@ -185,7 +185,7 @@ class Admin extends CI_Controller
         } else {
             $data_upload = $this->upload->data();
             $excelreader     = new PHPExcel_Reader_Excel2007();
-            $loadexcel         = $excelreader->load('./assets/excel/'. $data_upload['file_name']); // Load file yang telah diupload ke folder excel
+            $loadexcel         = $excelreader->load('./assets/excel/' . $data_upload['file_name']); // Load file yang telah diupload ke folder excel
             $sheet             = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
             $data = array();
             $numrow = 1;
@@ -537,7 +537,7 @@ class Admin extends CI_Controller
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    
+
     public function mulaiPublish($id)
     {
         $data = array(
@@ -552,7 +552,7 @@ class Admin extends CI_Controller
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    
+
     public function tidakPublish($id)
     {
         $data = array(
@@ -1392,6 +1392,24 @@ class Admin extends CI_Controller
         redirect('admin/peserta/' . $id);
     }
 
+    public function ikut_jobfair($id)
+    {
+        $data = array(
+            'id_event' => 2,
+            'id_peserta'     => $id,
+            'role'     => "perusahaan",
+            'created' => date('Y-m-d H:i:s'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('event_perusahaan', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_peserta', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function addVacancy()
     {
         $ada_perusahaan = $this->db->where('nama_perusahaan', $this->input->post('nama_perusahaan'))->get('tbl_perusahaan')->row_array();
@@ -1724,7 +1742,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'jobfair')->order_by('tbl_loker.created', 'DESC')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'Job Fair 2021')->order_by('tbl_loker.created', 'DESC')->get()->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/jobfair', $data);
                 $this->load->view('admin/templates/js');
@@ -2286,5 +2304,20 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('failed', "Tambah Gagal");
             redirect('admin/cv');
         }
+    }
+
+    public function update_stand($id)
+    {
+        $data = array(
+            'link' => $this->input->post('link'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id', $id)->update('event_perusahaan', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }

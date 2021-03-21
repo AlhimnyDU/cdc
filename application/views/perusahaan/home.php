@@ -9,13 +9,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('perusahaan/mengikuti/1') ?>" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url('perusahaan/mengikuti/2') ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col col-lg-12">
                             <div class="form-group">
                                 <h5>Terima kasih perusahaan telah mendaftar di Career Development Center Itenas</h5>
-                                <p>Career Development Center Itenas sedang mengadakan acara Job Fair Itenas 2020, jika perusahaan yang ingin mengikuti acara job fair harus mengikuti peraturan dan ketentuan yang berlaku pada acara Job Fair Itenas 2020.</p>
-                                <a href="#">Peraturan dan Ketentuan Job Fair Itenas 2020</a>
+                                <p>Career Development Center Itenas sedang mengadakan acara Virtua; Job Fair Itenas 2021, jika perusahaan yang ingin mengikuti acara job fair harus mengikuti peraturan dan ketentuan yang berlaku pada acara Job Fair Itenas 2020.</p>
+                                <a href="#">Peraturan dan Ketentuan Virtual Job Fair Itenas 2021</a>
                                 <input type="checkbox" value="" required> <small>Centang untuk menyetujui prosedur dan ketentuan</small>
                             </div>
                             <div class="modal-footer">

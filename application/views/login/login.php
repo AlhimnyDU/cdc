@@ -21,7 +21,7 @@
               <div class="clearfix"></div>
               <div class="separator">
                 <p class="change_link">Belum punya akun?
-                  <a href="#signup" class="btn btn-info btn-sm to_register"> Daftar akun disini </a>
+                  <a href="<?php echo site_url('halaman/daftar_peserta') ?>" class="btn btn-info btn-sm to_register"> Daftar akun disini </a>
                 </p>
                 <p class="change_link">Daftar sebagai perusahaan ?
                   <a href="<?php echo site_url("login/register"); ?>" class="btn btn-danger btn-sm">Daftar disini</a>
