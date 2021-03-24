@@ -11,7 +11,7 @@
     /* Add some content at the bottom of the video/page */
     .content {
         position: fixed;
-        display: block;
+        display: none;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
@@ -35,9 +35,18 @@
         color: black;
     }
 </style>
-<video autoplay muted loop>
-    <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
-</video>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div id="carouselExampleSlidesOnly" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video autoplay muted loop>
+                    <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</section><!-- End Breadcrumbs -->
+
 <div class="content">
     <center>
         <h1>Coming Soon</h1>
