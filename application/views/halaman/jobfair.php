@@ -34,7 +34,7 @@
         color: black;
     }
 </style>
-<video id="myVideo" autoplay muted loop>
+<video autoplay muted loop>
     <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
 </video>
 <div class="content">
