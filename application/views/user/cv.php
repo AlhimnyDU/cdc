@@ -292,8 +292,7 @@
                                 <div class="form-group">
                                     <center>
                                         <div class="col-md-6 offset-md-3">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="reset" class="btn btn-success">Reset</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </center>
                                 </div>
@@ -891,6 +890,9 @@
                                         <option value="Transkrip Nilai">Transkrip Nilai</option>
                                         <option value="Hasil Psikotest">Hasil Psikotest</option>
                                         <option value="Hasil TOEFL atau IELTS">Hasil TOEFL atau IELTS</option>
+                                        <option value="Hasil EPT">EPT</option>
+                                        <option value="CV">CV</option>
+                                        <option value="Portofolio">Portofolio</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

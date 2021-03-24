@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning" role="alert">
-                                    <input type="checkbox" class="custom-checkbox" name="nama_syarat" required> Saya setuju dengan syarat & ketentuan juga telah melengkapi data dengan benar</input>
+                                    <input type="checkbox" class="custom-checkbox" name="nama_syarat" required> Saya menyetujui bahwa telah melengkapi isian data pendaftaran ini dengan benar</input>
                                 </div>
                             </div>
                             <center>
