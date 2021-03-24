@@ -1,7 +1,6 @@
 <style>
     /* Style the video: 100% width and height to cover the entire window */
     #myVideo {
-        position: fixed;
         width: 100%;
         height: auto;
         right: 0;
@@ -35,16 +34,12 @@
         color: black;
     }
 </style>
-<section id="breadcrumbs" class="breadcrumbs">
-    <div id="carouselExampleSlidesOnly" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <video autoplay muted loop>
-                    <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
+<section class="breadcrumbs">
+
+    <video id="myVideo" autoplay muted loop>
+        <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
+    </video>
+
 </section><!-- End Breadcrumbs -->
 
 <div class="content">
