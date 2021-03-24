@@ -42,4 +42,3 @@
 </head>
 
 <body>
-  <main id="main">
