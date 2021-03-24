@@ -10,7 +10,7 @@
 
     /* Add some content at the bottom of the video/page */
     .content {
-        position: fixed;
+        position: absolute;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
