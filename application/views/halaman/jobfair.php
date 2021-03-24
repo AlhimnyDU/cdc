@@ -35,21 +35,18 @@
     }
 </style>
 <section class="breadcrumbs">
-
     <video id="myVideo" autoplay muted loop>
         <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
     </video>
-
+    <div class="content">
+        <center>
+            <h1>Coming Soon</h1>
+            <p>Job Fair ITENAS 2021</p>
+            <!-- Use a button to pause/play the video with JavaScript -->
+            <button id="myBtn">Coming Soon</button>
+        </center>
+    </div>
 </section><!-- End Breadcrumbs -->
-
-<div class="content">
-    <center>
-        <h1>Coming Soon</h1>
-        <p>Job Fair ITENAS 2021</p>
-        <!-- Use a button to pause/play the video with JavaScript -->
-        <button id="myBtn">Coming Soon</button>
-    </center>
-</div>
 </body>
 
 </html>
