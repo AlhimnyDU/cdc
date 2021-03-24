@@ -1,5 +1,5 @@
 <!-- page content -->
-<div id="jobModal" class="modal fade" role="dialog">
+<!-- <div id="jobModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
