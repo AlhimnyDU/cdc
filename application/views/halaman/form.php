@@ -1,7 +1,7 @@
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
         <div class="row aos-init aos-animate" data-aos="fade-up">
-            <div class="col-md-8 grid-margin">
+            <div class="col-md-8 grid-margin align-self-center">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
