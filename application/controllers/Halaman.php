@@ -104,6 +104,7 @@ class Halaman extends CI_Controller
 
 	public function daftarJobfair()
 	{
+		$this->upload_logo();
 		$select = $this->db->where('email', $this->input->post('email'))->get('tbl_jobfair')->result();
 		if ($select == NULL) {
 			$data = array(
@@ -117,6 +118,7 @@ class Halaman extends CI_Controller
 				'alamat'    => $this->input->post('alamat'),
 				'nama_pic'    => $this->input->post('nama_pic'),
 				'jabatan'    => $this->input->post('jabatan'),
+				'logo'	=> $this->upload->data('file_name'),
 				'cp'    => str_replace("_", "", $this->input->post('cp')),
 				'paket'    => $this->input->post('paket'),
 				'created'   => date('Y-m-d H:i:s'),
@@ -136,14 +138,13 @@ class Halaman extends CI_Controller
 		redirect('halaman/formulirRegistrasi');
 	}
 
-	public function upload_pernyataan()
+	public function upload_logo()
 	{
-		$nama_file = date('YmdHis');
 		$config['upload_path'] = './assets/upload/pernyataan/';
-		$config['file_name'] = $nama_file;
+		$config['encrypt_name'] = TRUE;
 		$config['allowed_types'] = 'jpg|png|pdf';
 		$this->upload->initialize($config);
-		$upload = $this->upload->do_upload('pernyataan');
+		$upload = $this->upload->do_upload('logo');
 		if (empty($upload)) {
 			$this->session->set_flashdata('failed', "Tambah Gagal");
 			redirect('halaman/formulirRegistrasi');

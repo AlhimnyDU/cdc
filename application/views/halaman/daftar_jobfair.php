@@ -92,6 +92,12 @@
                                     <input class="form-control telp" name="cp" required="required" type="text">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-form-label label-align">Logo Perusahaan</label>
+                                <div class="mb-3">
+                                    <input type="file" class="dropify" height="50" name="logo" data-max-file-size="2M" data-allowed-file-extensions="pdf" required>
+                                </div>
+                            </div>
                             <div class="form-group" id="paket">
                                 <label class="col-form-label label-align">Menyatakan bahwa kami berminat ikut sebagai peserta dalam kegiatan "Itenas Virtual Job Fair 2021" dalam paket :</label>
                                 <div class="mb-3">
@@ -116,7 +122,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Kami menyetujui segala peraturan dan ketentuan yang ditetapkan oleh panitia.
+                                            Kami menyetujui bahwa data yang telah diisi adalah benar.
                                         </label>
                                     </div>
                                 </div>
