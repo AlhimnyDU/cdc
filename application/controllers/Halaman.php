@@ -142,7 +142,7 @@ class Halaman extends CI_Controller
 	{
 		$config['upload_path'] = './assets/upload/pernyataan/';
 		$config['encrypt_name'] = TRUE;
-		$config['allowed_types'] = 'jpg|png|pdf';
+		$config['allowed_types'] = 'jpg|png|jpeg';
 		$this->upload->initialize($config);
 		$upload = $this->upload->do_upload('logo');
 		if (empty($upload)) {

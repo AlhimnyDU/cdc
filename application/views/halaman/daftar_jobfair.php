@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <label class="col-form-label label-align">Logo Perusahaan</label>
                                 <div class="mb-3">
-                                    <input type="file" class="dropify" height="50" name="logo" data-max-file-size="2M" data-allowed-file-extensions="pdf" required>
+                                    <input type="file" class="dropify" height="50" name="logo" data-max-file-size="2M" data-allowed-file-extensions="png jpg jpeg" required>
                                 </div>
                             </div>
                             <div class="form-group" id="paket">
