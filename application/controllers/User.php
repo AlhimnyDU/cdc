@@ -231,7 +231,7 @@ class User extends CI_Controller
         $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . "PASFOTO");
         $config['upload_path'] = './assets/upload/pas_foto/';
         $config['file_name'] = $nama_file;
-        $config['allowed_types'] = 'jpg|png|pdf';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $this->upload->initialize($config);
         $upload = $this->upload->do_upload('pas_foto');
         if (empty($upload)) {
