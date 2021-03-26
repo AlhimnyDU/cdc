@@ -1,13 +1,10 @@
         <!-- partial -->
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div id="carouselExampleSlidesOnly" class="carousel slide">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/bg_jobfair.jpeg" alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/bg_jobfair.jpeg" alt="Second slide">
+                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" alt="First slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
