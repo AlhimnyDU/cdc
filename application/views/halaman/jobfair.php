@@ -59,8 +59,10 @@
             color: #f1f1f1;
             width: auto;
             padding: 0px;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
         }
-    }
     }
 </style>
 <div class="center">
