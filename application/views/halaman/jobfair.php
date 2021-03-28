@@ -9,6 +9,7 @@
 
     /* Add some content at the bottom of the video/page */
     .content {
+        position: fixed;
         height: 50%;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
