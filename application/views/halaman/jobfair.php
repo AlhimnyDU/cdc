@@ -40,7 +40,7 @@
     }
 </style>
 <div class="center">
-    <video id="myVideo" autoplay muted loop>
+    <video id="myVideo" autoplay muted loop style="width:1280px">
         <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
     </video>
     <div class="content">
