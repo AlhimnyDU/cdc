@@ -1,8 +1,8 @@
 <style>
     /* Style the video: 100% width and height to cover the entire window */
     #myVideo {
-        width: 100%;
-        height: 50%;
+        width: 1280px;
+        height: auto;
         right: 0;
         bottom: 0;
     }
@@ -40,7 +40,7 @@
     }
 </style>
 <div class="center">
-    <video id="myVideo" autoplay muted loop style="width:1280px">
+    <video id="myVideo" autoplay muted loop>
         <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
     </video>
     <div class="content">
