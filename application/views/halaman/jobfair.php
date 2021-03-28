@@ -59,6 +59,8 @@
 
         .center {
             margin-top: 50%;
+            margin-left: 50%;
+
             width: 50%;
             padding: 10px;
         }
