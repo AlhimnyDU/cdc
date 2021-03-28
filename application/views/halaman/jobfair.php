@@ -42,13 +42,9 @@
 
     @media (max-width: 767px) {
         .content {
-            position: fixed;
-            height: 100%;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: #f1f1f1;
-            width: 100%;
-            padding: 20px;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
         }
 
         #myVideo {
@@ -58,7 +54,6 @@
         .center {
             margin: auto;
             width: 50%;
-            border: 3px solid green;
             padding: 10px;
         }
     }
