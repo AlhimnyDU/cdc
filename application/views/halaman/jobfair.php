@@ -58,7 +58,7 @@
         }
 
         .center {
-            margin: auto;
+            margin-top: 50%;
             width: 50%;
             padding: 10px;
         }
