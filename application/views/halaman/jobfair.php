@@ -39,6 +39,22 @@
         width: 100%;
         padding: 10px;
     }
+
+    @media (max-width: 767px) {
+        .content {
+            position: fixed;
+            height: 100%;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        #myVideo {
+            display: none;
+        }
+    }
 </style>
 <div class="center">
     <video id="myVideo" autoplay muted loop>
