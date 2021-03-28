@@ -50,6 +50,17 @@
             width: 50%;
             padding: 10px;
         }
+
+        .content {
+            position: none;
+            height: 50%;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 0px;
+        }
+    }
     }
 </style>
 <div class="center">
