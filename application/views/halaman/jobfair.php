@@ -41,14 +41,14 @@
     }
 
     @media (max-width: 767px) {
-        .content {
+        #myVideo {
+            display: none;
+        }
+
+        .center {
             margin: auto;
             width: 50%;
             padding: 10px;
-        }
-
-        #myVideo {
-            display: none;
         }
     }
 </style>
