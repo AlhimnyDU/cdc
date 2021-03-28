@@ -54,6 +54,11 @@
         #myVideo {
             display: none;
         }
+
+        .center {
+            max-width: 50%;
+            margin: auto;
+        }
     }
 </style>
 <div class="center">
