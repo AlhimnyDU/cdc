@@ -50,12 +50,6 @@
         #myVideo {
             display: none;
         }
-
-        .center {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
-        }
     }
 </style>
 <div class="center">
