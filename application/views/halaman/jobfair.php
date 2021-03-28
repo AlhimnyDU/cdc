@@ -10,7 +10,7 @@
     /* Add some content at the bottom of the video/page */
     .content {
         position: fixed;
-        height: 50%;
+        height: 30%;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         color: #f1f1f1;
@@ -40,8 +40,20 @@
         padding: 10px;
     }
 
+    #mobile {
+        display: none;
+    }
+
     @media (max-width: 767px) {
         #myVideo {
+            display: none;
+        }
+
+        #mobile {
+            display: block;
+        }
+
+        #web {
             display: none;
         }
 
@@ -50,26 +62,25 @@
             width: 50%;
             padding: 10px;
         }
-
-        .content {
-            position: none;
-            height: auto;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: #f1f1f1;
-            width: auto;
-            padding: 0px;
-            margin: 0;
-            width: 50%;
-            padding: 10px;
-        }
     }
 </style>
-<div class="center">
-    <video id="myVideo" autoplay muted loop>
-        <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
-    </video>
-    <div class="content">
+<div id="web">
+    <div class="center">
+        <video id="myVideo" autoplay muted loop>
+            <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
+        </video>
+        <div class="content">
+            <center>
+                <h1>Coming Soon</h1>
+                <p>Job Fair ITENAS 2021</p>
+                <!-- Use a button to pause/play the video with JavaScript -->
+                <button id="myBtn">Coming Soon</button>
+            </center>
+        </div>
+    </div>
+</div>
+<div id="mobile">
+    <div class="center">
         <center>
             <h1>Coming Soon</h1>
             <p>Job Fair ITENAS 2021</p>
