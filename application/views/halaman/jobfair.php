@@ -1,7 +1,7 @@
 <style>
     /* Style the video: 100% width and height to cover the entire window */
     #myVideo {
-        width: 1280px;
+        width: 100%;
         height: auto;
         right: 0;
         bottom: 0;
@@ -59,7 +59,7 @@
             color: #f1f1f1;
             width: auto;
             padding: 0px;
-            margin: auto;
+            margin: 0;
             width: 50%;
             padding: 10px;
         }
