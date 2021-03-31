@@ -41,6 +41,9 @@
     //   return true;
 
     // });
+    $('#close').click(function() {
+      $('#guide').hide();
+    });
   });
 </script>
 <?php if ($this->session->flashdata('sudah_mengajukan', TRUE)) { ?>

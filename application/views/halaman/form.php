@@ -39,7 +39,17 @@
                                                             <label class="form-check-label" for="inlineRadio2">Tidak</label>
                                                         </div>
                                                     </div>
-
+                                                <?php } else if ($row->jenis_jawaban == "jeniskelamin") { ?>
+                                                    <div class="alert alert-light" role="alert">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="Pria" required="required">
+                                                            <label class="form-check-label" for="inlineRadio1">Pria</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Wanita" required="required">
+                                                            <label class="form-check-label" for="inlineRadio2">Wanita</label>
+                                                        </div>
+                                                    </div>
                                                 <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
                                                     <div class="alert alert-light" role="alert">
                                                         <div class="form-check form-check-inline">

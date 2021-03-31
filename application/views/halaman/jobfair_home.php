@@ -1,8 +1,87 @@
+<style>
+    #link1 {
+        margin: 15% 10px 0;
+        position: absolute;
+        padding: 150px 120px;
+    }
+
+    #link2 {
+        margin: 15% 280px 0;
+        position: absolute;
+        padding: 130px 80px;
+    }
+
+    #link3 {
+        margin: 18% 780px 0;
+        position: absolute;
+        padding: 100px 60px;
+    }
+
+    #link4 {
+        margin: 18% 930px 0;
+        position: absolute;
+        padding: 100px 60px;
+    }
+
+    #link5 {
+        margin: 28% 1120px 0;
+        position: absolute;
+        padding: 60px 150px;
+    }
+
+    @media (max-width: 360px) {
+        #link1 {
+            margin: 2% 50px 0;
+            position: absolute;
+            padding: 150px 100px;
+        }
+
+        #link2 {
+            margin: 15% 350px 0;
+            position: absolute;
+            padding: 150px 100px;
+        }
+
+        #link3 {
+            margin: 18% 990px 0;
+            position: absolute;
+            padding: 100px 60px;
+        }
+
+        #link4 {
+            margin: 18% 1150px 0;
+            position: absolute;
+            padding: 100px 60px;
+        }
+
+        #link5 {
+            margin: 28% 1400px 0;
+            position: absolute;
+            padding: 60px 180px;
+        }
+    }
+</style>
 <section id="breadcrumbs" class="breadcrumbs">
     <div id="carouselExampleSlidesOnly" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/opt2-1.png" alt="First slide">
+                <video id="myVideo" style="width: 100%;" autoplay muted loop>
+                    <source src="<?php echo base_url() ?>assets/home/jobfair/ruang_utama.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; height: 100%; bottom: 0; width: 100%;padding: 20px;">
+                <a id="link1" href="#list"></a>
+                <a id="link2" href="#info"></a>
+                <a id="link3" href="#about"></a>
+                <a id="link4" href="<?php echo site_url('halaman/stand') ?>"></a>
+                <a id="link5" href="<?php echo site_url('halaman/daftar_peserta') ?>"></a>
+
+            </div>
+            <div id="guide" style="position: absolute; height: 100%; bottom: 0; background: rgba(0, 0, 0, 0.5); color: #f1f1f1; width: 100%;padding: 20px;">
+                <center>
+                    <a id="close"><i class="fa fa-times-circle" style="color: silver; font-size: 30px;"></i></a>
+                </center>
+                <img style="width: 100%;" src="<?php echo base_url() ?>assets/home/jobfair/guide.png" alt="">
             </div>
         </div>
     </div>
@@ -17,7 +96,7 @@
             <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
                 <h4 data-aos="fade-up">About this event</h4>
                 <h3 data-aos="fade-up">Virtual Jobfair Itenas 2021</h3>
-                <p data-aos="fade-up">Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+                <p data-aos="fade-up" align="justify">Virtual Job Fair Itenas Tahun 2021 merupakan sebuah kegiatan yang bertujuan sebagai mediator antara perusahaan/instansi/industri pencari kerja dan para pencari tenaga kerja. Selain itu, kegiatan ini diadakan sebagai ajang untuk membantu dan memfasilitasi para lulusan/alumni Itenas yang baru diwisuda dan yang belum mendapatkan pekerjaan serta para lulusan dari perguruan tinggi di wilayah Bandung dan sekitarnya. Kegiatan ini akan diadakan dari mulai tanggal 5 - 9 April 2021 dengan berbagai rangkaian acara lainnya dari mulai webinar scholarship, workshop karir hingga psikotes online</p>
 
                 <div class="icon-box" data-aos="fade-up">
                     <div class="icon"><i class="bx bx-fingerprint"></i></div>
@@ -53,39 +132,39 @@
 
         <div class="row">
             <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/assets/img/values-1.jpg);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="">Stand</a></h5>
+                        <h5 class="card-title"><a href="<?php echo base_url('halaman/stand') ?>">Stand</a></h5>
                         <p class="card-text">Menelusuri stand - stand perusahaan dapat melihat profil perusahaan dan lowongan pekerjaan yang di virtual jobfair itenas 2021</p>
-                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> See more</a></div>
-                    </div>z
+                        <div class="read-more"><a href="<?php echo base_url('halaman/stand') ?>"><i class="icofont-arrow-right"></i> See more</a></div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/assets/img/values-2.jpg);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);;">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="">Event</a></h5>
+                        <h5 class="card-title"><a href="#about>">Event</a></h5>
                         <p class="card-text">Melihat event - event yang dilaksanakan pada virtual jobfair itenas 2021</p>
-                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                        <div class="read-more"><a href="#about"><i class="icofont-arrow-right"></i> Read More</a></div>
                     </div>
                 </div>
 
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/assets/img/values-3.jpg);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="">Information</a></h5>
+                        <h5 class="card-title"><a href="#info">Information</a></h5>
                         <p class="card-text">Melihat informasi dan berita seputar virtual jobfair dan CDC itenas</p>
-                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                        <div class="read-more"><a href="#info"><i class="icofont-arrow-right"></i> Read More</a></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/assets/img/values-4.jpg);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="">List Company</a></h5>
+                        <h5 class="card-title"><a href="#list">List Company</a></h5>
                         <p class="card-text">Menelusuri perusahaan - perusahaan yang mengikuti virtual jobfair itenas 2021</p>
-                        <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                        <div class="read-more"><a href="#list"><i class="icofont-arrow-right"></i> Read More</a></div>
                     </div>
                 </div>
             </div>

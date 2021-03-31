@@ -84,6 +84,7 @@
                                     <option value="textfield_non">Text Field (Non-required)</option>
                                     <option value="textfield_number">Text Field (Angka Saja)</option>
                                     <option value="textfield_number_non">Text Field (Angka Saja) Non-Required</option>
+                                    <option value="jeniskelamin">Jenis Kelamin</option>
                                     <option value="textarea">Text Area (Memo)</option>
                                     <option value="pilihanganda">Pilihan Ganda (Ya/Tidak)</option>
                                     <option value="penilaian">Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
@@ -94,7 +95,6 @@
                                     <option value="gambar">Upload File Gambar</option>
                                     <option value="PKMI">PKMI</option>
                                     <option value="label">Label</option>
-
                                 </select>
                             </div>
                             <div class="modal-footer">
@@ -139,14 +139,14 @@ foreach ($soal as $row) {
                                                                         echo "selected";
                                                                     } ?>>Text Field</option>
                                         <option value="textfield_non" <?php if ($row->jenis_jawaban == "textfield_non") {
-                                                                        echo "selected";
-                                                                    } ?>>Text Field (Non-required)</option>                                                                    
+                                                                            echo "selected";
+                                                                        } ?>>Text Field (Non-required)</option>
                                         <option value="textfield_number" <?php if ($row->jenis_jawaban == "textfield_number") {
                                                                                 echo "selected";
                                                                             } ?>>Text Field (Angka Saja)</option>
                                         <option value="textfield_number_non" <?php if ($row->jenis_jawaban == "textfield_number_non") {
-                                                                                echo "selected";
-                                                                            } ?>>Text Field (Angka Saja) Non-Required</option>
+                                                                                    echo "selected";
+                                                                                } ?>>Text Field (Angka Saja) Non-Required</option>
                                         <option value="textarea" <?php if ($row->jenis_jawaban == "textarea") {
                                                                         echo "selected";
                                                                     } ?>>Text Area (Memo)</option>
@@ -157,21 +157,24 @@ foreach ($soal as $row) {
                                                                         echo "selected";
                                                                     } ?>>Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
                                         <option value="prodi" <?php if ($row->jenis_jawaban == "prodi") {
-                                                                        echo "selected";
-                                                                    } ?>>Program Studi Itenas</option>
-                                        <option value="fakultas"<?php if ($row->jenis_jawaban == "fakultas") {
+                                                                    echo "selected";
+                                                                } ?>>Program Studi Itenas</option>
+                                        <option value="fakultas" <?php if ($row->jenis_jawaban == "fakultas") {
                                                                         echo "selected";
                                                                     } ?>>Fakultas Itenas</option>
                                         <option value="info" <?php if ($row->jenis_jawaban == "info") {
-                                                                        echo "selected";
-                                                                    } ?>>Informasi Seminar / Webinar / Acara</option>
-                                                                    <option value="pdf">Upload File PDF</option>
-                                        <option value="pdf" <?php if ($row->jenis_jawaban == "pdf") {
                                                                     echo "selected";
-                                                                } ?>>Upload File PDF</option>
+                                                                } ?>>Informasi Seminar / Webinar / Acara</option>
+                                        <option value="pdf">Upload File PDF</option>
+                                        <option value="pdf" <?php if ($row->jenis_jawaban == "pdf") {
+                                                                echo "selected";
+                                                            } ?>>Upload File PDF</option>
                                         <option value="gambar" <?php if ($row->jenis_jawaban == "gambar") {
                                                                     echo "selected";
                                                                 } ?>>Upload File Gambar</option>
+                                        <option value="jeniskelamin" <?php if ($row->jenis_jawaban == "jeniskelamin") {
+                                                                            echo "selected";
+                                                                        } ?>>Jenis Kelamin</option>
                                         <option value="PKMI" <?php if ($row->jenis_jawaban == "PKMI") {
                                                                     echo "selected";
                                                                 } ?>>PKMI</option>
