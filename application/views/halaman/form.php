@@ -50,6 +50,8 @@
                                                             <label class="form-check-label" for="inlineRadio2">Wanita</label>
                                                         </div>
                                                     </div>
+                                                <?php } else if ($row->jenis_jawaban == "tanggal") { ?>
+                                                    <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="date">
                                                 <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
                                                     <div class="alert alert-light" role="alert">
                                                         <div class="form-check form-check-inline">
