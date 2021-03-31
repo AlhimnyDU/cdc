@@ -75,7 +75,7 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="<?php echo site_url() ?>perusahaan/setting"><i class="fa fa-gear"></i>Virtual Job Fair 2021<span class="fa fa-chevron-down"></span></a>
+                  <a><i class="fa fa-gear"></i>Virtual Job Fair 2021<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo site_url() ?>perusahaan/jobfair">Post Lowongan</a></li>
                     <li><a href="<?php echo site_url() ?>perusahaan/setting">Company Profile</a></li>
