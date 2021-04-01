@@ -203,6 +203,8 @@
                                                     <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="pdf" required>
                                                 <?php } else if ($row->jenis_jawaban == "gambar") { ?>
                                                     <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg" required>
+                                                <?php } else if ($row->jenis_jawaban == "gambarnon") { ?>
+                                                    <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg">
                                                 <?php } else if ($row->jenis_jawaban == "textfield_non") { ?>
                                                     <input class="form-control" name="<?php echo $row->id_soal ?>" type="text">
                                                 <?php } else if ($row->jenis_jawaban == "PKMI") { ?>

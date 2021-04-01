@@ -93,6 +93,7 @@
                                     <option value="info">Informasi Seminar / Webinar / Acara</option>
                                     <option value="pdf">Upload File PDF</option>
                                     <option value="gambar">Upload File Gambar</option>
+                                    <option value="gambarnon">Upload File Gambar(*non required)</option>
                                     <option value="PKMI">PKMI</option>
                                     <option value="date">Tanggal</option>
                                     <option value="label">Label</option>
@@ -173,6 +174,9 @@ foreach ($soal as $row) {
                                         <option value="gambar" <?php if ($row->jenis_jawaban == "gambar") {
                                                                     echo "selected";
                                                                 } ?>>Upload File Gambar</option>
+                                        <option value="gambar" <?php if ($row->jenis_jawaban == "gambarnon") {
+                                                                    echo "selected";
+                                                                } ?>>Upload File Gambar (*Non Required)</option>
                                         <option value="jeniskelamin" <?php if ($row->jenis_jawaban == "jeniskelamin") {
                                                                             echo "selected";
                                                                         } ?>>Jenis Kelamin</option>
