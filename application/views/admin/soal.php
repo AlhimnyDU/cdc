@@ -174,9 +174,9 @@ foreach ($soal as $row) {
                                         <option value="gambar" <?php if ($row->jenis_jawaban == "gambar") {
                                                                     echo "selected";
                                                                 } ?>>Upload File Gambar</option>
-                                        <option value="gambar" <?php if ($row->jenis_jawaban == "gambarnon") {
-                                                                    echo "selected";
-                                                                } ?>>Upload File Gambar (*Non Required)</option>
+                                        <option value="gambarnon" <?php if ($row->jenis_jawaban == "gambarnon") {
+                                                                        echo "selected";
+                                                                    } ?>>Upload File Gambar (*Non Required)</option>
                                         <option value="jeniskelamin" <?php if ($row->jenis_jawaban == "jeniskelamin") {
                                                                             echo "selected";
                                                                         } ?>>Jenis Kelamin</option>
