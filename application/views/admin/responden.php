@@ -44,12 +44,15 @@
                                                 $query = $this->db->where('responden', $no)->where('id_acara', $acara->id_acara)->where('tbl_soal.jenis_jawaban !=', 'label')->join('tbl_soal', 'tbl_soal.id_soal=tbl_jawaban.id_soal', 'left')->get('tbl_jawaban')->result();
                                                 foreach ($query as $row) { ?>
                                                     <td>
-                                                        <?php if (($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "gambarnon") || ($row->jenis_jawaban == "pdf")) { ?>
-                                                            <a href="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">Download</a>
+                                                        <?php if ($row->jawaban != NULL) { ?>
+                                                            <?php if (($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "gambarnon") || ($row->jenis_jawaban == "pdf")) { ?>
+                                                                <a href="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">Download</a>
+                                                            <?php } else {
+                                                                echo $row->jawaban;
+                                                            } ?>
                                                         <?php } else {
-                                                            echo $row->jawaban;
+                                                            echo "Nothing";
                                                         } ?>
-
                                                     </td>
                                                 <?php } ?>
                                             </tr>
