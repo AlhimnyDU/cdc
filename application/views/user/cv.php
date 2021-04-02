@@ -258,7 +258,7 @@
                                     </div>
                                 <?php } else { ?>
                                     <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">NIM / NRP<span class="required">*</span></label>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">NIK<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6">
                                             <input class="form-control" name="nomor_induk" value="<?php echo $akun->nomor_induk ?>" required="required" type="number">
                                         </div>
@@ -266,7 +266,7 @@
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">Perguruan Tinggi<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" name="universitas" value="Universitas Teknologi Nasional Bandung" required>
+                                            <input class="form-control" name="universitas" value="<?php echo $akun->universitas ?>" required>
                                         </div>
                                     </div>
                                     <div class="field item form-group">
