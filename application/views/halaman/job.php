@@ -338,6 +338,8 @@
 <?php } ?>
 <script type="text/javascript">
     $('.beforeAjukan').on('click', function(e) {
+        e.preventDefault(); // prevent form submit
+        const href = $(this).attr('href');
         swal({
             title: 'Apakah anda yakin ?',
             text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
@@ -346,8 +348,8 @@
             buttons: true,
             dangerMode: true,
         }).then((result) => {
-            if (result.value == true) {
-                window.location = "<?php echo site_url('user/ajukan/' . $job->id_loker) ?>";
+            if (result == true) {
+                document.location.href = href;
             }
         })
     })
