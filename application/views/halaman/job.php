@@ -43,11 +43,11 @@
                             if (!$lamaran) {
                                 if ($today <= $job->deadline) { ?>
                                     <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && ($this->session->userdata('mengikuti'))) { ?>
-                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" onclick="confirmation(event)" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
                                     <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && (empty($this->session->userdata('mengikuti')))) { ?>
-                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" onclick="confirmation(event)" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
                                     <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'vacancy')) { ?>
-                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job Here</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" onclick="confirmation(event)" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job Here</a>
                                     <?php } else if (($this->session->userdata('user') == "mahasiswa") && ($job->jenis == 'magang')) { ?>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuModal">Apply Now Here</button>
                                     <?php } else { ?>
@@ -336,19 +336,28 @@
         </div>
     </div>
 <?php } ?>
-<script type="text/javascript">
-    $('.beforeAjukan').on('click', function() {
+<script>
+    function confirmation(ev) {
+        ev.preventDefault();
+        var urlToRedirect = ev.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
+        console.log(urlToRedirect); // verify if this is the right URL
         swal({
-            title: 'Apakah anda yakin ?',
-            text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
-            icon: 'warning',
-            type: 'warning',
-            buttons: true,
-            dangerMode: true,
-        }).then((result) => {
-            if (result) {
-                window.location = "<?php echo site_url('user/ajukan/' . $job->id_loker) ?>";
-            }
-        })
-    })
+                title: 'Apakah anda yakin ?',
+                text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
+                icon: 'warning',
+                type: 'warning',
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((ajukan) => {
+                // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
+                if (ajukan) {
+                    swal("Pengajuan Lamaran Berhasil!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Aju Lamaran Gagal!");
+                }
+            });
+    }
 </script>
