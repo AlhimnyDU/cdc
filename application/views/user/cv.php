@@ -887,6 +887,7 @@
                                     <select name="nama_berkas" class="form-control" required>
                                         <option value="" selected disabled hidden>Pilih..</option>
                                         <option value="Photocopy Ijazah Legalisir">Photocopy ijazah legalisir</option>
+                                        <option value="Surat Keterangan Lulus">Surat Keterangan Lulus</option>
                                         <option value="Transkrip Nilai">Transkrip Nilai</option>
                                         <option value="Hasil Psikotest">Hasil Psikotest</option>
                                         <option value="Hasil TOEFL atau IELTS">Hasil TOEFL atau IELTS</option>

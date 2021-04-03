@@ -598,26 +598,39 @@ class User extends CI_Controller
             $this->session->set_flashdata('sudah_mengajukan', TRUE);
             redirect($_SERVER['HTTP_REFERER']);
         } else {
-            $ijazah = $this->db->where('nama_berkas', "Photocopy ijazah legalisir")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
-            $transkrip = $this->db->where('nama_berkas', "Transkrip Nilai")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
-            $psikotest = $this->db->where('nama_berkas', "Hasil Psikotest")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
-            if (empty($ijazah)) {
-                $this->session->set_flashdata('lengkapi_persyaratan', TRUE);
-                redirect($_SERVER['HTTP_REFERER']);
+            // $ijazah = $this->db->where('nama_berkas', "Photocopy ijazah legalisir")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            // $transkrip = $this->db->where('nama_berkas', "Transkrip Nilai")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            // $psikotest = $this->db->where('nama_berkas', "Hasil Psikotest")->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_berkas')->row();
+            // if (empty($ijazah)) {
+            //     $this->session->set_flashdata('lengkapi_persyaratan', TRUE);
+            //     redirect($_SERVER['HTTP_REFERER']);
+            // } else {
+            //     $data = array(
+            //         'id_loker' => $id,
+            //         'id_akun' => $this->session->userdata('id_akun'),
+            //         'status' => "Menunggu Verifikasi",
+            //         'created' => date('Y-m-d H:i:s'),
+            //         'updated' => date('Y-m-d H:i:s')
+            //     );
+            //     $query = $this->db->insert('tbl_lamaran', $data);
+            //     if ($query) {
+            //         $this->session->set_flashdata('insert_data', TRUE);
+            //     } else {
+            //         $this->session->set_flashdata('failed', TRUE);
+            //     }
+            // }
+            $data = array(
+                'id_loker' => $id,
+                'id_akun' => $this->session->userdata('id_akun'),
+                'status' => "Menunggu Verifikasi",
+                'created' => date('Y-m-d H:i:s'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+            $query = $this->db->insert('tbl_lamaran', $data);
+            if ($query) {
+                $this->session->set_flashdata('insert_data', TRUE);
             } else {
-                $data = array(
-                    'id_loker' => $id,
-                    'id_akun' => $this->session->userdata('id_akun'),
-                    'status' => "Menunggu Verifikasi",
-                    'created' => date('Y-m-d H:i:s'),
-                    'updated' => date('Y-m-d H:i:s')
-                );
-                $query = $this->db->insert('tbl_lamaran', $data);
-                if ($query) {
-                    $this->session->set_flashdata('insert_data', TRUE);
-                } else {
-                    $this->session->set_flashdata('failed', TRUE);
-                }
+                $this->session->set_flashdata('failed', TRUE);
             }
             redirect('user/pengajuan');
         }
