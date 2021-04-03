@@ -349,7 +349,7 @@
             dangerMode: true,
         }).then((result) => {
             if (result == true) {
-                document.location.href = href;
+                window.location = "<?php echo site_url("user/ajukan/" . $job->id_loker) ?>";
             }
         })
     })
