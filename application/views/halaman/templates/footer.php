@@ -169,24 +169,6 @@
 
   });
 </script>
-<script type="text/javascript">
-  $('.beforeAjukan').on('click', function(e) {
-    e.preventDefault(); // prevent form submit
-    const href = $(this).attr('href');
-    swal({
-      title: 'Apakah anda yakin ?',
-      text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
-      icon: 'warning',
-      type: 'warning',
-      buttons: true,
-      dangerMode: true,
-    }).then((result) => {
-      if (result.value == true) {
-        document.location.href = href;
-      }
-    })
-  })
-</script>
 <?php if ($this->session->flashdata('insert_akun')) { ?>
   <script>
     swal({
@@ -267,6 +249,31 @@
     });
   </script>
 <?php } ?>
+<script>
+  function confirmation(ev) {
+    ev.preventDefault();
+    var urlToRedirect = ev.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
+    console.log(urlToRedirect); // verify if this is the right URL
+    swal({
+        title: 'Apakah anda yakin ?',
+        text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
+        icon: 'warning',
+        type: 'warning',
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((ajukan) => {
+        // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
+        if (ajukan) {
+          swal("Pengajuan Lamaran Berhasil!", {
+            icon: "success",
+          });
+        } else {
+          swal("Aju Lamaran Gagal!");
+        }
+      });
+  }
+</script>
 </body>
 
 </html>
