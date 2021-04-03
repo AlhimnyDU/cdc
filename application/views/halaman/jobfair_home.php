@@ -1,63 +1,46 @@
 <style>
-    #link1 {
-        margin: 15% 10px 0;
+    .toolbar {
         position: absolute;
-        padding: 150px 120px;
+        right: 10px;
+        bottom: 20px;
     }
 
-    #link2 {
-        margin: 15% 280px 0;
-        position: absolute;
-        padding: 130px 80px;
+    .myBtn {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+        border: none;
+        background: #e48118;
+        color: #fff;
+        cursor: pointer;
     }
 
-    #link3 {
-        margin: 18% 780px 0;
-        position: absolute;
-        padding: 100px 60px;
+    .myBtn:hover {
+        background: #ddd;
+        color: black;
     }
 
-    #link4 {
-        margin: 18% 930px 0;
-        position: absolute;
-        padding: 100px 60px;
-    }
-
-    #link5 {
-        margin: 28% 1120px 0;
-        position: absolute;
-        padding: 60px 150px;
-    }
-
-    @media (max-width: 360px) {
-        #link1 {
-            margin: 2% 50px 0;
-            position: absolute;
-            padding: 150px 100px;
+    @media (max-width: 767px) {
+        .myBtn {
+            width: 50px;
+            font-size: 10px;
+            padding: 10px;
+            border: none;
+            background: #e48118;
+            color: #fff;
+            cursor: pointer;
         }
+    }
 
-        #link2 {
-            margin: 15% 350px 0;
-            position: absolute;
-            padding: 150px 100px;
-        }
-
-        #link3 {
-            margin: 18% 990px 0;
-            position: absolute;
-            padding: 100px 60px;
-        }
-
-        #link4 {
-            margin: 18% 1150px 0;
-            position: absolute;
-            padding: 100px 60px;
-        }
-
-        #link5 {
-            margin: 28% 1400px 0;
-            position: absolute;
-            padding: 60px 180px;
+    @media (max-width: 450px) {
+        .myBtn {
+            width: 50px;
+            font-size: 8px;
+            padding: 2px;
+            border: none;
+            background: #e48118;
+            color: #fff;
+            cursor: pointer;
         }
     }
 </style>
@@ -68,23 +51,15 @@
                 <video id="myVideo" style="width: 100%;" autoplay muted loop>
                     <source src="<?php echo base_url() ?>assets/home/jobfair/ruang_utama.mp4" type="video/mp4">
                 </video>
-            </div>
-            <div style="position: absolute; height: 100%; bottom: 0; width: 100%;padding: 20px;">
-                <a id="link1" href="#list"></a>
-                <a id="link2" href="#info"></a>
-                <a id="link3" href="#about"></a>
-                <a id="link4" href="<?php echo site_url('halaman/stand') ?>"></a>
-                <a id="link5" href="<?php echo site_url('halaman/daftar_peserta') ?>"></a>
-
-            </div>
-            <div id="guide" style="position: absolute; height: 100%; bottom: 0; background: rgba(0, 0, 0, 0.5); color: #f1f1f1; width: 100%;padding: 20px;">
-                <center>
-                    <a id="close"><i class="fa fa-times-circle" style="color: silver; font-size: 30px;"></i></a>
-                </center>
-                <img style="width: 100%;" src="<?php echo base_url() ?>assets/home/jobfair/guide.png" alt="">
+                <div class="toolbar">
+                    <a class="myBtn" href="#list">List Company</a>
+                    <a class="myBtn" href="#info">Information</a>
+                    <a class="myBtn" href="#about">Event</a>
+                    <a class="myBtn" href="<?php echo site_url('halaman/stand') ?>">Stand Company</a>
+                    <a class="myBtn" href="<?php echo site_url('halaman/daftar_peserta') ?>">Registration</a>
+                </div>
             </div>
         </div>
-    </div>
 </section><!-- End Breadcrumbs -->
 <section id="about" class="about section-bg">
     <div class="container">
@@ -97,29 +72,25 @@
                 <h4 data-aos="fade-up">About this event</h4>
                 <h3 data-aos="fade-up">Virtual Jobfair Itenas 2021</h3>
                 <p data-aos="fade-up" align="justify">Virtual Job Fair Itenas Tahun 2021 merupakan sebuah kegiatan yang bertujuan sebagai mediator antara perusahaan/instansi/industri pencari kerja dan para pencari tenaga kerja. Selain itu, kegiatan ini diadakan sebagai ajang untuk membantu dan memfasilitasi para lulusan/alumni Itenas yang baru diwisuda dan yang belum mendapatkan pekerjaan serta para lulusan dari perguruan tinggi di wilayah Bandung dan sekitarnya. Kegiatan ini akan diadakan dari mulai tanggal 5 - 9 April 2021 dengan berbagai rangkaian acara lainnya dari mulai webinar scholarship, workshop karir hingga psikotes online</p>
-
-                <div class="icon-box" data-aos="fade-up">
-                    <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                    <h4 class="title"><a href="">Psikotest Online</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-                </div>
-
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bx-gift"></i></div>
-                    <h4 class="title"><a href="">Workshop Karir</a></h4>
-                    <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                </div>
-
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon"><i class="bx bx-atom"></i></div>
                     <h4 class="title"><a href="">Webinar Scholarship</a></h4>
-                    <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                    <p class="description">29 - 31 Maret 2021</p>
                 </div>
-
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon"><i class="bx bx-gift"></i></div>
+                    <h4 class="title"><a href="">Workshop Career</a></h4>
+                    <p class="description">5 April 2021</p>
+                </div>
+                <div class="icon-box" data-aos="fade-up">
+                    <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                    <h4 class="title"><a href="">Psikotest Online</a></h4>
+                    <p class="description">6 April 2021</p>
+                </div>
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon"><i class="bx bx-images"></i></div>
-                    <h4 class="title"><a href="">Lowongan Kerja</a></h4>
-                    <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                    <h4 class="title"><a href="">Presentation Company</a></h4>
+                    <p class="description"> 7 - 8 April 2021</p>
                 </div>
 
             </div>

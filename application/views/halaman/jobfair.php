@@ -1,21 +1,19 @@
 <style>
     /* Style the video: 100% width and height to cover the entire window */
-    #myVideo {
+    #lobby {
+        position: fixed;
         width: 100%;
-        height: auto;
-        right: 0;
-        bottom: 0;
+        height: 100%;
+        left: 0;
+        top: 0;
+        overflow: auto;
     }
 
     /* Add some content at the bottom of the video/page */
     .content {
         position: fixed;
-        height: 30%;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        color: #f1f1f1;
-        width: 100%;
-        padding: 20px;
+        right: 15px;
+        bottom: 13px
     }
 
     /* Style the button used to pause/play the video */
@@ -24,7 +22,7 @@
         font-size: 18px;
         padding: 10px;
         border: none;
-        background: #000;
+        background: #e48118;
         color: #fff;
         cursor: pointer;
     }
@@ -33,65 +31,27 @@
         background: #ddd;
         color: black;
     }
-
-    .center {
-        margin-height: 100px;
-        width: 100%;
-        padding: 10px;
-    }
-
-    #mobile {
-        display: none;
-    }
-
-    @media (max-width: 767px) {
-        #myVideo {
-            display: none;
-        }
-
-        #mobile {
-            display: block;
-        }
-
-        #web {
-            display: none;
-        }
-
-        .center {
-            margin: 50%;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-            padding: 10px;
-        }
-    }
 </style>
-<div id="web">
-    <div class="center">
-        <video id="myVideo" autoplay muted loop>
-            <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
-        </video>
-        <div class="content">
-            <center>
-                <h1>Coming Soon</h1>
-                <p>Job Fair ITENAS 2021</p>
-                <!-- Use a button to pause/play the video with JavaScript -->
-                <button id="myBtn">Coming Soon</button>
-            </center>
-        </div>
+<div id="lobby">
+    <video autoplay muted loop>
+        <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        <a href="<?php echo base_url('halaman/jobfair_home') ?>" id="myBtn"><i class="fa fa-home"></i> Masuk Halaman Job Fair</a>
+        <?php if ($this->session->userdata("nama") != NULL) {
+            if ($this->session->userdata('user')) { ?>
+                <a href="<?php echo base_url('user') ?>" id="myBtn"><i class="fa fa-user"></i> Hallo, <?php echo $this->session->userdata("nama") ?></a>
+            <?php } else if ($this->session->userdata('admin')) { ?>
+                <a href="<?php echo base_url('admin') ?>" id="myBtn"><i class="fa fa-user"></i> Hallo, <?php echo $this->session->userdata("nama") ?></a>
+            <?php } else if ($this->session->userdata('perusahaan')) { ?>
+                <a href="<?php echo base_url('perusahaan') ?>" id="myBtn"><i class="fa fa-user"> Hallo, </i> <?php echo $this->session->userdata("nama") ?></a>
+            <?php } ?>
+        <?php } else { ?>
+            <a href="<?php echo base_url('login') ?>" id="myBtn"><i class="fa fa-question-circle"></i> Login</a>
+            <a href="<?php echo base_url('halaman/daftar_peserta') ?>" id="myBtn"><i class="fa fa-user"></i> Belum Punya Akun?</a>
+        <?php } ?>
     </div>
 </div>
-<div id="mobile">
-    <div class="center">
-        <center>
-            <h1>Coming Soon</h1>
-            <p>Job Fair ITENAS 2021</p>
-            <!-- Use a button to pause/play the video with JavaScript -->
-            <button id="myBtn">Coming Soon</button>
-        </center>
-    </div>
-</div>
-
 </body>
 
 </html>

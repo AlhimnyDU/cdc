@@ -46,6 +46,50 @@
     });
   });
 </script>
+<?php if ((!$this->session->userdata('user')) && (!$this->session->userdata('perusahaan')) && (!$this->session->userdata('admin'))) { ?>
+  <script>
+    swal({
+      title: "Wajib Login Akun!",
+      text: "Hanya login akun CDC yang dapat mengakses halaman Virtual Job Fair 2021, silahkan login terlebih dahulu",
+      icon: "info",
+      buttons: {
+        confirm: true,
+      },
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+    }).then(function() {
+      window.location = "<?php echo base_url('login') ?>";
+    });
+  </script>
+<?php } else if (!$this->session->userdata('mengikuti')) { ?>
+  <script>
+    swal({
+      title: "Acara Virtual Job Fair Itenas 2021",
+      text: "Apakah anda ingin mengikuti Virtual Job Fair Itenas 2021, data akun anda akan tercatat mengikuti acara ini dengan mengklik tombol dibawah?",
+      icon: "info",
+      buttons: true,
+      dangerMode: true,
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+    }).then((mengikuti) => {
+      if (mengikuti) {
+        window.location = "<?php echo base_url('user/mengikuti/2') ?>";
+      } else {
+        window.location = "<?php echo base_url() ?>";
+      }
+    });
+  </script>
+<?php } ?>
+<?php if ($this->session->flashdata('insert_peserta')) { ?>
+  <script>
+    swal({
+      title: "Terdaftar Peserta Job Fair!",
+      text: "Akun anda telah terdaftar sebagai peserta Virtual Job Fair Itenas 2021",
+      icon: "success",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
 <?php if ($this->session->flashdata('sudah_mengajukan', TRUE)) { ?>
   <script>
     swal({

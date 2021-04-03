@@ -124,10 +124,11 @@ class User extends CI_Controller
         $query = $this->db->insert('event_perusahaan', $data);
         if ($query) {
             $this->session->set_flashdata('insert_peserta', "Tambah Berhasil");
+            $this->session->set_userdata('mengikuti', TRUE);
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
         }
-        redirect('user/jobfair');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function tidakMengikuti($id)

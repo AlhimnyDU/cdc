@@ -206,6 +206,7 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/jobfair_home');
 		$this->load->view('halaman/jobfair');
 		// $this->load->view('halaman/templates/jobfair_f');
+		// $this->load->view('halaman/templates/jobfair_end');
 	}
 
 	public function jobfair_home()

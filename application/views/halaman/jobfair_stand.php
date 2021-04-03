@@ -9,7 +9,7 @@
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
             <?php foreach ($perusahaan as $row) { ?>
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <a href="<?php echo base_url() ?>halaman/estand/1">
+                    <a href="<?php echo base_url('halaman/estand/' . $row->id_perusahaan) ?>">
                         <video class="img-fluid" autoplay muted loop>
                             <source src="<?php echo base_url('assets/home/jobfair/' . $row->link) ?>" type="video/mp4">
                         </video>

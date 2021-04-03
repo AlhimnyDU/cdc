@@ -54,7 +54,7 @@ class Login extends CI_Controller
 		$selectadmin = $this->Login_model->validasi_akun('tbl_admin', 'email', $email, $password);
 		if ($select) {
 			if ($select->status = "Aktif") {
-				$mengikuti = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $select->id_akun)->get('event_perusahaan')->row();
+				$mengikuti = $this->db->where('role', 'peserta')->where('id_event', 2)->where('id_peserta', $select->id_akun)->get('event_perusahaan')->row();
 				if ($mengikuti) {
 					$this->session->set_userdata('mengikuti', TRUE);
 				}
@@ -62,7 +62,6 @@ class Login extends CI_Controller
 					$this->session->set_userdata('nama', $select->nama);
 					$this->session->set_userdata('user', "mahasiswa");
 					$this->session->set_userdata('id_akun', $select->id_akun);
-
 					redirect('user');
 				} else if ($select->role == "alumni") {
 					$this->session->set_userdata('nama', $select->nama);

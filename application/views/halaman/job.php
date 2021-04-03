@@ -42,9 +42,9 @@
                             $today = date("Y-m-d");
                             if (!$lamaran) {
                                 if ($today <= $job->deadline) { ?>
-                                    <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && ($this->session->userdata('mengikuti'))) { ?>
+                                    <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && ($this->session->userdata('mengikuti'))) { ?>
                                         <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
-                                    <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'jobfair') && (empty($this->session->userdata('mengikuti')))) { ?>
+                                    <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && (empty($this->session->userdata('mengikuti')))) { ?>
                                         <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
                                     <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'vacancy')) { ?>
                                         <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply Now Here</a>
