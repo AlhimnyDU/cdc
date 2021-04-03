@@ -393,14 +393,20 @@ class Perusahaan extends CI_Controller
             $data = $this->db->select('tbl_akun.email, tbl_akun.nama')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'LEFT')->where('tbl_lamaran.id_lamaran', $id_lamaran)->get('tbl_lamaran')->row_array();
             $perusahaan = $this->db->select('tbl_perusahaan.*, tbl_loker.posisi')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_loker', $id_loker)->get('tbl_loker')->row_array();
             $from_email = "cdc@itenas.ac.id";
-            $message = "<b><h3>Yth. " . $data['nama'] . "</h3></b> <br> Akun anda telah diverifikasi data lamaran oleh perusahaan " . $this->session->userdata('nama') . ". <br> Lowongan kerja yang anda lamar yaitu " . $perusahaan['posisi'] . ". Silahkan anda hubungi perusahaan untuk melanjutkan tahap selanjutnya.<br> Email Perusahaan :" . $perusahaan['email'] . "<br> CP perusahaan : " . $perusahaan['telp_pj'] . "(" . $perusahaan['pj'] . ") <br> Untuk melihat pemberitahuannya, silahkan login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC ITENAs</b> ";
-            $config['smtp_host'] = 'cdcitenas@cdc.itenas.ac.id';
-            $config['smtp_port'] = 465;
-            $config['smtp_user'] = 'cdcitenas@cdc.itenas.ac.id';
-            $config['smtp_pass'] = '1t3n4$ADMIN';
+            $message = "<b><h3>Yth. " . $data['nama'] . "</h3></b> <br> Akun anda telah diverifikasi data lamaran oleh perusahaan " . $this->session->userdata('nama') . ". <br> Lowongan kerja yang anda lamar yaitu " . $perusahaan['posisi'] . ". Silahkan anda hubungi perusahaan untuk melanjutkan tahap selanjutnya.<br> Email Perusahaan :" . $perusahaan['email'] . "<br> CP perusahaan : " . $perusahaan['telp_pj'] . "(" . $perusahaan['pj'] . ") <br> Untuk melihat pemberitahuannya, silahkan login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+            $config = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_user' => 'cdc@itenas.ac.id',
+                'smtp_pass' => 'itenas271',
+                'smtp_port' => 465,
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8',
+                'newline'   => "\r\n"
+            );
             $this->load->library('email');
             $this->email->initialize($config);
-            $this->email->from('cdcitenas@cdc.itenas.ac.id', 'CDC Itenas');
+            $this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
             $this->email->to($data['email']);
             $this->email->reply_to($from_email);
             $this->email->subject('[No-Reply] Lamaran - Telah Terverifikasi');
