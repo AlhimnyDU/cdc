@@ -178,11 +178,8 @@
       text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
       icon: 'warning',
       type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#dc3545',
-      cancelButtonColor: '#007bff',
-      confirmButtonText: 'Ya, Ajukan lamaran !',
-      cancelButtonText: 'Batal'
+      buttons: true,
+      dangerMode: true,
     }).then((result) => {
       if (result.value == true) {
         document.location.href = href;
