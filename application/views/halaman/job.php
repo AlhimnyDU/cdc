@@ -346,7 +346,7 @@
             buttons: true,
             dangerMode: true,
         }).then((result) => {
-            if (result == true) {
+            if (result) {
                 window.location = "<?php echo site_url('user/ajukan/' . $job->id_loker) ?>";
             }
         })
