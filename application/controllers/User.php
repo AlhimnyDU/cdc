@@ -58,7 +58,7 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
-                $data['pengajuan'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_lamaran')->result();
+                $data['pengajuan'] = $this->db->select('tbl_lamaran.*,tbl_loker.posisi,tbl_perusahaan.nama_perusahaan')->join('tbl_loker', 'tbl_loker.id_loker=tbl_lamaran.id_loker', 'left')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('id_akun', $this->session->userdata('id_akun'))->order_by('created', 'DESC')->get('tbl_lamaran')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/pengajuan', $data);
                 $this->load->view('user/templates/js');

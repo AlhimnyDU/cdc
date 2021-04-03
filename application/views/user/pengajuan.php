@@ -37,6 +37,7 @@
                                             <th>Perusahaan</th>
                                             <th>Posisi yang dibutuhkan</th>
                                             <th>Status</th>
+                                            <th>Tanggal Lamar</th>
                                             <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -49,6 +50,7 @@
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->nama_perusahaan ?></td>
                                                 <td><?php echo $row->posisi ?></td>
+                                                <td><?php echo $row->created ?></td>
                                                 <td>
                                                     <center>
                                                         <?php if (($row->status == "Ditolak") || ($row->status == "Pelamar Menolak")) { ?>

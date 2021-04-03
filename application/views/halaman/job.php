@@ -43,11 +43,11 @@
                             if (!$lamaran) {
                                 if ($today <= $job->deadline) { ?>
                                     <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && ($this->session->userdata('mengikuti'))) { ?>
-                                        <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job here</a>
                                     <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'Job Fair 2021') && (empty($this->session->userdata('mengikuti')))) { ?>
-                                        <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
                                     <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($job->jenis == 'vacancy')) { ?>
-                                        <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply Now Here</a>
+                                        <a class="btn btn-info buttonSubmit beforeAjukan" href="<?php echo site_url("user/ajukan/" . $job->id_loker) ?>">Apply job Here</a>
                                     <?php } else if (($this->session->userdata('user') == "mahasiswa") && ($job->jenis == 'magang')) { ?>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajuModal">Apply Now Here</button>
                                     <?php } else { ?>

@@ -169,6 +169,27 @@
 
   });
 </script>
+<script type="text/javascript">
+  $('.beforeAjukan').on('click', function(e) {
+    e.preventDefault(); // prevent form submit
+    const href = $(this).attr('href');
+    swal({
+      title: 'Apakah anda yakin ?',
+      text: "Data akan terhapus secara permanen",
+      icon: 'warning',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonColor: '#007bff',
+      confirmButtonText: 'Ya, Ajukan lamaran !',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.value == true) {
+        document.location.href = href;
+      }
+    })
+  })
+</script>
 <?php if ($this->session->flashdata('insert_akun')) { ?>
   <script>
     swal({
