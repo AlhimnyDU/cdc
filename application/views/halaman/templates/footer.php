@@ -175,7 +175,7 @@
     const href = $(this).attr('href');
     swal({
       title: 'Apakah anda yakin ?',
-      text: "Data akan terhapus secara permanen",
+      text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
       icon: 'warning',
       type: 'warning',
       showCancelButton: true,
