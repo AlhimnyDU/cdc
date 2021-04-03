@@ -103,7 +103,7 @@
 
         <div class="row">
             <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/oranye.png);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="<?php echo base_url('halaman/stand') ?>">Stand</a></h5>
                         <p class="card-text">Menelusuri stand - stand perusahaan dapat melihat profil perusahaan dan lowongan pekerjaan yang di virtual jobfair itenas 2021</p>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);;">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/oranye.png);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="#about>">Event</a></h5>
                         <p class="card-text">Melihat event - event yang dilaksanakan pada virtual jobfair itenas 2021</p>
@@ -122,7 +122,7 @@
 
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/oranye.png);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="#info">Information</a></h5>
                         <p class="card-text">Melihat informasi dan berita seputar virtual jobfair dan CDC itenas</p>
@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/Oranye.png);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/oranye.png);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="#list">List Company</a></h5>
                         <p class="card-text">Menelusuri perusahaan - perusahaan yang mengikuti virtual jobfair itenas 2021</p>
