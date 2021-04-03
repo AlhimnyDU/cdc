@@ -347,7 +347,7 @@
             dangerMode: true,
         }).then((result) => {
             if (result.value == true) {
-                window.location = "<?phpecho site_url('user/ajukan/' . $job->id_loker)?>";
+                window.location = "<?php echo site_url('user/ajukan/' . $job->id_loker) ?>";
             }
         })
     })
