@@ -337,9 +337,7 @@
     </div>
 <?php } ?>
 <script type="text/javascript">
-    $('.beforeAjukan').on('click', function(e) {
-        e.preventDefault(); // prevent form submit
-        const href = $(this).attr('href');
+    $('.beforeAjukan').on('click', function() {
         swal({
             title: 'Apakah anda yakin ?',
             text: "Harap seluruh berkas persyaratan telah dicek kembali dan data anda akan dikirim ke perusahaan",
@@ -349,7 +347,7 @@
             dangerMode: true,
         }).then((result) => {
             if (result == true) {
-                window.location = "<?php echo site_url("user/ajukan/" . $job->id_loker) ?>";
+                window.location = "<?php echo site_url('user/ajukan/' . $job->id_loker) ?>";
             }
         })
     })
