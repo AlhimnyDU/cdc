@@ -128,13 +128,21 @@
                                         <hr>
                                         <div class="row" style="margin-left: 10px;margin-right: 10px;">
                                             <div class="col-md-12">
-                                                <p align="justify"><?php echo substr($company->deskripsi, 0, 500) ?>..<a href="#">Read More</a></p>
+                                                <p align="justify"><?php echo substr($company->deskripsi, 0, 400) ?>..<a href="#">Read More</a></p>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan ?>" class="img-thumbnail">
+                                                        <?php if ($company->foto_perusahaan != NULL) { ?>
+                                                            <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan ?>" class="img-thumbnail">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail">
+                                                        <?php } ?>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan2 ?>" class="img-thumbnail">
+                                                        <?php if ($company->foto_perusahaan2 != NULL) { ?>
+                                                            <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan2 ?>" class="img-thumbnail">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail">
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
                                             </div>
