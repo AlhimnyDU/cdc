@@ -134,14 +134,14 @@
                                                         <?php if ($company->foto_perusahaan != NULL) { ?>
                                                             <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan ?>" class="img-thumbnail">
                                                         <?php } else { ?>
-                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail" style="width:350px; height:350px;">
+                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail" style="width:200px; height:200px;">
                                                         <?php } ?>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <?php if ($company->foto_perusahaan2 != NULL) { ?>
                                                             <img src="<?php echo site_url('assets/upload/foto_perusahaan/') . $company->foto_perusahaan2 ?>" class="img-thumbnail">
                                                         <?php } else { ?>
-                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail" style="width:350px; height:350px;">
+                                                            <img src="<?php echo site_url('assets/home/jobfair/poster.jpg') ?>" class="img-thumbnail" style="width:200px; height:200px;">
                                                         <?php } ?>
                                                     </div>
                                                 </div>
