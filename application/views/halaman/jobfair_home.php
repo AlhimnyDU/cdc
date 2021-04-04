@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/halaman/jobfair/oranye.png);">
+                <div class="card" style="background-image: url(<?php echo base_url() ?>assets/home/jobfair/oranye.png);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="#list">List Company</a></h5>
                         <p class="card-text">Menelusuri perusahaan - perusahaan yang mengikuti virtual jobfair itenas 2021</p>
