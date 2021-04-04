@@ -230,7 +230,7 @@ class Halaman extends CI_Controller
 
 	public function estand($id)
 	{
-		$data['company'] = $this->db->select('tbl_perusahaan.*')->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
+		$data['company'] = $this->db->select('tbl_perusahaan.*', 'event_perusahaan.link')->join('event_perusahaan', 'event_perusahaan.id_peserta=tbl_perusahaan.id_perusahaan', 'LEFT')->where('id_event', 2)->where('id_perusahaan', $id)->get('tbl_perusahaan')->row();
 		$data['jobfair'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_perusahaan', $id)->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'Job Fair 2021')->order_by('updated', 'DESC')->get('tbl_loker')->result();
 		$this->load->view('halaman/templates/jobfair_hstand');
 		$this->load->view('halaman/estand', $data);

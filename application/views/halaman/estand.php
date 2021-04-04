@@ -79,7 +79,7 @@
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
                                         <video autoplay muted loop>
-                                            <source src="<?php echo base_url() ?>assets/home/jobfair/stand_itenas.mp4" type="video/mp4">
+                                            <source src="<?php echo base_url('assets/home/jobfair/' . $company->link) ?>" type="video/mp4">
                                         </video>
                                     </div>
                                     <div class="flip-card-back">
