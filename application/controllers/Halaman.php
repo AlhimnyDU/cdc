@@ -211,6 +211,7 @@ class Halaman extends CI_Controller
 
 	public function jobfair_home()
 	{
+		$data['mengikuti'] = $this->db->select('tbl_perusahaan.*')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=event_perusahaan.id_peserta')->where('id_event', 2)->where('role', 'perusahaan')->get('event_perusahaan')->result();
 		$data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel', 6)->result();
 		$this->load->view('halaman/templates/jobfair_h');
 		$this->load->view('halaman/jobfair_home', $data);
