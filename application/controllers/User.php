@@ -96,7 +96,7 @@ class User extends CI_Controller
                 $data['event'] = $this->db->get('tbl_event')->result();
                 $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->result();
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
-                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'jobfair')->get()->result();
+                $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'Job Fair 2021')->get()->result();
                 $data['jobfair'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
@@ -229,9 +229,8 @@ class User extends CI_Controller
 
     public function upload_pasfoto()
     {
-        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . "PASFOTO");
         $config['upload_path'] = './assets/upload/pas_foto/';
-        $config['file_name'] = $nama_file;
+        $config['encrypt_name'] = TRUE;
         $config['allowed_types'] = 'jpg|png|jpeg';
         $this->upload->initialize($config);
         $upload = $this->upload->do_upload('pas_foto');
@@ -511,9 +510,8 @@ class User extends CI_Controller
 
     public function upload_berkas()
     {
-        $nama_file = str_replace(" ", "_", $this->session->userdata('nama') . "_" . $this->input->post('nama_berkas'));
         $config['upload_path'] = './assets/upload/berkas/';
-        $config['file_name'] = $nama_file;
+        $config['encrypt_name'] = TRUE;
         $config['allowed_types'] = 'pdf';
         $this->upload->initialize($config);
         $upload = $this->upload->do_upload('berkas');
