@@ -199,9 +199,9 @@
                                                             <?php
                                                             $today = date("Y-m-d");
                                                             if ($today <= $row->deadline) { ?>
-                                                                <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'jobfair') && ($this->session->userdata('mengikuti'))) { ?>
+                                                                <?php if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'Job Fair 2021') && ($this->session->userdata('mengikuti'))) { ?>
                                                                     <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $row->id_loker) ?>">Apply job here</a>
-                                                                <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'jobfair') && (empty($this->session->userdata('mengikuti')))) { ?>
+                                                                <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'Job Fair 2021') && (empty($this->session->userdata('mengikuti')))) { ?>
                                                                     <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user") ?>">Harus mendaftar mengikuti job fair terlebih dahulu</a>
                                                                 <?php } else if ((($this->session->userdata('user') == "mahasiswa") || ($this->session->userdata('user') == "alumni") || ($this->session->userdata('user') == "umum")) && ($row->jenis == 'vacancy')) { ?>
                                                                     <a class="btn btn-info buttonSubmit" href="<?php echo site_url("user/ajukan/" . $row->id_loker) ?>">Apply job here</a>
