@@ -94,10 +94,10 @@ class User extends CI_Controller
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('user')) {
                 $data['event'] = $this->db->get('tbl_event')->result();
-                $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->result();
+                $data['mengikuti'] = $this->db->where('role', 'peserta')->where('id_event', 2)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->result();
                 $data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
                 $data['loker'] = $this->db->select('tbl_loker.*, tbl_perusahaan.*')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('tbl_loker.status', 'Disetujui')->where('tbl_loker.jenis', 'Job Fair 2021')->get()->result();
-                $data['jobfair'] = $this->db->where('role', 'peserta')->where('id_event', 1)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
+                $data['jobfair'] = $this->db->where('role', 'peserta')->where('id_event', 2)->where('id_peserta', $this->session->userdata('id_akun'))->get('event_perusahaan')->row();
                 // $data['loker'] = $this->db->where('id_perusahaan', $this->session->userdata('id_perusahaan'))->get('loker')->result();
                 $this->load->view('user/templates/header');
                 $this->load->view('user/jobfair', $data);
