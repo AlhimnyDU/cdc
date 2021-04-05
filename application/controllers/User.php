@@ -626,6 +626,35 @@ class User extends CI_Controller
             );
             $query = $this->db->insert('tbl_lamaran', $data);
             if ($query) {
+                $perusahaan = $this->db->select('tbl_perusahaan.*, tbl_loker.posisi')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_loker', $id)->get('tbl_loker')->row_array();
+                $from_email = "cdc@itenas.ac.id";
+                $message = "<b><h3>Kepada. " . $perusahaan['nama_perusahaan'] . "</h3></b> <br> Pemberitahuan ada akun CDC yang melamar pada posisi " . $perusahaan['posisi'] . ". <br> Mohon kepada perusahaan melakukan verifikasi akun pada website CDC Itenas. Pelamar yang telah di verifikasi akan lanjut ke tahap selajutnya sesuai perusahaan<br> Untuk melihat pemberitahuannya, silahkan login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+                $config = array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_user' => 'cdc@itenas.ac.id',
+                    'smtp_pass' => 'itenas271',
+                    'smtp_port' => 465,
+                    'mailtype'  => 'html',
+                    'charset'   => 'utf-8',
+                    'newline'   => "\r\n"
+                );
+                $this->load->library('email');
+                $this->email->initialize($config);
+                $this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+                $this->email->to($perusahaan['email']);
+                $this->email->reply_to($from_email);
+                $this->email->subject('[No-Reply] Ada Pelamar Baru');
+                $this->email->set_header('Itenas', 'CDC');
+                $this->email->set_mailtype("html");
+                $this->email->message($message);
+                if ($this->email->send()) {
+                    echo "Email Terkirim";
+                } else {
+                    echo $this->email->print_debugger();
+                    die;
+                    $this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+                }
                 $this->session->set_flashdata('insert_data', TRUE);
             } else {
                 $this->session->set_flashdata('failed', TRUE);
