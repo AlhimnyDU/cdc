@@ -628,7 +628,7 @@ class User extends CI_Controller
             if ($query) {
                 $perusahaan = $this->db->select('tbl_perusahaan.*, tbl_loker.posisi')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_loker', $id)->get('tbl_loker')->row_array();
                 $from_email = "cdc@itenas.ac.id";
-                $message = "<b><h3>Kepada. " . $perusahaan['nama_perusahaan'] . "</h3></b> <br> Pemberitahuan ada akun CDC yang melamar pada posisi " . $perusahaan['posisi'] . ". <br> Mohon kepada perusahaan melakukan verifikasi akun pada website CDC Itenas. Pelamar yang telah di verifikasi akan lanjut ke tahap selajutnya sesuai perusahaan<br> Untuk melihat pemberitahuannya, silahkan login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+                $message = "<b><h3>Kepada. " . $perusahaan['nama_perusahaan'] . "</h3></b> <br> Pemberitahuan ada akun CDC yang melamar pada posisi " . $perusahaan['posisi'] . ". <br> Mohon kepada perusahaan melakukan verifikasi akun pada website CDC Itenas. <br> Pelamar yang telah di verifikasi akan lanjut ke tahap selajutnya sesuai perusahaan<br> Untuk melihat pemberitahuannya, silahkan login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
                 $config = array(
                     'protocol' => 'smtp',
                     'smtp_host' => 'ssl://smtp.googlemail.com',
