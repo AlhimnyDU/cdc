@@ -314,49 +314,54 @@ class Halaman extends CI_Controller
 
 	public function daftarAcara($id)
 	{
-		$form = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
-		$max = $this->db->select_max("responden")->where('id_acara', $id)->get('tbl_jawaban')->row();
-		if ($max->responden == NULL) {
-			$max->responden = 1;
-		} else {
-			$max->responden = $max->responden + 1;
-		}
-		foreach ($form as $row) {
-			if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "gambar")) {
-				$config['upload_path'] = './assets/upload/form/';
-				$config['encrypt_name'] = TRUE;
-				$config['allowed_types'] = 'jpg|png|pdf';
-				$this->upload->initialize($config);
-				$upload = $this->upload->do_upload($row->id_soal);
-				if (empty($upload)) {
-					echo "error";
-				}
-				$data_upload = $this->upload->data();
-				$data = array(
-					'jawaban' => $data_upload['file_name'],
-					'responden' => $max->responden,
-					'id_soal' => $row->id_soal,
-					'id_acara'   => $id,
-					'created'   => date('Y-m-d H:i:s'),
-					'updated'   => date('Y-m-d H:i:s'),
-				);
+		$validasi = $this->db->where('id_acara', $id)->where('jawaban', $this->input->post(7))->get('tbl_jawaban')->row();
+		if (!$validasi) {
+			$form = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->get()->result();
+			$max = $this->db->select_max("responden")->where('id_acara', $id)->get('tbl_jawaban')->row();
+			if ($max->responden == NULL) {
+				$max->responden = 1;
 			} else {
-				$data = array(
-					'jawaban' => $this->input->post($row->id_soal),
-					'responden' => $max->responden,
-					'id_soal' => $row->id_soal,
-					'id_acara'   => $id,
-					'created'   => date('Y-m-d H:i:s'),
-					'updated'   => date('Y-m-d H:i:s'),
-				);
+				$max->responden = $max->responden + 1;
 			}
+			foreach ($form as $row) {
+				if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "gambar")) {
+					$config['upload_path'] = './assets/upload/form/';
+					$config['encrypt_name'] = TRUE;
+					$config['allowed_types'] = 'jpg|png|pdf';
+					$this->upload->initialize($config);
+					$upload = $this->upload->do_upload($row->id_soal);
+					if (empty($upload)) {
+						echo "error";
+					}
+					$data_upload = $this->upload->data();
+					$data = array(
+						'jawaban' => $data_upload['file_name'],
+						'responden' => $max->responden,
+						'id_soal' => $row->id_soal,
+						'id_acara'   => $id,
+						'created'   => date('Y-m-d H:i:s'),
+						'updated'   => date('Y-m-d H:i:s'),
+					);
+				} else {
+					$data = array(
+						'jawaban' => $this->input->post($row->id_soal),
+						'responden' => $max->responden,
+						'id_soal' => $row->id_soal,
+						'id_acara'   => $id,
+						'created'   => date('Y-m-d H:i:s'),
+						'updated'   => date('Y-m-d H:i:s'),
+					);
+				}
 
-			$query = $this->db->insert('tbl_jawaban', $data);
-		}
-		if ($query) {
-			$this->session->set_flashdata('insert_data', TRUE);
+				$query = $this->db->insert('tbl_jawaban', $data);
+			}
+			if ($query) {
+				$this->session->set_flashdata('insert_data', TRUE);
+			} else {
+				$this->session->set_flashdata('failed', "Tambah Gagal");
+			}
 		} else {
-			$this->session->set_flashdata('failed', "Tambah Gagal");
+			$this->session->set_flashdata('telah_mengisi', TRUE);
 		}
 		redirect($_SERVER['HTTP_REFERER']);
 	}
