@@ -31,6 +31,30 @@
         background: #ddd;
         color: black;
     }
+
+    @media (max-width: 767px) {
+        #myBtn {
+            width: 50px;
+            font-size: 10px;
+            padding: 10px;
+            border: none;
+            background: #e48118;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 450px) {
+        #myBtn {
+            width: 50px;
+            font-size: 8px;
+            padding: 2px;
+            border: none;
+            background: #e48118;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
 </style>
 <div id="lobby">
     <video autoplay muted loop>
