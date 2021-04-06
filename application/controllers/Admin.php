@@ -2361,7 +2361,7 @@ class Admin extends CI_Controller
         $config['encrypt_name'] = TRUE;
         $config['allowed_types'] = 'pdf|mp4';
         $this->upload->initialize($config);
-        $upload = $this->upload->do_upload('berkas');
+        $upload = $this->upload->do_upload('file_cp');
         if (empty($upload)) {
             $this->session->set_flashdata('failed', "Tambah Gagal");
             redirect('admin/cv');
