@@ -34,7 +34,7 @@
 </style>
 <div id="lobby">
     <video autoplay muted loop>
-        <source src="<?php echo base_url() ?>assets/home/jobfair/halaman_utama.mp4" type="video/mp4">
+        <source src="<?php echo base_url() ?>assets/home/jobfair/GSG_UTAMA.mp4" type="video/mp4">
     </video>
     <div class="content">
         <a href="<?php echo base_url('halaman/jobfair_home') ?>" id="myBtn"><i class="fa fa-home"></i> Masuk Halaman Job Fair</a>
