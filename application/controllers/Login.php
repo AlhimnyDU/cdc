@@ -63,19 +63,19 @@ class Login extends CI_Controller
 					$this->session->set_userdata('user', "mahasiswa");
 					$this->session->set_userdata('id_akun', $select->id_akun);
 					$this->session->set_flashdata('suksesLogin', TRUE);
-					redirect($_SERVER['HTTP_REFERER']);
+					redirect('user');
 				} else if ($select->role == "alumni") {
 					$this->session->set_userdata('nama', $select->nama);
 					$this->session->set_userdata('user', "alumni");
 					$this->session->set_userdata('id_akun', $select->id_akun);
 					$this->session->set_flashdata('suksesLogin', TRUE);
-					redirect($_SERVER['HTTP_REFERER']);
+					redirect('user');
 				} else if ($select->role == "umum") {
 					$this->session->set_userdata('nama', $select->nama);
 					$this->session->set_userdata('user', "umum");
 					$this->session->set_userdata('id_akun', $select->id_akun);
 					$this->session->set_flashdata('suksesLogin', TRUE);
-					redirect($_SERVER['HTTP_REFERER']);
+					redirect('user');
 				} else {
 					$this->session->set_flashdata('login', "Akun tidak ditemukan");
 					redirect('login');
@@ -88,7 +88,7 @@ class Login extends CI_Controller
 				$this->session->set_userdata('perusahaan', "perusahaan");
 				$this->session->set_userdata('id_akun', $selectPerusahaan->id_perusahaan);
 				$this->session->set_flashdata('suksesLogin', TRUE);
-				redirect($_SERVER['HTTP_REFERER']);
+				redirect('perusahaan');
 			} else {
 				$this->session->set_flashdata('nonaktif', "Akun belum aktif");
 				redirect('login');
@@ -99,7 +99,7 @@ class Login extends CI_Controller
 			$this->session->set_userdata('admin', "admin");
 			$this->session->set_userdata('id_admin', $selectadmin->id_admin);
 			$this->session->set_flashdata('suksesLogin', TRUE);
-			redirect($_SERVER['HTTP_REFERER']);
+			redirect('admin');
 		} else {
 			$this->session->set_flashdata('gagalLogin', TRUE);
 			redirect('login');
