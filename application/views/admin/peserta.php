@@ -163,7 +163,7 @@ foreach ($perusahaan as $row) {
           </button>
         </div>
         <div class="modal-body">
-          <form method="post" action="<?php echo site_url('admin/update_cp/') . $row->id_peserta ?>" enctype="multipart/form-data">
+          <form method="post" action="<?php echo site_url('admin/update_cp/') . $row->id_perusahaan ?>" enctype="multipart/form-data">
             <div class="row">
               <div class="col col-lg-12">
                 <div class="form-group">
