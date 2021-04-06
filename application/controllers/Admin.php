@@ -2337,4 +2337,34 @@ class Admin extends CI_Controller
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function update_cp($id)
+    {
+        $this->upload_cp();
+        $data = array(
+            'file_cp' => $this->upload->data('file_name'),
+            'jenis_cp' => $this->input->post('jenis_cp'),
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->where('id_perusahaan', $id)->update('tbl_perusahaan', $data);
+        if ($query) {
+            $this->session->set_flashdata('update_data', TRUE);
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function upload_cp()
+    {
+        $config['upload_path'] = './assets/upload/file_cp/';
+        $config['encrypt_name'] = TRUE;
+        $config['allowed_types'] = 'pdf|mp4';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('berkas');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('admin/cv');
+        }
+    }
 }

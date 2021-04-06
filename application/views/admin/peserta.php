@@ -58,6 +58,7 @@
                             <td><?php echo $row->alamat ?></td>
                             <td>
                               <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#editModal<?= $row->id ?>"><i class="fa fa-plus"></i></a> |
+                              <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#cpModal<?= $row->id ?>"><i class="fa fa-plus"></i> CP</a> |
                               <a class="btn btn-danger btn-sm" href="<?php echo site_url('Admin/tidakMengikuti/' . $row->id) ?>"><i class="fa fa-trash"></i></a>
                             </td>
                           </tr>
@@ -134,7 +135,52 @@ foreach ($perusahaan as $row) {
               <div class="col col-lg-12">
                 <div class="form-group">
                   <label>Video</label>
-                  <input type="text" class="form-control" name="link" placeholder="ex :  Ijazah" required value="<?php echo $row->link ?>">
+                  <input type="text" class="form-control" name="link" placeholder="ex :  stand.mp4" required value="<?php echo $row->link ?>">
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Submit</button>
+                  <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<?php } ?>
+<?php
+foreach ($perusahaan as $row) {
+?>
+  <div id="cpModal<?= $row->id ?>" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Masukkan Company Profile</h3>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="<?php echo site_url('admin/update_cp/') . $row->id_peserta ?>" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col col-lg-12">
+                <div class="form-group">
+                  <label>Company Profile</label>
+                  <input type="file" class="dropify" height="50" name="file_cp" data-default-file="<?php echo base_url('assets/upload/file_cp/' . $row->file_cp) ?>" data-allowed-file-extensions="pdf mp4">
+                </div>
+                <div class="form-group">
+                  <label>Jenis</label>
+                  <select name="jenis_cp" class="form-control">
+                    <option value="" selected disabled hidden>Pilih...</option>
+                    <option value="video" <?php if ($row->jenis->cp == "video") {
+                                            echo "selected";
+                                          } ?>>Video</option>
+                    <option value="gambar" <?php if ($row->jenis->cp == "gambar") {
+                                              echo "selected";
+                                            } ?>>Gambar</option>
+                  </select>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary pull-right" value="Tambah" name="submit">Submit</button>
