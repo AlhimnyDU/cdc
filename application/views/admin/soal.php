@@ -88,6 +88,8 @@
                                     <option value="textarea">Text Area (Memo)</option>
                                     <option value="pilihanganda">Pilihan Ganda (Ya/Tidak)</option>
                                     <option value="penilaian">Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
+                                    <option value="kepentingan">Kepentingan (Sangat Tidak Pending/Tidak Penting/Cukup Penting/Perint/Sangat Penting)</option>
+                                    <option value="kepuasan">Kepuasan (Sangat Tidak Puas/Tidak Puas/Cukup Puas/Puas/Sangat Puas)</option>
                                     <option value="prodi">Program Studi Itenas</option>
                                     <option value="fakultas">Fakultas Itenas</option>
                                     <option value="info">Informasi Seminar / Webinar / Acara</option>
@@ -97,6 +99,8 @@
                                     <option value="PKMI">PKMI</option>
                                     <option value="date">Tanggal</option>
                                     <option value="label">Label</option>
+                                    <option value="1_respond">*Kuesioner ini hanya dapat mengisikan satu kali jawaban</option>
+                                    <option value="label_kecil">Label Kecil</option>
                                 </select>
                             </div>
                             <div class="modal-footer">
@@ -158,6 +162,12 @@ foreach ($soal as $row) {
                                         <option value="penilaian" <?php if ($row->jenis_jawaban == "penilaian") {
                                                                         echo "selected";
                                                                     } ?>>Penilaian (Sangat Kurang/Kurang/Cukup/Baik/Sangat Baik)</option>
+                                        <option value="kepentingan" <?php if ($row->jenis_jawaban == "kepentingan") {
+                                                                        echo "selected";
+                                                                    } ?>>Kepentingan (Sangat Tidak Pending/Tidak Penting/Cukup Penting/Perint/Sangat Penting)</option>
+                                        <option value="kepuasan" <?php if ($row->jenis_jawaban == "kepuasan") {
+                                                                        echo "selected";
+                                                                    } ?>>Kepuasan (Sangat Tidak Puas/Tidak Puas/Cukup Puas/Puas/Sangat Puas)</option>
                                         <option value="prodi" <?php if ($row->jenis_jawaban == "prodi") {
                                                                     echo "selected";
                                                                 } ?>>Program Studi Itenas</option>
@@ -189,7 +199,9 @@ foreach ($soal as $row) {
                                         <option value="label" <?php if ($row->jenis_jawaban == "label") {
                                                                     echo "selected";
                                                                 } ?>>Label</option>
-
+                                        <option value="label_kecil" <?php if ($row->jenis_jawaban == "label_kecil") {
+                                                                        echo "selected";
+                                                                    } ?>>Label Kecil</option>
                                     </select>
                                 </div>
                                 <div class="modal-footer">

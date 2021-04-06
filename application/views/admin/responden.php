@@ -41,7 +41,7 @@
                                             <tr>
                                                 <td><?php echo $no ?></td>
                                                 <?php
-                                                $query = $this->db->where('responden', $no)->where('id_acara', $acara->id_acara)->where('tbl_soal.jenis_jawaban !=', 'label')->join('tbl_soal', 'tbl_soal.id_soal=tbl_jawaban.id_soal', 'left')->get('tbl_jawaban')->result();
+                                                $query = $this->db->where('responden', $no)->where('id_acara', $acara->id_acara)->where('tbl_soal.jenis_jawaban !=', 'label')->or_where('tbl_soal.jenis_jawaban !=', 'label_kecil')->or_where('tbl_soal.jenis_jawaban !=', '1_respond')->join('tbl_soal', 'tbl_soal.id_soal=tbl_jawaban.id_soal', 'left')->get('tbl_jawaban')->result();
                                                 foreach ($query as $row) { ?>
                                                     <td>
                                                         <?php if ($row->jawaban != NULL) { ?>

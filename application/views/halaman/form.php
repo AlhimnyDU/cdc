@@ -14,6 +14,8 @@
                                 <?php foreach ($form as $row) { ?>
                                     <?php if ($row->jenis_jawaban == "label") { ?>
                                         <h4 class="col-form-label label-align"><?php echo $row->soal  ?></h4>
+                                    <?php } else if ($row->jenis_jawaban == "label_kecil") { ?>
+                                        <label style="font-size: 12px; font-weight: lighter;"><?php echo $row->soal  ?></label>
                                     <?php } else { ?>
                                         <div class="form-group">
                                             <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
@@ -55,24 +57,70 @@
                                                 <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
                                                     <div class="alert alert-light" role="alert">
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio1" value="Sangat Kurang" required="required">
-                                                            <label class="form-check-label" for="inlineRadio1">Sangat Kurang</label>
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_1" value="Sangat Kurang" required="required">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_1">Sangat Kurang</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="Kurang">
-                                                            <label class="form-check-label" for="inlineRadio2">Kurang</label>
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_2" value="Kurang">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_2">Kurang</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio3" value="Cukup">
-                                                            <label class="form-check-label" for="inlineRadio3">Cukup</label>
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_3" value="Cukup">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Cukup</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio4" value="Baik">
-                                                            <label class="form-check-label" for="inlineRadio4">Baik</label>
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_4" value="Baik">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Baik</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio5" value="Sangat Baik">
-                                                            <label class="form-check-label" for="inlineRadio5">Sangat Baik</label>
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_5" value="Sangat Baik">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_5">Sangat Baik</label>
+                                                        </div>
+                                                    </div>
+                                                <?php } else if ($row->jenis_jawaban == "kepentingan") { ?>
+                                                    <div class="alert alert-light" role="alert">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_1" value="Sangat Tidak Penting" required="required">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_1">Sangat Tidak Penting</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_2" value="Tidak Penting">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_2">Tidak Penting</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_3" value="Cukup Penting">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Cukup Penting</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_4" value="Penting">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Penting</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_5" value="Sangat Penting">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_5">Sangat Penting</label>
+                                                        </div>
+                                                    </div>
+                                                <?php } else if ($row->jenis_jawaban == "kepuasan") { ?>
+                                                    <div class="alert alert-light" role="alert">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_1" value="Sangat Tidak Puas" required="required">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_1">Sangat Tidak Puas</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_2" value="Tidak Puas">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_2">Tidak Puas</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_3" value="Cukup Puas">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Cukup Puas</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_4" value="Puas">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Puas</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_5" value="Sangat Puas">
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_5">Sangat Puas</label>
                                                         </div>
                                                     </div>
                                                 <?php } else if ($row->jenis_jawaban == "prodi") { ?>

@@ -259,6 +259,16 @@
     });
   </script>
 <?php } ?>
+<?php if ($this->session->flashdata('telah_mengisi', TRUE)) { ?>
+  <script>
+    swal({
+      title: "Data ditolak!",
+      text: "Anda telah mengisikan form ini, data anda telah tercatat sebelumnya!",
+      icon: "warning",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
 <?php if ($this->session->flashdata('akun_ada')) { ?>
   <script>
     swal({
