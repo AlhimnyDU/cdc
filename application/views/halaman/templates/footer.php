@@ -229,6 +229,26 @@
     });
   </script>
 <?php } ?>
+<?php if ($this->session->flashdata('suksesLogin')) { ?>
+  <script>
+    swal({
+      title: "Login Success!",
+      text: "Anda berhasil login",
+      icon: "success",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
+<?php if ($this->session->flashdata('gagalLogin')) { ?>
+  <script>
+    swal({
+      title: "Login Failed!",
+      text: "Email atau password salah, silahkan coba lagi",
+      icon: "error",
+      timer: 2000
+    });
+  </script>
+<?php } ?>
 <?php if ($this->session->flashdata('telah_daftar', TRUE)) { ?>
   <script>
     swal({
