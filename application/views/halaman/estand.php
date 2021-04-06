@@ -152,7 +152,7 @@
                             </div>
                             <hr>
                             <div>
-                                <a class="btn btn-primary" id="demo01" href="#animatedModal">Check Out Job</a>
+                                <a class="btn btn-primary" id="demo01" href="#animatedModal">Check Out Job</a> | <?php if ($row->jenis_cp == "video") { ?> <a class="btn btn-info" href="<?php echo base_url('assets/upload/file_cp/' . $row->file_cp) ?>" data-vbtype="iframe" title="<?php echo $row->nama_perusahaan ?>">Company Profile</a> <?php } else if ($row->jenis_cp == "dokumen") { ?> <a class="btn btn-info" href="<?php echo base_url('assets/upload/file_cp/' . $row->file_cp) ?>">Company Profile</a> <?php } ?>
                             </div>
                         </center>
 
