@@ -18,7 +18,9 @@
                                         <label style="font-size: 12px; font-weight: lighter;"><?php echo $row->soal  ?></label>
                                     <?php } else { ?>
                                         <div class="form-group">
-                                            <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
+                                            <?php if ($row->jenis_jawaban != "1_respond") { ?>
+                                                <label class="col-form-label label-align"><?php echo $row->soal  ?></label>
+                                            <?php } ?>
                                             <div class="mb-3">
                                                 <?php if ($row->jenis_jawaban == "email") { ?>
                                                     <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="email">
