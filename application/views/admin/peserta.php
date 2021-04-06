@@ -180,6 +180,9 @@ foreach ($perusahaan as $row) {
                     <option value="gambar" <?php if ($row->jenis->cp == "gambar") {
                                               echo "selected";
                                             } ?>>Gambar</option>
+                    <option value="dokumen" <?php if ($row->jenis->cp == "dokumen") {
+                                              echo "selected";
+                                            } ?>>Dokumen</option>
                   </select>
                 </div>
                 <div class="modal-footer">
