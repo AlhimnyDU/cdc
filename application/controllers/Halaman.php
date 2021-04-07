@@ -192,7 +192,7 @@ class Halaman extends CI_Controller
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'vacancy')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
+		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->where('jenis', 'vacancy')->or_where('jenis', 'Job Fair 2021')->order_by('updated', 'DESC')->get('tbl_loker', $config["per_page"], $data['page'])->result();
 		$data['pagination'] = $this->pagination->create_links();
 
 		$this->load->view('halaman/templates/header');
