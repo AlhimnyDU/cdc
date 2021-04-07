@@ -391,7 +391,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['form'] = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->where('tbl_soal.jenis_jawaban !=', 'label')->get()->result();
+                $data['form'] = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->where('tbl_soal.jenis_jawaban !=', 'label')->where('tbl_soal.jenis_jawaban !=', 'label_kecil')->where('tbl_soal.jenis_jawaban !=', '1_respond')->get()->result();
                 $data['jawaban'] = $this->db->where('id_acara', $id)->get('tbl_jawaban')->result();
                 $data['max'] = $this->db->select_max("responden")->where('id_acara', $id)->get('tbl_jawaban')->row();
                 $data['acara'] = $this->db->where('id_acara', $id)->get('tbl_acara')->row();
