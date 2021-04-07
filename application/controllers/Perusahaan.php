@@ -98,30 +98,53 @@ class Perusahaan extends CI_Controller
 
     public function addJobfair()
     {
-        $config['upload_path'] = './assets/upload/poster/';
-        $config['allowed_types'] = 'jpg';
-        $this->upload->initialize($config);
-        $this->upload->do_upload('poster');
-        $data = array(
-            'posisi'     => $this->input->post('posisi'),
-            'deadline' => $this->input->post('deadline') . " 23:59:59",
-            'lokasi'     => $this->input->post('lokasi'),
-            'syarat'     => $this->input->post('syarat'),
-            'deskripsi'     => $this->input->post('deskripsi'),
-            'informasi'     => $this->input->post('informasi'),
-            'status'     => 'Menunggu Konfirmasi',
-            'prodi'     => $this->input->post('prodi'),
-            'poster'   => $this->upload->data('file_name'),
-            'jenis'   => "Job Fair 2021",
-            'id_perusahaan' => $this->session->userdata('id_akun'),
-            'created' => date('Y-m-d H:i:s'),
-            'updated' => date('Y-m-d H:i:s')
-        );
-        $query = $this->db->insert('tbl_loker', $data);
-        if ($query) {
-            $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+        if ($_FILES["poster"]["name"]) {
+            $config['upload_path'] = './assets/upload/poster/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $this->upload->initialize($config);
+            $this->upload->do_upload('poster');
+            $data = array(
+                'posisi'     => $this->input->post('posisi'),
+                'deadline' => $this->input->post('deadline') . " 23:59:59",
+                'lokasi'     => $this->input->post('lokasi'),
+                'syarat'     => $this->input->post('syarat'),
+                'deskripsi'     => $this->input->post('deskripsi'),
+                'informasi'     => $this->input->post('informasi'),
+                'status'     => 'Menunggu Konfirmasi',
+                'prodi'     => $this->input->post('prodi'),
+                'poster'   => $this->upload->data('file_name'),
+                'jenis'   => "Job Fair 2021",
+                'id_perusahaan' => $this->session->userdata('id_akun'),
+                'created' => date('Y-m-d H:i:s'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+            $query = $this->db->insert('tbl_loker', $data);
+            if ($query) {
+                $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+            } else {
+                $this->session->set_flashdata('failed', "Tambah Gagal");
+            }
         } else {
-            $this->session->set_flashdata('failed', "Tambah Gagal");
+            $data = array(
+                'posisi'     => $this->input->post('posisi'),
+                'deadline' => $this->input->post('deadline') . " 23:59:59",
+                'lokasi'     => $this->input->post('lokasi'),
+                'syarat'     => $this->input->post('syarat'),
+                'deskripsi'     => $this->input->post('deskripsi'),
+                'informasi'     => $this->input->post('informasi'),
+                'status'     => 'Menunggu Konfirmasi',
+                'prodi'     => $this->input->post('prodi'),
+                'jenis'   => "Job Fair 2021",
+                'id_perusahaan' => $this->session->userdata('id_akun'),
+                'created' => date('Y-m-d H:i:s'),
+                'updated' => date('Y-m-d H:i:s')
+            );
+            $query = $this->db->insert('tbl_loker', $data);
+            if ($query) {
+                $this->session->set_flashdata('insert_loker', "Tambah Berhasil");
+            } else {
+                $this->session->set_flashdata('failed', "Tambah Gagal");
+            }
         }
         redirect('perusahaan/jobfair');
     }
