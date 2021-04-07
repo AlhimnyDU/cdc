@@ -185,7 +185,7 @@
                             <p style="font-size: 10px; text-align: justify;"><?php echo substr($row->deskripsi, 0, 50) ?></p>
                             <hr>
                             <center>
-                                <a href="<?php echo site_url('halaman/job/' . $row->id_loker) ?>" class="btn btn-success btn-sm">Ajukan Lamaran</a>
+                                <a href="<?php echo site_url('halaman/job/' . $row->id_loker) ?>" class="btn btn-success btn-sm">Lihat Lowongan</a>
                             </center>
                         </div>
                     </div>
