@@ -180,7 +180,7 @@
                         </center>
                         <div class="card-body">
                             <center>
-                                <span class="badge badge-warning" style="margin-bottom: 10px;"><?php echo $row->posisi ?></span>
+                                <label style="font-size: 11px; margin-bottom: 10px;font-weight: bold;"><?php echo $row->posisi ?></label>
                             </center>
                             <p style="font-size: 10px; text-align: justify;"><?php echo substr($row->deskripsi, 0, 50) ?></p>
                             <hr>
