@@ -458,6 +458,36 @@ class Perusahaan extends CI_Controller
         );
         $query = $this->db->where('id_lamaran', $id_lamaran)->update('tbl_lamaran', $data);
         if ($query) {
+            $data = $this->db->select('tbl_akun.email, tbl_akun.nama')->join('tbl_akun', 'tbl_akun.id_akun=tbl_lamaran.id_akun', 'LEFT')->where('tbl_lamaran.id_lamaran', $id_lamaran)->get('tbl_lamaran')->row_array();
+            $perusahaan = $this->db->select('tbl_perusahaan.*, tbl_loker.posisi')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.id_loker', $id_loker)->get('tbl_loker')->row_array();
+            $from_email = "cdc@itenas.ac.id";
+            $message = "<b><h3>Yth. " . $data['nama'] . "</h3></b> <br> Selamat lamaran anda telah diterima di perusahaan " . $this->session->userdata('nama') . ". <br> Lowongan kerja yang anda lamar yaitu " . $perusahaan['posisi'] . ". untuk informasi perusahaan bisa dilihat kontak dibawah:<br> Email Perusahaan :" . $perusahaan['email'] . "<br> CP perusahaan : " . $perusahaan['telp_pj'] . "(" . $perusahaan['pj'] . ") <br> Silahkan verifikasi akun anda dengan memilih menerima lamaran, login ke https://cdc.itenas.ac.id <br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+            $config = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_user' => 'cdc@itenas.ac.id',
+                'smtp_pass' => 'itenas271',
+                'smtp_port' => 465,
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8',
+                'newline'   => "\r\n"
+            );
+            $this->load->library('email');
+            $this->email->initialize($config);
+            $this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+            $this->email->to($data['email']);
+            $this->email->reply_to($from_email);
+            $this->email->subject('[No-Reply] Lamaran Anda Telah Diterima');
+            $this->email->set_header('Itenas', 'CDC');
+            $this->email->set_mailtype("html");
+            $this->email->message($message);
+            if ($this->email->send()) {
+                echo "Email Terkirim";
+            } else {
+                echo $this->email->print_debugger();
+                die;
+                $this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+            }
             $this->session->set_flashdata('update_data', TRUE);
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
