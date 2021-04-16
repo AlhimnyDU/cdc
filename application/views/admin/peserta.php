@@ -84,6 +84,7 @@
                           <th>Email</th>
                           <th>No Handphone</th>
                           <th>Jenis</th>
+                          <th>Asal Universitas</th>
                           <th width="5%">Aksi</th>
                         </tr>
                       </thead>
@@ -98,6 +99,7 @@
                             <td><?php echo $row->email ?></td>
                             <td><?php echo $row->telp ?></td>
                             <td><?php echo $row->role ?></td>
+                            <td><?php echo $row->universitas ?></td>
                             <td>
                               <a class="btn btn-danger btn-sm" href="<?php echo site_url('Admin/tidakMengikuti/' . $row->id) ?>"><i class="fa fa-trash"></i></a>
                             </td>
