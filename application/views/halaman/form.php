@@ -293,8 +293,7 @@
                                 <?php } ?>
                                 <div class="form-group">
                                     <center>
-                                        <input type="submit" class="btn btn-primary" value="Submit">
-                                        <!-- <button type="reset" class="btn btn-success">Reset</button> -->
+                                        <button class="btn btn-primary btn-sm submit" type="submit">Submit</button>
                                     </center>
                                 </div>
                             </form>

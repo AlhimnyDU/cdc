@@ -140,16 +140,10 @@
     $('.ipk').inputmask("9.99");
     $('.telp').inputmask("9999999999999");
 
-    $("#form").submit(function(e) {
-
-      //stop submitting the form to see the disabled button effect
-      e.preventDefault();
-
-      //disable the submit button
-      $("#btnSubmit").attr("disabled", true);
-      return true;
-
+    $(".submit").click(function() {
+      $(".submit").prop('disabled', true);
     });
+
     $(".buttonSubmit").click(function() {
       $(".buttonSubmit").prop('disabled', true);
       var password = $("#password").val();
