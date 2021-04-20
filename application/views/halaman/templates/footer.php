@@ -140,16 +140,16 @@
     $('.ipk').inputmask("9.99");
     $('.telp').inputmask("9999999999999");
 
-    // $("#form").submit(function(e) {
+    $("#form").submit(function(e) {
 
-    //   //stop submitting the form to see the disabled button effect
-    //   e.preventDefault();
+      //stop submitting the form to see the disabled button effect
+      e.preventDefault();
 
-    //   //disable the submit button
-    //   $("#btnSubmit").attr("disabled", true);
-    //   return true;
+      //disable the submit button
+      $("#btnSubmit").attr("disabled", true);
+      return true;
 
-    // });
+    });
     $(".buttonSubmit").click(function() {
       $(".buttonSubmit").prop('disabled', true);
       var password = $("#password").val();
