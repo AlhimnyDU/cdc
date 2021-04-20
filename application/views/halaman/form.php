@@ -57,7 +57,7 @@
                                                 <?php } else if ($row->jenis_jawaban == "tanggal") { ?>
                                                     <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="date">
                                                 <?php } else if ($row->jenis_jawaban == "ipk") { ?>
-                                                    <input class="form-control ipk" name="<?php echo $row->id_soal ?>" required="required" type="text">
+                                                    <input class="form-control ipk" name="<?php echo $row->id_soal ?>" required="required" type="text" placeholder="Tuliskan dengan 3 digit, contoh 3,50 / 3,00 / 3,25">
                                                 <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
                                                     <div class="alert alert-light" role="alert">
                                                         <div class="form-check form-check-inline">

@@ -95,7 +95,7 @@
                                     <option value="fakultas">Fakultas Itenas</option>
                                     <option value="info">Informasi Seminar / Webinar / Acara</option>
                                     <option value="pdf">Upload File PDF</option>
-                                    <option value="pdfnon">Upload File Gambar(*non required)</option>
+                                    <option value="pdfnon">Upload File PDF(*non required)</option>
                                     <option value="gambar">Upload File Gambar</option>
                                     <option value="gambarnon">Upload File Gambar(*non required)</option>
                                     <option value="PKMI">PKMI</option>
