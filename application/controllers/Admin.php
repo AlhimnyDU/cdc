@@ -445,7 +445,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['acara'] = $this->db->get('tbl_acara')->order_by('created', 'DESC')->result();
+                $data['acara'] = $this->db->order_by('created', 'DESC')->get('tbl_acara')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/acara', $data);
                 $this->load->view('admin/templates/js');
