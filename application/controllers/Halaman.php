@@ -326,7 +326,7 @@ class Halaman extends CI_Controller
 					$max->responden = $max->responden + 1;
 				}
 				foreach ($form as $row) {
-					if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "gambar")) {
+					if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "pdfnon") || ($row->jenis_jawaban == "gambarnon")) {
 						$config['upload_path'] = './assets/upload/form/';
 						$config['encrypt_name'] = TRUE;
 						$config['allowed_types'] = 'jpg|png|pdf';
