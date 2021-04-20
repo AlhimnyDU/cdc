@@ -82,6 +82,7 @@
                                     <option value="email">Email</option>
                                     <option value="textfield">Text Field</option>
                                     <option value="textfield_non">Text Field (Non-required)</option>
+                                    <option value="ipk">IPK</option>
                                     <option value="textfield_number">Text Field (Angka Saja)</option>
                                     <option value="textfield_number_non">Text Field (Angka Saja) Non-Required</option>
                                     <option value="jeniskelamin">Jenis Kelamin</option>
@@ -94,6 +95,7 @@
                                     <option value="fakultas">Fakultas Itenas</option>
                                     <option value="info">Informasi Seminar / Webinar / Acara</option>
                                     <option value="pdf">Upload File PDF</option>
+                                    <option value="pdfnon">Upload File Gambar(*non required)</option>
                                     <option value="gambar">Upload File Gambar</option>
                                     <option value="gambarnon">Upload File Gambar(*non required)</option>
                                     <option value="PKMI">PKMI</option>
@@ -147,6 +149,9 @@ foreach ($soal as $row) {
                                         <option value="textfield_non" <?php if ($row->jenis_jawaban == "textfield_non") {
                                                                             echo "selected";
                                                                         } ?>>Text Field (Non-required)</option>
+                                        <option value="ipk" <?php if ($row->jenis_jawaban == "ipk") {
+                                                                echo "selected";
+                                                            } ?>>IPK</option>
                                         <option value="textfield_number" <?php if ($row->jenis_jawaban == "textfield_number") {
                                                                                 echo "selected";
                                                                             } ?>>Text Field (Angka Saja)</option>
@@ -177,10 +182,12 @@ foreach ($soal as $row) {
                                         <option value="info" <?php if ($row->jenis_jawaban == "info") {
                                                                     echo "selected";
                                                                 } ?>>Informasi Seminar / Webinar / Acara</option>
-                                        <option value="pdf">Upload File PDF</option>
                                         <option value="pdf" <?php if ($row->jenis_jawaban == "pdf") {
                                                                 echo "selected";
                                                             } ?>>Upload File PDF</option>
+                                        <option value="pdfnon" <?php if ($row->jenis_jawaban == "pdfnon") {
+                                                                    echo "selected";
+                                                                } ?>>Upload File PDF (*Non Required)</option>
                                         <option value="gambar" <?php if ($row->jenis_jawaban == "gambar") {
                                                                     echo "selected";
                                                                 } ?>>Upload File Gambar</option>

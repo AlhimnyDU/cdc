@@ -90,6 +90,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <script>
   $(document).ready(function() {
+    $('.ipk').inputmask("9.99");
     $('#umum').hide();
     $('#role').change(function() {
       if ($('#role').val() == 'umum') {

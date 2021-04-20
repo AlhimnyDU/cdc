@@ -164,6 +164,23 @@ class Admin extends CI_Controller
         }
     }
 
+    public function slideshow()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['slideshow'] = $this->db->get('tbl_slideshow')->result();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/slideshow', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
     public function addESertifikat()
     {
         $data = array(

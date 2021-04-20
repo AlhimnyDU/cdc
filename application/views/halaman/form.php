@@ -56,6 +56,8 @@
                                                     </div>
                                                 <?php } else if ($row->jenis_jawaban == "tanggal") { ?>
                                                     <input class="form-control" name="<?php echo $row->id_soal ?>" required="required" type="date">
+                                                <?php } else if ($row->jenis_jawaban == "ipk") { ?>
+                                                    <input class="form-control ipk" name="<?php echo $row->id_soal ?>" required="required" type="text">
                                                 <?php } else if ($row->jenis_jawaban == "penilaian") { ?>
                                                     <div class="alert alert-light" role="alert">
                                                         <div class="form-check form-check-inline">
@@ -251,6 +253,8 @@
                                                     </select>
                                                 <?php } else if ($row->jenis_jawaban == "pdf") { ?>
                                                     <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="pdf" required>
+                                                <?php } else if ($row->jenis_jawaban == "pdfnon") { ?>
+                                                    <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="pdf">
                                                 <?php } else if ($row->jenis_jawaban == "gambar") { ?>
                                                     <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="png jpg jpeg" required>
                                                 <?php } else if ($row->jenis_jawaban == "gambarnon") { ?>
