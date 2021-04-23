@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formulir" action="<?php echo site_url('login/addMahasiswa/') ?>" method="post" enctype="multipart/form-data">
+                        <form id="formulir" action="<?php echo site_url('login/addPerusahaan/') ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="alert alert-light" role="alert">
                                     <h4>1. Data Akun</h4>

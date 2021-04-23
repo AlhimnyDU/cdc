@@ -367,6 +367,34 @@ class Admin extends CI_Controller
         );
         $query = $this->db->insert('tbl_iklan', $data);
         if ($query) {
+            $from_email = "cdc@itenas.ac.id";
+            $message = "<h3>Notifikasi Baru</h3><p>Judul : " . $this->input->post('judul') . "<br> Status :" . $this->input->post('status') . "<br> Bisa dicek di <a>cdc.itenas.ac.id</a> </p>";
+            $config = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_user' => 'cdc@itenas.ac.id',
+                'smtp_pass' => 'itenas271',
+                'smtp_port' => 465,
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8',
+                'newline'   => "\r\n"
+            );
+            $this->load->library('email');
+            $this->email->initialize($config);
+            $this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+            $this->email->to("puspasa99@gmail.com");
+            $this->email->reply_to($from_email);
+            $this->email->subject('[No-Reply] Lowongan Kerja Baru CDC Itenas');
+            $this->email->set_header('Itenas', 'CDC');
+            $this->email->set_mailtype("html");
+            $this->email->message($message);
+            if ($this->email->send()) {
+                echo "Email Terkirim";
+            } else {
+                echo $this->email->print_debugger();
+                die;
+                $this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+            }
             $this->session->set_flashdata('insert_event', "Tambah Berhasil");
         } else {
             $this->session->set_flashdata('failed', "Tambah Gagal");
@@ -1335,6 +1363,35 @@ class Admin extends CI_Controller
             'updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('id_loker', $id)->update('tbl_loker', $data);
+        $loker = $this->db->select('tbl_loker.*, tbl_perusahaan.nama_perusahaan')->from('tbl_loker')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'left')->where('jenis', 'vacancy')->where('id_loker', $id)->get()->row();
+        $from_email = "cdc@itenas.ac.id";
+        $message = "<h3>Publikasi Recruitment Baru</h3><p>Perusahaan: " . $loker->nama_perusahaan . "<br> Posisi :" . $loker->posisi . "<br> Bisa dicek di <a>cdc.itenas.ac.id</a> </p>";
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'cdc@itenas.ac.id',
+            'smtp_pass' => 'itenas271',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        );
+        $this->load->library('email');
+        $this->email->initialize($config);
+        $this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+        $this->email->to("puspasa99@gmail.com");
+        $this->email->reply_to($from_email);
+        $this->email->subject('[No-Reply] Lowongan Kerja Baru CDC Itenas');
+        $this->email->set_header('Itenas', 'CDC');
+        $this->email->set_mailtype("html");
+        $this->email->message($message);
+        if ($this->email->send()) {
+            echo "Email Terkirim";
+        } else {
+            echo $this->email->print_debugger();
+            die;
+            $this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+        }
         redirect($_SERVER['HTTP_REFERER']);
     }
 
