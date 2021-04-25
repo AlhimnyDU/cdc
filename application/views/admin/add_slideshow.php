@@ -31,7 +31,7 @@
                         <div class="field item form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Gambar</label>
                             <div class="col-md-6 col-sm-6">
-                                <input type="file" class="dropify" height="50" name="slideshow" data-max-file-size="5M" data-allowed-file-extensions="png jpg jpeg" required>
+                                <input type="file" class="dropify" height="50" name="slideshow" data-min-width="1600" data-min-height="900" data-max-file-size="5M" data-allowed-file-extensions="png jpg jpeg" required>
                             </div>
                         </div>
                         <div class="form-group">
