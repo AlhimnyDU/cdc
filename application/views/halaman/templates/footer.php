@@ -90,6 +90,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <script>
   $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 2000
+    })
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
     $('#role').change(function() {

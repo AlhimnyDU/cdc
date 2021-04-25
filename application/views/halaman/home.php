@@ -3,6 +3,16 @@
         <section id="breadcrumbs" class="breadcrumbs">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <?php $number = 1;
+                foreach ($slideshow as $row) { ?>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $number ?>"></li>
+                <?php
+                  $number++;
+                }
+                ?>
+              </ol>
               <div class="carousel-item active">
                 <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" alt="First slide">
               </div>
