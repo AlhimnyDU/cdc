@@ -37,6 +37,14 @@ class Login extends CI_Controller
 		$this->load->view('login/templates/footer');
 	}
 
+	public function lupas()
+	{
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/lupa_password');
+		$this->load->view('halaman/templates/js');
+		$this->load->view('halaman/templates/footer');
+	}
+
 	public function register()
 	{
 		redirect('halaman/daftar_perusahaan');

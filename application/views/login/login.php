@@ -16,7 +16,8 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" required="" />
               </div>
               <div>
-                <button class="btn btn-primary btn-sm submit">Log in</button>
+                <button class="btn btn-primary btn-sm submit">Log in</button> | <a href="<?php echo site_url('login/lupas') ?>"> Daftar akun disini </a>
+
               </div>
               <div class="clearfix"></div>
               <div class="separator">
