@@ -218,7 +218,7 @@ class Login extends CI_Controller
 				$this->session->set_flashdata('insert_akunP', FALSE);
 			}
 		}
-		redirect('login/register');
+		redirect('halaman/daftar_perusahaan');
 	}
 
 	public function logout()
