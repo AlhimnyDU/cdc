@@ -171,7 +171,7 @@
       title: "Registration Success!",
       text: "Akun sudah tersimpan, silahkan tunggu admin mengaktifkan akun anda",
       icon: "success",
-      timer: 2000
+      timer: 3000
     });
   </script>
 <?php } ?>
@@ -181,7 +181,7 @@
       title: "Registration Success!",
       text: "Akun sudah tersimpan, silahkan login dan lengkapi data",
       icon: "success",
-      timer: 2000
+      timer: 3000
     });
   </script>
 <?php } ?>
