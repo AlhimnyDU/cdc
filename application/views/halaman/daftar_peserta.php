@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <center>
-                                <button id="btnSubmit" class="btn btn-primary btn-sm submit buttonSubmit">Daftar</button>
+                                <button id="btnSubmit" class="btn btn-primary btn-sm buttonSubmit">Daftar</button>
                             </center>
                         </form>
                     </div>
