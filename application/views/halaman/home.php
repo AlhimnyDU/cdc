@@ -47,8 +47,8 @@
         <section id="blog" class="blog">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
-              <h2>Advertisement</h2>
-              <p data-aos="fade-up" class="aos-init aos-animate">See all advertise at<a href="<?php echo site_url("halaman/loker") ?>" class="mb-3"> Advertisement and Job</a></p>
+              <h2>Job Vacancy</h2>
+              <p data-aos="fade-up" class="aos-init aos-animate">See all vacancy at<a href="<?php echo site_url("halaman/loker") ?>" class="mb-3"> Advertisement and Job</a></p>
             </div>
             <div class="row">
               <?php foreach ($iklan as $row) { ?>
@@ -72,7 +72,7 @@
             </div>
           </div>
         </section><!-- End Blog Section -->
-        <section id="blog" class="blog section-bg">
+        <section id="blog" class="blog">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Requirement Vacancy At this site</h2>
@@ -148,7 +148,7 @@
           </div>
         </section>
         <!-- ======= Blog Section ======= -->
-        <section id="blog" class="blog">
+        <section id="blog" class="blog section-bg">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Recent News</h2>
@@ -177,7 +177,7 @@
             </div>
           </div>
         </section><!-- End Blog Section -->
-        <section id="clients" class="clients section-bg">
+        <section id="clients" class="clients">
           <div class="container" data-aos="fade-up">
             <div class="section-title" data-aos="fade-up">
               <h2>Company</h2>
