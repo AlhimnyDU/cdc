@@ -181,6 +181,116 @@ class Admin extends CI_Controller
         }
     }
 
+    public function add_slideshow()
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/add_slideshow');
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function upd_slideshow($id)
+    {
+        if ($this->session->userdata('nama')) {
+            if ($this->session->userdata('admin')) {
+                $data['slideshow'] = $this->db->where('id_slideshow', $id)->get('tbl_slideshow')->row();
+                $this->load->view('admin/templates/header');
+                $this->load->view('admin/upd_slideshow', $data);
+                $this->load->view('admin/templates/js');
+                $this->load->view('admin/templates/footer');;
+            } else {
+                redirect('login');
+            }
+        } else {
+            redirect('login');
+        }
+    }
+
+    public function addSlideshow()
+    {
+        $this->upload_slideshow();
+        $data = array(
+            'judul'    => $this->input->post('judul'),
+            'link'    => $this->input->post('link'),
+            'file'    => $this->upload->data('file_name'),
+            'created'   => date('Y-m-d H:i:s'),
+            'updated'   => date('Y-m-d H:i:s')
+        );
+        $query = $this->db->insert('tbl_slideshow', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function updateSlideshow($id)
+    {
+        if ($_FILES["slideshow"]["name"]) {
+            $this->upload_slideshow();
+            $data = array(
+                'judul'    => $this->input->post('judul'),
+                'link'    => $this->input->post('link'),
+                'file'    => $this->upload->data('file_name'),
+                'updated'   => date('Y-m-d H:i:s')
+            );
+        } else {
+            $data = array(
+                'judul'    => $this->input->post('judul'),
+                'link'    => $this->input->post('link'),
+                'updated'   => date('Y-m-d H:i:s')
+            );
+        }
+        $query = $this->db->where('id_slideshow', $id)->update('slideshow', $data);
+        if ($query) {
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function deleteSlideshow($id, $nama_file)
+    {
+        $query = $this->db->where('id_slideshow', $id)->delete('tbl_slideshow');
+        if ($query) {
+            unlink('./assets/upload/slideshow/' . $nama_file);
+            $this->session->set_flashdata('insert_event', "Tambah Berhasil");
+        } else {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function accSlideshow($id)
+    {
+        $data = array(
+            'publish' => "y",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id_slideshow', $id)->update('tbl_slideshow', $data);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function decSlideshow($id)
+    {
+        $data = array(
+            'publish' => "n",
+            'updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('id_slideshow', $id)->update('tbl_slideshow', $data);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function addESertifikat()
     {
         $data = array(
@@ -2439,6 +2549,19 @@ class Admin extends CI_Controller
         if (empty($upload)) {
             $this->session->set_flashdata('failed', "Tambah Gagal");
             redirect('admin/cv');
+        }
+    }
+
+    public function upload_slideshow()
+    {
+        $config['upload_path'] = './assets/upload/slideshow/';
+        $config['encrypt_name'] = TRUE;
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $this->upload->initialize($config);
+        $upload = $this->upload->do_upload('slideshow');
+        if (empty($upload)) {
+            $this->session->set_flashdata('failed', "Tambah Gagal");
+            redirect('user/cv');
         }
     }
 }

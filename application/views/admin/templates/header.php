@@ -98,6 +98,7 @@
                     <li><a href="<?php echo site_url() ?>admin/persyaratan">Persyaratan</a></li>
                     <li><a href="<?php echo site_url() ?>admin/acara">Buat Form & Kuesioner</a></li>
                     <li><a href="<?php echo site_url() ?>admin/soal">Pertanyaan & Soal</a></li>
+                    <li><a href="<?php echo site_url() ?>admin/slideshow">Slideshow</a></li>
                   </ul>
                 </li>
                 <li><a href="<?php echo site_url('admin/schedule') ?>"><i class="fa fa-laptop"></i> Schedule Meeting</a></li>
