@@ -41,7 +41,7 @@ class Login extends CI_Controller
 	{
 		$data['verifikasi'] = $id;
 		$this->load->view('halaman/templates/header');
-		$this->load->view('halaman/verifikasi');
+		$this->load->view('halaman/verifikasi', $data);
 	}
 
 	public function gantiPass($id)
