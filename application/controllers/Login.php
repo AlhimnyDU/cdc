@@ -39,10 +39,7 @@ class Login extends CI_Controller
 
 	public function register()
 	{
-		$this->load->view('login/templates/header');
-		$this->load->view('login/regis_pus');
-		$this->load->view('login/templates/js');
-		$this->load->view('login/templates/footer');
+		redirect('halaman/daftar_perusahaan');
 	}
 
 	public function auth()

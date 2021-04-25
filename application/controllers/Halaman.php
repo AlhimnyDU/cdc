@@ -247,6 +247,13 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
+	public function daftar_perusahaan()
+	{
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/daftar_perusahaan');
+		$this->load->view('halaman/templates/footer');
+	}
+
 	public function artikel($id)
 	{
 		$data['artikel'] = $this->db->where('id_artikel', $id)->get('tbl_artikel')->row();
