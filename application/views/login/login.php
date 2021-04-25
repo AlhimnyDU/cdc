@@ -21,9 +21,8 @@
               <div class="clearfix"></div>
               <div class="separator">
                 <p class="change_link"><a href="<?php echo site_url('login/lupas') ?>"> Lupa Password? </a></p>
-                <p class="change_link">Belum punya akun :</p>
                 <p class="change_link">
-                  <a href="<?php echo site_url('halaman/daftar_peserta') ?>" class="btn btn-info btn-sm to_register"> Daftar akun</a> |
+                  <a href="<?php echo site_url('halaman/daftar_peserta') ?>" class="btn btn-info btn-sm to_register">Daftar akun</a>
                   <a href="<?php echo site_url("login/register"); ?>" class="btn btn-danger btn-sm">Daftar perusahaan</a>
                 </p>
                 <div class="clearfix"></div>
