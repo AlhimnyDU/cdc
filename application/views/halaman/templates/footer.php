@@ -91,7 +91,7 @@
 <script>
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 2000
+      interval: 4000
     })
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
