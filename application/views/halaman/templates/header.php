@@ -53,7 +53,7 @@
       <div class="cta">
         <?php if ($this->session->userdata("nama") == NULL) { ?>
           <a href="<?php echo site_url('halaman/daftar_peserta') ?>" class="scrollto">Registrasi Peserta</a>
-          <a href="<?php echo site_url('halaman/formulirRegistrasi') ?>" class="scrollto">Registrasi Perusahaan</a>
+          <a href="<?php echo site_url('login/register') ?>" class="scrollto">Registrasi Perusahaan</a>
         <?php } ?>
       </div>
     </div>
