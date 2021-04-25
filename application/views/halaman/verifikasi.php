@@ -9,15 +9,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formulir" action="<?php echo site_url('login/seachEmail/') ?>" method="post" enctype="multipart/form-data">
+                        <form id="formulir" action="<?php echo site_url('login/gantiPass/' . $verifikasi) ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Masukkan Email</label>
-                                    <input type="email" class="form-control has-feedback-left" name="email" placeholder="Email" required="" />
+                                    <label>Password</label>
+                                    <input type="password" class="form-control has-feedback-left" id="password" name="password" placeholder="Password" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control has-feedback-left" id="conf_password" name="conf_password" placeholder="Re-Password" required="" />
                                 </div>
                             </div>
                             <center>
-                                <button class="btn btn-primary btn-sm submit">Submit</button>
+                                <button class="btn btn-primary btn-sm buttonSubmit">Submit</button>
                             </center>
                         </form>
                     </div>

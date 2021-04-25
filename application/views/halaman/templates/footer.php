@@ -165,6 +165,36 @@
 
   });
 </script>
+<?php if ($this->session->flashdata('lupas')) { ?>
+  <script>
+    swal({
+      title: "Lupa Password!",
+      text: "Anda telah menggunakan fitur lupa password, silahkan check email anda untuk melakukan ganti password",
+      icon: "success",
+      timer: 3000
+    });
+  </script>
+<?php } ?>
+<?php if ($this->session->flashdata('lupas_berhasil')) { ?>
+  <script>
+    swal({
+      title: "Ganti Password!",
+      text: "Akun anda telah diganti password, silahkan mencoba logn",
+      icon: "success",
+      timer: 3000
+    });
+  </script>
+<?php } ?>
+<?php if ($this->session->flashdata('lupas_gagal')) { ?>
+  <script>
+    swal({
+      title: "Ganti Password!",
+      text: "Akun anda gagal mengganti password, silahkan hubungi admin",
+      icon: "error",
+      timer: 3000
+    });
+  </script>
+<?php } ?>
 <?php if ($this->session->flashdata('insert_akunP')) { ?>
   <script>
     swal({

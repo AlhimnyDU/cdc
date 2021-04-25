@@ -37,12 +37,126 @@ class Login extends CI_Controller
 		$this->load->view('login/templates/footer');
 	}
 
+	public function verifikasi($id)
+	{
+		$data['verifikasi'] = $id;
+		$this->load->view('halaman/templates/header');
+		$this->load->view('halaman/verifikasi');
+	}
+
+	public function gantiPass($id)
+	{
+		$date = date('Y-m-d H:i:s');
+		$akun = $this->db->where('md5(id_akun)', $id)->get('tbl_akun')->row();
+		if (!$akun) {
+			$akun = $this->db->where('md5(id_perusahaan)', $id)->get('tbl_perusahaan')->row();
+			if (!$akun) {
+				$this->session->set_flashdata('lupas_gagal', TRUE);
+			} else {
+				$data = array(
+					'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+					'updated' 		=> $date
+				);
+				$query = $this->db->where('md5(id_perusahaan)', $id)->update('tbl_perusahaan', $data);
+				if ($query) {
+					$this->session->set_flashdata('lupas_berhasil', TRUE);
+				} else {
+					$this->session->set_flashdata('lupas_gagal', TRUE);
+				}
+			}
+		} else {
+			$data = array(
+				'password' 		=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'updated' 		=> $date
+			);
+			$query = $this->db->where('md5(id_akun)', $id)->update('tbl_akun', $data);
+			if ($query) {
+				$this->session->set_flashdata('lupas_berhasil', TRUE);
+			} else {
+				$this->session->set_flashdata('lupas_gagal', TRUE);
+			}
+		}
+		redirect('halaman');
+	}
+
 	public function lupas()
 	{
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/lupa_password');
-		$this->load->view('halaman/templates/js');
-		$this->load->view('halaman/templates/footer');
+	}
+
+	public function searchEmail()
+	{
+		$data = $this->db->where('email', $this->input->post('email'))->get('tbl_akun')->row();
+		if (!$data) {
+			$data = $this->db->where('email', $this->input->post('email'))->get('tbl_perusahaan')->row();
+			if (!$data) {
+				$this->session->set_flashdata('lupas_gagal', TRUE);
+			} else {
+				$id = md5($data->id_perusahaan);
+				$from_email = "cdc@itenas.ac.id";
+				$message = "<b><h3>Kepada. " . $data->nama_perusahaan . "</h3></b> <br> Pemberitahuan akun anda mencoba untuk membuat password baru, silahkan buka link dibawah ini untuk mengganti password: <br> <a href='" . base_url('login/verifikasi/' . $id) . "'>" . base_url('login/verifikasi/' . $id) . "</a>  <br> Jika ini bukan anda silahkan abaikan email ini, Terima Kasih<br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+				$config = array(
+					'protocol' => 'smtp',
+					'smtp_host' => 'ssl://smtp.googlemail.com',
+					'smtp_user' => 'cdc@itenas.ac.id',
+					'smtp_pass' => 'itenas271',
+					'smtp_port' => 465,
+					'mailtype'  => 'html',
+					'charset'   => 'utf-8',
+					'newline'   => "\r\n"
+				);
+				$this->load->library('email');
+				$this->email->initialize($config);
+				$this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+				$this->email->to($this->input->post('email'));
+				$this->email->reply_to($from_email);
+				$this->email->subject('[No-Reply] Lupa Password Akun CDC Itenas');
+				$this->email->set_header('Itenas', 'CDC');
+				$this->email->set_mailtype("html");
+				$this->email->message($message);
+				if ($this->email->send()) {
+					echo "Email Terkirim";
+					$this->session->set_flashdata('lupas', TRUE);
+				} else {
+					echo $this->email->print_debugger();
+					die;
+					$this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+				}
+			}
+		} else {
+			$id = md5($data->id_akun);
+			$from_email = "cdc@itenas.ac.id";
+			$message = "<b><h3>Kepada. " . $data->nama . "</h3></b> <br> Pemberitahuan akun anda mencoba untuk membuat password baru, silahkan buka link dibawah ini untuk mengganti password: <br> <a href='" . base_url('login/verifikasi/' . $id) . "'>" . base_url('login/verifikasi/' . $id) . "</a>  <br> Jika ini bukan anda silahkan abaikan email ini, Terima Kasih<br><br> Hormat kami, <br><br> <b>CDC Itenas</b> ";
+			$config = array(
+				'protocol' => 'smtp',
+				'smtp_host' => 'ssl://smtp.googlemail.com',
+				'smtp_user' => 'cdc@itenas.ac.id',
+				'smtp_pass' => 'itenas271',
+				'smtp_port' => 465,
+				'mailtype'  => 'html',
+				'charset'   => 'utf-8',
+				'newline'   => "\r\n"
+			);
+			$this->load->library('email');
+			$this->email->initialize($config);
+			$this->email->from('cdc@itenas.ac.id', 'CDC Itenas');
+			$this->email->to($this->input->post('email'));
+			$this->email->reply_to($from_email);
+			$this->email->subject('[No-Reply] Lupa Password Akun CDC Itenas');
+			$this->email->set_header('Itenas', 'CDC');
+			$this->email->set_mailtype("html");
+			$this->email->message($message);
+			if ($this->email->send()) {
+				echo "Email Terkirim";
+				$this->session->set_flashdata('lupas', TRUE);
+			} else {
+				echo $this->email->print_debugger();
+				die;
+				$this->session->set_flashdata("notifGagal", "Email gagal dikirim.");
+			}
+		}
+		redirect('halaman');
 	}
 
 	public function register()
