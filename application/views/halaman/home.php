@@ -6,6 +6,12 @@
               <div class="carousel-item active">
                 <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" alt="First slide">
               </div>
+              <?php foreach ($slideshow as $row) { ?>
+                <div class="carousel-item">
+                  <a href="<?php echo $row->link ?>"><img class="d-block w-100" src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>"></a>
+                </div>
+              <?php } ?>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

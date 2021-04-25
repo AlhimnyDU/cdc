@@ -36,6 +36,7 @@ class Halaman extends CI_Controller
 		$data['iklan'] = $this->db->select('tbl_iklan.*,tbl_poster.file')->join('tbl_poster', 'tbl_poster.created=tbl_iklan.created')->order_by('created', 'DESC')->group_by('id_iklan')->get('tbl_iklan', 6)->result();
 		$data['vacancy'] = $this->db->select('tbl_loker.*, tbl_perusahaan.id_perusahaan, tbl_perusahaan.nama_perusahaan, tbl_perusahaan.logo_perusahaan')->join('tbl_perusahaan', 'tbl_perusahaan.id_perusahaan=tbl_loker.id_perusahaan', 'LEFT')->where('tbl_loker.status', 'Disetujui')->order_by('updated', 'DESC')->get('tbl_loker', 3)->result();
 		$data['client'] = $this->db->where('status_daftar', 'pendaftar')->get('tbl_perusahaan')->result();
+		$data['slideshow'] = $this->db->where('publish', "y")->get('tbl_slideshow')->result();
 		$this->session->set_userdata('navbar', 'beranda');
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/home', $data);
