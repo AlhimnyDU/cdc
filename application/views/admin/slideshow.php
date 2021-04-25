@@ -25,8 +25,8 @@
                                         <tr>
                                             <th width="5%">No</th>
                                             <th>Judul</th>
-                                            <th>Gambar</th>
-                                            <th width="25%">Edit</th>
+                                            <th width="20%">Gambar</th>
+                                            <th width="20%">Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,7 +44,7 @@
                                                     <?php } else { ?>
                                                         <a class="btn btn-secondary btn-sm" href="<?php echo site_url('admin/decSlideshow/') . $row->id_slideshow ?>"><i class="fa fa-times"></i>Non-aktif</a>
                                                     <?php } ?>
-                                                    | <a class="btn btn-warning" href="<?php echo site_url('admin/upd_slideshow/' . $row->id_slideshow) ?>"><i class="fa fa-edit"></i></a>
+                                                    | <a class="btn btn-warning btn-sm" href="<?php echo site_url('admin/upd_slideshow/' . $row->id_slideshow) ?>"><i class="fa fa-edit"></i></a>
                                                     | <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/deleteSlideshow/' . $row->id_slideshow . '/' . $row->file)  ?>"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
