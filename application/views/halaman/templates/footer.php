@@ -23,9 +23,6 @@
             <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url() ?>">Home</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('halaman/loker') ?>">Job</a></li>
             <li><i class="bx bx-chevron-right"></i><a href="<?php echo site_url('halaman/magang') ?>">Internship</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
           </ul>
         </div>
 

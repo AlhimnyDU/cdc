@@ -44,7 +44,7 @@
           </div>
         </section> -->
         <!-- ======= Blog Section ======= -->
-        <section id="blog" class="blog section-bg">
+        <section id="blog" class="blog">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Advertisement</h2>
@@ -72,7 +72,7 @@
             </div>
           </div>
         </section><!-- End Blog Section -->
-        <section id="blog" class="blog">
+        <section id="blog" class="blog section-bg">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Requirement Vacancy At this site</h2>
@@ -148,7 +148,7 @@
           </div>
         </section>
         <!-- ======= Blog Section ======= -->
-        <section id="blog" class="blog section-bg">
+        <section id="blog" class="blog">
           <div class="container">
             <div class="section-title" data-aos="fade-up">
               <h2>Recent News</h2>
@@ -177,7 +177,7 @@
             </div>
           </div>
         </section><!-- End Blog Section -->
-        <section id="clients" class="clients">
+        <section id="clients" class="clients section-bg">
           <div class="container" data-aos="fade-up">
             <div class="section-title" data-aos="fade-up">
               <h2>Company</h2>
