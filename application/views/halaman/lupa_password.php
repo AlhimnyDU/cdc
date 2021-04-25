@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formulir" action="<?php echo site_url('login/seachEmail') ?>" method="post" enctype="multipart/form-data">
+                        <form id="formulir" action="<?php echo site_url('login/searchEmail') ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Masukkan Email</label>
