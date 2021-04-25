@@ -150,7 +150,7 @@
       var password = $("#password").val();
       var confirmPassword = $("#conf_password").val();
       if (password != confirmPassword) {
-        $("#btnSubmit").prop('disabled', false);
+        $(".buttonSubmit").prop('disabled', false);
         swal("Password Tidak Cocok", "Harap isi password dengan sama", "error");
         return false;
       } else {
