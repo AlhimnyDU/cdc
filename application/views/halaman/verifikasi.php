@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4>Lupa Password Akun CDC Itenas</h4>
+                            <h4>Ganti Password Akun CDC Itenas</h4>
                         </div>
                     </div>
                     <div class="card-body">

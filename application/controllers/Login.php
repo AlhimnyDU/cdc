@@ -42,8 +42,8 @@ class Login extends CI_Controller
 		$data['verifikasi'] = $id;
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/verifikasi', $data);
-		$this->load->view('login/templates/js');
-		$this->load->view('login/templates/footer');
+		$this->load->view('halaman/templates/js');
+		$this->load->view('halaman/templates/footer');
 	}
 
 	public function gantiPass($id)
@@ -85,8 +85,8 @@ class Login extends CI_Controller
 	{
 		$this->load->view('halaman/templates/header');
 		$this->load->view('halaman/lupa_password');
-		$this->load->view('login/templates/js');
-		$this->load->view('login/templates/footer');
+		$this->load->view('halaman/templates/js');
+		$this->load->view('halaman/templates/footer');
 	}
 
 	public function searchEmail()
