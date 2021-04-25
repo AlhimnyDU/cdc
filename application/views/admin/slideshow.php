@@ -37,9 +37,9 @@
                                             <tr>
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $row->judul ?></td>
-                                                <td><img src="<?php echo base_url('assets/upload/slideshow/' . $row->slideshow) ?>" class="img-thumbnail" style="width: 200px; height: auto;"></td>
+                                                <td><img src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>" class="img-thumbnail" style="width: 200px; height: auto;"></td>
                                                 <td>
-                                                    <?php if ($row->status != "Aktif") { ?>
+                                                    <?php if ($row->publish != "y") { ?>
                                                         <a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/accSlideshow/') . $row->id_slideshow ?>"><i class="fa fa-check"></i>Aktif</a>
                                                     <?php } else { ?>
                                                         <a class="btn btn-secondary btn-sm" href="<?php echo site_url('admin/decSlideshow/') . $row->id_slideshow ?>"><i class="fa fa-times"></i>Non-aktif</a>
