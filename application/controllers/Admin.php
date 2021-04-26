@@ -314,10 +314,11 @@ class Admin extends CI_Controller
     public function importESertifikat()
     {
         include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
-        $config['upload_path'] = base_url('assets/upload/excel/');
+        $config['upload_path'] = './assets/excel/';
         $config['allowed_types'] = 'xlsx|xls|csv';
         $config['max_size'] = '10000';
         $config['encrypt_name'] = true;
+        $this->load->library('upload');
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('file')) {
             //upload gagal
