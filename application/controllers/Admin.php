@@ -320,7 +320,8 @@ class Admin extends CI_Controller
         $config['encrypt_name'] = true;
         $this->load->library('upload');
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('file')) {
+        $upload = $this->upload->do_upload('file');
+        if (!$upload) {
             //upload gagal
             $this->session->set_flashdata('notifGagal', 'error');
             //redirect halaman
