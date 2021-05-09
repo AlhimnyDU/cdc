@@ -14,11 +14,11 @@
                 ?>
               </ol>
               <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" style="width: 1600px;height: 900px;" alt="First slide">
+                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" alt="First slide">
               </div>
               <?php foreach ($slideshow as $row) { ?>
                 <div class="carousel-item">
-                  <a href="<?php echo $row->link ?>"><img class="d-block w-100" src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>" style="width: 1600px;height: 900px;"></a>
+                  <a href="<?php echo $row->link ?>"><img class="d-block w-100" src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>"></a>
                 </div>
               <?php } ?>
 
