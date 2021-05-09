@@ -45,11 +45,11 @@
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($alumni as $row) {
+                                        foreach ($alumni as $row => $currency_data) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
-                                                <td><?php echo $row->nrp ?></td>
+                                                <td><?php echo $row['nrp'] ?></td>
                                                 <td><?php echo $row->nama ?></td>
                                                 <td><?php echo $row->email ?></td>
                                                 <td><?php echo $row->tahun_lulus ?></td>
