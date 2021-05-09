@@ -64,8 +64,8 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="<?php echo site_url() ?>"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></h1>
-        <h1 class="text-light"><a href="<?php echo site_url() ?>"><img src="<?php echo site_url('assets/halaman/kampus_merdeka.png') ?>" alt=""></a></h1>
+        <div class="text-light"><a href="<?php echo site_url() ?>"><img src="<?php echo site_url('assets/halaman/logo.png') ?>" alt=""></a></div>
+        <div class="text-light"><img src="<?php echo site_url('assets/halaman/kampus_merdeka.png') ?>" alt=""></div>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
