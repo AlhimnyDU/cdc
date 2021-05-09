@@ -50,10 +50,10 @@
                                             <tr>
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $apa->nrp ?></td>
-                                                <td><?php echo $row->nama ?></td>
-                                                <td><?php echo $row->email ?></td>
-                                                <td><?php echo $row->tahun_lulus ?></td>
-                                                <td><?php echo $row->tahun_angkatan ?></td>
+                                                <td><?php echo $apa->nama ?></td>
+                                                <td><?php echo $apa->email ?></td>
+                                                <td><?php echo $apa->tahun_lulus ?></td>
+                                                <td><?php echo $apa->tahun_angkatan ?></td>
                                             </tr>
                                         <?php
                                             $no++;
