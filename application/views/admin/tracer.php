@@ -49,7 +49,7 @@
                                         ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
-                                                <td><?php echo $apa['nrp'] ?></td>
+                                                <td><?php echo $apa->nrp ?></td>
                                                 <td><?php echo $row->nama ?></td>
                                                 <td><?php echo $row->email ?></td>
                                                 <td><?php echo $row->tahun_lulus ?></td>
