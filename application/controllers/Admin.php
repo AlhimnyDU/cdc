@@ -66,10 +66,10 @@ class Admin extends CI_Controller
                 $url = "https://tracerstudy.itenas.ac.id/cdc/alumni";
                 $get_url = file_get_contents($url);
                 print_r(json_decode($get_url));
-                $this->load->view('admin/templates/header');
-                $this->load->view('admin/tracer', $data);
-                $this->load->view('admin/templates/js');
-                $this->load->view('admin/templates/footer');
+                // $this->load->view('admin/templates/header');
+                // $this->load->view('admin/tracer', $data);
+                // $this->load->view('admin/templates/js');
+                // $this->load->view('admin/templates/footer');
             } else {
                 redirect('login');
             }
