@@ -14,7 +14,7 @@
                 ?>
               </ol>
               <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/home/jobfair/JobFair_slides-21-10.jpg" alt="First slide">
+                <img class="d-block w-100" src="<?php echo base_url() ?>assets/halaman/slideshow/Banner-CDC-04.png" alt="First slide">
               </div>
               <?php foreach ($slideshow as $row) { ?>
                 <div class="carousel-item">

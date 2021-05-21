@@ -88,7 +88,8 @@
 <script>
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 4000
+      interval: 4000,
+      wrap: false,
     })
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
@@ -179,7 +180,7 @@
   <script>
     swal({
       title: "Ganti Password!",
-      text: "Akun anda telah diganti password, silahkan mencoba logn",
+      text: "Akun anda telah diganti password, silahkan mencoba login",
       icon: "success",
       timer: 3000
     });
