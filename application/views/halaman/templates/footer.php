@@ -76,10 +76,8 @@
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/php-email-form/validate.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/venobox/venobox.min.js"></script>
-<script src="<?php echo base_url() ?>assets/home/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url() ?>assets/halaman/flipdown/flipdown.js"></script>
 <!-- Template Main JS File -->
 <script src="<?php echo base_url() ?>assets/home/assets/js/main.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -88,7 +86,7 @@
 <script>
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 4000,
+      interval: 4000
     })
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
