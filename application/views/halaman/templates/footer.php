@@ -78,17 +78,20 @@
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/venobox/venobox.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/aos/aos.js"></script>
-<!-- Template Main JS File -->
+<script src="<?php echo base_url() ?>assets/home/assets/vendor/owl.carousel/owl.carousel.min.js" rel="stylesheet"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/js/main.js"></script>
+</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js" integrity="sha512-sR3EKGp4SG8zs7B0MEUxDeq8rw9wsuGVYNfbbO/GLCJ59LBE4baEfQBVsP2Y/h2n8M19YV1mujFANO1yA3ko7Q==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('.carousel').carousel({
-      interval: 4000,
-      wrap: false
-    })
+    var owl = $('.owl-carousel');
+    owl.owlCarousel();
+    // Listen to owl events:
+    owl.on('changed.owl.carousel', function(event) {
+
+    });
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
     $('#role').change(function() {

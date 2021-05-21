@@ -1,36 +1,33 @@
         <!-- partial -->
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <div class="owl-carousel owl-theme owl-loaded">
+            <div class="owl-stage-outer">
+              <div class="owl-stage">
+                <div class="owl-item"><img class="d-block w-100" src="<?php echo base_url() ?>assets/halaman/slideshow/Banner-CDC-04.png" alt="First slide"></div>
                 <?php $number = 1;
                 foreach ($slideshow as $row) { ?>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $number ?>"></li>
+                  <div class="owl-item"><a href="<?php echo $row->link ?>"><img class="d-block w-100" src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>"></a></div>
                 <?php
                   $number++;
                 }
                 ?>
-              </ol>
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo base_url() ?>assets/halaman/slideshow/Banner-CDC-04.png" alt="First slide">
               </div>
-              <?php foreach ($slideshow as $row) { ?>
-                <div class="carousel-item">
-                  <a href="<?php echo $row->link ?>"><img class="d-block w-100" src="<?php echo base_url('assets/upload/slideshow/' . $row->file) ?>"></a>
-                </div>
-              <?php } ?>
-
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+            <div class="owl-nav">
+              <div class="owl-prev">prev</div>
+              <div class="owl-next">next</div>
+            </div>
+            <div class="owl-dots">
+              <div class="owl-dot active"><span></span></div>
+              <?php $number = 1;
+              foreach ($slideshow as $row) { ?>
+                <div class="owl-dot"><span></span></div>
+              <?php
+                $number++;
+              }
+              ?>
+            </div>
           </div>
         </section><!-- End Breadcrumbs -->
         <!-- <section id="blog" class="blog" style="background-color: #ff5821;">

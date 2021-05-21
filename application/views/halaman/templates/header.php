@@ -22,6 +22,7 @@
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/home/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/home/assets/vendor/aos/aos.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="<?php echo base_url() ?>assets/home/assets/css/style.css" rel="stylesheet">
