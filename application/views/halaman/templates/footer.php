@@ -90,10 +90,9 @@
     owl.owlCarousel({
       loop: true,
       autoplay: true,
-      smartSpeed: 1000,
+      smartSpeed: 500,
       items: 1,
-      nav: true,
-      dots: true
+      autoplayHoverPause: false
     });
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
