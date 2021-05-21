@@ -91,11 +91,9 @@
       loop: true,
       autoplay: true,
       smartSpeed: 1000,
-      items: 1
-    });
-    // Listen to owl events:
-    owl.on('changed.owl.carousel', function(event) {
-
+      items: 1,
+      nav: true,
+      dots: true
     });
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
