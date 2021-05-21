@@ -87,7 +87,20 @@
 <script>
   $(document).ready(function() {
     var owl = $('.owl-carousel');
-    owl.owlCarousel();
+    owl.owlCarousel({
+      loop: true,
+      autoplay: true,
+      smartSpeed: 1000,
+      autoplayHoverPause: false,
+      autoplayTimeout: 8000,
+      dots: true,
+      nav: false,
+      mouseDrag: false,
+      items: 1,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
+      dotsContainer: '.cover_dots'
+    });
     // Listen to owl events:
     owl.on('changed.owl.carousel', function(event) {
 
