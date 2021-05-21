@@ -92,6 +92,7 @@
       autoplay: true,
       smartSpeed: 500,
       items: 1,
+      nav: false,
       autoplayHoverPause: false
     });
     $('.ipk').inputmask("9.99");
