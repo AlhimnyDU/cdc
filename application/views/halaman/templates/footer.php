@@ -86,7 +86,8 @@
 <script>
   $(document).ready(function() {
     $('.carousel').carousel({
-      interval: 4000
+      interval: 4000,
+      wrap: false
     })
     $('.ipk').inputmask("9.99");
     $('#umum').hide();
