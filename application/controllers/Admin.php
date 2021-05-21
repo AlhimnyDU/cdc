@@ -410,7 +410,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['iklan'] = $this->db->order_by('DESC', 'created')->get('tbl_iklan')->result();
+                $data['iklan'] = $this->db->order_by('created', 'DESC')->get('tbl_iklan')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/iklan', $data);
                 $this->load->view('admin/templates/js');
@@ -2120,7 +2120,7 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('nama')) {
             if ($this->session->userdata('admin')) {
-                $data['artikel'] = $this->db->order_by('DESC', 'created')->get('tbl_artikel')->result();
+                $data['artikel'] = $this->db->order_by('created', 'DESC')->get('tbl_artikel')->result();
                 $this->load->view('admin/templates/header');
                 $this->load->view('admin/post', $data);
                 $this->load->view('admin/templates/js');
