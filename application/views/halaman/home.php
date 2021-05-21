@@ -1,6 +1,6 @@
         <!-- partial -->
         <!-- ======= Breadcrumbs ======= -->
-        <section id="breadcrumbs" class="breadcrumbs">
+        <section class="blog">
           <div class="owl-carousel owl-theme owl-loaded">
             <div class="owl-stage-outer">
               <div class="owl-stage">
@@ -13,10 +13,6 @@
                 }
                 ?>
               </div>
-            </div>
-            <div class="owl-nav">
-              <div class="owl-prev">prev</div>
-              <div class="owl-next">next</div>
             </div>
             <div class="owl-dots">
               <div class="owl-dot active"><span></span></div>
