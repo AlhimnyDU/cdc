@@ -90,7 +90,8 @@
     owl.owlCarousel({
       loop: true,
       autoplay: true,
-      smartSpeed: 1000
+      smartSpeed: 1000,
+      items: 1
     });
     // Listen to owl events:
     owl.on('changed.owl.carousel', function(event) {
