@@ -93,15 +93,11 @@
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_3" value="Cukup Penting">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Cukup Penting</label>
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Penting</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_4" value="Penting">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Penting</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_5" value="Sangat Penting">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_5">Sangat Penting</label>
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Sangat Penting</label>
                                                         </div>
                                                     </div>
                                                 <?php } else if ($row->jenis_jawaban == "kepuasan") { ?>
@@ -116,15 +112,11 @@
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_3" value="Cukup Puas">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Cukup Puas</label>
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_3">Puas</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_4" value="Puas">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Puas</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio<?php echo $row->id_soal ?>_5" value="Sangat Puas">
-                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_5">Sangat Puas</label>
+                                                            <label class="form-check-label" for="inlineRadio<?php echo $row->id_soal ?>_4">Sangat Puas</label>
                                                         </div>
                                                     </div>
                                                 <?php } else if ($row->jenis_jawaban == "prodi") { ?>

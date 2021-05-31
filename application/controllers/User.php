@@ -289,6 +289,12 @@ class User extends CI_Controller
         redirect('user/cv');
     }
 
+    public function download($nama_file, $direktori)
+    {
+        force_download('./assets/upload/' . $direktori . '/' . $nama_file, NULL);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     public function updatePendidikan($id)
     {
         $data = array(

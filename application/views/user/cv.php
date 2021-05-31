@@ -130,7 +130,7 @@
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Pas Foto</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('assets/upload/pas_foto/' . $akun->pas_foto) ?>" data-allowed-file-extensions="png jpg jpeg">
+                                        <input type="file" class="dropify" height="50" name="pas_foto" data-max-file-size="2M" data-default-file="<?php echo base_url('user/download/pas_foto/' . openssl_encrypt($akun->pas_foto, "aes-128-gcm",)) ?>" data-allowed-file-extensions="png jpg jpeg">
                                     </div>
                                 </div>
                                 <span class="section">2. Data Akademik</span>
