@@ -11,12 +11,12 @@
 									<small><?php echo date("d F Y", strtotime($iklan->created)) ?> - Administrator</small>
 								</div>
 								<hr>
-								<?php if ($iklan->video != NULL) { ?>
-									<?php echo $iklan->video ?>
-								<?php } ?>
 								<div>
 									<?php echo $iklan->informasi ?>
 								</div>
+								<?php if ($iklan->video != NULL) { ?>
+									<?php echo $iklan->video ?>
+								<?php } ?>
 								<br>
 								<div class="owl-carousel image-carousel">
 									<?php foreach ($poster as $row) { ?>
