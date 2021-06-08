@@ -101,6 +101,7 @@
                                     <option value="PKMI">PKMI</option>
                                     <option value="date">Tanggal</option>
                                     <option value="label">Label</option>
+                                    <option value="lama">Lama Berlangsung</option>
                                     <option value="1_respond">*Kuesioner ini hanya dapat mengisikan satu kali jawaban</option>
                                     <option value="label_kecil">Label Kecil</option>
                                 </select>
@@ -206,6 +207,9 @@ foreach ($soal as $row) {
                                         <option value="label" <?php if ($row->jenis_jawaban == "label") {
                                                                     echo "selected";
                                                                 } ?>>Label</option>
+                                        <option value="lama" <?php if ($row->jenis_jawaban == "lama") {
+                                                                    echo "selected";
+                                                                } ?>>Lama Berlangsung</option>
                                         <option value="label_kecil" <?php if ($row->jenis_jawaban == "label_kecil") {
                                                                         echo "selected";
                                                                     } ?>>Label Kecil</option>

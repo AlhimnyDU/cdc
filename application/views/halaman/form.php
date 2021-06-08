@@ -243,6 +243,25 @@
                                                             Lainnya
                                                         </option>
                                                     </select>
+                                                <?php } else if ($row->jenis_jawaban == "lama") { ?>
+                                                    <select class="custom-select" name="<?php echo $row->id_soal ?>" required>
+                                                        <option value="" disabled hidden selected>Pilih</option>
+                                                        <option value="0 - 3 Bulan">
+                                                            0 - 3 Bulan
+                                                        </option>
+                                                        <option value="4 - 6 Bulan">
+                                                            4 - 6 Bulan
+                                                        </option>
+                                                        <option value="6 - 12 bulan">
+                                                            6 - 12 bulan
+                                                        </option>
+                                                        <option value="> 1 Tahun">
+                                                            > 1 Tahun
+                                                        </option>
+                                                        <option value="Lainnya">
+                                                            Lainnya
+                                                        </option>
+                                                    </select>
                                                 <?php } else if ($row->jenis_jawaban == "pdf") { ?>
                                                     <input type="file" class="dropify" height="50" name="<?php echo $row->id_soal ?>" data-max-file-size="3M" data-allowed-file-extensions="pdf" required>
                                                 <?php } else if ($row->jenis_jawaban == "pdfnon") { ?>
