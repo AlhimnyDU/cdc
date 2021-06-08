@@ -261,7 +261,7 @@
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input" type="radio" name="<?php echo $row->id_soal ?>" id="inlineRadio2" value="ASMI" required="required">
-                                                            <label class="form-check-label" for="inlineRadio2">Akselerasi Startup Mahasiswa Indonesia (ASMI)k</label>
+                                                            <label class="form-check-label" for="inlineRadio2">Akselerasi Startup Mahasiswa Indonesia (ASMI)</label>
                                                         </div>
                                                     </div>
                                                 <?php } ?>
@@ -271,7 +271,7 @@
                                     <?php } ?>
 
                                 <?php } ?>
-                                <?php if ($acara->id_acara == 7) { ?>
+                                <?php if ($acara->id_acara == 0) { ?>
                                     <div class="form-group">
                                         <div class="alert alert-warning" role="alert">
                                             <div class="form-check">
