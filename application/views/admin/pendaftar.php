@@ -68,7 +68,7 @@
                                                 <?php foreach ($berkas as $r) {
                                                     foreach ($data as $d) {
                                                         if (($r->nama_syarat == $d->nama_berkas) && ($row->id_akun == $d->id_akun)) { ?>
-                                                            <td><a href="<?php echo base_url('assets/upload/berkas/' . $d->file)
+                                                            <td><a href="<?php echo base_url('halaman/download/' . $d->file)
                                                                             ?>">Ada</a></td>
                                                         <?php  }
                                                         ?>
