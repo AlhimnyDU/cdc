@@ -490,6 +490,12 @@ class Halaman extends CI_Controller
 		$this->load->view('halaman/templates/footer');
 	}
 
+	public function download($nama_file)
+	{
+		force_download('./assets/upload/berkas/' . $nama_file, NULL);
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
 	public function job($id)
 	{
 		$data['akun'] = $this->db->where('id_akun', $this->session->userdata('id_akun'))->get('tbl_akun')->row();
