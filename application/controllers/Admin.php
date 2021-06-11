@@ -1824,7 +1824,6 @@ class Admin extends CI_Controller
                 'status'     => 'Menunggu Konfirmasi',
                 'prodi'     => $this->input->post('prodi'),
                 'poster'   => $poster,
-                'jenis'   => "vacancy",
                 'id_perusahaan' => $id_perusahaan,
                 'created' => date('Y-m-d H:i:s'),
                 'updated' => date('Y-m-d H:i:s')
@@ -1840,8 +1839,6 @@ class Admin extends CI_Controller
                 'informasi'     => $this->input->post('informasi'),
                 'status'     => 'Menunggu Konfirmasi',
                 'prodi'     => $this->input->post('prodi'),
-                'jenis'   => "vacancy",
-                // 'id_perusahaan' => $id_perusahaan,
                 'created' => date('Y-m-d H:i:s'),
                 'updated' => date('Y-m-d H:i:s')
             );
@@ -1921,7 +1918,7 @@ class Admin extends CI_Controller
         //     $this->session->set_flashdata('failed',"Tambah Gagal");
         // }   
 
-        redirect('admin/loker');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function deleteVacancy($id)

@@ -77,7 +77,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="form" action="<?php echo site_url('user/daftarMagang/' . $job->id_loker) ?>" method="post" enctype="multipart/form-data">
+                <form id="formulir" action="<?php echo site_url('user/daftarMagang/' . $job->id_loker) ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <div class="alert alert-primary" role="alert">
