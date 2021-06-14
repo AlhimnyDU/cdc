@@ -175,7 +175,7 @@ class Halaman extends CI_Controller
 	{
 		//konfigurasi pagination
 		$config['base_url'] = site_url('halaman/loker'); //site url
-		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'vacancy')->or_where('jenis', 'Job Fair 2021')->from('tbl_loker')->count_all_results(); //total row
+		$config['total_rows'] = $this->db->where('status', 'Disetujui')->where('jenis', 'vacancy')->or_where('jenis', 'Job Fair 2021')->or_where('jenis', 'jobfair')->from('tbl_loker')->count_all_results(); //total row
 		$config['per_page'] = 10;  //show record per halaman
 		$config["uri_segment"] = 3;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
