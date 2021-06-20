@@ -71,7 +71,6 @@
 
 <!-- Vendor JS Files -->
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/jquery/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 <script src="<?php echo base_url() ?>assets/home/assets/vendor/php-email-form/validate.js"></script>
@@ -152,13 +151,6 @@
       document.getElementById("formKuesioner").querySelectorAll("[required]").forEach(function(i) {
         if (!allAreFilled) return;
         if (!i.value) allAreFilled = false;
-        if (i.type === "radio") {
-          let radioValueCheck = false;
-          document.getElementById("formKuesioner").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
-            if (r.checked) radioValueCheck = true;
-          })
-          allAreFilled = radioValueCheck;
-        }
       })
       if (!allAreFilled) {
         alert('Harap isi semua isian jawaban kuesioner!');
