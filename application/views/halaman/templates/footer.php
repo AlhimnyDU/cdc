@@ -148,7 +148,9 @@
 
     $(".submit").click(function() {
       $(".submit").prop('disabled', true);
-      $('#formKuesioner').validate();
+      if (!$('#formKuesioner').validate()) {
+        $(".submit").prop('disabled', false);
+      }
     });
 
     $(".buttonSubmit").click(function() {
