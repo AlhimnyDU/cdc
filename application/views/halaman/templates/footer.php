@@ -148,8 +148,23 @@
 
     $(".submit").click(function() {
       $(".submit").prop('disabled', true);
-      if (!$('#formKuesioner').validate()) {
+      let allAreFilled = true;
+      document.getElementById("formKuesioner").querySelectorAll("[required]").forEach(function(i) {
+        if (!allAreFilled) return;
+        if (!i.value) allAreFilled = false;
+        if (i.type === "radio") {
+          let radioValueCheck = false;
+          document.getElementById("formKuesioner").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+            if (r.checked) radioValueCheck = true;
+          })
+          allAreFilled = radioValueCheck;
+        }
+      })
+      if (!allAreFilled) {
+        alert('Harap isi semua isian jawaban kuesioner!');
         $(".submit").prop('disabled', false);
+      } else {
+        $('#formKuesioner').submit();
       }
     });
 
