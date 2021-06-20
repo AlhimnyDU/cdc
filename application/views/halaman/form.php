@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <?php if ($acara->status == "Aktif") { ?>
-                            <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data" class="form-floating" id="formulir">
+                            <form action="<?php echo site_url('halaman/daftarAcara/' . $acara->id_acara) ?>" method="post" enctype="multipart/form-data" class="form-floating" id="formKuesioner">
                                 <?php foreach ($form as $row) { ?>
                                     <?php if ($row->jenis_jawaban == "label") { ?>
                                         <h4 class="col-form-label label-align"><?php echo $row->soal  ?></h4>

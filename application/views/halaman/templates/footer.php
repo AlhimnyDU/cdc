@@ -147,7 +147,7 @@
 
     $(".submit").click(function() {
       $(".submit").prop('disabled', true);
-      $('#formulir').submit();
+      $('#formKuesioner').submit();
     });
 
     $(".buttonSubmit").click(function() {
