@@ -154,7 +154,7 @@
         if (!i.value) allAreFilled = false;
         if (i.type === "radio") {
           let radioValueCheck = false;
-          document.getElementById("formKuesioner").querySelectorAll("[name=${i.name}]").forEach(function(r) {
+          document.getElementById("formKuesioner").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
             if (r.checked) radioValueCheck = true;
           })
           allAreFilled = radioValueCheck;
