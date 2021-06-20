@@ -322,7 +322,7 @@ class Halaman extends CI_Controller
 
 	public function daftarAcara($id)
 	{
-		$jenis = $this->db->select('tbl_soal.*,form_soal.id_form')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->where('form_soal.id_acara', $id)->where('jenis_jawaban', '1_respond')->get()->row();
+		$jenis = $this->db->select('tbl_soal.*,form_soal.id_form, tbl_acara.jenis_respon')->from('form_soal')->join('tbl_soal', 'tbl_soal.id_soal=form_soal.id_soal', 'left')->join('tbl_acara', 'tbl_acara.id_acara=form_soal.id_acara', 'left')->where('form_soal.id_acara', $id)->where('tbl_acara.jenis_respon', '1_respond')->get()->row();
 		if ($jenis) {
 			$validasi = $this->db->where('id_acara', $id)->where('jawaban', $this->input->post(7))->get('tbl_jawaban')->row();
 			if (!$validasi) {
