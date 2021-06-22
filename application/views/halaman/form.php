@@ -283,6 +283,23 @@
                                                             <label class="form-check-label" for="inlineRadio2">Akselerasi Startup Mahasiswa Indonesia (ASMI)</label>
                                                         </div>
                                                     </div>
+
+                                                <?php } else if ($row->jenis_jawaban == "relawan") { ?>
+                                                    <select class="custom-select" name="<?php echo $row->id_soal ?>" required>
+                                                        <option value="" disabled hidden selected>Pilih</option>
+                                                        <option value="Donor Darah">
+                                                            Donor Darah
+                                                        </option>
+                                                        <option value="Relawan Covid-19">
+                                                            Relawan Covid-19
+                                                        </option>
+                                                        <option value="Relawan Bencana">
+                                                            Relawan Bencana
+                                                        </option>
+                                                        <option value="Lainnya">
+                                                            Lainnya
+                                                        </option>
+                                                    </select>
                                                 <?php } ?>
                                             </div>
                                         </div>

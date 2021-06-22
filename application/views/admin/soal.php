@@ -98,6 +98,7 @@
                                     <option value="pdfnon">Upload File PDF(*non required)</option>
                                     <option value="gambar">Upload File Gambar</option>
                                     <option value="gambarnon">Upload File Gambar(*non required)</option>
+                                    <option value="relawan">Relawan Bencana</option>
                                     <option value="PKMI">PKMI</option>
                                     <option value="date">Tanggal</option>
                                     <option value="label">Label</option>
@@ -201,6 +202,9 @@ foreach ($soal as $row) {
                                         <option value="PKMI" <?php if ($row->jenis_jawaban == "PKMI") {
                                                                     echo "selected";
                                                                 } ?>>PKMI</option>
+                                        <option value="relawan" <?php if ($row->jenis_jawaban == "relawan") {
+                                                                    echo "selected";
+                                                                } ?>>Relawan Bencana</option>
                                         <option value="tanggal" <?php if ($row->jenis_jawaban == "tanggal") {
                                                                     echo "selected";
                                                                 } ?>>Tanggal</option>
