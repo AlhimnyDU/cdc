@@ -45,8 +45,10 @@
                                                 foreach ($query as $row) { ?>
                                                     <td>
                                                         <?php if ($row->jawaban != NULL) { ?>
-                                                            <?php if (($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "gambarnon") || ($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "pdfnon")) { ?>
+                                                            <?php if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "pdfnon")) { ?>
                                                                 <a href="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">Download</a>
+                                                            <?php } else if (($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "gambarnon")) { ?>
+                                                                <img src="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">
                                                             <?php } else {
                                                                 echo $row->jawaban;
                                                             } ?>
