@@ -48,7 +48,7 @@
                                                             <?php if (($row->jenis_jawaban == "pdf") || ($row->jenis_jawaban == "pdfnon")) { ?>
                                                                 <a href="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">Download</a>
                                                             <?php } else if (($row->jenis_jawaban == "gambar") || ($row->jenis_jawaban == "gambarnon")) { ?>
-                                                                <img src="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">
+                                                                <a href="<?php echo base_url('assets/upload/form/' . $row->jawaban);  ?>">Download</a>
                                                             <?php } else {
                                                                 echo $row->jawaban;
                                                             } ?>
